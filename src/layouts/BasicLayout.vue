@@ -2,7 +2,7 @@
     <a-layout id="components-layout-demo-side" style="min-height: 100vh">
         <a-layout-sider collapsible v-model="collapsed" :trigger="null">
             <div class="logo"/>
-            <a-menu theme="dark" :defaultSelectedKeys="['1-1']" mode="inline">
+            <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1-1']" :defaultOpenKeys="['1']">
                 <a-sub-menu key="1">
                     <span slot="title">
                         <a-icon type="dashboard"/>
