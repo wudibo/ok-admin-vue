@@ -1,5 +1,6 @@
 // webpack 官方参考链接: https://cli.vuejs.org/zh/guide/webpack.html
 module.exports = {
+    publicPath: './',
     // vue-cli-service 官方参考链接: https://cli.vuejs.org/zh/guide/cli-service.html#vue-cli-service-serve
     devServer: {
         // 在服务器启动时打开浏览器
@@ -21,4 +22,4 @@ module.exports = {
             }
         }
     }
-}
+};

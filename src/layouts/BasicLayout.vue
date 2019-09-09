@@ -53,16 +53,16 @@
 </template>
 
 <script>
-    import SideMenu from './SideMenu';
-    import Header from './Header';
-    import Footer from './Footer';
+    // import SideMenu from './SideMenu';
+    // import Header from './Header';
+    // import Footer from './Footer';
 
     export default {
         name: 'BasicLayout',
         components: {
-            SideMenu,
-            Header,
-            Footer
+            // SideMenu,
+            // Header,
+            // Footer
         },
         data() {
             return {
