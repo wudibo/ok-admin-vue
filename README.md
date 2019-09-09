@@ -9,8 +9,8 @@
 ### 技术栈
 
 <p>
-  <img src="https://img.shields.io/badge/Vue-2.x-brightgreen.svg">
-  <img src="https://img.shields.io/badge/Ant%20Design%20of%20Vue-1.3.17--beta.1-brightgreen">
+  <img src="https://img.shields.io/badge/Vue-2.6.10-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Ant%20Design%20of%20Vue-1.3.16-brightgreen">
   <img src="https://img.shields.io/badge/Vue%20CLI-3.8.2-brightgreen">
 </p>
 
@@ -24,8 +24,10 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 |----------|----------|
 | vue | 2.6.10 |
 | core-js | 2.6.5 |
-| Ant Design of Vue | 1.3.16 |
+| ant-design-vue | 1.3.16 |
 | vue-router | 3.0.6 |
+| less | 3.10.3 |
+| less-loader | 5.0.0 |
 | vuex | 3.1.1 |
 | axios | 0.19.0 |
 
@@ -37,9 +39,21 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 | npm | 6.9.0 |
 | vue-cli | 3.8.2 |
 
-### 约定
+### ESlint设置
 
-- 所有文件缩进统一为4个字符。
+```
+// 0-off, 1-warn, 2-error
+"eslintConfig": {
+    "rules": {
+        // 缩进为4个字符
+        "indent": [0, 4],
+        // 最多不能超过2个空行
+        "no-multiple-empty-lines": [1, {"max": 2}],
+        // 必须以分号结束
+        "semi": [2, "always"]
+    }
+}
+```
 
 ### WebStorm设置
 
