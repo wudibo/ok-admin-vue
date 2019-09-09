@@ -30,6 +30,7 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 | less-loader | 5.0.0 |
 | vuex | 3.1.1 |
 | axios | 0.19.0 |
+| moment | 2.24.0 |
 
 ### 开发环境
 
