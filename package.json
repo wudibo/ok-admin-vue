@@ -38,20 +38,10 @@
             "eslint:recommended"
         ],
         "rules": {
-            "indent": [
-                0,
-                4
-            ],
-            "no-multiple-empty-lines": [
-                1,
-                {
-                    "max": 2
-                }
-            ],
-            "semi": [
-                2,
-                "always"
-            ]
+            "indent": [0, 4],
+            "no-multiple-empty-lines": [1, {"max": 2}],
+            "semi": [2, "always"],
+            "quotes": [2, "single"]
         },
         "parserOptions": {
             "parser": "babel-eslint"

@@ -52,7 +52,9 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
         // 最多不能超过2个空行
         "no-multiple-empty-lines": [1, {"max": 2}],
         // 必须以分号结束
-        "semi": [2, "always"]
+        "semi": [2, "always"],
+        // 引号类型为单引号
+        "quotes": [2, "single"]
     }
 }
 ```
