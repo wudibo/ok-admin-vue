@@ -24,7 +24,7 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 |----------|----------|
 | vue | 2.6.10 |
 | core-js | 2.6.5 |
-| Ant Design of Vue | 1.3.17-beta.1 |
+| Ant Design of Vue | 1.3.16 |
 | vue-router | 3.0.6 |
 | vuex | 3.1.1 |
 | axios | 0.19.0 |
