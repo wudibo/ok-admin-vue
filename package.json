@@ -32,7 +32,11 @@
             "plugin:vue/essential",
             "eslint:recommended"
         ],
-        "rules": {},
+        "rules": {
+            "indent": [0, 4],
+            "no-multiple-empty-lines": [1, {"max": 2}],
+            "semi": [2, "always"]
+        },
         "parserOptions": {
             "parser": "babel-eslint"
         }

@@ -16,7 +16,7 @@
         components: {
             // HelloWorld
         }
-    }
+    };
 </script>
 
 <style>
