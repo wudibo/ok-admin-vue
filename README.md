@@ -2,11 +2,11 @@
 
 一个很赞的，扁平化风格的，响应式布局的后台管理模版，旨为后端程序员减压！
 
-## QQ群交流
+### QQ群交流
 
 964222534
 
-## 技术栈
+### 技术栈
 
 <p>
   <img src="https://img.shields.io/badge/Vue-2.x-brightgreen.svg">
@@ -14,11 +14,11 @@
   <img src="https://img.shields.io/badge/Vue%20CLI-3.8.2-brightgreen">
 </p>
 
-## 说明
+### 说明
 
 v3.0版本用Ant Design of Vue作为UI进行开发。
 
-## 组件版本
+### 组件版本
 
 | 组件 | 版本 |
 |----------|----------|
@@ -29,7 +29,7 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 | vuex | 3.1.1 |
 | axios | 0.19.0 |
 
-## 开发环境
+### 开发环境
 
 | 组件 | 版本 |
 |----------|----------|
@@ -37,6 +37,16 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 | npm | 6.9.0 |
 | vue-cli | 3.8.2 |
 
-## 约定
+### 约定
 
 - 所有文件缩进统一为4个字符。
+
+### WebStorm设置
+
+- Tab size: 4
+- Indent: 4
+- Continuation indent: 4
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0909/140710_fb2e05e0_1152471.png "屏幕截图.png")
+
+### Babel设置
