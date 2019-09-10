@@ -8,7 +8,10 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        {path: '/', redirect: '/dashboard'},
+        {
+            path: '/', 
+            redirect: '/dashboard'
+        },
         {
             path: '/user',
             // component: {render: h => h('router-view')},

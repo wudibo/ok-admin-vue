@@ -8,9 +8,9 @@
                         <a-icon type="dashboard"/>
                         <span>Dashboard</span>
                     </span>
-                    <a-menu-item key="1-1">分析页</a-menu-item>
-                    <a-menu-item key="1-2">监控页</a-menu-item>
-                    <a-menu-item key="1-3">工作台</a-menu-item>
+                    <a-menu-item key="1-1" @click="() => $router.push('/dashboard/analysis')">分析页</a-menu-item>
+                    <a-menu-item key="1-2" @click="() => $router.push('/dashboard/monitor')">监控页</a-menu-item>
+                    <a-menu-item key="1-3" @click="() => $router.push('/dashboard/workplace')">工作台</a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="2">
                     <span slot="title">
@@ -42,7 +42,7 @@
                     <a-breadcrumb-item>Bill</a-breadcrumb-item>
                 </a-breadcrumb>
                 <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-                    Bill is a cat.
+                    <router-view></router-view>
                 </div>
             </a-layout-content>
             <a-layout-footer style="text-align: center">
