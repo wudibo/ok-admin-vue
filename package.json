@@ -39,6 +39,7 @@
             "eslint:recommended"
         ],
         "rules": {
+            "no-console": [0],
             "indent": [0, 4],
             "no-multiple-empty-lines": [1, {"max": 2}],
             "semi": [2, "always"],
