@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import {getToken} from '@/utils/cookie';
 
 Vue.use(VueRouter);
 
@@ -73,7 +74,23 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
-    next();
+    //放行的URL
+    const whiteList = ['/user/login', '/user/register', '/user/forget'];
+    // 用户已登录
+    if (getToken()) {
+        if (to.path === '/login') {
+            next({ path: '/' });
+        } else {
+            // TODO 发送请求查询用户信息
+            next();
+        }
+    } else { // 用户未登录
+        if (whiteList.indexOf(to.path) !== -1) {
+            next();
+        } else {
+            next(`/user/login?redirect=${to.path}`);
+        }
+    }
 });
 
 router.afterEach(() => {
