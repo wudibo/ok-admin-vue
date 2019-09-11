@@ -1,20 +1,26 @@
-// webpack 官方参考链接: https://cli.vuejs.org/zh/guide/webpack.html
 module.exports = {
     publicPath: './',
-    // vue-cli-service 官方参考链接: https://cli.vuejs.org/zh/guide/cli-service.html#vue-cli-service-serve
     devServer: {
-        // 在服务器启动时打开浏览器
         open: true,
-        // TODO 在服务器启动时将 URL 复制到剪切版
-        // copy: true,
-        // 指定 host (默认值：0.0.0.0)
         host: '0.0.0.0',
-        // 指定 port (默认值：8080)
         port: 8000,
-        // 使用 https (默认值：false)
-        // https: false
+        proxy: {
+            'api': {
+                target: 'http://localhost:8000',
+                bypass: function (req, res) {
+                    if(req.headers.accept.indexOf('html') !== -1) {
+                        return '/index.html';
+                    } else {
+                        const name = req.path.split('/api/')[1].split('/').join('-');
+                        const mock = require(`./mock/${name}`);
+                        const result = mock(req.method);
+                        delete require.cache[(`./mock/${name}`)];
+                        return res.send(result);
+                    }
+                }
+            }
+        }
     },
-    // PostCSS 官方参考链接: https://cli.vuejs.org/zh/guide/css.html#postcss
     css: {
         loaderOptions: {
             less: {

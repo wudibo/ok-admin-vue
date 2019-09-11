@@ -34,6 +34,9 @@
         beforeCreate() {
             this.form = this.$form.createForm(this);
         },
+        mounted() {
+            this.aa();
+        },
         methods: {
             handleSubmit(e) {
                 e.preventDefault();
@@ -52,6 +55,13 @@
                     }
                 });
             },
+            aa() {
+                this.$axios({url: '/api/user/list', method: 'GET'}).then(response => {
+                    console.log(response);
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
         },
     };
 </script>
