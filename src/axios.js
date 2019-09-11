@@ -3,7 +3,7 @@ import {getToken, removeToken} from '@/utils/cookie';
 import {message} from 'ant-design-vue';
 
 const axios = _axios.create({
-    baseURL: 'http://localhost:8000',
+    // baseURL: 'http://localhost:8000',
     timeout: 5000
 });
 

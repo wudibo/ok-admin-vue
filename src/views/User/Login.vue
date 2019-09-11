@@ -35,7 +35,7 @@
             this.form = this.$form.createForm(this);
         },
         mounted() {
-            this.aa();
+            // this.aa();
         },
         methods: {
             handleSubmit(e) {
@@ -45,7 +45,7 @@
                         let params = new URLSearchParams();
                         params.append('username', values.username);
                         params.append('password', values.password);
-                        this.$axios({url: '/login', method: 'post', params: params}).then(response => {
+                        this.$axios({url: '/api/user/login', method: 'post', params: params}).then(response => {
                             console.log(response);
                             setToken(values.data);
                             this.$router.push('/');
@@ -55,13 +55,13 @@
                     }
                 });
             },
-            aa() {
-                this.$axios({url: '/api/user/list', method: 'GET'}).then(response => {
-                    console.log(response);
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
+            // aa() {
+            //     this.$axios({url: '/api/user/list', method: 'GET'}).then(response => {
+            //         console.log(response);
+            //     }).catch(error => {
+            //         console.log(error);
+            //     });
+            // }
         },
     };
 </script>
