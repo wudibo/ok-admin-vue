@@ -30,6 +30,7 @@ v3.0版本用Ant Design of Vue作为UI进行开发。
 | vue-router | 3.0.6 |
 | nprogress | 0.2.0 |
 | axios | 0.19.0 |
+| mockjs | 1.0.1-beta3 |
 | js-cookie | 2.2.1 |
 | vuex | 3.1.1 |
 | moment | 2.24.0 |
