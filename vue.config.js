@@ -11,7 +11,7 @@ module.exports = {
                     if (req.headers.accept.indexOf('html') !== -1) {
                         return '/index.html';
                     } else {
-                        console.log(`req.path=${req.path}`);
+                        console.log(`req.path=${req.path}` + ' ' + new Date().getTime());
                         const name = req.path.split('/api/')[1].split('/').join('-');
                         const mock = require(`./mock/${name}`);
                         const result = mock(req.method);
