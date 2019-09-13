@@ -14,9 +14,9 @@
                 <a-icon type="user"/>
                 <span>会员管理</span>
             </span>
-            <a-menu-item key="2-1">用户列表</a-menu-item>
-            <a-menu-item key="2-2">角色列表</a-menu-item>
-            <a-menu-item key="2-3">权限列表</a-menu-item>
+            <a-menu-item key="2-1" @click="() => $router.push('/member/user')">用户列表</a-menu-item>
+            <a-menu-item key="2-2" @click="() => $router.push('/member/role')">角色列表</a-menu-item>
+            <a-menu-item key="2-3" @click="() => $router.push('/member/permission')">权限列表</a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="3">
             <span slot="title">

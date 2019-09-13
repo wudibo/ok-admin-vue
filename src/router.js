@@ -15,13 +15,8 @@ const router = new Router({
         },
         {
             path: '/user',
-            // component: {render: h => h('router-view')},
             component: () => import(/* webpackChunkName: "layouts" */ './layouts/UserLayout'),
             children: [
-                {
-                    path: '/user',
-                    redirect: '/user/login'
-                },
                 {
                     path: '/user/login',
                     name: 'login',
@@ -65,17 +60,23 @@ const router = new Router({
             ]
         },
         {
-            path: '/list',
+            path: '/member',
             component: () => import(/* webpackChunkName: "layouts" */ './layouts/BasicLayout'),
             children: [
                 {
-                    path: '/list',
-                    redirect: '/list/table-list'
+                    path: '/member/user',
+                    name: 'user-list',
+                    component: () => import(/* webpackChunkName: "member" */ './views/Member/User')
                 },
                 {
-                    path: '/list/table-list',
-                    name: 'tableList',
-                    component: () => import(/* webpackChunkName: "list" */ './views/List/TableList')
+                    path: '/member/permission',
+                    name: 'permission',
+                    component: () => import(/* webpackChunkName: "member" */ './views/Member/Permission')
+                },
+                {
+                    path: '/member/role',
+                    name: 'role',
+                    component: () => import(/* webpackChunkName: "member" */ './views/Member/Role')
                 }
             ]
         },

@@ -14,7 +14,7 @@
                     <a-breadcrumb-item>User</a-breadcrumb-item>
                     <a-breadcrumb-item>Bill</a-breadcrumb-item>
                 </a-breadcrumb>
-                <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+                <div :style="{ padding: '5px', background: '#fff', minHeight: '360px' }">
                     <router-view/>
                 </div>
             </a-layout-content>
