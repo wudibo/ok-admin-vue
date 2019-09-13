@@ -1,5 +1,5 @@
 <template>
-    <div>Footer</div>
+    <div>ok-admn v3.0 ©2019 Created by BoBi</div>
 </template>
 
 <script>
