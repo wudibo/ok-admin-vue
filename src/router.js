@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Router from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import {getToken} from '@/utils/cookie';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-const router = new VueRouter({
+const router = new Router({
     mode: 'hash',
     routes: [
         {
@@ -111,5 +111,10 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     NProgress.done();
 });
+
+const routerPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error => error);
+};
 
 export default router;
