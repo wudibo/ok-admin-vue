@@ -1,6 +1,6 @@
 <template>
     <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-        <a-layout-sider collapsible v-model="collapsed" :trigger="null">
+        <a-layout-sider v-model="collapsed" :trigger="null">
             <div class="logo"/>
             <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1-1']" :defaultOpenKeys="['1']">
                 <a-sub-menu key="1">
@@ -30,14 +30,14 @@
                     <a-menu-item key="4-2">项目列表</a-menu-item>
                     <a-menu-item key="4-3">应用列表</a-menu-item>
                 </a-sub-menu>
-                <a-sub-menu key="4">
+                <a-sub-menu key="5">
                     <span slot="title">
                         <a-icon type="form"/>
                         <span>表单页面</span>
                     </span>
-                    <a-menu-item key="4-1">基础表单</a-menu-item>
-                    <a-menu-item key="4-2">分步表单</a-menu-item>
-                    <a-menu-item key="4-3">高级表单</a-menu-item>
+                    <a-menu-item key="5-1">基础表单</a-menu-item>
+                    <a-menu-item key="5-2">分步表单</a-menu-item>
+                    <a-menu-item key="5-3">高级表单</a-menu-item>
                 </a-sub-menu>
             </a-menu>
         </a-layout-sider>
@@ -68,9 +68,9 @@
         },
         data() {
             return {
-                collapsed: false,
+                collapsed: false
             };
-        },
+        }
     };
 </script>
 
