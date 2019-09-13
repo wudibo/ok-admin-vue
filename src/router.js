@@ -10,7 +10,7 @@ const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
-            path: '/', 
+            path: '/',
             redirect: '/dashboard'
         },
         {
@@ -65,6 +65,21 @@ const router = new VueRouter({
             ]
         },
         {
+            path: '/list',
+            component: () => import(/* webpackChunkName: "layouts" */ './layouts/BasicLayout'),
+            children: [
+                {
+                    path: '/list',
+                    redirect: '/list/table-list'
+                },
+                {
+                    path: '/list/table-list',
+                    name: 'tableList',
+                    component: () => import(/* webpackChunkName: "list" */ './views/List/TableList')
+                }
+            ]
+        },
+        {
             path: '*',
             name: 'NotFound',
             component: () => import(/* webpackChunkName: "dashboard" */ './views/404')
@@ -79,7 +94,7 @@ router.beforeEach((to, from, next) => {
     // 用户已登录
     if (getToken()) {
         if (to.path === '/login') {
-            next({ path: '/' });
+            next({path: '/'});
         } else {
             // TODO 发送请求查询用户信息
             next();

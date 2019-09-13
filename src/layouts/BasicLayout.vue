@@ -27,7 +27,7 @@
                         <span>列表页</span>
                     </span>
                     <a-menu-item key="3-1">查询表格</a-menu-item>
-                    <a-menu-item key="3-2">标准表格</a-menu-item>
+                    <a-menu-item key="3-2" @click="() => $router.push('/list/table-list')">标准表格</a-menu-item>
                     <a-menu-item key="3-3">卡片表格</a-menu-item>
                 </a-sub-menu>
             </a-menu>

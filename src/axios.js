@@ -3,7 +3,7 @@ import {getToken, removeToken} from '@/utils/cookie';
 import {message} from 'ant-design-vue';
 
 const axios = _axios.create({
-    // baseURL: 'http://localhost:8000',
+    baseURL: 'https://www.easy-mock.com/mock/5d0ce6bc424f15399a6c2060/ok-admin-vue-v3',
     timeout: 5000
 });
 
@@ -16,16 +16,21 @@ axios.interceptors.request.use(config => {
     return Promise.reject(error);
 });
 
+/**
+ * 0：成功
+ * 1001: 用户未登陆
+ * 2001: 业务错误
+ */
 axios.interceptors.response.use(response => {
     const data = response.data;
     const status = data.status;
-    if (status === 1000) {
+    if (status === 0) {
         return data;
     } else {
-        if (status === 2000 || status === 2001 || status === 2002 || status === 2003) {
-            message.warning('当前登录状态己失效，请重新登录。');
+        if (status === 1001) {
+            message.warning('用户未登陆');
             removeToken();
-            location.reload();
+            // location.reload();
         } else {
             message.warning(data.msg);
         }
