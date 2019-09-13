@@ -8,7 +8,7 @@
             </a-form-item>
             <a-form-item>
                 <a-input placeholder="邮箱">
-                    <a-icon slot="prefix" type="email" style="color:rgba(0,0,0,.25)"/>
+                    <a-icon slot="prefix" type="mail" style="color:rgba(0,0,0,.25)"/>
                 </a-input>
             </a-form-item>
             <a-form-item>

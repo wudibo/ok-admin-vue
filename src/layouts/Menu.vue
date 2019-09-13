@@ -1,33 +1,51 @@
 <template>
-    <a-menu theme="dark" mode="inline" :openKeys="openKeys" @openChange="onOpenChange" :defaultSelectedKeys="defaultSelectedKeys">
-        <a-sub-menu key="1">
+    <a-menu theme="dark" mode="inline" :openKeys="openKeys" :defaultSelectedKeys="defaultSelectedKeys" @openChange="onOpenChange">
+        <a-sub-menu key="dashboard">
             <span slot="title">
                 <a-icon type="dashboard"/>
                 <span>控制台</span>
             </span>
-            <a-menu-item key="1-1" @click="() => $router.push('/dashboard/analysis')">分析页</a-menu-item>
-            <a-menu-item key="1-2" @click="() => $router.push('/dashboard/monitor')">监控页</a-menu-item>
-            <a-menu-item key="1-3" @click="() => $router.push('/dashboard/workplace')">工作台</a-menu-item>
+            <a-menu-item key="/dashboard/analysis">
+                <router-link to="/dashboard/analysis">分析页</router-link>
+            </a-menu-item>
+            <a-menu-item key="/dashboard/monitor">
+                <router-link to="/dashboard/monitor">监控页</router-link>
+            </a-menu-item>
+            <a-menu-item key="/dashboard/workplace">
+                <router-link to="/dashboard/workplace">工作台</router-link>
+            </a-menu-item>
         </a-sub-menu>
-        <a-sub-menu key="2">
+        <a-sub-menu key="member">
             <span slot="title">
                 <a-icon type="user"/>
                 <span>会员管理</span>
             </span>
-            <a-menu-item key="2-1" @click="() => $router.push('/member/user')">用户列表</a-menu-item>
-            <a-menu-item key="2-2" @click="() => $router.push('/member/role')">角色列表</a-menu-item>
-            <a-menu-item key="2-3" @click="() => $router.push('/member/permission')">权限列表</a-menu-item>
+            <a-menu-item key="/member/user">
+                <router-link to="/member/user">用户列表</router-link>
+            </a-menu-item>
+            <a-menu-item key="/member/role">
+                <router-link to="/member/role">角色列表</router-link>
+            </a-menu-item>
+            <a-menu-item key="/member/permission">
+                <router-link to="/member/permission">权限列表</router-link>
+            </a-menu-item>
         </a-sub-menu>
-        <a-sub-menu key="3">
+        <a-sub-menu key="often">
             <span slot="title">
                 <a-icon type="compass"/>
                 <span>常用页面</span>
             </span>
-            <a-menu-item key="3-1" @click="() => $router.push('/list/table-list')">文章列表</a-menu-item>
-            <a-menu-item key="3-2">项目列表</a-menu-item>
-            <a-menu-item key="3-3">应用列表</a-menu-item>
+            <a-menu-item key="/often/article">
+                <router-link to="/often/article">文章列表</router-link>
+            </a-menu-item>
+            <a-menu-item key="/often/project">
+                <router-link to="/often/project">项目列表</router-link>
+            </a-menu-item>
+            <a-menu-item key="/often/app">
+                <router-link to="/often/app">应用列表</router-link>
+            </a-menu-item>
         </a-sub-menu>
-        <a-sub-menu key="4">
+        <a-sub-menu key="form">
             <span slot="title">
                 <a-icon type="form"/>
                 <span>表单页面</span>
@@ -44,9 +62,9 @@
         name: 'Menu',
         data() {
             return {
-                rootSubmenuKeys: ['1', '2', '3', '4'],
-                openKeys: ['1'],
-                defaultSelectedKeys: ['1-1']
+                rootSubmenuKeys: ['dashboard', 'member', 'often', 'form'],
+                openKeys: [this.$route.path.substring(1, this.$route.path.lastIndexOf('/'))],
+                defaultSelectedKeys: [this.$route.path]
             };
         },
         methods: {
