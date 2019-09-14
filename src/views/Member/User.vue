@@ -56,12 +56,14 @@
     const columns = [
         {title: '账号', dataIndex: 'username'},
         {title: '密码', dataIndex: 'password'},
+        {title: '真实姓名', dataIndex: 'reallyName'},
         {title: '昵称', dataIndex: 'nickname'},
         {title: '邮箱', dataIndex: 'email'},
         {title: '性别', dataIndex: 'sex', scopedSlots: {customRender: 'sex'}},
         {title: '年龄', dataIndex: 'age'},
         {title: '状态', dataIndex: 'status', scopedSlots: {customRender: 'status'}},
         {title: '角色', dataIndex: 'roles', scopedSlots: {customRender: 'roles'}},
+        {title: '创建时间', dataIndex: 'createTime'},
         {title: '操作', scopedSlots: {customRender: 'action'}, align: 'center'}
     ];
 
@@ -70,34 +72,40 @@
             key: '1',
             username: 'zhangsan',
             password: '111111',
-            nickname: '张三',
+            reallyName: '张三',
+            nickname: '我是张三',
             sex: 0,
             age: 32,
             email: 'zhangsan@qq.com',
             status: 0,
-            roles: ['ADMIN', 'TEACHER']
+            roles: ['ADMIN', 'TEACHER'],
+            createTime: '2019-12-10'
         },
         {
             key: '2',
             username: 'lisi',
-            nickname: '李四',
             password: '111111',
+            reallyName: '李四',
+            nickname: '我是李四',
             sex: 1,
             age: 42,
             email: 'lisi@qq.com',
             status: 1,
-            roles: ['STUDENT']
+            roles: ['STUDENT'],
+            createTime: '2019-12-11'
         },
         {
             key: '3',
             username: 'wangwu',
-            nickname: '王五',
             password: '111111',
+            reallyName: '王五',
+            nickname: '我是王五',
             sex: 0,
             age: 32,
             email: 'wangwu@qq.com',
             status: 2,
-            roles: ['GUEST']
+            roles: ['GUEST'],
+            createTime: '2019-12-12'
         }
     ];
 
