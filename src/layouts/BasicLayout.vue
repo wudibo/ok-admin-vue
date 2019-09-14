@@ -1,17 +1,21 @@
 <template>
     <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+        <!--侧边栏-->
         <a-layout-sider v-model="collapsed" :trigger="null">
             <div class="logo"/>
             <Menu/>
         </a-layout-sider>
         <a-layout>
+            <!--顶部布局-->
             <a-layout-header style="background: #fff; padding: 0">
                 <a-icon class="trigger" @click="collapsed = !collapsed" :type="collapsed ? 'menu-unfold' : 'menu-fold'"></a-icon>
                 <Header/>
             </a-layout-header>
+            <!--内容部分-->
             <a-layout-content style="margin: 0 16px">
                 <router-view/>
             </a-layout-content>
+            <!--底部布局-->
             <a-layout-footer style="text-align: center">
                 <Footer/>
             </a-layout-footer>
