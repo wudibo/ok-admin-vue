@@ -67,58 +67,28 @@
         {title: '操作', scopedSlots: {customRender: 'action'}, align: 'center'}
     ];
 
-    const data = [
-        {
-            key: '1',
-            username: 'zhangsan',
-            password: '111111',
-            reallyName: '张三',
-            nickname: '我是张三',
-            sex: 0,
-            age: 32,
-            email: 'zhangsan@qq.com',
-            status: 0,
-            roles: ['ADMIN', 'TEACHER'],
-            createTime: '2019-12-10'
-        },
-        {
-            key: '2',
-            username: 'lisi',
-            password: '111111',
-            reallyName: '李四',
-            nickname: '我是李四',
-            sex: 1,
-            age: 42,
-            email: 'lisi@qq.com',
-            status: 1,
-            roles: ['STUDENT'],
-            createTime: '2019-12-11'
-        },
-        {
-            key: '3',
-            username: 'wangwu',
-            password: '111111',
-            reallyName: '王五',
-            nickname: '我是王五',
-            sex: 0,
-            age: 32,
-            email: 'wangwu@qq.com',
-            status: 2,
-            roles: ['GUEST'],
-            createTime: '2019-12-12'
-        }
-    ];
-
     export default {
         data() {
             return {
-                data,
+                data: [],
                 columns,
                 selectedRowKeys: [],
-                loading: false
+                loading: true
             };
         },
+        mounted() {
+            this.userList();
+        },
         methods: {
+            userList() {
+                this.$axios({url: '/user/list', method: 'get', params: null}).then(response => {
+                    this.data = response.data;
+                    this.loading = false;
+                }).catch(error => {
+                    console.log(error);
+                    this.loading = false;
+                });
+            },
             edit(record) {
                 console.log(record);
             },

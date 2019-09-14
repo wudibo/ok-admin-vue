@@ -23,11 +23,17 @@ axios.interceptors.request.use(config => {
  */
 axios.interceptors.response.use(response => {
     const data = response.data;
-    const status = data.status;
-    if (status === 0) {
+    const code = data.code;
+
+    if (code == undefined || code == null) {
+        message.error('返回值不标准');
+        return Promise.reject();
+    }
+
+    if (code === 0) {
         return data;
     } else {
-        if (status === 1001) {
+        if (code === 1001) {
             message.warning('用户未登陆');
             removeToken();
             // location.reload();
