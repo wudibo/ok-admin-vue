@@ -1,10 +1,13 @@
 <template>
-    <div>
-        <a-breadcrumb style="margin: 16px 0">
+    <div class="box">
+        <!--面包屑导航-->
+        <a-breadcrumb class="breadcrumb">
             <a-breadcrumb-item>会员管理</a-breadcrumb-item>
             <a-breadcrumb-item>用户列表</a-breadcrumb-item>
         </a-breadcrumb>
-        <div :style="{ padding: '5px', background: '#fff', minHeight: '360px' }">
+        <!--内容主体-->
+        <div class="content">
+            <!--模糊搜索-->
             <a-form layout="inline">
                 <a-form-item>
                     <a-input placeholder="账号">
@@ -22,15 +25,29 @@
                     </a-button>
                 </a-form-item>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" bordered size="small" style="margin-top: 10px">
-            <span slot="roles" slot-scope="roles">
-                <a-tag v-for="role in roles" color="blue" :key="role">{{role}}</a-tag>
-            </span>
+            <!--数据表格-->
+            <a-table bordered size="small" :loading="loading" class="table" :columns="columns" :dataSource="data" :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}">
+                <!--性别-->
+                <span slot="sex" slot-scope="sex">
+                    <a-tag v-if="sex === 0" color="blue">男</a-tag>
+                    <a-tag v-if="sex === 1" color="pink">女</a-tag>
+                </span>
+                <!--角色-->
+                <span slot="roles" slot-scope="roles">
+                    <a-tag v-for="role in roles" color="blue" :key="role">{{role}}</a-tag>
+                </span>
+                <!--状态-->
+                <span slot="status" slot-scope="status">
+                    <a-tag v-if="status === 0" color="green">正常</a-tag>
+                    <a-tag v-if="status === 1" color="purple">冻结</a-tag>
+                    <a-tag v-if="status === 2" color="orange">删除</a-tag>
+                </span>
+                <!--操作-->
                 <span slot="action" slot-scope="record">
-                <a href="javascript:;" @click="edit(record)">编辑</a>
-                <a-divider type="vertical"/>
-                <a href="javascript:;" @click="del(record.key)">删除</a>
-            </span>
+                    <a href="javascript:;" @click="edit(record)">编辑</a>
+                    <a-divider type="vertical"/>
+                    <a href="javascript:;" @click="del(record.key)">删除</a>
+                </span>
             </a-table>
         </div>
     </div>
@@ -38,16 +55,50 @@
 <script>
     const columns = [
         {title: '账号', dataIndex: 'username'},
-        {title: '年龄', dataIndex: 'age'},
+        {title: '密码', dataIndex: 'password'},
+        {title: '昵称', dataIndex: 'nickname'},
         {title: '邮箱', dataIndex: 'email'},
+        {title: '性别', dataIndex: 'sex', scopedSlots: {customRender: 'sex'}},
+        {title: '年龄', dataIndex: 'age'},
+        {title: '状态', dataIndex: 'status', scopedSlots: {customRender: 'status'}},
         {title: '角色', dataIndex: 'roles', scopedSlots: {customRender: 'roles'}},
-        {title: '操作', scopedSlots: {customRender: 'action'}}
+        {title: '操作', scopedSlots: {customRender: 'action'}, align: 'center'}
     ];
 
     const data = [
-        {key: '1', username: 'zhangsan ', age: 32, email: 'zhangsan@qq.com', roles: ['ADMIN', 'TEACHER']},
-        {key: '2', username: 'lisi', age: 42, email: 'lisi@qq.com', roles: ['STUDENT']},
-        {key: '3', username: 'wangwu', age: 32, email: 'wangwu@qq.com', roles: ['GUEST']}
+        {
+            key: '1',
+            username: 'zhangsan',
+            password: '111111',
+            nickname: '张三',
+            sex: 0,
+            age: 32,
+            email: 'zhangsan@qq.com',
+            status: 0,
+            roles: ['ADMIN', 'TEACHER']
+        },
+        {
+            key: '2',
+            username: 'lisi',
+            nickname: '李四',
+            password: '111111',
+            sex: 1,
+            age: 42,
+            email: 'lisi@qq.com',
+            status: 1,
+            roles: ['STUDENT']
+        },
+        {
+            key: '3',
+            username: 'wangwu',
+            nickname: '王五',
+            password: '111111',
+            sex: 0,
+            age: 32,
+            email: 'wangwu@qq.com',
+            status: 2,
+            roles: ['GUEST']
+        }
     ];
 
     export default {
@@ -55,6 +106,8 @@
             return {
                 data,
                 columns,
+                selectedRowKeys: [],
+                loading: false
             };
         },
         methods: {
@@ -63,13 +116,32 @@
             },
             del(key) {
                 console.log(key);
+            },
+            onSelectChange(selectedRowKeys) {
+                console.log('selectedRowKeys changed: ', selectedRowKeys);
+                this.selectedRowKeys = selectedRowKeys;
             }
         }
     };
 </script>
 
 <style scoped lang="less">
-    a {
-        text-decoration: none;
+    .box {
+        .breadcrumb {
+            margin: 16px 0;
+        }
+
+        .content {
+            padding: 5px;
+            background: #fff;
+
+            .table {
+                margin-top: 10px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
     }
 </style>
