@@ -4,14 +4,14 @@
         一个很赞的，扁平化风格的，响应式布局的通用后台模版解决方案，旨为后端程序员减压！
     </p>
     <p align="center">
-        <img src="https://img.shields.io/badge/Vue%20CLI-3.8.2-brightgreen">
-        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-1.3.16-brightgreen">
+        <img src="https://img.shields.io/badge/vite%20-1.0.0_rc.13-brightgreen">
+        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-2.0.0_rc.2-brightgreen">
         <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
     <p align="center">
         <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
         <img src="https://img.shields.io/badge/npm-%3E%3D6.12.1-brightgreen">
-        <img src="https://img.shields.io/badge/vue-%3E%3D3.8.2-brightgreen">
+        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.4-brightgreen">
     </p>
 </p>
 
@@ -43,26 +43,20 @@ yarn run build
 
 | 组件 | 版本 |
 |----------|----------|
-| vue | 2.6.10 |
-| core-js | 2.6.5 |
-| ant-design-vue | 1.3.16 |
-| less | 3.10.3 |
-| less-loader | 5.0.0 |
-| vue-router | 3.0.6 |
-| nprogress | 0.2.0 |
-| axios | 0.19.0 |
-| mockjs | 1.0.1-beta3 |
-| js-cookie | 2.2.1 |
-| vuex | 3.1.1 |
-| moment | 2.24.0 |
+| vite | 1.0.0-rc.13 |
+| vue | 3.0.4 |
+| vuex | 4.0.0-rc.2 |
+| vue-router | 4.0.1 |
+| ant-design-vue | 2.0.0-rc.2 |
+| less | 2.7.3 |
+| less-loader | 7.1.0 |
 
 ### 开发环境
 
 | 组件 | 版本 |
 |----------|----------|
-| nodejs | v10.16.0 |
 | npm | 6.9.0 |
-| vue-cli | 3.8.2 |
+| nodejs | v12.13.0 |
 
 ### ESlint设置
 
