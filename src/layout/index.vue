@@ -17,18 +17,18 @@
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
+
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
         <menu-unfold-outlined
             v-if="collapsed"
             class="trigger"
-            @click="() => (collapsed = !collapsed)"
-        />
+            @click="() => (collapsed = !collapsed)"/>
         <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)"/>
       </a-layout-header>
       <a-layout-content
-          :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-        <router-view />
+          :style="{ margin: '24px 16px', background: '#fff', minHeight: '280px' }">
+        <router-view/>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -42,7 +42,7 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons-vue';
-import {onMounted, ref, reactive} from 'vue'
+import {onMounted, ref} from 'vue'
 
 export default {
   components: {
@@ -53,17 +53,14 @@ export default {
     MenuFoldOutlined,
   },
   setup() {
-    const readersNumber = ref(0)
-    const book = reactive({title: 'Vue 3 Guide'})
+    let collapsed = ref(false);
+    let selectedKeys = ref(['1']);
     onMounted(() => {
       console.log('mounted!')
     })
-    // expose to template
     return {
-      readersNumber,
-      book,
-      selectedKeys: ['1'],
-      collapsed: false,
+      collapsed,
+      selectedKeys
     }
   }
 }
@@ -73,6 +70,10 @@ export default {
 @import '../assets/css/variable';
 
 #admin-layout {
+  background: #75ceea;
+  position: relative;
+  height: 100%;
+  width: 100%;
   .trigger {
     font-size: 18px;
     line-height: 64px;

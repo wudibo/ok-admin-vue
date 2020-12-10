@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view/>
   <!--<img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3.0 + Vite" />-->
 </template>
@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+html, body, #app {
+  height: 100%;
+}
+</style>
