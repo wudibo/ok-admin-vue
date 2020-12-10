@@ -1,0 +1,20 @@
+{
+  "name": "init",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.0.4",
+    "vuex": "^4.0.0-rc.2",
+    "vue-router": "^4.0.1",
+    "ant-design-vue": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "less": "^2.7.3",
+    "less-loader": "^7.1.0",
+    "vite": "^1.0.0-rc.13"
+  }
+}
