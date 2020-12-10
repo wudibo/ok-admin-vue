@@ -4,14 +4,15 @@
         一个很赞的，扁平化风格的，响应式布局的通用后台模版解决方案，旨为后端程序员减压！
     </p>
     <p align="center">
+        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.4-brightgreen">
         <img src="https://img.shields.io/badge/vite%20-1.0.0_rc.13-brightgreen">
         <img src="https://img.shields.io/badge/Ant%20Design%20Vue-2.0.0_rc.2-brightgreen">
-        <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
     <p align="center">
+        <img src="https://img.shields.io/badge/axios-%3E%3D0.21.0-brightgreen">
         <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
-        <img src="https://img.shields.io/badge/npm-%3E%3D6.12.1-brightgreen">
-        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.4-brightgreen">
+        <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.4-brightgreen">
+        <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
 </p>
 
@@ -48,7 +49,7 @@ yarn run build
 | vuex | 4.0.0-rc.2 |
 | vue-router | 4.0.1 |
 | ant-design-vue | 2.0.0-rc.2 |
-| less | 2.7.3 |
+| less | 3.12.2 |
 | less-loader | 7.1.0 |
 
 ### 开发环境

@@ -1,7 +1,7 @@
 import {createApp} from 'vue';
 import App from './App.vue';
 import './index.css';
-import 'ant-design-vue/dist/antd.less';
+import 'ant-design-vue/dist/antd.css';
 import {Button, Icon, Form, Input, InputNumber} from 'ant-design-vue';
 const app = createApp(App);
 /**部分antd全局组件*/
