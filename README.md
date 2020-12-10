@@ -10,8 +10,8 @@
     </p>
     <p align="center">
         <img src="https://img.shields.io/badge/axios-%3E%3D0.21.0-brightgreen">
-        <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
         <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.4-brightgreen">
+        <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
         <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
 </p>
