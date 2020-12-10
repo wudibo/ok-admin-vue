@@ -1,6 +1,6 @@
 <template>
-  <div>{{ readersNumber }}</div>
-  <div>{{ book.title }}</div>
+  <div class="box">{{ readersNumber }}</div>
+  <div class="flex">{{ book.title }}</div>
 </template>
 
 <script type='text/ecmascript-6'>
@@ -23,5 +23,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .flex{
+    display: flex;
+    animation: alternate;
+    justify-content: center;
+  }
+  @keyframes alternate {
 
+  }
 </style>
