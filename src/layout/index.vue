@@ -1,30 +1,14 @@
 <template>
   <a-layout id="admin-layout">
-    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-      <div class="logo"/>
-      <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
-        <a-menu-item key="1">
-          <user-outlined/>
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <video-camera-outlined/>
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <upload-outlined/>
-          <span>nav 3</span>
-        </a-menu-item>
-      </a-menu>
-    </a-layout-sider>
+    <sidebar></sidebar>
 
     <a-layout>
       <a-layout-header class="admin-header">
         <Navbar></Navbar>
+        <TagsView></TagsView>
       </a-layout-header>
       <a-layout-content
-          class="layout-content"
-          :style="{  }">
+          class="layout-content">
         <router-view/>
       </a-layout-content>
     </a-layout>
@@ -32,31 +16,25 @@
 </template>
 
 <script type='text/ecmascript-6'>
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from '@ant-design/icons-vue';
 import Navbar from "./components/Navbar.vue";
-
 import {onMounted, ref, provide} from 'vue'
+import TagsView from "./components/TagsView.vue";
+import Sidebar from "./components/Sidebar.vue";
+
 
 export default {
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
     Navbar,
+    Sidebar,
+    TagsView,
   },
   setup() {
     let collapsed = ref(false);
-    let selectedKeys = ref(['1']);
     provide('collapsed', collapsed);
+
     return {
-      collapsed,
-      selectedKeys
+      siderWidth: 256,
+      collapsed
     }
   }
 }
@@ -66,22 +44,22 @@ export default {
 @import '../assets/css/variable';
 
 #admin-layout {
-  background:red;
   position: relative;
   height: 100%;
   width: 100%;
-  .admin-header{
+
+  .admin-header {
     padding: 0;
     height: 112px;
     line-height: normal;
     background: @white-color;
   }
-  .layout-content{
+
+  .layout-content {
     margin: 0;
     background: @content-bg;
     height: 100%
   }
-
   .logo {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);
