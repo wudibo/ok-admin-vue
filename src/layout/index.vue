@@ -19,15 +19,12 @@
     </a-layout-sider>
 
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <menu-unfold-outlined
-            v-if="collapsed"
-            class="trigger"
-            @click="() => (collapsed = !collapsed)"/>
-        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)"/>
+      <a-layout-header class="admin-header">
+        <Navbar></Navbar>
       </a-layout-header>
       <a-layout-content
-          :style="{ margin: '24px 16px', background: '#fff', minHeight: '280px' }">
+          class="layout-content"
+          :style="{  }">
         <router-view/>
       </a-layout-content>
     </a-layout>
@@ -42,22 +39,21 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons-vue';
-import {onMounted, ref} from 'vue'
+import Navbar from "./components/Navbar.vue";
+
+import {onMounted, ref, provide} from 'vue'
 
 export default {
   components: {
     UserOutlined,
     VideoCameraOutlined,
     UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
+    Navbar,
   },
   setup() {
     let collapsed = ref(false);
     let selectedKeys = ref(['1']);
-    onMounted(() => {
-      console.log('mounted!')
-    })
+    provide('collapsed', collapsed);
     return {
       collapsed,
       selectedKeys
@@ -70,20 +66,20 @@ export default {
 @import '../assets/css/variable';
 
 #admin-layout {
-  background: #75ceea;
+  background:red;
   position: relative;
   height: 100%;
   width: 100%;
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color 0.3s;
-
-    &:hover {
-      color: @main-color;
-    }
+  .admin-header{
+    padding: 0;
+    height: 112px;
+    line-height: normal;
+    background: @white-color;
+  }
+  .layout-content{
+    margin: 0;
+    background: @content-bg;
+    height: 100%
   }
 
   .logo {

@@ -24,7 +24,6 @@ export const asyncRoutes = [
 	},
 ];
 const router = createRouter({
-	mode: 'history',
 	history: createWebHashHistory(),
 	routes: asyncRoutes//constantRoutes,
 })
