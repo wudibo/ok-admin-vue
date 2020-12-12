@@ -27,8 +27,8 @@ export default {
     SidebarItem,
   },
   setup() {
-    let selectedKeys = ref(['1']),
-        openKeys = ref(['sub1']);
+    let selectedKeys = ref([]),
+        openKeys = ref([]);
     return {
       sideWidth: 256,
       openKeys,

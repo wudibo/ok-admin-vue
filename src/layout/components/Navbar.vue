@@ -24,16 +24,14 @@
 
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  CloseCircleOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons-vue';
 import {onMounted, ref, inject} from 'vue'
 
 export default {
   components: {
     MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    CloseCircleOutlined
+    MenuFoldOutlined
   },
   setup() {
     return {

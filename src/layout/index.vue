@@ -16,9 +16,9 @@
 
 <script type='text/ecmascript-6'>
 import {onMounted, ref, provide} from 'vue'
-import Navbar from "/@/layout/components/Navbar.vue";
-import TagsView from "/@/layout/components/TagsView.vue";
-import Sidebar from "/@/layout/components/Sidebar/index.vue";
+import Navbar from './components/Navbar.vue';
+import Sidebar from './components/Sidebar/index.vue';
+import TagsView from './components/TagsView/index.vue';
 
 export default {
   components: {
