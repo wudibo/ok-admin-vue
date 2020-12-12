@@ -1,6 +1,6 @@
 <template>
   <a-layout id="admin-layout">
-    <sidebar></sidebar>
+    <sidebar :sider-width="siderWidth"></sidebar>
 
     <a-layout>
       <a-layout-header class="admin-header">
@@ -20,7 +20,6 @@ import Navbar from "./components/Navbar.vue";
 import {onMounted, ref, provide} from 'vue'
 import TagsView from "./components/TagsView.vue";
 import Sidebar from "./components/Sidebar.vue";
-
 
 export default {
   components: {

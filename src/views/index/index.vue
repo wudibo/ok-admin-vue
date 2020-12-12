@@ -75,7 +75,7 @@ export default {
     AppstoreOutlined,
   },
   setup(){
-    let collapsed = inject('collapsed'),
+    let collapsed = ref(0),//inject('collapsed'),
         selectedKeys = ref(['1']),
         openKeys = ref(['sub1']),
         preOpenKeys = ref(['sub1']);

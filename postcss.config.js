@@ -3,7 +3,7 @@ module.exports = {
 	plugins: {
 		'autoprefixer': {
 			browsers: [
-				"last 5 version",
+				"last 2 version",
 				">= 1%",
 			]
 		},
