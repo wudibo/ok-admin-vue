@@ -40,7 +40,8 @@ export default {
   padding: 0 20px;
   display: flex;
   align-items: center;
-  background: @content-bg;
+  background: @dark-color;
+  //background: @content-bg;
   .tags-item{
     padding: 0 5px;
     .ant-btn{

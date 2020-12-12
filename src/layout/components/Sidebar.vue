@@ -3,7 +3,8 @@
                   :width="siderWidth"
                   :trigger="null"
                   collapsible>
-    <div class="logo"/>
+    <div class="logo"><img src="/@/assets/logo.png" alt="logo" /></div>
+
     <a-menu
         theme="dark"
         mode="inline"
@@ -76,8 +77,15 @@ export default {
 }
 
 .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+  box-sizing: border-box;
+  height: 64px;
+  padding: 16px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  img{
+    height: 100%;
+  }
 }
 </style>

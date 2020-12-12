@@ -18,10 +18,31 @@ export const asyncRoutes = [
 				path: 'dashboard',
 				component: () => import('/@/views/index/index.vue'),
 				name: 'Dashboard',
-				meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+				meta: {
+				   title: 'Dashboard',
+               icon: 'dashboard',
+               affix: true //在tags是否一直悬挂不被关闭
+				}
 			}
 		]
 	},
+   {
+      path: '/form',
+      component: Layout,
+      name: 'form',
+      meta: {
+         title: 'form',
+         icon: 'dashboard'
+      },
+      children: [
+         {
+            path: 'advanced-form',
+            component: () => import('/@/views/form/advanced-form.vue'),
+            name: 'advancedForm',
+            meta: { title: 'advanced Form' },
+         }
+      ]
+   }
 ];
 const router = createRouter({
 	history: createWebHashHistory(),
