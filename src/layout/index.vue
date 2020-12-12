@@ -1,14 +1,13 @@
 <template>
   <a-layout id="admin-layout">
-    <sidebar :sider-width="siderWidth"></sidebar>
+    <sidebar></sidebar>
 
     <a-layout>
       <a-layout-header class="admin-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
       </a-layout-header>
-      <a-layout-content
-          class="layout-content">
+      <a-layout-content class="layout-content">
         <router-view/>
       </a-layout-content>
     </a-layout>
@@ -32,7 +31,6 @@ export default {
     provide('collapsed', collapsed);
 
     return {
-      siderWidth: 256,
       collapsed
     }
   }
@@ -46,6 +44,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+  user-select: none;
 
   .admin-header {
     padding: 0;
@@ -59,6 +58,7 @@ export default {
     background: @content-bg;
     height: 100%
   }
+
   .logo {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);

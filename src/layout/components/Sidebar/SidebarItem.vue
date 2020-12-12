@@ -2,21 +2,28 @@
   <template v-if="hasOneShowingChild(item.children,item) &&
             (!onlyOneChild.children||onlyOneChild.noShowingChildren) &&
             !item.alwaysShow">
-    <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-      <a-menu-item :key="resolvePath(onlyOneChild.path)">{{ onlyOneChild.meta.title }}</a-menu-item>
-    </app-link>
+    <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
+      <app-link :to="resolvePath(onlyOneChild.path)">
+        <span>
+          <ok-icon type="ok-icon-likefill"></ok-icon>
+          <span>{{ onlyOneChild.meta.title }}</span>
+        </span>
+      </app-link>
+    </a-menu-item>
   </template>
-  <a-sub-menu v-else key="sub2" :key="resolvePath(item.path)">
-    <sidebar-item
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-        class="nest-menu"/>
+  <a-sub-menu v-else :key="resolvePath(item.path)">
     <template #title>
-      {{item.meta.title}}
+      <span>
+        <PieChartOutlined/>
+        <span>{{ item.meta.title }}</span>
+      </span>
     </template>
+    <sidebar-item v-for="child in item.children"
+                  :key="child.path"
+                  :is-nest="true"
+                  :item="child"
+                  :base-path="resolvePath(child.path)"
+                  class="nest-menu"/>
   </a-sub-menu>
 </template>
 
@@ -33,8 +40,6 @@ import {
 export default {
   components: {
     PieChartOutlined,
-    MailOutlined,
-    DesktopOutlined,
     AppLink,
   },
   props: {
@@ -48,6 +53,7 @@ export default {
     }
   },
   setup(props) {
+    console.log(props);
     return {
       onlyOneChild: null
     }

@@ -1,6 +1,6 @@
 <template>
   <a-layout-sider v-model:collapsed="collapsed"
-                  :width="siderWidth"
+                  :width="sideWidth"
                   :trigger="null"
                   collapsible>
     <div class="logo"><img src="/@/assets/logo.png" alt="logo"/></div>
@@ -26,16 +26,11 @@ export default {
   components: {
     SidebarItem,
   },
-  props: {
-    siderWidth: {
-      type: Number,
-      default: 256
-    }
-  },
   setup() {
     let selectedKeys = ref(['1']),
         openKeys = ref(['sub1']);
     return {
+      sideWidth: 256,
       openKeys,
       selectedKeys,
       asyncRoutes,
