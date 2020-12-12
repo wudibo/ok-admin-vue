@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    表单
+    表单列表
   </div>
 </template>
 
