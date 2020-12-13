@@ -46,9 +46,8 @@ export default {
 .tags-view {
   display: flex;
   align-items: center;
-  line-height: 48px;
-  overflow-y: hidden;
-  overflow-x: auto;
+  /*overflow-x: auto;
+  overflow-y: hidden;*/
   .tags-item {
     padding: 0 5px;
 

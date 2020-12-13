@@ -19,7 +19,7 @@ import {onMounted, ref, provide} from 'vue'
 import Navbar from './components/Navbar.vue';
 import Sidebar from './components/Sidebar/index.vue';
 import TagsView from './components/TagsView/index.vue';
-
+import {isPCFun} from '/@/utils/index.js';
 export default {
   components: {
     Navbar,
@@ -27,10 +27,13 @@ export default {
     TagsView,
   },
   setup() {
-    let collapsed = ref(false);
+    let isPC = ref(isPCFun()),
+        collapsed = ref(!isPC.value);
     provide('collapsed', collapsed);
+    provide('isPC', isPC);
 
     return {
+      isPC,
       collapsed
     }
   }
