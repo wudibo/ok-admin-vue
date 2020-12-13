@@ -686,6 +686,13 @@ builtin-modules@^3.1.0:
   resolved "https://registry.npm.taobao.org/builtin-modules/download/builtin-modules-3.1.0.tgz#aad97c15131eb76b65b50ef208e7584cd76a7484"
   integrity sha1-qtl8FRMet2tltQ7yCOdYTNdqdIQ=
 
+c-scrollbar@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npm.taobao.org/c-scrollbar/download/c-scrollbar-0.1.1.tgz#dc965f03be32d9d3ab11dc3d88ca6eb36b81f341"
+  integrity sha1-3JZfA74y2dOrEdw9iMpus2uB80E=
+  dependencies:
+    vue "^3.0.0"
+
 cac@^6.6.1:
   version "6.6.1"
   resolved "https://registry.npm.taobao.org/cac/download/cac-6.6.1.tgz#3dde3f6943f45d42a56729ea3573c08b3e7b6a6d"
