@@ -1,4 +1,4 @@
-# vue3-admin
+# ok-admin-vue3
 
 ## Project setup
 ```
