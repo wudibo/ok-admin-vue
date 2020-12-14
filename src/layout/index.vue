@@ -15,8 +15,8 @@
 </template>
 
 <script lang='ts'>
-import {onMounted, ref, provide} from 'vue'
-import Navbar from './components/Navbar.vue';
+import {ref, provide} from 'vue'
+import Navbar from './components/Navbar/index.vue';
 import Sidebar from './components/Sidebar/index.vue';
 import TagsView from './components/TagsView/index.vue';
 import {isPCFun} from '@/utils/index.ts';

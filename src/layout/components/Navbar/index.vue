@@ -1,10 +1,14 @@
 <template>
   <div class="navbar">
-    <menu-unfold-outlined
-        v-if="collapsed"
-        class="trigger"
-        @click="() => (collapsed = !collapsed)"/>
-    <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)"/>
+    <div class="trigger">
+      <menu-unfold-outlined
+          v-if="collapsed"
+          @click="() => (collapsed = !collapsed)"/>
+      <menu-fold-outlined v-else @click="() => (collapsed = !collapsed)"/>
+    </div>
+    <div class="outlined">
+      <reload-outlined/>
+    </div>
 
     <a-breadcrumb class="breadcrumb">
       <a-breadcrumb-item href="">
@@ -23,6 +27,7 @@
 <script lang="ts">
 
 import {
+  ReloadOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons-vue';
@@ -30,6 +35,7 @@ import {inject} from 'vue'
 
 export default {
   components: {
+    ReloadOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined
   },
@@ -42,7 +48,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../assets/css/variable';
+@import '../../../assets/css/variable';
 
 .navbar {
   background: @white-color;
@@ -53,7 +59,8 @@ export default {
   align-items: center;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 
-  .trigger {
+  .trigger,.outlined {
+    padding-right: 20px;
     font-size: 18px;
     cursor: pointer;
     transition: color 0.3s;
@@ -62,9 +69,12 @@ export default {
       color: @main-color;
     }
   }
+  .outlined{
+    font-size: 16px;
+  }
 
   .breadcrumb {
-    margin-left: 20px;
+    margin-right: 20px;
   }
 
 }
