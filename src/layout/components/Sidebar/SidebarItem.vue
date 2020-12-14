@@ -34,7 +34,7 @@ import AppLink from '../AppLink.vue'
 import {
   PieChartOutlined,
 } from '@ant-design/icons-vue';
-import {mapMutations} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
   components: {
@@ -55,6 +55,11 @@ export default {
       default: ''
     }
   },
+  computed: {
+    ...mapGetters('admin', {
+      routerList: 'routesGetter'
+    })
+  },
   setup() {
     // console.log(props);
     return {
@@ -66,15 +71,20 @@ export default {
       'SET_ROUTES'
     ]),
     headerAddTag(onlyOneChild, basePath) {
-      console.log(JSON.parse(JSON.stringify(onlyOneChild)));
-      /*this.$store.commit("admin/SET_ROUTES", {
-        ...JSON.parse(JSON.stringify(onlyOneChild)),
-        basePath,
-      })*/
-      this.SET_ROUTES({
-        ...JSON.parse(JSON.stringify(onlyOneChild)),
-        basePath,
-      })
+      const routerList = this.routerList || [];
+      let _index = -1;
+      routerList.forEach((item, index) => {
+        item.checked = item.basePath === basePath;
+        item.basePath === basePath ? _index = index : '';
+      });
+      if (_index < 0) {
+        routerList.push({
+          ...JSON.parse(JSON.stringify(onlyOneChild)),
+          checked: true,
+          basePath
+        });
+      }
+      this.SET_ROUTES(routerList)
     },
     hasOneShowingChild(children = [], parent) {
       const showingChildren = children.filter((item) => {

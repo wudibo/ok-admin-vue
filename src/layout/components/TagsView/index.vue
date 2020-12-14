@@ -8,11 +8,11 @@
           </a-button>
         </AppLink>
       </div>
-      <div v-for="item in 100" :key="item" class="tags-item">
-        <AppLink to="/form/advanced-form">
-          <a-button>
-            <div class="tags-text">菜单列表{{ item }}</div>
-            <div @click.prevent="headerCloseTag(item)" class="close">
+      <div v-for="(item,index) in routerList" :key="item.basePath" class="tags-item">
+        <AppLink :to="item.basePath" @click="headerSelectTag(item)">
+          <a-button :type="item.checked?'primary':''">
+            <div class="tags-text">{{ item.meta ? item.meta.title : item.name }}</div>
+            <div @click.prevent.stop="headerCloseTag(item, index)" class="close">
               <CloseOutlined/>
             </div>
           </a-button>
@@ -23,15 +23,11 @@
 </template>
 
 <script lang="ts">
-import {onMounted, ref,} from 'vue'
+import {onMounted, ref, getCurrentInstance} from 'vue'
 import ScrollPane from './ScrollPane.vue';
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
-
-
-const closeTag = (link: string|number) => {
-  console.log(link);
-}
+import {mapGetters} from "vuex";
 
 export default {
   components: {
@@ -39,17 +35,30 @@ export default {
     ScrollPane,
     CloseOutlined
   },
+  computed: {
+    ...mapGetters('admin', {
+      routerList: 'routesGetter'
+    })
+  },
   setup() {
     const visible = ref(false),
+        {ctx} = getCurrentInstance() as any,
         active = ref('');
     onMounted(function () {
       console.log(active);
     });
-    const headerCloseTag = closeTag;
+    const headerSelectTag = (route: any) => {
+      ctx.routerList.forEach((item: any) => item.checked = false);
+      route.checked = true
+    }
+    const headerCloseTag = (route: any, index: number) => {
+      ctx.routerList.splice(index, 1);
+    };
     return {
+      active,
       visible,
+      headerSelectTag,
       headerCloseTag,
-      active
     }
   }
 }

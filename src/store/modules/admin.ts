@@ -6,7 +6,7 @@ interface IState {
 }
 
 const state = {
-    routes: [5],
+    routes: [],
     addRoutes: []
 }
 
@@ -18,9 +18,7 @@ const getters = {
 
 const mutations = {
     SET_ROUTES: (state: any, routes: any) => {
-        console.log(...state.routes);
-        // state.routes.target.push(routes)
-        state.routes = [routes];//state.routes.push(routes);
+        state.routes = routes;
     }
 }
 

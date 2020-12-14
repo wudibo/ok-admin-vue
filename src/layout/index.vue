@@ -7,7 +7,7 @@
         <TagsView></TagsView>
       </a-layout-header>
       <a-layout-content class="layout-content">
-        <div @click="SET_ROUTES">{{routerList}}</div>
+        <div v-for="(item,index) in routerList" :key="index">{{ item }}</div>
         <router-view v-if="layoutRouterAlive"/>
       </a-layout-content>
     </a-layout>
