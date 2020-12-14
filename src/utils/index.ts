@@ -1,6 +1,6 @@
-export const isPCFun = function (): Boolean {
-    let userAgentInfo = navigator.userAgent;
-    let Agents = ["Android", "iPhone",
+export const isPCFun = function (): boolean {
+    const userAgentInfo = navigator.userAgent;
+    const Agents = ["Android", "iPhone",
         "SymbianOS", "Windows Phone",
         "iPad", "iPod"];
     let flag = true;

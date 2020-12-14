@@ -53,7 +53,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -63,7 +63,8 @@ import {
   InboxOutlined,
   AppstoreOutlined,
 } from '@ant-design/icons-vue';
-import {onMounted, ref, inject, watchEffect} from 'vue'
+import {onMounted, ref, inject, watchEffect} from 'vue';
+console.log({onMounted, ref, inject, watchEffect});
 export default {
   components: {
     MenuFoldOutlined,
@@ -75,7 +76,7 @@ export default {
     AppstoreOutlined,
   },
   setup(){
-    let collapsed = ref(0),//inject('collapsed'),
+    const collapsed = ref(0),//inject('collapsed'),
         selectedKeys = ref([]),
         openKeys = ref([]),
         preOpenKeys = ref([]);

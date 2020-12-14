@@ -10,6 +10,9 @@ import {asyncRoutes} from '@/router/index.ts'
 
 export default {
   setup() {
+    onMounted(function (){
+      ref(false)
+    })
     return {
       asyncRoutes
     }

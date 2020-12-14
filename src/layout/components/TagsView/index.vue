@@ -29,9 +29,11 @@ export default {
     CloseOutlined
   },
   setup() {
-    let visible = ref(false),
+    const visible = ref(false),
         active = ref('');
-
+    onMounted(function (){
+      console.log(active);
+    })
     return {
       visible,
       active

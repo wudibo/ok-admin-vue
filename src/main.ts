@@ -11,7 +11,7 @@ const OkIcon: any = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_2062608_vqa432lsf9.js', // 在 iconfont.cn 上生成
 });
 const app = createApp(App as any);
-app.component('ok-icon', OkIcon);
+app.component('OkIcon', OkIcon);
 
 app.use(store)
     .use(router)
