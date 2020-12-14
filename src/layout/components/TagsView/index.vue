@@ -6,7 +6,7 @@
           <span>首页</span>
         </a-button>
       </div>
-      <div v-for="item in 60" :key="item" class="tags-item">
+      <div v-for="item in 100" :key="item" class="tags-item">
         <a-button>
           <div class="tags-text">菜单列表{{item}}</div>
           <div class="close">
@@ -44,12 +44,11 @@ export default {
 
 <style lang="less" scoped>
 @import "../../../assets/css/variable";
-
 .tags-view {
   display: flex;
   align-items: center;
-  /*overflow-x: auto;
-  overflow-y: hidden;*/
+  //overflow-x: auto;
+  //overflow-y: hidden;
   .tags-item {
     padding: 0 5px;
 

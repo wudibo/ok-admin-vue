@@ -1,6 +1,7 @@
 <template>
   <div class="page">
-    <div class="flex">首页</div>
+    <div class="cont">
+    </div>
   </div>
 </template>
 
@@ -19,9 +20,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.cont {
+  background: #13c2c2;
+  width: 100px;
+  height: 100px
+}
+
+.flex {
+  display: flex;
+}
 </style>

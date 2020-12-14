@@ -12,7 +12,7 @@ export const constantRoutes = [
 export const asyncRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        component: Layout,
+        component: () => Layout,
         redirect: '/dashboard',
         children: [
             {
@@ -29,7 +29,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/form',
-        component: Layout,
+        component: () => Layout,
         name: 'form',
         meta: {
             title: 'form',
@@ -50,15 +50,43 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'advanced-form-a',
-                        component: () => import('@/views/form/advanced-form.vue'),
+                        component: () => {},
                         name: 'advancedFormA',
                         meta: { title: 'advanced Form' },
+                        children: [
+                            {
+                                path: 'advanced-form-a',
+                                component: () => import('@/views/form/advanced-form.vue'),
+                                name: 'advancedFormA',
+                                meta: { title: 'advanced Form' },
+                            },
+                            {
+                                path: 'advanced-form-b',
+                                component: () => import('@/views/form/advanced-form.vue'),
+                                name: 'advancedFormB',
+                                meta: { title: 'advanced Form' },
+                            },
+                        ]
                     },
                     {
                         path: 'advanced-form-b',
-                        component: () => import('@/views/form/advanced-form.vue'),
                         name: 'advancedFormB',
+                        component: () => {},
                         meta: { title: 'advanced Form' },
+                        children: [
+                            {
+                                path: 'advanced-form-a',
+                                component: () => import('@/views/form/advanced-form.vue'),
+                                name: 'advancedFormA',
+                                meta: { title: 'advanced Form' },
+                            },
+                            {
+                                path: 'advanced-form-b',
+                                component: () => import('@/views/form/advanced-form.vue'),
+                                name: 'advancedFormB',
+                                meta: { title: 'advanced Form' },
+                            },
+                        ]
                     },
                 ]
             }

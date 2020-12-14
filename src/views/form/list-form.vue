@@ -1,28 +1,40 @@
 <template>
   <div class="page">
-    表单列表
+    <div>{{ readersNumber }}</div>
+    <div>{{ book.title }}</div>
+    <div>sdafas</div>
+    <a-button type="primary" @click="headerNumber">click {{ book.food }} {{ readersNumber }}</a-button>
   </div>
 </template>
 
-<script lang="ts">
-import {onMounted, ref} from 'vue'
-import {asyncRoutes} from '@/router/index.ts'
+<script lang='ts'>
+import {onMounted, ref, reactive, Ref} from 'vue'
 
+const headerNumberFactory = (readersNumber: Ref<number>) => () => {
+  readersNumber.value++
+}
 export default {
   setup() {
-    onMounted(function (){
-      ref(false)
+    const readersNumber = ref(0);
+    const book = reactive({
+      title: 'Vue 3 Guide',
+      food: 'bar'
     })
+    const headerNumber = headerNumberFactory(readersNumber);
+    onMounted(() => {
+      console.log('mounted!')
+    });
+    // expose to template
     return {
-      asyncRoutes
+      headerNumber,
+      readersNumber,
+      book
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import "../../assets/css/variable";
-
 .page {
   padding: 20px;
 }

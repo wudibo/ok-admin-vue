@@ -1,25 +1,20 @@
 <template>
   <div class="scroll-container">
-    <c-scrollbar v-if="isPC" width="100%"
+    <c-scrollbar width="100%"
                  :hBarStyle="{'background-color': 'rgba(0,0,0,.05)'}"
-                 height="48px"
+                 height="65px"
                  trigger="hover">
       <slot/>
     </c-scrollbar>
-    <div v-else style="overflow-x: auto">
-      <slot/>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
-import {isPCFun} from '@/utils/index.ts';
 export default {
   name: 'ScrollPane',
   setup() {
-    const isPC = isPCFun();
     return {
-      isPC: isPC
+
     }
   },
   methods: {}
@@ -33,6 +28,7 @@ export default {
   width: 100%;
   height: 48px;
   line-height: 48px;
+  overflow: hidden;
   padding: 0;
   position: relative;
   white-space: nowrap;
@@ -40,7 +36,10 @@ export default {
   background: @content-bg;
 
   ::v-deep .c-scrollbar-wrap-all {
-    overflow: hidden;
+    overflow-y: hidden;
+    .c-scrollbar-bar{
+      bottom: 17px
+    }
   }
 }
 </style>
