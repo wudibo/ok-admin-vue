@@ -3,7 +3,7 @@
             (!onlyOneChild.children||onlyOneChild.noShowingChildren) &&
             !item.alwaysShow">
     <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
-      <app-link :to="resolvePath(onlyOneChild.path)">
+      <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild, basePath)">
         <span>
           <ok-icon type="ok-icon-likefill"></ok-icon>
           <span>{{ onlyOneChild.meta.title }}</span>
@@ -34,6 +34,7 @@ import AppLink from '../AppLink.vue'
 import {
   PieChartOutlined,
 } from '@ant-design/icons-vue';
+import {mapMutations} from "vuex";
 
 export default {
   components: {
@@ -61,6 +62,20 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('admin', [
+      'SET_ROUTES'
+    ]),
+    headerAddTag(onlyOneChild, basePath) {
+      console.log(JSON.parse(JSON.stringify(onlyOneChild)));
+      /*this.$store.commit("admin/SET_ROUTES", {
+        ...JSON.parse(JSON.stringify(onlyOneChild)),
+        basePath,
+      })*/
+      this.SET_ROUTES({
+        ...JSON.parse(JSON.stringify(onlyOneChild)),
+        basePath,
+      })
+    },
     hasOneShowingChild(children = [], parent) {
       const showingChildren = children.filter((item) => {
         if (item.hidden) {
