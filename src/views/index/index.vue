@@ -1,5 +1,7 @@
 <template>
-  <div class="page">首页</div>
+  <div class="page">
+    <div class="flex">首页</div>
+  </div>
 </template>
 
 <script type='text/ecmascript-6'>
@@ -17,5 +19,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+  .flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
