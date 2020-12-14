@@ -1,14 +1,12 @@
 <template>
   <div class="navbar">
-    <div class="trigger">
-      <menu-unfold-outlined
-          v-if="collapsed"
-          @click="() => (collapsed = !collapsed)"/>
-      <menu-fold-outlined v-else @click="() => (collapsed = !collapsed)"/>
-    </div>
-    <div class="outlined">
-      <reload-outlined/>
-    </div>
+    <menu-unfold-outlined
+        class="trigger"
+        v-if="collapsed"
+        @click="() => (collapsed = !collapsed)"/>
+    <menu-fold-outlined class="trigger" title="展开/收起" v-else @click="() => (collapsed = !collapsed)"/>
+
+    <reload-outlined @click="headerReload" class="outlined" title="刷新"/>
 
     <a-breadcrumb class="breadcrumb">
       <a-breadcrumb-item href="">
@@ -41,6 +39,7 @@ export default {
   },
   setup() {
     return {
+      headerReload: inject('layoutReload'),
       collapsed: inject('collapsed'),
     }
   }
@@ -52,15 +51,14 @@ export default {
 
 .navbar {
   background: @white-color;
-  padding: 0 24px;
   height: 64px;
   line-height: 64px;
   display: flex;
   align-items: center;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 
-  .trigger,.outlined {
-    padding-right: 20px;
+  .trigger, .outlined {
+    padding: 0 10px;
     font-size: 18px;
     cursor: pointer;
     transition: color 0.3s;
@@ -69,12 +67,13 @@ export default {
       color: @main-color;
     }
   }
-  .outlined{
+
+  .outlined {
     font-size: 16px;
   }
 
   .breadcrumb {
-    margin-right: 20px;
+    padding: 0 10px;
   }
 
 }

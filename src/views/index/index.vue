@@ -1,18 +1,25 @@
 <template>
   <div class="page">
     <div class="cont">
+      <a-button @click="cont++">
+        click {{cont}}
+      </a-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 
 export default {
   setup() {
-    const collapsed = ref(false);
-
+    const collapsed = ref(false),
+        cont = ref(0);
+    onMounted(function (){
+      console.log('onMounted');
+    })
     return {
+      cont,
       collapsed
     }
   }
@@ -21,9 +28,7 @@ export default {
 
 <style lang="less" scoped>
 .cont {
-  background: #13c2c2;
-  width: 100px;
-  height: 100px
+  padding: 20px;
 }
 
 .flex {

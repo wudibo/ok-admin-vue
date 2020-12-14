@@ -1,25 +1,25 @@
 <template>
   <a-layout id="admin-layout">
     <sidebar></sidebar>
-
     <a-layout>
       <a-layout-header class="admin-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
       </a-layout-header>
       <a-layout-content class="layout-content">
-        <router-view/>
+        <router-view v-if="layoutRouterAlive"/>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 
 <script lang='ts'>
-import {ref, provide} from 'vue'
+import {ref, provide, nextTick} from 'vue'
 import Navbar from './components/Navbar/index.vue';
 import Sidebar from './components/Sidebar/index.vue';
 import TagsView from './components/TagsView/index.vue';
 import {isPCFun} from '@/utils/index.ts';
+
 
 export default {
   components: {
@@ -29,13 +29,22 @@ export default {
   },
   setup() {
     const isPC = ref(isPCFun()),
+        layoutRouterAlive = ref(true),
         collapsed = ref(!isPC.value);
     provide('collapsed', collapsed);
     provide('isPC', isPC);
 
+    provide('layoutReload', function () {
+      layoutRouterAlive.value = false;
+      nextTick(function () {
+        layoutRouterAlive.value = true;
+      })
+    });
+
     return {
       isPC,
-      collapsed
+      collapsed,
+      layoutRouterAlive
     }
   }
 }
