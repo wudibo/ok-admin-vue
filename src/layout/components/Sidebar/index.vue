@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import {onMounted, inject, ref} from 'vue'
+import { inject, ref} from 'vue'
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
 

@@ -20,13 +20,13 @@
   </div>
 </template>
 
-<script type='text/ecmascript-6'>
+<script lang="ts">
 
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons-vue';
-import {onMounted, ref, inject} from 'vue'
+import {inject} from 'vue'
 
 export default {
   components: {

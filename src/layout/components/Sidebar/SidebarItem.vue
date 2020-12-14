@@ -27,14 +27,12 @@
   </a-sub-menu>
 </template>
 
-<script type='text/ecmascript-6'>
+<script type="es6">
+// const path = require('path');
 import path from "path";
-import {onMounted, ref} from 'vue'
-import AppLink from './Link.vue'
+import AppLink from '../AppLink.vue'
 import {
   PieChartOutlined,
-  MailOutlined,
-  DesktopOutlined,
 } from '@ant-design/icons-vue';
 
 export default {
@@ -64,7 +62,7 @@ export default {
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
-      const showingChildren = children.filter(item => {
+      const showingChildren = children.filter((item) => {
         if (item.hidden) {
           return false
         } else {

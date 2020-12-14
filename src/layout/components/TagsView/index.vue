@@ -2,40 +2,53 @@
   <scroll-pane>
     <div class="tags-view">
       <div class="tags-item">
-        <a-button type="primary">
-          <span>首页</span>
-        </a-button>
+        <AppLink :to="'/'">
+          <a-button type="primary">
+            <span>首页</span>
+          </a-button>
+        </AppLink>
       </div>
       <div v-for="item in 100" :key="item" class="tags-item">
-        <a-button>
-          <div class="tags-text">菜单列表{{item}}</div>
-          <div class="close">
-            <CloseOutlined/>
-          </div>
-        </a-button>
+        <AppLink to="/form/advanced-form">
+          <a-button>
+            <div class="tags-text">菜单列表{{ item }}</div>
+            <div @click.prevent="headerCloseTag(item)" class="close">
+              <CloseOutlined/>
+            </div>
+          </a-button>
+        </AppLink>
       </div>
     </div>
   </scroll-pane>
 </template>
 
-<script type='text/ecmascript-6'>
-import {onMounted, ref} from 'vue'
+<script lang="ts">
+import {onMounted, ref,} from 'vue'
 import ScrollPane from './ScrollPane.vue';
 import {CloseOutlined} from '@ant-design/icons-vue';
+import AppLink from '../AppLink.vue';
+
+
+const closeTag = (link: string|number) => {
+  console.log(link);
+}
 
 export default {
   components: {
+    AppLink,
     ScrollPane,
     CloseOutlined
   },
   setup() {
     const visible = ref(false),
         active = ref('');
-    onMounted(function (){
+    onMounted(function () {
       console.log(active);
-    })
+    });
+    const headerCloseTag = closeTag;
     return {
       visible,
+      headerCloseTag,
       active
     }
   }
@@ -44,6 +57,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../../../assets/css/variable";
+
 .tags-view {
   display: flex;
   align-items: center;

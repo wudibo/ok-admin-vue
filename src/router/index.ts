@@ -40,51 +40,53 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
                 path: 'advanced-form',
                 component: () => import('@/views/form/advanced-form.vue'),
                 name: 'advancedForm',
-                meta: { title: 'advanced Form' },
+                meta: {title: 'advanced Form'},
             },
             {
                 path: 'list-form',
                 component: () => import('@/views/form/list-form.vue'),
                 name: 'listForm',
-                meta: { title: 'list Form' },
+                meta: {title: 'list Form'},
                 children: [
                     {
                         path: 'advanced-form-a',
-                        component: () => {},
+                        component: () => {
+                        },
                         name: 'advancedFormA',
-                        meta: { title: 'advanced Form' },
+                        meta: {title: 'advanced Form'},
                         children: [
                             {
                                 path: 'advanced-form-a',
                                 component: () => import('@/views/form/advanced-form.vue'),
                                 name: 'advancedFormA',
-                                meta: { title: 'advanced Form' },
+                                meta: {title: 'advanced Form'},
                             },
                             {
                                 path: 'advanced-form-b',
                                 component: () => import('@/views/form/advanced-form.vue'),
                                 name: 'advancedFormB',
-                                meta: { title: 'advanced Form' },
+                                meta: {title: 'advanced Form'},
                             },
                         ]
                     },
                     {
                         path: 'advanced-form-b',
                         name: 'advancedFormB',
-                        component: () => {},
-                        meta: { title: 'advanced Form' },
+                        component: () => {
+                        },
+                        meta: {title: 'advanced Form'},
                         children: [
                             {
                                 path: 'advanced-form-a',
                                 component: () => import('@/views/form/advanced-form.vue'),
                                 name: 'advancedFormA',
-                                meta: { title: 'advanced Form' },
+                                meta: {title: 'advanced Form'},
                             },
                             {
                                 path: 'advanced-form-b',
                                 component: () => import('@/views/form/advanced-form.vue'),
                                 name: 'advancedFormB',
-                                meta: { title: 'advanced Form' },
+                                meta: {title: 'advanced Form'},
                             },
                         ]
                     },

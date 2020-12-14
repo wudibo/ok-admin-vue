@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script type='text/ecmascript-6'>
+<script lang="ts">
 import {ref} from 'vue'
 
 export default {
