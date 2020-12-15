@@ -12,13 +12,14 @@
         mode="inline"
         :theme="theme"
         v-model:openKeys="openKeys"
-        v-model:selectedKeys="selectedKeys">
+        @select="headerMenuSelect"
+        :selectedKeys="selectedKeys">
       <sidebar-item v-for="route in asyncRoutes"
-                   :key="route.path"
-                   :item="route"
-                   :base-path="route.path"></sidebar-item>
+                    :key="route.path"
+                    :item="route"
+                    :base-path="route.path"></sidebar-item>
     </a-menu>
-    <div style="color: white">{{routeData}}</div>
+    <div style="color: white">{{ routeData }}</div>
   </a-layout-sider>
 </template>
 
@@ -27,6 +28,7 @@ import {inject, ref, Ref} from 'vue'
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
 import {RouteLocationNormalizedLoaded, useRoute} from "vue-router";
+import {mapGetters, mapMutations} from "vuex";
 
 const headerOpenKeys = ($route: RouteLocationNormalizedLoaded) => {
   const paths = $route.matched.map(item => {
@@ -40,10 +42,24 @@ export default {
   components: {
     SidebarItem,
   },
+  computed: {
+    ...mapGetters('admin', {
+      selectedKeys: 'selectedKeysGetter'
+    })
+  },
+  methods: {
+    ...mapMutations('admin', [
+      'SET_SELECTEDKEYS',
+    ]),
+    headerMenuSelect(res: any) {
+      (this as any).SET_SELECTEDKEYS([res.key]);
+    }
+  },
   watch: {
-    $route(){
+    $route() {
       const self = this as any;
-      self.selectedKeys = [self.$route.path];
+      // self.$store.commit('admin/SET_SELECTEDKEYS', [self.$route.path]);
+
       self.openKeys = headerOpenKeys(self.$route);
     },
   },
@@ -51,12 +67,11 @@ export default {
     const $route = useRoute(),
         theme = ref('dark'), //主题色 (dark, light)
         openKeys = ref(headerOpenKeys($route)),
-        selectedKeys = ref([$route.path]),
         isPC = inject('isPC') as Ref<boolean>;
+
     return {
       isPC,
       theme,
-      selectedKeys,
       openKeys,
       asyncRoutes,
       sideWidth: isPC.value ? 256 : 160,

@@ -25,6 +25,7 @@
                   :item="child"
                   :base-path="resolvePath(child.path)"
                   class="nest-menu"/>
+    <div>{{selectedKey}}</div>
   </a-sub-menu>
 </template>
 
@@ -64,7 +65,6 @@ export default {
     })
   },
   setup() {
-    // console.log(props);
     const $route = useRoute(),
         selectedKeys = [$route.path];
     return {

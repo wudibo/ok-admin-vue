@@ -24,10 +24,10 @@
 
 <script lang="ts">
 import {onMounted, ref, getCurrentInstance} from 'vue'
+import {mapGetters} from "vuex";
 import ScrollPane from './ScrollPane.vue';
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
-import {mapGetters} from "vuex";
 import {useRouter} from "vue-router";
 
 export default {
@@ -52,7 +52,8 @@ export default {
     });
     const headerSelectTag = (route: any) => {
       ctx.routerList.forEach((item: any) => item.checked = false);
-      route.checked = true
+      route.checked = true;
+      ctx.$store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
     }
     const headerCloseTag = (route: any, index: number) => {
       const routerList = ctx.routerList;
@@ -63,6 +64,7 @@ export default {
         if (route.checked) {
           routePrev.checked = true;
           $router.replace(routePrev.basePath);
+          ctx.$store.commit('admin/SET_SELECTEDKEYS', [routePrev.basePath]);
         }
         routerList.splice(index, 1);
       }

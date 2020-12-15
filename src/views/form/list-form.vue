@@ -2,7 +2,6 @@
   <div class="page">
     <div>{{ readersNumber }}</div>
     <div>{{ book.title }}</div>
-    <div><div>{{$route}}</div></div>
     <a-button type="primary" @click="headerNumber">click {{ book.food }} {{ readersNumber }}</a-button>
   </div>
 </template>
