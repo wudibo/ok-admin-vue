@@ -14,7 +14,14 @@ module.exports = {
 	parallel: require('os').cpus().length > 1, // 构建时开启多进程处理babel编译
 	devServer: {
 		disableHostCheck: true,
+		inline: true,
+		hot: true,
+		stats: 'minimal',
+		contentBase: __dirname,
+		overlay: true,
+		historyApiFallback: true
 	},
+
 
 	// configureWebpack: config => {
 	// 	/**打包压缩gzip*/
@@ -40,6 +47,4 @@ module.exports = {
 	// 	}
 	// 	return _config;
 	// }
-
-
 };

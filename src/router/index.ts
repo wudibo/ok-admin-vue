@@ -1,5 +1,5 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
-import Layout from "@/layout/index.vue";
+import Layout from '@/layout/index.vue';
 
 export const constantRoutes = [
     {
@@ -12,7 +12,7 @@ export const constantRoutes = [
 export const asyncRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        component: () => Layout,
+        component: (Layout as any),
         redirect: '/dashboard',
         children: [
             {
@@ -29,7 +29,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/form',
-        component: () => Layout,
+        component: (Layout as any),
         name: 'form',
         meta: {
             title: 'form',

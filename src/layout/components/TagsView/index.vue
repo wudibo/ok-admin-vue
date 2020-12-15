@@ -30,6 +30,7 @@ import AppLink from '../AppLink.vue';
 import {mapGetters} from "vuex";
 
 export default {
+  name: "TagsView",
   components: {
     AppLink,
     ScrollPane,

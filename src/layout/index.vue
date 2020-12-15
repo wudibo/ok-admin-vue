@@ -23,6 +23,7 @@ import TagsView from './components/TagsView/index.vue';
 import {isPCFun} from '@/utils/index.ts';
 
 export default {
+  name: "layout",
   components: {
     Navbar,
     Sidebar,

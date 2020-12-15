@@ -1,4 +1,5 @@
 <template>
+  <div class="flex" style="font-size: 18px;">登录页</div>
   <div class="box">{{ readersNumber }}</div>
   <div class="flex">{{ book.title }}</div>
 </template>

@@ -32,6 +32,7 @@ import {
 import {inject} from 'vue'
 
 export default {
+  name: "Navbar",
   components: {
     ReloadOutlined,
     MenuUnfoldOutlined,

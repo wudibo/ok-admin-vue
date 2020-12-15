@@ -1,7 +1,7 @@
 import {createApp} from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router from '@/router/index.ts'
+import store from '@/store/index.ts'
 
 import cScrollbar from 'c-scrollbar'
 import 'ant-design-vue/dist/antd.css'
@@ -13,13 +13,12 @@ const OkIcon: Component = createFromIconfontCN({
     scriptUrl: 'https://at.alicdn.com/t/font_2062608_vqa432lsf9.js', // 在 iconfont.cn 上生成
 }) as Component;
 
-// @ts-ignore
-const app = createApp(App);
+const app = createApp(App as any);
 app.component('OkIcon', OkIcon);
 
-app.use(store)
-    .use(router)
-    .use(cScrollbar)
-    .use(Andt);
+app.use(router)
+    .use(store)
+    .use(Andt)
+    .use(cScrollbar);
 
 app.mount('#app')

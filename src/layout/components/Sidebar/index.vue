@@ -23,6 +23,7 @@ import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
 
 export default {
+  name: "Sidebar",
   components: {
     SidebarItem,
   },
