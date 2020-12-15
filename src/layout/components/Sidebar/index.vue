@@ -28,7 +28,7 @@ import {inject, ref, Ref} from 'vue'
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
 import {RouteLocationNormalizedLoaded, useRoute} from "vue-router";
-import {mapGetters, mapMutations} from "vuex";
+import {mapGetters, mapMutations, useStore} from "vuex";
 
 const headerOpenKeys = ($route: RouteLocationNormalizedLoaded) => {
   const paths = $route.matched.map(item => {
@@ -65,10 +65,11 @@ export default {
   },
   setup() {
     const $route = useRoute(),
+        $store = useStore(),
         theme = ref('dark'), //主题色 (dark, light)
         openKeys = ref(headerOpenKeys($route)),
         isPC = inject('isPC') as Ref<boolean>;
-
+    $store.commit('admin/SET_SELECTEDKEYS', [$route.path]);
     return {
       isPC,
       theme,
