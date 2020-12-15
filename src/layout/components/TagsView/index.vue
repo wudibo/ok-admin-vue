@@ -28,6 +28,7 @@ import ScrollPane from './ScrollPane.vue';
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
 import {mapGetters} from "vuex";
+import {useRouter} from "vue-router";
 
 export default {
   name: "TagsView",
@@ -43,6 +44,7 @@ export default {
   },
   setup() {
     const visible = ref(false),
+        $router = useRouter(),
         {ctx} = getCurrentInstance() as any,
         active = ref('');
     onMounted(function () {
@@ -53,7 +55,17 @@ export default {
       route.checked = true
     }
     const headerCloseTag = (route: any, index: number) => {
-      ctx.routerList.splice(index, 1);
+      const routerList = ctx.routerList;
+      if (index == 0) {
+        routerList.splice(index, 1);
+      } else {
+        const routePrev = routerList[index - 1];
+        if (route.checked) {
+          routePrev.checked = true;
+          $router.replace(routePrev.basePath);
+        }
+        routerList.splice(index, 1);
+      }
     };
     return {
       active,
