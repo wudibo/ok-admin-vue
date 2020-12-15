@@ -1,10 +1,11 @@
 <template>
   <component :is="type" v-bind="linkProps(to)">
-    <slot />
+    <slot/>
   </component>
 </template>
 
-<script>
+<script lang="ts">
+
 export default {
   name: "AppLink",
   props: {
@@ -14,19 +15,19 @@ export default {
     }
   },
   computed: {
-    isExternal() {
-      return this.headerExternal(this.to)
+    isExternal(): boolean {
+      return (this as any).headerExternal((this as any).to)
     },
     type() {
-      if (this.isExternal) {
+      if ((this as any).isExternal) {
         return 'a'
       }
       return 'router-link'
     }
   },
   methods: {
-    linkProps(to) {
-      if (this.isExternal) {
+    linkProps(to: string) {
+      if ((this as any).isExternal) {
         return {
           href: to,
           target: '_blank',
@@ -37,7 +38,7 @@ export default {
         to: to
       }
     },
-    headerExternal(path) {
+    headerExternal(path: string): boolean {
       return /^(https?:|mailto:|tel:)/.test(path)
     }
   }
