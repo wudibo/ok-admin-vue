@@ -3,7 +3,7 @@
             (!onlyOneChild.children||onlyOneChild.noShowingChildren) &&
             !item.alwaysShow">
     <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
-      <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild, basePath)">
+      <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild)">
         <span>
           <ok-icon type="ok-icon-likefill"></ok-icon>
           <span>{{ onlyOneChild.meta.title }}</span>
@@ -70,7 +70,8 @@ export default {
     ...mapMutations('admin', [
       'SET_ROUTES'
     ]),
-    headerAddTag(onlyOneChild, basePath) {
+    headerAddTag(onlyOneChild) {
+      const basePath = this.resolvePath(onlyOneChild.path);
       const routerList = this.routerList || [];
       let _index = -1;
       routerList.forEach((item, index) => {
