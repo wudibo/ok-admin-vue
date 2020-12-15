@@ -8,17 +8,8 @@
 
     <reload-outlined @click="headerReload" class="outlined" title="刷新"/>
 
-    <a-breadcrumb class="breadcrumb">
-      <a-breadcrumb-item href="">
-        首页
-      </a-breadcrumb-item>
-      <a-breadcrumb-item href="">
-        <span>Application List</span>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>
-        Application
-      </a-breadcrumb-item>
-    </a-breadcrumb>
+    <breadcrumb></breadcrumb>
+
   </div>
 </template>
 
@@ -30,10 +21,12 @@ import {
   MenuUnfoldOutlined
 } from '@ant-design/icons-vue';
 import {inject} from 'vue'
+import Breadcrumb from "@/layout/components/Navbar/Breadcrumb.vue";
 
 export default {
   name: "Navbar",
   components: {
+    Breadcrumb,
     ReloadOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined

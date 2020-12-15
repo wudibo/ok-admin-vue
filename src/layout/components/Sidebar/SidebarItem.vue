@@ -11,7 +11,8 @@
       </app-link>
     </a-menu-item>
   </template>
-  <a-sub-menu v-else :key="resolvePath(item.path)">
+  <a-sub-menu v-else
+              :key="basePath">
     <template #title>
       <span>
         <PieChartOutlined/>
@@ -19,7 +20,7 @@
       </span>
     </template>
     <sidebar-item v-for="child in item.children"
-                  :key="child.path"
+                  :key="resolvePath(child.path)"
                   :is-nest="true"
                   :item="child"
                   :base-path="resolvePath(child.path)"
@@ -35,6 +36,7 @@ import {
   PieChartOutlined,
 } from '@ant-design/icons-vue';
 import {mapGetters, mapMutations} from "vuex";
+import {useRoute} from "vue-router";
 
 export default {
   name: "SidebarItem",
@@ -63,7 +65,10 @@ export default {
   },
   setup() {
     // console.log(props);
+    const $route = useRoute(),
+        selectedKeys = [$route.path];
     return {
+      selectedKeys,
       onlyOneChild: null
     }
   },

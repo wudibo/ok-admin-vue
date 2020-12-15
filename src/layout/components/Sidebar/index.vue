@@ -9,15 +9,16 @@
                   collapsible>
     <div class="layout-sider-logo"><img src="@/assets/logo.png" alt="logo"/></div>
     <a-menu
-        :theme="theme"
         mode="inline"
+        :theme="theme"
         v-model:openKeys="openKeys"
         v-model:selectedKeys="selectedKeys">
-      <SidebarItem v-for="route in asyncRoutes"
+      <sidebar-item v-for="route in asyncRoutes"
                    :key="route.path"
                    :item="route"
-                   :base-path="route.path"></SidebarItem>
+                   :base-path="route.path"></sidebar-item>
     </a-menu>
+    <div style="color: white">{{routeData}}</div>
   </a-layout-sider>
 </template>
 
@@ -25,22 +26,38 @@
 import {inject, ref, Ref} from 'vue'
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
+import {RouteLocationNormalizedLoaded, useRoute} from "vue-router";
+
+const headerOpenKeys = ($route: RouteLocationNormalizedLoaded) => {
+  const paths = $route.matched.map(item => {
+    return item.path
+  });
+  return paths;
+}
 
 export default {
   name: "Sidebar",
   components: {
     SidebarItem,
   },
+  watch: {
+    $route(){
+      const self = this as any;
+      self.selectedKeys = [self.$route.path];
+      self.openKeys = headerOpenKeys(self.$route);
+    },
+  },
   setup() {
-    const isPC = inject('isPC') as Ref<boolean>,
-        selectedKeys = ref([]),
+    const $route = useRoute(),
         theme = ref('dark'), //主题色 (dark, light)
-        openKeys = ref([]);
+        openKeys = ref(headerOpenKeys($route)),
+        selectedKeys = ref([$route.path]),
+        isPC = inject('isPC') as Ref<boolean>;
     return {
       isPC,
       theme,
-      openKeys,
       selectedKeys,
+      openKeys,
       asyncRoutes,
       sideWidth: isPC.value ? 256 : 160,
       collapsed: inject('collapsed')
