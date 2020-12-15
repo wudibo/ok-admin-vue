@@ -37,6 +37,7 @@ import {
 import {mapGetters, mapMutations} from "vuex";
 
 export default {
+  name: "SidebarItem",
   components: {
     PieChartOutlined,
     AppLink,
