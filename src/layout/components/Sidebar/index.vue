@@ -82,6 +82,7 @@ export default {
   z-index: 99;
   height: 100%;
   overflow: hidden;
+  user-select: none;
 
   .sidebar-content {
     overflow: hidden;

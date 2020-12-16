@@ -5,7 +5,8 @@
     <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
       <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild)">
         <span>
-          <ok-icon v-if="item.meta" :type="item.meta.icon" ></ok-icon>
+          <ok-icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></ok-icon>
+          <smile-outlined v-else/>
           <span>{{ onlyOneChild.meta.title }}</span>
         </span>
       </app-link>
@@ -15,8 +16,8 @@
               :key="basePath">
     <template #title>
       <span>
-        <ok-icon v-if="item.meta.icon" :type="item.meta.icon" style="color: white"></ok-icon>
-        <PieChartOutlined v-else/>
+        <ok-icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></ok-icon>
+        <smile-outlined v-else/>
         <span>{{ item.meta.title }}</span>
       </span>
     </template>
@@ -26,7 +27,6 @@
                   :item="child"
                   :base-path="resolvePath(child.path)"
                   class="nest-menu"/>
-    <div>{{selectedKey}}</div>
   </a-sub-menu>
 </template>
 
@@ -35,7 +35,7 @@
 import path from "path";
 import AppLink from '../AppLink.vue'
 import {
-  PieChartOutlined,
+  SmileOutlined,
 } from '@ant-design/icons-vue';
 import {mapGetters, mapMutations} from "vuex";
 import {useRoute} from "vue-router";
@@ -43,7 +43,7 @@ import {useRoute} from "vue-router";
 export default {
   name: "SidebarItem",
   components: {
-    PieChartOutlined,
+    SmileOutlined,
     AppLink,
   },
   props: {
