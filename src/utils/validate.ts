@@ -1,9 +1,6 @@
 /**
- * Created by PanJiaChen on 16/11/18.
+ * Created by ok-admin-vue on 20/12/16.
  */
-
-import {ComputedRef, Ref} from "vue";
-
 /**
  * @param {string} path
  * @returns {Boolean}
