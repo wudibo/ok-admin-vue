@@ -81,7 +81,7 @@ export function isString<T>(str: T): boolean {
  * @param {Array} arg
  * @returns {Boolean}
  */
-export function isArray(arg: Array<any> | undefined) {
+export function isArray<T>(arg: Array<T> | undefined) {
     if (typeof Array.isArray === 'undefined') {
         return Object.prototype.toString.call(arg) === '[object Array]'
     }
