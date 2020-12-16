@@ -1,10 +1,11 @@
 <template>
-  <component :is="type" v-bind="linkProps(to)">
+  <component :is="type" v-bind="linkProps">
     <slot/>
   </component>
 </template>
 
 <script lang="ts">
+import {isExternal, isString} from '@/utils/validate.ts'
 
 export default {
   name: "AppLink",
@@ -14,33 +15,26 @@ export default {
       required: true
     }
   },
-  computed: {
-    isExternal(): boolean {
-      return (this as any).headerExternal((this as any).to)
-    },
-    type() {
-      if ((this as any).isExternal) {
-        return 'a'
+  setup(props: { to: string }) {
+    let linkProps, type;
+    if (isExternal(props.to)) {
+      type = "a";
+      linkProps = {
+        href: props.to,
+        target: '_blank',
+        rel: 'noopener'
       }
-      return 'router-link'
+    } else {
+      type = "router-link";
+      linkProps = {
+        to: props.to
+      }
+    }
+
+    return {
+      type,
+      linkProps,
     }
   },
-  methods: {
-    linkProps(to: string) {
-      if ((this as any).isExternal) {
-        return {
-          href: to,
-          target: '_blank',
-          rel: 'noopener'
-        }
-      }
-      return {
-        to: to
-      }
-    },
-    headerExternal(path: string): boolean {
-      return /^(https?:|mailto:|tel:)/.test(path)
-    }
-  }
 }
 </script>

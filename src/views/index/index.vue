@@ -34,7 +34,6 @@ import {
   PieChartOutlined,
   MailOutlined
 } from '@ant-design/icons-vue';
-import {Menu} from 'ant-design-vue';
 
 // you can rewrite it to a single file component, if not, you should config vue alias to vue/dist/vue.esm-bundler.js
 const SubMenu = {
