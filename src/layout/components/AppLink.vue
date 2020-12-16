@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {isExternal, isString} from '@/utils/validate.ts'
+import {isExternal} from '@/utils/validate.ts'
 
 export default {
   name: "AppLink",

@@ -10,11 +10,11 @@
 </template>
 
 <script lang='ts'>
-import {onMounted, nextTick, ref, Ref} from 'vue';
-import {useRoute} from 'vue-router';
+import {ref, watchEffect} from 'vue';
+import {RouteLocationMatched, RouteLocation, useRoute} from 'vue-router';
 
-const handleRouterMatched = (route: any) => {
-  const matched: any = route.matched.filter((item: any) => {
+const handleRouterMatched = (route: RouteLocation) => {
+  const matched: Array<RouteLocationMatched> = route.matched.filter((item: RouteLocationMatched) => {
     let bool = false;
     if (item.meta.title || item.name) {
       bool = true
@@ -25,16 +25,12 @@ const handleRouterMatched = (route: any) => {
 }
 export default {
   name: "Breadcrumb",
-  watch: {
-    $route(){
-      const self = this as any;
-      self.levelList = handleRouterMatched(self.$route);
-    },
-  },
   setup() {
     const $route = useRoute();
-    const levelList: Ref<any> = ref(handleRouterMatched($route));
-
+    const levelList = ref();
+    watchEffect(() => {
+      levelList.value = handleRouterMatched($route);
+    });
     return {
       levelList
     }
