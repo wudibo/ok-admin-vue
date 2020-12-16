@@ -5,7 +5,7 @@
     <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
       <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild)">
         <span>
-          <ok-icon type="ok-icon-likefill"></ok-icon>
+          <ok-icon v-if="item.meta" :type="item.meta.icon" ></ok-icon>
           <span>{{ onlyOneChild.meta.title }}</span>
         </span>
       </app-link>

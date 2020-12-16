@@ -29,6 +29,28 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
             }
         ],
     },
+    {
+        path: '/user',
+        component: (Layout as unknown as Component),
+        meta: {
+            title: '用户',
+            icon: 'ok-icon-round_favor_fill'
+        },
+        children: [
+            {
+                path: 'info',
+                component: () => import('@/views/form/advanced-form.vue'),
+                name: 'userInfo',
+                meta: {title: '用户信息', icon: 'ok-icon-myfill'},
+            },
+            {
+                path: 'set',
+                component: () => import('@/views/form/advanced-form.vue'),
+                name: 'userSet',
+                meta: {title: '设置信息', icon: 'ok-icon-myfill'},
+            }
+        ]
+    },
     menuMultilevel,
 ]
 

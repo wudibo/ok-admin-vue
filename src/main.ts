@@ -4,8 +4,8 @@ import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 
 import cScrollbar from 'c-scrollbar'
-import 'ant-design-vue/dist/antd.css'
-import * as Andt from 'ant-design-vue'
+// import 'ant-design-vue/dist/antd.css'
+import * as andt from 'ant-design-vue'
 import {createFromIconfontCN} from '@ant-design/icons-vue'
 import {Component} from "@vue/runtime-core";
 
@@ -18,7 +18,7 @@ app.component('OkIcon', OkIcon);
 
 app.use(router)
     .use(store)
-    .use(Andt)
+    .use(andt)
     .use(cScrollbar);
 
 app.mount('#app')

@@ -2158,7 +2158,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
 
 ant-design-vue@2.0.0-rc.4:
   version "2.0.0-rc.4"
-  resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-2.0.0-rc.4.tgz?cache=0&sync_timestamp=1607654519141&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fant-design-vue%2Fdownload%2Fant-design-vue-2.0.0-rc.4.tgz#1f3da62be4ff09760db16545c0cf7ab0c303a4dc"
+  resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-2.0.0-rc.4.tgz#1f3da62be4ff09760db16545c0cf7ab0c303a4dc"
   integrity sha1-Hz2mK+T/CXYNsWVFwM96sMMDpNw=
   dependencies:
     "@ant-design-vue/use" "^0.0.1-0"
@@ -10500,7 +10500,7 @@ vue@^3.0.0, vue@^3.0.4:
     "@vue/runtime-dom" "3.0.4"
     "@vue/shared" "3.0.4"
 
-vuex@^4.0.0-0:
+vuex@^4.0.0-rc.2:
   version "4.0.0-rc.2"
   resolved "https://registry.npm.taobao.org/vuex/download/vuex-4.0.0-rc.2.tgz?cache=0&sync_timestamp=1606318238493&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuex%2Fdownload%2Fvuex-4.0.0-rc.2.tgz#3681c84eb6f5171b039edaa17cc78105e20724f3"
   integrity sha1-NoHITrb1FxsDntqhfMeBBeIHJPM=

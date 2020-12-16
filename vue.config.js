@@ -23,7 +23,8 @@ module.exports = {
 	},
 
 
-	// configureWebpack: config => {
+	configureWebpack: config => {
+		const _config = {};
 	// 	/**打包压缩gzip*/
 	// 	const _config = {
 	// 		plugins: [
@@ -37,14 +38,14 @@ module.exports = {
 	// 		]
 	// 	};
 	// 	//不是开发环境的时候使用的cdn
-	// 	if (process.env.NODE_ENV !== 'development') {
-	// 		_config.externals = {
-	// 			'vue': 'Vue',
-	// 			'vue-router': 'VueRouter',
-	// 			'vuex': 'Vuex',
-	// 			'vant': 'vant',
-	// 		};
-	// 	}
-	// 	return _config;
-	// }
+		if (process.env.NODE_ENV !== 'development') {
+			_config.externals = {
+				'vue': 'Vue',
+				'vue-router': 'VueRouter',
+				'vuex': 'Vuex',
+				'ant-design-vue': 'antd',
+			};
+		}
+		return _config;
+	}
 };
