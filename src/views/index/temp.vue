@@ -64,7 +64,6 @@ import {
   AppstoreOutlined,
 } from '@ant-design/icons-vue';
 import {onMounted, ref, inject, watchEffect} from 'vue';
-console.log({onMounted, ref, inject, watchEffect});
 export default {
   components: {
     MenuFoldOutlined,

@@ -29,6 +29,7 @@ import {useRouter} from "vue-router";
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
 import ScrollPane from './ScrollPane.vue';
+import {IVuexRoutes} from '@/layout/index.d.ts';
 
 export default {
   name: "TagsView",
@@ -49,14 +50,14 @@ export default {
         {ctx} = getCurrentInstance() as any,
         active = ref('');
     onMounted(function () {
-      console.log(active);
+      console.log('tagsView');
     });
-    const headerSelectTag = (route: any) => {
-      ctx.routerList.forEach((item: any) => item.checked = false);
+    const headerSelectTag = (route: IVuexRoutes) => {
+      ctx.routerList.forEach((item: IVuexRoutes) => item.checked = false);
       route.checked = true;
       $store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
     }
-    const headerCloseTag = (route: any, index: number) => {
+    const headerCloseTag = (route: IVuexRoutes, index: number) => {
       const routerList = ctx.routerList;
       if (index == 0) {
         routerList.splice(index, 1);

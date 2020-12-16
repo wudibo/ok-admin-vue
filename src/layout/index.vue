@@ -70,19 +70,19 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  user-select: none;
 
   .admin-header {
     padding: 0;
     height: 112px;
     line-height: normal;
     background: @white-color;
+    user-select: none;
   }
 
   .layout-content {
     margin: 0;
     background: @content-bg;
-    height: 100%
+    height: 100%;
   }
 
   .logo {

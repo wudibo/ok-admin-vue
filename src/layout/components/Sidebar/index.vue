@@ -13,7 +13,7 @@
           mode="inline"
           :theme="theme"
           v-model:openKeys="openKeys"
-          @select="headerMenuSelect"
+          @select="(res) => SET_SELECTEDKEYS(res.keyPath)"
           :selectedKeys="selectedKeys">
         <sidebar-item v-for="route in asyncRoutes"
                       :key="route.path"
@@ -25,17 +25,16 @@
 </template>
 
 <script lang="ts">
-import {inject, ref, Ref} from 'vue'
+import {computed, inject, ref, Ref, watchEffect} from 'vue'
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
-import {RouteLocationNormalizedLoaded, useRoute} from "vue-router";
-import {mapGetters, mapMutations, useStore} from "vuex";
+import {useRoute, RouteLocationNormalizedLoaded} from "vue-router";
+import {mapMutations, useStore} from "vuex";
 
 const headerOpenKeys = ($route: RouteLocationNormalizedLoaded) => {
-  const paths = $route.matched.map(item => {
+  return $route.matched.map(item => {
     return item.path
   });
-  return paths;
 }
 
 export default {
@@ -43,36 +42,30 @@ export default {
   components: {
     SidebarItem,
   },
-  computed: {
-    ...mapGetters('admin', {
-      selectedKeys: 'selectedKeysGetter'
-    })
-  },
   methods: {
     ...mapMutations('admin', [
       'SET_SELECTEDKEYS',
     ]),
-    headerMenuSelect(res: any) {
-      (this as any).SET_SELECTEDKEYS([res.key]);
-    }
-  },
-  watch: {
-    $route() {
-      const self = this as any;
-      self.openKeys = headerOpenKeys(self.$route);
-    },
   },
   setup() {
     const $route = useRoute(),
         $store = useStore(),
         theme = ref('dark'), //主题色 (dark, light)
-        openKeys = ref(headerOpenKeys($route)),
+        openKeys = ref(),
         isPC = inject('isPC') as Ref<boolean>;
     $store.commit('admin/SET_SELECTEDKEYS', [$route.path]);
+    const selectedKeys = computed(() => {
+      return $store.getters['admin/selectedKeysGetter'];
+    })
+    watchEffect(() => {
+      openKeys.value = headerOpenKeys($route)
+    })
+
     return {
       isPC,
       theme,
       openKeys,
+      selectedKeys,
       asyncRoutes,
       sideWidth: isPC.value ? 256 : 160,
       collapsed: inject('collapsed')
@@ -89,16 +82,19 @@ export default {
   z-index: 99;
   height: 100%;
   overflow: hidden;
-  .sidebar-content{
+
+  .sidebar-content {
     overflow: hidden;
     width: 100%;
   }
+
   ::v-deep {
-    .ant-layout-sider-children{
+    .ant-layout-sider-children {
       width: calc(100% + 17px);
       overflow-y: scroll;
       box-sizing: border-box;
     }
+
     &.ant-layout-sider-dark {
       box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
     }
