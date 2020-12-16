@@ -23,13 +23,14 @@
 </template>
 
 <script lang="ts">
-import {onMounted, ref, getCurrentInstance} from 'vue'
-import {mapGetters, useStore} from "vuex";
+import {ref, computed} from 'vue'
+import {useStore} from "vuex";
 import {useRouter} from "vue-router";
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
 import ScrollPane from './ScrollPane.vue';
 import {IVuexRoutes} from '@/layout/index.d.ts';
+import {ComputedRef} from "@vue/reactivity";
 
 export default {
   name: "TagsView",
@@ -38,42 +39,38 @@ export default {
     ScrollPane,
     CloseOutlined
   },
-  computed: {
-    ...mapGetters('admin', {
-      routerList: 'routesGetter'
-    })
-  },
   setup() {
     const visible = ref(false),
         $router = useRouter(),
         $store = useStore(),
-        {ctx} = getCurrentInstance() as any,
         active = ref('');
-    onMounted(function () {
-      console.log('tagsView');
+    const routerList: ComputedRef<Array<IVuexRoutes>> = computed(() => {
+      return $store.getters["admin/routesGetter"]
     });
+
     const headerSelectTag = (route: IVuexRoutes) => {
-      ctx.routerList.forEach((item: IVuexRoutes) => item.checked = false);
+      routerList.value.forEach((item) => item.checked = false);
       route.checked = true;
       $store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
     }
+    
     const headerCloseTag = (route: IVuexRoutes, index: number) => {
-      const routerList = ctx.routerList;
       if (index == 0) {
-        routerList.splice(index, 1);
+        routerList.value.splice(index, 1);
       } else {
-        const routePrev = routerList[index - 1];
+        const routePrev = routerList.value[index - 1];
         if (route.checked) {
           routePrev.checked = true;
           $router.replace(routePrev.basePath);
           $store.commit('admin/SET_SELECTEDKEYS', [routePrev.basePath]);
         }
-        routerList.splice(index, 1);
+        routerList.value.splice(index, 1);
       }
     };
     return {
       active,
       visible,
+      routerList,
       headerSelectTag,
       headerCloseTag,
     }

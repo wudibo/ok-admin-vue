@@ -1,6 +1,7 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 import Layout from '@/layout/index.vue';
 import menuMultilevel from "@/router/menuMultilevel";
+import {Component} from "@vue/runtime-core";
 
 export const constantRoutes = [
     {
@@ -13,7 +14,7 @@ export const constantRoutes = [
 export const asyncRoutes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        component: (Layout as any),
+        component: (Layout as unknown as Component),
         redirect: '/dashboard',
         children: [
             {

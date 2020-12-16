@@ -1,11 +1,12 @@
 import {Store} from 'vuex'
-
+import {IVuexRoutes} from '@/layout/index.d.ts';
 interface IState {
-    routes: Array<any>;
+    routes: Array<IVuexRoutes>;
     addRoutes: Array<string | number>;
+    selectedKeys: Array<string | number>;
 }
 
-const state = {
+const state: IState = {
     routes: [],
     addRoutes: [],
     selectedKeys: []

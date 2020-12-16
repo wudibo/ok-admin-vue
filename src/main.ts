@@ -13,7 +13,7 @@ const OkIcon: Component = createFromIconfontCN({
     scriptUrl: 'https://at.alicdn.com/t/font_2062608_vqa432lsf9.js', // 在 iconfont.cn 上生成
 }) as Component;
 
-const app = createApp(App as any);
+const app = createApp(App as unknown as Component);
 app.component('OkIcon', OkIcon);
 
 app.use(router)

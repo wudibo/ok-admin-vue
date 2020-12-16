@@ -1,8 +1,9 @@
 import Layout from "@/layout/index.vue";
+import {Component} from "@vue/runtime-core";
 
 export default {
     path: '/multilevel',
-    component: (Layout as any),
+    component: (Layout as unknown as Component),
     name: 'multilevel',
     meta: {
         title: '多级菜单',
