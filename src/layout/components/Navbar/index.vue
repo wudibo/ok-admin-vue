@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <div class="navbar ok-hairline--bottom">
     <menu-unfold-outlined
         class="trigger"
         v-if="collapsed"
@@ -49,7 +49,8 @@ export default {
   line-height: 64px;
   display: flex;
   align-items: center;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  position: relative;
+  z-index: 9;
 
   .trigger, .outlined {
     padding: 0 10px;

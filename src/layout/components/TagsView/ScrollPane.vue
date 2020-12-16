@@ -33,7 +33,8 @@ export default {
   position: relative;
   white-space: nowrap;
   box-sizing: border-box;
-  background: @content-bg;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  background: white;
 
   ::v-deep .c-scrollbar-wrap-all {
     overflow-y: hidden;
