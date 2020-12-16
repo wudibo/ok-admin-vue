@@ -24,7 +24,7 @@ const handleRouterMatched = (route: RouteLocation) => {
   return matched;
 }
 export default {
-  name: "Breadcrumb",
+  name: "OkBreadcrumb",
   setup() {
     const $route = useRoute();
     const levelList = ref();

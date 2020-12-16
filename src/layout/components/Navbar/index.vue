@@ -21,7 +21,7 @@ import {
   MenuUnfoldOutlined
 } from '@ant-design/icons-vue';
 import {inject} from 'vue'
-import Breadcrumb from "@/layout/components/Navbar/Breadcrumb.vue";
+import Breadcrumb from "./Breadcrumb.vue";
 
 export default {
   name: "Navbar",
