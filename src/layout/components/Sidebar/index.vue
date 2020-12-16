@@ -7,19 +7,20 @@
                   :width="sideWidth"
                   :trigger="null"
                   collapsible>
-    <div class="layout-sider-logo"><img src="@/assets/logo.png" alt="logo"/></div>
-    <a-menu
-        mode="inline"
-        :theme="theme"
-        v-model:openKeys="openKeys"
-        @select="headerMenuSelect"
-        :selectedKeys="selectedKeys">
-      <sidebar-item v-for="route in asyncRoutes"
-                    :key="route.path"
-                    :item="route"
-                    :base-path="route.path"></sidebar-item>
-    </a-menu>
-    <div style="color: white">{{ routeData }}</div>
+    <div class="sidebar-content">
+      <div class="layout-sider-logo"><img src="@/assets/logo.png" alt="logo"/></div>
+      <a-menu
+          mode="inline"
+          :theme="theme"
+          v-model:openKeys="openKeys"
+          @select="headerMenuSelect"
+          :selectedKeys="selectedKeys">
+        <sidebar-item v-for="route in asyncRoutes"
+                      :key="route.path"
+                      :item="route"
+                      :base-path="route.path"></sidebar-item>
+      </a-menu>
+    </div>
   </a-layout-sider>
 </template>
 
@@ -88,8 +89,18 @@ export default {
 .sidebar {
   position: relative;
   z-index: 99;
-
+  height: 100%;
+  overflow: hidden;
+  .sidebar-content{
+    overflow: hidden;
+    width: 100%;
+  }
   ::v-deep {
+    .ant-layout-sider-children{
+      width: calc(100% + 17px);
+      overflow-y: scroll;
+      box-sizing: border-box;
+    }
     &.ant-layout-sider-dark {
       box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
     }

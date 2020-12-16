@@ -53,7 +53,7 @@ export default {
 
   .trigger, .outlined {
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: color 0.3s;
 
@@ -63,7 +63,7 @@ export default {
   }
 
   .outlined {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .breadcrumb {

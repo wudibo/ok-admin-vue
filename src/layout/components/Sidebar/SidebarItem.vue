@@ -15,7 +15,8 @@
               :key="basePath">
     <template #title>
       <span>
-        <PieChartOutlined/>
+        <ok-icon v-if="item.meta.icon" :type="item.meta.icon" style="color: white"></ok-icon>
+        <PieChartOutlined v-else/>
         <span>{{ item.meta.title }}</span>
       </span>
     </template>
