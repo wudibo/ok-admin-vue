@@ -68,10 +68,8 @@ export function validEmail(email: string) {
  * @returns {Boolean}
  */
 export function isString<T>(str: T): boolean {
-    if (typeof str === 'string' || str instanceof String) {
-        return true
-    }
-    return false
+    return typeof str === 'string' || str instanceof String;
+
 }
 
 /**
