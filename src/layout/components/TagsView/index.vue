@@ -24,11 +24,11 @@
 
 <script lang="ts">
 import {onMounted, ref, getCurrentInstance} from 'vue'
-import {mapGetters} from "vuex";
-import ScrollPane from './ScrollPane.vue';
+import {mapGetters, useStore} from "vuex";
+import {useRouter} from "vue-router";
 import {CloseOutlined} from '@ant-design/icons-vue';
 import AppLink from '../AppLink.vue';
-import {useRouter} from "vue-router";
+import ScrollPane from './ScrollPane.vue';
 
 export default {
   name: "TagsView",
@@ -45,6 +45,7 @@ export default {
   setup() {
     const visible = ref(false),
         $router = useRouter(),
+        $store = useStore(),
         {ctx} = getCurrentInstance() as any,
         active = ref('');
     onMounted(function () {
@@ -53,7 +54,7 @@ export default {
     const headerSelectTag = (route: any) => {
       ctx.routerList.forEach((item: any) => item.checked = false);
       route.checked = true;
-      ctx.$store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
+      $store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
     }
     const headerCloseTag = (route: any, index: number) => {
       const routerList = ctx.routerList;
@@ -64,7 +65,7 @@ export default {
         if (route.checked) {
           routePrev.checked = true;
           $router.replace(routePrev.basePath);
-          ctx.$store.commit('admin/SET_SELECTEDKEYS', [routePrev.basePath]);
+          $store.commit('admin/SET_SELECTEDKEYS', [routePrev.basePath]);
         }
         routerList.splice(index, 1);
       }

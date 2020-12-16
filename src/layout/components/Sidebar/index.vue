@@ -59,8 +59,6 @@ export default {
   watch: {
     $route() {
       const self = this as any;
-      // self.$store.commit('admin/SET_SELECTEDKEYS', [self.$route.path]);
-
       self.openKeys = headerOpenKeys(self.$route);
     },
   },
