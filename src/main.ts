@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 
-import cScrollbar from 'c-scrollbar'
 import 'ant-design-vue/dist/antd.css'
 import * as andt from 'ant-design-vue'
 import {createFromIconfontCN} from '@ant-design/icons-vue'
@@ -18,7 +17,6 @@ app.component('OkIcon', OkIcon);
 
 app.use(router)
     .use(store)
-    .use(andt)
-    .use(cScrollbar);
+    .use(andt);
 
 app.mount('#app')

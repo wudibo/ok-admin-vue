@@ -86,7 +86,6 @@ const handleMouseUp = function () {
 export default {
   name: "OkScroll",
   setup() {
-
     onMounted(function () {
       setTimeout(headerScrollRatio, 200);
       window.onresize = function(){
@@ -131,7 +130,7 @@ export default {
   }
 
   &:hover .scrollbar {
-    background-color: gray;
+    background-color: rgba(0, 0, 0, .2);
   }
 
   .scrollbar-box {
@@ -140,18 +139,20 @@ export default {
     bottom: 0;
     z-index: 9;
     width: 100%;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .05);
     height: @scrollbar-height;
     border-radius: @scrollbar-height / 2;
 
+    &:hover .scrollbar {
+      background-color: rgba(0, 0, 0, .35);
+    }
     .scrollbar {
       cursor: pointer;
       position: relative;
       height: @scrollbar-height;
       border-radius: @scrollbar-height / 2;
-
       &.show {
-        background-color: gray;
+        background-color: rgba(0, 0, 0, .35);
       }
     }
   }

@@ -4,8 +4,8 @@
       <div class="tags-item">
         <AppLink :to="'/'">
           <a-space size="small">
-            <a-button v-for="(item, index) in 50" type="primary" :key="index">
-              <span>首页{{ item }}</span>
+            <a-button type="primary">
+              <span>首页</span>
             </a-button>
           </a-space>
         </AppLink>
