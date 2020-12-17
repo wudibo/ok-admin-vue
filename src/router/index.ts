@@ -30,6 +30,14 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         ],
     },
     {
+        path: '/logo',
+        component: () => import('@/views/login/login.vue'),
+        meta: {
+            title: '登录',
+            icon: 'ok-icon-round_favor_fill'
+        },
+    },
+    {
         path: '/user',
         component: (Layout as unknown as Component),
         meta: {

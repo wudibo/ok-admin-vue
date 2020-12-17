@@ -1,18 +1,17 @@
 <template>
   <div class="scroll-container">
-    <scroll-x>
+    <c-scrollbar width="100%"
+                 :hBarStyle="{'background-color': 'rgba(0,0,0,.05)'}"
+                 height="65px"
+                 trigger="hover">
       <slot/>
-    </scroll-x>
+    </c-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
-import ScrollX from "./ScrollX.vue";
 export default {
   name: 'ScrollPane',
-  components: {
-    ScrollX
-  },
   setup() {
     return {
 

@@ -3,9 +3,11 @@
     <div class="tags-view">
       <div class="tags-item">
         <AppLink :to="'/'">
-          <a-button type="primary">
-            <span>首页</span>
-          </a-button>
+          <a-space size="small">
+            <a-button v-for="(item, index) in 50" type="primary" :key="index">
+              <span>首页{{ item }}</span>
+            </a-button>
+          </a-space>
         </AppLink>
       </div>
       <div v-for="(item,index) in routerList" :key="item.basePath" class="tags-item">
@@ -53,7 +55,7 @@ export default {
       route.checked = true;
       $store.commit('admin/SET_SELECTEDKEYS', [route.basePath]);
     }
-    
+
     const headerCloseTag = (route: IVuexRoutes, index: number) => {
       if (index == 0) {
         routerList.value.splice(index, 1);
