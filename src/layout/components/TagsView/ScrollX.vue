@@ -86,7 +86,6 @@ const handleMouseUp = function () {
 export default {
   name: "OkScroll",
   setup() {
-
     onMounted(function () {
       setTimeout(headerScrollRatio, 200);
       window.onresize = function(){
