@@ -1,44 +1,17 @@
 <template>
-  <div class="card" v-for="item in 3" :key="item">
-    <a-row :gutter="{ xs: 8, sm: 16, md: 24}">
-      <a-col :span="6">
-        <a-card title="Card title" size="small" :bordered="false">
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </a-card>
-      </a-col>
-      <a-col :span="6">
-        <a-card title="Card title" size="small" :bordered="false">
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </a-card>
-      </a-col>
-      <a-col :span="6">
-        <a-card title="Card title" size="small" :bordered="false">
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </a-card>
-      </a-col>
-      <a-col :span="6">
-        <a-card title="Card title" size="small" :bordered="false">
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </a-card>
-      </a-col>
-    </a-row>
-  </div>
-  <div class="antv">
-    <div id="container"></div>
+  <div class="page">
+    <cards class="padding-sm-tb"/>
+    <div class="antv">
+      <div id="container"></div>
+    </div>
   </div>
 </template>
 
 <script lang='ts'>
 import {onMounted, ref, reactive} from 'vue'
+
 import {Chart} from '@antv/g2';
+import Cards from "@/views/index/components/Cards.vue";
 
 const data = [
   {type: '未知', value: 654, percent: 0.02},
@@ -49,7 +22,9 @@ const data = [
   {type: '40-49 岁', value: 3300, percent: 0.14},
   {type: '50 岁以上', value: 1500, percent: 0.06},
 ];
+
 export default {
+  components: {Cards},
   setup() {
     const readersNumber = ref(0);
     const book = reactive({
@@ -115,14 +90,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.page{
+  padding: 10px 20px;
+}
 .bg-white {
   background: white;
 }
-.card{
-  padding: 10px 20px;
+.padding-sm-tb{
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .antv {
   padding: 20px;
+  width: 600px;
+  height: 600px;
 }
 </style>
