@@ -14,55 +14,9 @@
         <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
     </p>
 </p>
-<h3 align="center">:lemon: :tangerine: :pear: :banana: :pineapple: :cherries: :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon:</h3>
 <h3 align="center">
-:apple: 苹果
-:smith: 绿(青)苹果
-:lychee: 荔枝
-:longan: 桂圆
-:pear: 梨
-:avocado: 颚梨(鳄梨)
-:Starfruit: 杨桃
-:apricot: 杏
-:peach: 桃
-:plum: 李子
-:grape: 葡萄
-:grapefruit: 葡萄柚(西柚)
-:banana: 香蕉
-:pineapple: 菠萝
-:date: 枣子(椰枣)
-:watermelon: 西瓜
-:lemon: 柠檬
-:lime: 青柠檬
-:mango: 芒果
-:strawberry: 草莓
-:blackberry: 黑莓
-:medlar: 欧查果
-:loquat: 枇杷
-:mulberry: 桑椹
-:cherry: 樱桃
-:pomegranate: 石榴
-:fig: 无花果
-:tangerine: 橘子
-:orange: 橙
-:bilberry: 越蔓橘
-:mandarin: 桔子
-:persimmon: 柿
-:walnut: 核桃
-:hazel: 榛子
-:chestnut: 栗子
-:currant: 醋栗
-:almond: 杏仁
-:papaya: 木瓜
-:guava: 番石榴
-:prickly: 仙人掌果
-:coconut: 椰子
-:medlar: 枇杷(欧查果)
-:mulberry: 桑椹
-:nectarine: 油桃
-:mangosteen: 山竹
-:rambutan: 红毛丹(产于泰国)
-
+    :apple: :lemon: :tangerine: :pear: :banana: :pineapple: :cherries: 
+    :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon: :chestnut: 
 </h3>
 ## Project setup
 ```
