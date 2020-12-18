@@ -4,9 +4,9 @@
       <slot></slot>
     </div>
     <div class="scrollbar-box"
+         :class="isMouse?'show':''"
          @mousedown="handleMouseDown">
       <div class="scrollbar"
-           :class="isMouse?'show':''"
            ref="scrollbar"
            :style="{width: scrollbarInfo.activeWidth + 'px', left: moveLeft + 'px'}">
       </div>
@@ -132,8 +132,12 @@ export default {
   &:hover .scrollbar {
     background-color: rgba(0, 0, 0, .2);
   }
+  &:hover .scrollbar-box{
+    opacity: 1;
+  }
 
   .scrollbar-box {
+    opacity: 0;
     position: absolute;
     cursor: pointer;
     bottom: 0;
@@ -146,14 +150,17 @@ export default {
     &:hover .scrollbar {
       background-color: rgba(0, 0, 0, .35);
     }
+    &.show{
+      opacity: 1;
+      .scrollbar{
+        background-color: rgba(0, 0, 0, .35);
+      }
+    }
     .scrollbar {
       cursor: pointer;
       position: relative;
       height: @scrollbar-height;
       border-radius: @scrollbar-height / 2;
-      &.show {
-        background-color: rgba(0, 0, 0, .35);
-      }
     }
   }
 }

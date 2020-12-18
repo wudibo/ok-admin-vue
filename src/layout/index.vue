@@ -7,8 +7,8 @@
         <TagsView></TagsView>
       </a-layout-header>
       <a-layout-content class="layout-content">
-        <div v-for="(item,index) in routerList" :key="index">{{ item }}</div>
-        <div v-for="(item,index) in selectedKeys" :key="index">{{ item }}</div>
+        <!--<div v-for="(item,index) in routerList" :key="index">{{ item }}</div>
+        <div v-for="(item,index) in selectedKeys" :key="index">{{ item }}</div>-->
         <router-view v-if="layoutRouterAlive"/>
       </a-layout-content>
     </a-layout>

@@ -1,24 +1,36 @@
 <template>
-  <a-row>
-    <a-col :span="6">
-
-    </a-col>
-    <a-col :span="6">
-      <div>{{ readersNumber }}</div>
-      <div>{{ book.title }}</div>
-      <div @click="readersNumber++">click {{ book.food }} {{ readersNumber }}</div>
-    </a-col>
-    <a-col :span="6">
-      <a-card title="Card title" :bordered="false" style="width: 300px">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </a-card>
-    </a-col>
-    <a-col :span="6">
-      col-6
-    </a-col>
-  </a-row>
+  <div class="card" v-for="item in 3" :key="item">
+    <a-row :gutter="{ xs: 8, sm: 16, md: 24}">
+      <a-col :span="6">
+        <a-card title="Card title" size="small" :bordered="false">
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </a-card>
+      </a-col>
+      <a-col :span="6">
+        <a-card title="Card title" size="small" :bordered="false">
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </a-card>
+      </a-col>
+      <a-col :span="6">
+        <a-card title="Card title" size="small" :bordered="false">
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </a-card>
+      </a-col>
+      <a-col :span="6">
+        <a-card title="Card title" size="small" :bordered="false">
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </a-card>
+      </a-col>
+    </a-row>
+  </div>
   <div class="antv">
     <div id="container"></div>
   </div>
@@ -103,9 +115,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.bg-white{
+.bg-white {
   background: white;
 }
+.card{
+  padding: 10px 20px;
+}
+
 .antv {
   padding: 20px;
 }
