@@ -4,8 +4,8 @@
         一个很赞的，扁平化风格的，响应式布局的通用后台模版解决方案，旨为后端程序员减压！
     </p>
     <p align="center">
-        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.4-brightgreen">
-        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-2.0.0_rc.2-brightgreen">
+        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.0-brightgreen">
+        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-%3E%3D2.0.0_rc.1-brightgreen">
         <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
     <p align="center">
