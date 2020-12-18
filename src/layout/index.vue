@@ -1,7 +1,7 @@
 <template>
   <a-layout id="admin-layout">
-    <sidebar></sidebar>
-    <a-layout>
+    <sidebar :width="width"></sidebar>
+    <a-layout :style="{width: collapsed ? '': 'calc(100% - ' + width + 'px)'}">
       <a-layout-header class="admin-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
@@ -23,6 +23,7 @@ import Sidebar from './components/Sidebar/index.vue';
 import TagsView from './components/TagsView/index.vue';
 import {isPCFun} from '@/utils/index.ts';
 
+const ispc = isPCFun();
 export default {
   name: "layout",
   components: {
@@ -42,9 +43,9 @@ export default {
     ])
   },
   setup() {
-    const isPC = ref(isPCFun()),
-        layoutRouterAlive = ref(true),
-        collapsed = ref(!isPC.value);
+    const isPC = ref(ispc),
+        collapsed = ref(!ispc),
+        layoutRouterAlive = ref(true);
     provide('isPC', isPC);
     provide('collapsed', collapsed);
     provide('layoutReload', function () {
@@ -56,6 +57,7 @@ export default {
 
     return {
       isPC,
+      width: ispc ? 256 : 200,
       collapsed,
       layoutRouterAlive
     }

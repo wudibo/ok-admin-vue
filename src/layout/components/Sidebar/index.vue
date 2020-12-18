@@ -4,10 +4,10 @@
                   class="sidebar"
                   :theme="theme"
                   :class="theme"
-                  :width="sideWidth"
+                  :width="width"
                   :trigger="null"
                   collapsible>
-    <div class="sidebar-content" :style="{width: collapsed?'':sideWidth+'px'}">
+    <div class="sidebar-content" :style="{width: collapsed ? '' : width+'px'}">
       <div class="layout-sider-logo"><img src="@/assets/logo.png" alt="logo"/></div>
       <a-menu
           mode="inline"
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import {computed, inject, ref, reactive, Ref, watchEffect} from 'vue'
+import {computed, inject, ref, Ref, watchEffect} from 'vue'
 import {useRoute, RouteLocationNormalizedLoaded} from "vue-router";
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
@@ -42,6 +42,12 @@ export default {
   components: {
     SidebarItem,
   },
+  props: {
+    width: {
+      type: Number,
+      default: 256
+    }
+  },
   methods: {
     ...mapMutations('admin', [
       'SET_SELECTEDKEYS',
@@ -51,25 +57,22 @@ export default {
     const $route = useRoute(),
         $store = useStore(),
         theme = ref('dark'), //主题色 (dark, light)
-        isPC = inject('isPC') as Ref<boolean>,//ref(isPCFun()),
         collapsed = inject('collapsed') as Ref<boolean>,
         openKeys = ref(['']);
     $store.commit('admin/SET_SELECTEDKEYS', [$route.path]);
     const selectedKeys = computed(() => {
       return $store.getters['admin/selectedKeysGetter'];
-    })
+    });
     watchEffect(() => {
       openKeys.value = collapsed.value ? [''] : headerOpenKeys($route);
     });
 
     return {
-      isPC,
       theme,
       openKeys,
       collapsed,
       selectedKeys,
-      asyncRoutes,
-      sideWidth: isPC.value ? 256 : 200,
+      asyncRoutes
     }
   }
 }
