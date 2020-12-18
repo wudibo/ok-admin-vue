@@ -18,7 +18,8 @@
     :apple: :lemon: :tangerine: :pear: :banana: :pineapple: :cherries: 
     :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon: :chestnut: 
 </h3>
-## Project setup
+
+### Project setup
 ```
 yarn install
 ```
