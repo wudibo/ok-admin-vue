@@ -14,6 +14,7 @@
         <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
     </p>
 </p>
+<h3 align="center">:lemon: :tangerine: :cherries: :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon:</h3>
 
 ## Project setup
 ```

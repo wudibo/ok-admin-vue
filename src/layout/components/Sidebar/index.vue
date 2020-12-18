@@ -7,7 +7,7 @@
                   :width="sideWidth"
                   :trigger="null"
                   collapsible>
-    <div class="sidebar-content">
+    <div class="sidebar-content" :style="{width: collapsed?'':sideWidth+'px'}">
       <div class="layout-sider-logo"><img src="@/assets/logo.png" alt="logo"/></div>
       <a-menu
           mode="inline"
@@ -59,7 +59,7 @@ export default {
     })
     watchEffect(() => {
       openKeys.value = headerOpenKeys($route)
-    })
+    });
 
     return {
       isPC,
@@ -67,7 +67,7 @@ export default {
       openKeys,
       selectedKeys,
       asyncRoutes,
-      sideWidth: isPC.value ? 256 : 160,
+      sideWidth: isPC.value ? 256 : 200,
       collapsed: inject('collapsed')
     }
   }
@@ -81,19 +81,15 @@ export default {
   position: relative;
   z-index: 99;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   user-select: none;
-
-  .sidebar-content {
-    overflow: hidden;
-    width: 100%;
-  }
 
   ::v-deep {
     .ant-layout-sider-children {
       width: calc(100% + 17px);
-      overflow-y: scroll;
-      box-sizing: border-box;
+      padding-right: 17px;
+      overflow-x: hidden;
+      box-sizing: content-box;
     }
 
     &.ant-layout-sider-dark {
@@ -108,6 +104,8 @@ export default {
       border-color: transparent;
     }
   }
+
+
 
   .layout-sider-logo {
     box-sizing: border-box;
