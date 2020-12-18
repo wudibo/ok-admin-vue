@@ -15,6 +15,7 @@
     </p>
 </p>
 <h3 align="center">:lemon: :tangerine: :cherries: :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon:</h3>
+<h3 align="center">:smith: :lychee: :pear: :apricot: :grape: :grapefruit: :banana: :pineapple: :persimmon: :mango:</h3>
 
 ## Project setup
 ```
