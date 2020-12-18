@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts">
-import {computed, inject, ref, Ref, watchEffect} from 'vue'
+import {computed, inject, ref, reactive, Ref, watchEffect} from 'vue'
+import {useRoute, RouteLocationNormalizedLoaded} from "vue-router";
 import SidebarItem from "./SidebarItem.vue";
 import {asyncRoutes} from '@/router/index.ts'
-import {useRoute, RouteLocationNormalizedLoaded} from "vue-router";
 import {mapMutations, useStore} from "vuex";
 
 const headerOpenKeys = ($route: RouteLocationNormalizedLoaded) => {
@@ -51,24 +51,25 @@ export default {
     const $route = useRoute(),
         $store = useStore(),
         theme = ref('dark'), //主题色 (dark, light)
-        openKeys = ref(),
-        isPC = inject('isPC') as Ref<boolean>;
+        isPC = inject('isPC') as Ref<boolean>,//ref(isPCFun()),
+        collapsed = inject('collapsed') as Ref<boolean>,
+        openKeys = ref(['']);
     $store.commit('admin/SET_SELECTEDKEYS', [$route.path]);
     const selectedKeys = computed(() => {
       return $store.getters['admin/selectedKeysGetter'];
     })
     watchEffect(() => {
-      openKeys.value = headerOpenKeys($route)
+      openKeys.value = collapsed.value ? [''] : headerOpenKeys($route);
     });
 
     return {
       isPC,
       theme,
       openKeys,
+      collapsed,
       selectedKeys,
       asyncRoutes,
       sideWidth: isPC.value ? 256 : 200,
-      collapsed: inject('collapsed')
     }
   }
 }
@@ -104,7 +105,6 @@ export default {
       border-color: transparent;
     }
   }
-
 
 
   .layout-sider-logo {
