@@ -1,11 +1,3 @@
-<head>
-    <style type="text/css">
-        .fruit-gitmoji img{
-            width: 30px;
-            height: 30px;
-        }
-    </style>
-</head>
 <p align="center">
     <img src="https://images.gitee.com/uploads/images/2020/0105/013757_3dfb160a_1152471.png"/>
     <p align="center">
@@ -22,7 +14,7 @@
         <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
     </p>
 </p>
-<h3 align="center fruit-gitmoji">
+<h3 align="center">
     :apple: :lemon: :tangerine: :pear: :banana: :pineapple: :cherries: 
     :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon: :chestnut: 
 </h3>
