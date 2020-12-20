@@ -1,6 +1,6 @@
 <template>
   <a-row :gutter="{ xs: 8, sm: 16, md: 24}">
-    <a-col :span="6">
+    <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
           <a-tag color="blue">日</a-tag>
@@ -20,7 +20,7 @@
       </a-card>
     </a-col>
 
-    <a-col :span="6">
+    <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
           <a-tag color="green">周</a-tag>
@@ -39,8 +39,7 @@
       </a-card>
     </a-col>
 
-
-    <a-col :span="6">
+    <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
           <a-tag color="pink">日</a-tag>
@@ -60,8 +59,7 @@
       </a-card>
     </a-col>
 
-
-    <a-col :span="6">
+    <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
           <a-tag color="orange">日</a-tag>
@@ -137,6 +135,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.padding-tb-5{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .card-box{
   border-radius: 4px;
 }

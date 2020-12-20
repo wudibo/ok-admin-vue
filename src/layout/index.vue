@@ -84,7 +84,6 @@ export default {
   .layout-content {
     margin: 0;
     background: @content-bg;
-    min-height: 100%;
   }
 
   .logo {

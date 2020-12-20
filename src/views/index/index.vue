@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <cards class="padding-sm-tb"/>
+    <cards class="padding-xs-tb"/>
     <div class="antv">
       <div id="container"></div>
     </div>
@@ -96,9 +96,9 @@ export default {
 .bg-white {
   background: white;
 }
-.padding-sm-tb{
-  padding-top: 12px;
-  padding-bottom: 12px;
+.padding-xs-tb{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .antv {
