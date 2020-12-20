@@ -84,7 +84,17 @@
 <script lang='ts'>
 import {onMounted} from 'vue'
 import { Chart } from '@antv/g2';
+
+const clearElement = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if(element!== null){
+    element.innerHTML = "";
+  }
+}
+
 const cardChartFun = () => {
+  const elementId = 'cardChart';
+  clearElement(elementId);
   const data = [
     { year: 'Mon', value: 102 },
     { year: 'Tue', value: 161 },
@@ -95,10 +105,9 @@ const cardChartFun = () => {
     { year: 'Sun', value: 319 },
   ];
   const chart = new Chart({
-    container: 'cardChart',
+    container: elementId,
     autoFit: true,
     height: 35,
-
   });
   chart.data(data);
   chart.scale({
