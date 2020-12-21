@@ -1,7 +1,7 @@
 <template>
   <a-layout id="admin-layout">
     <sidebar :width="width"></sidebar>
-    <a-layout :style="{width: collapsed ? '': 'calc(100% - ' + width + 'px)'}">
+    <a-layout :style="{width: collapsed ? 'calc(100% - 80px)': 'calc(100% - ' + width + 'px)'}">
       <a-layout-header class="admin-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
@@ -54,6 +54,7 @@ export default {
         layoutRouterAlive.value = true;
       })
     });
+
 
     return {
       isPC,
