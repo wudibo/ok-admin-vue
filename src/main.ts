@@ -2,7 +2,7 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import router from '@/router/index.ts'
 import store from '@/store/index.ts'
-
+import http from '@/utils/http.ts'
 import 'ant-design-vue/dist/antd.css'
 import * as andt from 'ant-design-vue'
 import {createFromIconfontCN} from '@ant-design/icons-vue'
@@ -13,8 +13,8 @@ const OkIcon: Component = createFromIconfontCN({
 }) as Component;
 
 const app = createApp(App as unknown as Component);
+app.config.globalProperties.$http = http;//网络请求
 app.component('OkIcon', OkIcon);
-
 app.use(router)
     .use(store)
     .use(andt);

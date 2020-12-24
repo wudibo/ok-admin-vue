@@ -5,20 +5,26 @@
 </template>
 
 <script lang='ts'>
-import {onMounted, ref, reactive} from 'vue'
+import {onMounted, ref, reactive, SetupContext ,getCurrentInstance} from 'vue'
 import Cards from "@/views/index/components/Cards.vue";
-
+interface Data {
+  [key: string]: unknown;
+}
 export default {
   components: {Cards},
-  setup() {
-    const readersNumber = ref(0);
-    const book = reactive({
+  setup(props: Data, context: SetupContext) {
+    const instance = getCurrentInstance(),
+     readersNumber = ref(0),
+     book = reactive({
       title: 'Vue 3 Guide',
       food: 'bar'
     })
 
     onMounted(() => {
-      console.log('onMounted');
+      if(instance){
+        const {$http} = instance.appContext.config.globalProperties;
+        console.log($http);
+      }
     });
 
     return {
