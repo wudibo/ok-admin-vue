@@ -13,6 +13,7 @@ interface Data {
 export default {
   components: {Cards},
   setup(props: Data, context: SetupContext) {
+
     const {proxy} = getCurrentInstance() as any,
      readersNumber = ref(0),
      book = reactive({

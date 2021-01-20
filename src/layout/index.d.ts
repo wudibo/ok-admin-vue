@@ -1,3 +1,7 @@
+
+export declare interface IData {
+    [key: string]: unknown;
+}
 /**
  * Meta
  */
