@@ -11,7 +11,7 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const isData = ['POST', 'PUT', 'PATCH'];
 const http = {
-    _headerRequest(method: AxiosRequestConfig['method'] = 'get', url = '', data?: Data, config?: Data) {
+    _requestHandler(method: AxiosRequestConfig['method'] = 'get', url = '', data?: Data, config?: Data) {
         data = data || {};
         config = config || {};
         if (isData.indexOf(method) >= 0) {
@@ -26,19 +26,19 @@ const http = {
         });
     },
     get(url = '', data?: Data, config?: Data) {
-        return http._headerRequest('get', url, data, config);
+        return http._requestHandler('get', url, data, config);
     },
     post(url = '', data?: Data, config?: Data) {
-        return http._headerRequest('post', url, data, config);
+        return http._requestHandler('post', url, data, config);
     },
     delete(url = '', data?: Data, config?: Data) {
-        return http._headerRequest('delete', url, data, config);
+        return http._requestHandler('delete', url, data, config);
     },
     put(url = '', data?: Data, config?: Data) {
-        return http._headerRequest('put', url, data, config);
+        return http._requestHandler('put', url, data, config);
     },
     patch(url = '', data?: Data, config?: Data) {
-        return http._headerRequest('patch', url, data, config);
+        return http._requestHandler('patch', url, data, config);
     },
     request: axios.request
 }
