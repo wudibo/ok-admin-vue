@@ -1,17 +1,19 @@
 <template>
   <div class="page">
     <cards class="padding-xs-tb"/>
+    <nav-link class="padding-xs-tb"></nav-link>
   </div>
 </template>
 
 <script lang='ts'>
 import {onMounted, ref, reactive, SetupContext, getCurrentInstance} from 'vue'
 import Cards from "@/views/index/components/Cards.vue";
+import NavLink from "@/views/index/components/NavLink.vue";
 interface Data {
   [key: string]: unknown;
 }
 export default {
-  components: {Cards},
+  components: {NavLink, Cards},
   setup(props: Data, context: SetupContext) {
 
     const {proxy} = getCurrentInstance() as any,

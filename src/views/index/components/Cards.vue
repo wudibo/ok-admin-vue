@@ -9,6 +9,7 @@
           <div class="num">25,848</div>
 
           <div class="card-data">
+            <a-progress :percent="30" />
           </div>
 
           <a-divider style="margin: 12px 0"/>
@@ -42,7 +43,7 @@
     <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
-          <a-tag color="pink">日</a-tag>
+          <a-tag color="pink">月</a-tag>
         </template>
         <div class="card-cont">
           <div class="num">25,848</div>
@@ -62,7 +63,7 @@
     <a-col :xs="24" :sm="12" :md="12" :lg="6" class="padding-tb-5">
       <a-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #extra>
-          <a-tag color="orange">日</a-tag>
+          <a-tag color="orange">年</a-tag>
         </template>
         <div class="card-cont">
           <div class="num">25,848</div>
