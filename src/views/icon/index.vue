@@ -85,6 +85,7 @@ export default {
   }
 
   .icon {
+    color: #333333;
     transition: transform .5s;
   }
 
