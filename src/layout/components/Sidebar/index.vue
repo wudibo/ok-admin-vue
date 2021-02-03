@@ -66,7 +66,6 @@ export default {
     watchEffect(() => {
       openKeys.value = collapsed.value ? [''] : headerOpenKeys($route);
     });
-
     return {
       theme,
       openKeys,

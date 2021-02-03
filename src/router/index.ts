@@ -2,7 +2,7 @@ import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 import Layout from '@/layout/index.vue';
 import menuMultilevel from "@/router/menuMultilevel";
 import {Component} from "@vue/runtime-core";
-
+// import {FontColorsOutlined} from "@ant-design/icons-vue";
 export const constantRoutes = [
     {
         path: '/login',
@@ -23,8 +23,22 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
                 name: 'Dashboard',
                 meta: {
                     title: '首页',
-                    icon: 'dashboard',
                     affix: true //在tags是否一直悬挂不被关闭
+                }
+            }
+        ],
+    },
+    {
+        path: '/icon',
+        component: (Layout as unknown as Component),
+        children: [
+            {
+                path: '',
+                component: () => import('@/views/icon/index.vue'),
+                name: 'icon',
+                meta: {
+                    title: '字体图标',
+                    icon: 'ok-icon-font-colors'
                 }
             }
         ],

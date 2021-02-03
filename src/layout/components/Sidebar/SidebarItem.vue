@@ -5,7 +5,7 @@
     <a-menu-item v-if="onlyOneChild.meta" :key="resolvePath(onlyOneChild.path)">
       <app-link :to="resolvePath(onlyOneChild.path)" @click="headerAddTag(onlyOneChild)">
         <span>
-          <ok-icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></ok-icon>
+          <ok-icon v-if="onlyOneChild.meta && onlyOneChild.meta.icon" :type="onlyOneChild.meta.icon"></ok-icon>
           <smile-outlined v-else/>
           <span>{{ onlyOneChild.meta.title }}</span>
         </span>
@@ -17,7 +17,9 @@
     <template #title>
       <span>
         <ok-icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></ok-icon>
-        <smile-outlined v-else/>
+        <ok-icon v-else type="ok-icon-round_favor_fill"/>
+<!--        <smile-outlined v-else/>-->
+<!--        {{item.meta.icon}}-->
         <span>{{ item.meta.title }}</span>
       </span>
     </template>

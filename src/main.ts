@@ -9,12 +9,18 @@ import {createFromIconfontCN} from '@ant-design/icons-vue'
 import {Component} from "@vue/runtime-core";
 
 const OkIcon: Component = createFromIconfontCN({
-    scriptUrl: 'https://at.alicdn.com/t/font_2062608_6ygzpk3zrqf.js', // 在 iconfont.cn 上生成
+    scriptUrl: 'https://at.alicdn.com/t/font_1735284_ldkw1jlgdt.js', // 在 https://www.iconfont.cn/ 上生成
 }) as Component;
 
 const app = createApp(App as unknown as Component);
+/**设置全局工具类 Start*/
 app.config.globalProperties.$http = http;//网络请求
+/**设置全局工具类 End*/
+
 app.component('OkIcon', OkIcon);
+
+
+
 app.use(router)
     .use(store)
     .use(andt);

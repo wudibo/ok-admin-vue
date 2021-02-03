@@ -48,6 +48,88 @@ body {
   border-width: 1px
 }
 
+/**鼠标手势*/
+.cursor {
+  cursor: pointer;
+}
+
+.cursor-auto {
+  cursor: auto !important;
+}
+
+/**定位*/
+.position-fixed {
+  position: fixed;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-static {
+  position: static;
+}
+
+/**转换*/
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/**超出显示省略号*/
+.ellip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellip2, .ellip3, .ellip4, .ellip5, .ellip6, .ellip7 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.ellip2 {
+  -webkit-line-clamp: 2;
+}
+
+.ellip3 {
+  -webkit-line-clamp: 3;
+}
+
+.ellip4 {
+  -webkit-line-clamp: 4;
+}
+
+.ellip5 {
+  -webkit-line-clamp: 5;
+}
+
+.ellip6 {
+  -webkit-line-clamp: 6;
+}
+
+.ellip7 {
+  -webkit-line-clamp: 7;
+}
+
 /**flex布局*/
 .flex {
   display: flex;
@@ -718,8 +800,6 @@ body {
 }
 
 
-
-
 /**字体大小*/
 .font-bold {
   font-weight: bold;
@@ -827,7 +907,21 @@ body {
   font-size: 60px;
 }
 
-
+.box-shadow {
+  .boxShadow()
+}
+.box-shadow-6 {
+  .boxShadow(6)
+}
+.box-shadow-8 {
+  .boxShadow(8)
+}
+.box-shadow-10 {
+  .boxShadow(10)
+}
+.box-shadow-12 {
+  .boxShadow(12)
+}
 
 
 
