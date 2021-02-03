@@ -15,7 +15,7 @@
              :sm="12" :md="6"
              :lg="3">
         <div @click="handleCopy(item)" class="box-shadow font-cont padding-top-sm padding-bottom-5">
-          <ok-icon class="icon" :type="iconfont.font_family + item.font_class"></ok-icon>
+          <ok-icon class="icon" :type="iconfont.css_prefix_text + item.font_class"></ok-icon>
           <div class="font-name ellip2">{{ iconfont.font_family + item.font_class }}</div>
         </div>
       </a-col>
@@ -51,7 +51,7 @@ export default {
 
     const methods = {
       handleCopy(item: any) {
-        const ok_icon = `<ok-icon type="${iconfont.font_family + item.font_class}"></ok-icon>`;
+        const ok_icon = `<ok-icon type="${iconfont.css_prefix_text + item.font_class}"></ok-icon>`;
         copy(ok_icon) ? message.success('已复制：' + ok_icon) : message.error('复制失败');
       }
     }
