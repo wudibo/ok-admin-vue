@@ -9,7 +9,7 @@ import {createFromIconfontCN} from '@ant-design/icons-vue'
 import {Component} from "@vue/runtime-core";
 
 const OkIcon: Component = createFromIconfontCN({
-    scriptUrl: 'https://at.alicdn.com/t/font_1735284_ldkw1jlgdt.js', // 在 https://www.iconfont.cn/ 上生成
+    scriptUrl: 'https://at.alicdn.com/t/font_1735284_9c3dv0ukvde.js', // 在 https://www.iconfont.cn/ 上生成
 }) as Component;
 
 const app = createApp(App as unknown as Component);

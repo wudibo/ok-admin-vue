@@ -1,8 +1,8 @@
 {
   "id": "1735284",
   "name": "okadmin",
-  "font_family": "ok-icon-",
-  "css_prefix_text": "ok-icon",
+  "font_family": "ok-icon",
+  "css_prefix_text": "ok-icon-",
   "description": "okadmin",
   "glyphs": [
     {
