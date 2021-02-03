@@ -41,8 +41,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../../assets/css/variable';
-
 .navbar {
   background: @white-color;
   height: 64px;
@@ -54,7 +52,7 @@ export default {
 
   .trigger, .outlined {
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     transition: color 0.3s;
 
@@ -64,7 +62,7 @@ export default {
   }
 
   .outlined {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .breadcrumb {

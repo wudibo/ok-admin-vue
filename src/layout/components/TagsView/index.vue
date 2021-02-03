@@ -81,8 +81,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../../../assets/css/variable";
-
 .tags-view {
   display: flex;
   align-items: center;

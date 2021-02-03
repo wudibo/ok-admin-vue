@@ -1,7 +1,20 @@
-// const path = require("path");
+const path = require("path");
 // const productionGzipExtensions = ['js', 'css'];
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const CompressionWebpackPlugin = require('compression-webpack-plugin');
+
+//全局less变量，混入
+function addStyleResource(rule) {
+	rule.use('style-resource')
+		.loader('style-resources-loader')
+		.options({
+			// 需要引入的公共文件
+			patterns: [
+				path.resolve(__dirname, './src/assets/css/mixins.less'),
+				path.resolve(__dirname, './src/assets/css/variables.less')
+			]
+		})
+}
 
 module.exports = {
 	publicPath: process.env.NODE_ENV === 'getee' ? '/ok-admin-vue' : '/',
@@ -21,27 +34,28 @@ module.exports = {
 		overlay: true,
 		historyApiFallback: true
 	},
-
+	chainWebpack: config => {
+		const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+		types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
+	},
 
 	configureWebpack: config => {
 		const _config = {};
-	// 	/**打包压缩gzip*/
-	// 	const _config = {
-	// 		plugins: [
-	// 			new CompressionWebpackPlugin({
-	// 				filename: '[path].gzip[query]',   // 提示compression-webpack-plugin@2.0.0的话filename改为asset
-	// 				algorithm: 'gzip',
-	// 				test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-	// 				threshold: 5120, //文件超过5kb进行压缩（只处理比这个值大的资源。单位按字节(byte)计算）
-	// 				minRatio: 0.8  //只有压缩率比这个值小的资源才会被处理
-	// 			})
-	// 		]
-	// 	};
-	// 	//不是开发环境的时候使用的cdn
+		// 	/**打包压缩gzip*/
+		// 	const _config = {
+		// 		plugins: [
+		// 			new CompressionWebpackPlugin({
+		// 				filename: '[path].gzip[query]',   // 提示compression-webpack-plugin@2.0.0的话filename改为asset
+		// 				algorithm: 'gzip',
+		// 				test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+		// 				threshold: 5120, //文件超过5kb进行压缩（只处理比这个值大的资源。单位按字节(byte)计算）
+		// 				minRatio: 0.8  //只有压缩率比这个值小的资源才会被处理
+		// 			})
+		// 		]
+		// 	};
+		// 	//不是开发环境的时候使用的cdn
 		if (process.env.NODE_ENV !== 'development') {
-			_config.externals = {
-
-			};
+			_config.externals = {};
 		}
 		/*
 			'vue': 'Vue',

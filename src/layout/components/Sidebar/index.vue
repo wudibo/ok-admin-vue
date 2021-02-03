@@ -79,8 +79,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../../../assets/css/variable";
-
 .sidebar {
   position: relative;
   z-index: 99;

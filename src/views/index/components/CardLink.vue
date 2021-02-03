@@ -1,11 +1,9 @@
 <template>
   <a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 24}">
     <a-col v-for="item in 8" :key='item' :xs="3" :sm="3" :md="3" :lg="3">
-      <div class="padding-5">
-        <div class="bg-white link-cont">
-          <user-outlined class="text-f24" :theme="'filled'"/>
-          <div class="padding-top-xs">用户{{ item }}</div>
-        </div>
+      <div class="bg-white link-cont">
+        <user-outlined class="text-f24" :theme="'filled'"/>
+        <div class="padding-top-xs">用户{{ item }}</div>
       </div>
     </a-col>
   </a-row>
@@ -16,7 +14,7 @@ import {onMounted} from 'vue'
 import {UserOutlined} from '@ant-design/icons-vue';
 
 export default {
-  name: 'NavLink',
+  name: 'CardLink',
   components: {UserOutlined},
   setup() {
     onMounted(function () {
@@ -33,13 +31,13 @@ export default {
   color: #1890ff;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: all .2s ease-in-out;
+  transition: all .2s;
   border-radius: 4px;
   padding: 20px;
 
   &:hover {
     border-color: #eee;
-    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    .boxShadow();
   }
 }
 </style>

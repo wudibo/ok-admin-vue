@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../../assets/css/variable";
-
 .page {
   padding: 20px;
 }
