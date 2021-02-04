@@ -2,6 +2,7 @@
   <div class="page">
     <cards class="padding-xs-tb"/>
     <card-link class="padding-xs-tb"></card-link>
+    <visits class="padding-xs-tb"></visits>
     <div class="padding-xs-tb">
       <div class="padding-xs-tb test">成功</div>
       <!--      <hello-test>按钮</hello-test>-->
@@ -13,6 +14,7 @@
 import {onMounted, ref, reactive, SetupContext, getCurrentInstance} from 'vue'
 import Cards from "@/views/index/components/Cards.vue";
 import CardLink from "@/views/index/components/CardLink.vue";
+import Visits from "@/views/index/components/Visits.vue";
 
 // import HelloTest from "@/views/index/components/HelloTest.tsx";
 
@@ -21,7 +23,7 @@ interface Data {
 }
 
 export default {
-  components: {CardLink, Cards},
+  components: {CardLink, Cards, Visits},
   setup(props: Data, context: SetupContext) {
 
     const {proxy} = getCurrentInstance() as any,

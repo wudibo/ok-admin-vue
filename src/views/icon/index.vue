@@ -14,7 +14,7 @@
       <a-col v-for="item in iconArr[isLineIcon?'line':'fill']" class="padding-tb-xs" :key='item.icon_id' :xs="12"
              :sm="12" :md="6"
              :lg="3">
-        <div @click="handleCopy(item)" class="box-shadow font-cont padding-top-sm padding-bottom-5">
+        <div @click="handleCopy(item)" class="font-cont padding-top-sm padding-bottom-5">
           <ok-icon class="icon" :type="iconfont.css_prefix_text + item.font_class"></ok-icon>
           <div class="font-name ellip2">{{ iconfont.css_prefix_text + item.font_class }}</div>
         </div>
@@ -74,11 +74,12 @@ export default {
   align-items: center;
   flex-direction: column;
   font-size: 36px;
-
+  background: white;
+  border-radius: 4px;
   &:hover {
     background: @main-color;
     color: white;
-
+    .boxShadow(4, @main-color, @main-color);
     .icon {
       transform: scale(1.5);
     }
