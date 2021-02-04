@@ -1,10 +1,10 @@
 <template>
   <div class="padding-sm padding-bottom-xs">
     <div class="box-shadow padding-sm">
-      <div class="padding-bottom-sm text-f16">总共有{{ iconfont.glyphs.length }}个字体图标</div>
+      <div class="padding-bottom-xs text-f16">总共有{{ iconfont.glyphs.length }}个字体图标</div>
       <a-button-group>
-        <a-button @click="isLineIcon = true" :type="isLineIcon?'primary':''">线性图标({{ iconArr.line.length }})</a-button>
-        <a-button @click="isLineIcon = false" :type="isLineIcon?'':'primary'">实体图标({{ iconArr.fill.length }})</a-button>
+        <a-button size="large" @click="isLineIcon = true" :type="isLineIcon?'primary':''">线性图标({{ iconArr.line.length }})</a-button>
+        <a-button size="large" @click="isLineIcon = false" :type="isLineIcon?'':'primary'">面性图标({{ iconArr.fill.length }})</a-button>
       </a-button-group>
     </div>
   </div>
@@ -16,7 +16,7 @@
              :lg="3">
         <div @click="handleCopy(item)" class="box-shadow font-cont padding-top-sm padding-bottom-5">
           <ok-icon class="icon" :type="iconfont.css_prefix_text + item.font_class"></ok-icon>
-          <div class="font-name ellip2">{{ iconfont.font_family + item.font_class }}</div>
+          <div class="font-name ellip2">{{ iconfont.css_prefix_text + item.font_class }}</div>
         </div>
       </a-col>
     </a-row>
@@ -85,7 +85,6 @@ export default {
   }
 
   .icon {
-    color: #333333;
     transition: transform .5s;
   }
 
