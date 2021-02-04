@@ -1,13 +1,11 @@
 import axios, {AxiosRequestConfig} from 'axios';
 
 interface Data {
-    [key: string]: unknown
+    [key: string]: unknown;
 }
 
 axios.defaults.baseURL = process.env.VUE_APP_BASEURL;
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-
-
 
 const isData = ['POST', 'PUT', 'PATCH'];
 const http = {
