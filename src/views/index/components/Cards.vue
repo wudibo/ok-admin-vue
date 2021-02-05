@@ -97,9 +97,9 @@ const cardChartFun = () => {
   const elementId = 'cardChart';
   clearElement(elementId);
   const data = [
-    { year: 'Mon', value: 102 },
+    { year: 'Mon', value: 132 },
     { year: 'Tue', value: 161 },
-    { year: 'Wed', value: 159 },
+    { year: 'Wed', value: 359 },
     { year: 'Thu', value: 174 },
     { year: 'Fri', value: 270 },
     { year: 'Sat', value: 260 },
@@ -126,8 +126,8 @@ const cardChartFun = () => {
   });
   chart.axis(false);
 
-  chart.area().position('year*value');
-  chart.line().position('year*value');
+  chart.area().position('year*value').shape('smooth');  //曲线背景 shape('smooth')
+  chart.line().position('year*value').shape('smooth'); //曲线路径 shape('smooth')
   chart.theme({ "styleSheet": { "brandColor": "#9DF5CA", "paletteQualitative10": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"], "paletteQualitative20": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"] } });
   chart.render();
 }

@@ -81,4 +81,5 @@ const http = {
     },
     request: axios.request
 }
+
 export default http;

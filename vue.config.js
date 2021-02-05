@@ -1,3 +1,5 @@
+// 图表参考：http://www.popodv.com/list.html?render=canvas
+
 const path = require("path");
 // const productionGzipExtensions = ['js', 'css'];
 // eslint-disable-next-line @typescript-eslint/no-var-requires

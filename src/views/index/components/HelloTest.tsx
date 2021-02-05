@@ -20,9 +20,9 @@ const HelloTest = defineComponent({
         return () => (
             <div>
                 <a-menu
-                    openKeys="{options.openKeys}"
-                    selectedKeys="{options.selectedKeys}"
-                    inline-collapsed="{options.collapsed}"
+                    openKeys={options.openKeys}
+                    selectedKeys={options.selectedKeys}
+                    inline-collapsed={options.collapsed}
                     mode="inline"
                     theme="dark">
                     <a-menu-item key="1">
