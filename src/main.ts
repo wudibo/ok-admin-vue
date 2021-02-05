@@ -19,8 +19,6 @@ app.config.globalProperties.$http = http;//网络请求
 
 app.component('OkIcon', OkIcon);
 
-
-
 app.use(router)
     .use(store)
     .use(andt);

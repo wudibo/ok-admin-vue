@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <cards class="padding-xs-tb"/>
+    <cards class="padding-xs-tb" />
     <card-link class="padding-xs-tb"></card-link>
     <visits class="padding-xs-tb"></visits>
     <div class="padding-xs-tb">
@@ -11,7 +11,13 @@
 </template>
 
 <script lang='ts'>
-import {onMounted, ref, reactive, SetupContext, getCurrentInstance} from 'vue'
+import {
+  onMounted,
+  ref,
+  reactive,
+  SetupContext,
+  getCurrentInstance,
+} from "vue";
 import Cards from "@/views/index/components/Cards.vue";
 import CardLink from "@/views/index/components/CardLink.vue";
 import Visits from "@/views/index/components/Visits.vue";
@@ -23,25 +29,31 @@ interface Data {
 }
 
 export default {
-  components: {CardLink, Cards, Visits},
+  components: { CardLink, Cards, Visits },
   setup(props: Data, context: SetupContext) {
-
-    const {proxy} = getCurrentInstance() as any,
-        readersNumber = ref(0),
-        book = reactive({
-          title: 'Vue 3 Guide',
-          food: 'bar'
-        })
+    const { proxy } = getCurrentInstance() as any,
+      readersNumber = ref(0),
+      book = reactive({
+        title: "Vue 3 Guide",
+        food: "bar",
+      });
     onMounted(() => {
-      console.log(proxy.$http);
+      proxy.$http
+        .get("http://rap2api.taobao.org/app/mock/233041/user/list", {
+          page: 1,
+          limit: 7,
+        })
+        .then((res: any) => {
+          console.log(res);
+        });
     });
 
     return {
       readersNumber,
-      book
-    }
-  }
-}
+      book,
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -57,5 +69,4 @@ export default {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 </style>

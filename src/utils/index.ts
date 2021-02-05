@@ -1,4 +1,4 @@
-// 判断客户端环境
+// 判断是否是PC端环境
 export const isPCFun = function (): boolean {
     const userAgentInfo = navigator.userAgent;
     const Agents = ["Android", "iPhone",
@@ -44,9 +44,8 @@ export const dateFormat = function (timestamp: number | string | null, format = 
     return format;
 };
 
-
 /**
- * 节流函数
+ * 函数节流
  * @param cb  执行的回调
  * @param wait      节流毫秒时间默认节流300毫秒触发
  * @returns {function(...[*]=)}
