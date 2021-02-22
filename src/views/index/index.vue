@@ -4,7 +4,7 @@
     <card-link class="padding-xs-tb"></card-link>
     <visits class="padding-xs-tb"></visits>
     <div class="padding-xs-tb">
-      <div class="padding-xs-tb test">成功</div>
+      <!-- <div class="padding-xs-tb test">成功</div> -->
       <!--      <hello-test>按钮</hello-test>-->
     </div>
   </div>

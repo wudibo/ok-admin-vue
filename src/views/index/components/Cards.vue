@@ -85,7 +85,7 @@
 <script lang='ts'>
 import {onMounted} from 'vue'
 import { Chart } from '@antv/g2';
-
+import {randomNum} from '@/utils/index';
 const clearElement = (elementId: string) => {
   const element = document.getElementById(elementId);
   if(element!== null){
@@ -97,13 +97,13 @@ const cardChartFun = () => {
   const elementId = 'cardChart';
   clearElement(elementId);
   const data = [
-    { year: 'Mon', value: 132 },
-    { year: 'Tue', value: 161 },
-    { year: 'Wed', value: 359 },
-    { year: 'Thu', value: 174 },
-    { year: 'Fri', value: 270 },
-    { year: 'Sat', value: 260 },
-    { year: 'Sun', value: 319 },
+    { year: 'Mon', value: randomNum(100, 300) },
+    { year: 'Tue', value: randomNum(100, 300) },
+    { year: 'Wed', value: randomNum(100, 300) },
+    { year: 'Thu', value: randomNum(100, 300) },
+    { year: 'Fri', value: randomNum(100, 300) },
+    { year: 'Sat', value: randomNum(100, 300) },
+    { year: 'Sun', value: randomNum(100, 300) },
   ];
   const chart = new Chart({
     container: elementId,

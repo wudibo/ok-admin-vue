@@ -85,9 +85,20 @@ export const debounce = function <K>(cb: Function, wait?: number) {
     }
 };
 
+/**
+ * 随机指定范围的整数
+ * @param min 开始值（包含）
+ * @param max 结束值（不包含）
+ */
+export const randomNum = (min = 3000, max = 15000): number => {
+    const num = Math.random() * (max - min) + min;
+    return parseInt(num + "");
+  };
+
 export default {
     isPCFun,
     throttle,
     debounce,
+    randomNum,
     dateFormat
 };

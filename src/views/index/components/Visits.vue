@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false">
+  <a-card class="border-radius" :bordered="false">
     <template #title>访问量</template>
     <a-row :gutter="{ xs: 8, sm: 16, md: 24 }">
       <a-col :xs="24" :sm="16" :md="16" :lg="16" class="padding-tb-5">
@@ -16,11 +16,8 @@
 // originData
 import {onMounted} from "vue";
 import {Chart, DIRECTION} from "@antv/g2";
+import {randomNum} from '@/utils/index';
 
-const randomNum = (min = 3000, max = 15000): number => {
-  const num = Math.random() * (max - min) + min;
-  return parseInt(num + "");
-};
 const clearElement = (elementId: string) => {
   const element = document.getElementById(elementId);
   if (element !== null) {
@@ -65,9 +62,9 @@ const cardChartFun = () => {
   chart.coordinate({});
   chart.legend(false);
   chart.interval()
-      .style('', () => {
+      .style('', () => { /**设置图表样式 */
         return {
-          fill: 'l(270) 0:#1596EC 0.5:#3DB3F7 1:#69CDFF',
+          fill: 'l(270) 0:#1596EC 0.5:#3DB3F7 1:#69CDFF', //填充色为渐变色(l代表线性渐变)
         }
       })
       .position("type*value");
@@ -85,4 +82,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.border-radius{
+  border-radius: 4px;
+}
 </style>
