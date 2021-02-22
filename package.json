@@ -3,6 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "start": "node start.js",
+        "start-gitee": "cross-env NODE_ENV=gitee node start.js",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "build-gitee": "cross-env NODE_ENV=gitee vue-cli-service build",
