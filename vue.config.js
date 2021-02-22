@@ -20,7 +20,7 @@ function addStyleResource(rule) {
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 module.exports = {
     publicPath: process.env.NODE_ENV === 'gitee' ? '/ok-admin-vue' : '/',
-    outputDir: 'dist', // 构建输出目录
+    outputDir: process.env.NODE_ENV === 'gitee' ? 'ok-admin-vue' : 'dist', // 构建输出目录
     assetsDir: 'assets', // 静态资源目录 (js, css, img, fonts)
     lintOnSave: true, //是否开启eslint代码检查
     runtimeCompiler: true, // 运行时版本是否需要编译
