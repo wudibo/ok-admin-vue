@@ -18,8 +18,8 @@
       <span>
         <ok-icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></ok-icon>
         <ok-icon v-else type="ok-icon-round_favor_fill"/>
-<!--        <smile-outlined v-else/>-->
-<!--        {{item.meta.icon}}-->
+        <!--        <smile-outlined v-else/>-->
+        <!--        {{item.meta.icon}}-->
         <span>{{ item.meta.title }}</span>
       </span>
     </template>
@@ -32,10 +32,10 @@
   </a-sub-menu>
 </template>
 
-<script type="es6">
-// const path = require('path');
-import path from "path";
-import AppLink from '../AppLink.vue'
+<script type="ts">
+import path from '@/utils/path';
+import AppLink from '../AppLink.vue';
+
 import {
   SmileOutlined,
 } from '@ant-design/icons-vue';
@@ -122,6 +122,7 @@ export default {
       if (this.headerExternal(this.basePath)) {
         return this.basePath
       }
+      // console.log(path.resolve(this.basePath, routePath));
       return path.resolve(this.basePath, routePath);
     },
     headerExternal(path) {

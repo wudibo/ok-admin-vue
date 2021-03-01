@@ -9,7 +9,7 @@
           <div class="num">25,848</div>
 
           <div class="card-data">
-            <a-progress :percent="30" />
+            <a-progress :percent="30"/>
           </div>
 
           <a-divider style="margin: 12px 0"/>
@@ -29,7 +29,9 @@
         <div class="card-cont">
           <div class="num">65,848</div>
 
-          <div class="card-data"><div id="cardChart"></div></div>
+          <div class="card-data">
+            <div id="cardChart"></div>
+          </div>
 
           <a-divider style="margin: 12px 0"/>
           <div class="card-footer">
@@ -84,11 +86,12 @@
 
 <script lang='ts'>
 import {onMounted} from 'vue'
-import { Chart } from '@antv/g2';
+import {Chart} from '@antv/g2';
 import {randomNum} from '@/utils/index';
+
 const clearElement = (elementId: string) => {
   const element = document.getElementById(elementId);
-  if(element!== null){
+  if (element !== null) {
     element.innerHTML = "";
   }
 }
@@ -97,13 +100,13 @@ const cardChartFun = () => {
   const elementId = 'cardChart';
   clearElement(elementId);
   const data = [
-    { year: 'Mon', value: randomNum(100, 300) },
-    { year: 'Tue', value: randomNum(100, 300) },
-    { year: 'Wed', value: randomNum(100, 300) },
-    { year: 'Thu', value: randomNum(100, 300) },
-    { year: 'Fri', value: randomNum(100, 300) },
-    { year: 'Sat', value: randomNum(100, 300) },
-    { year: 'Sun', value: randomNum(100, 300) },
+    {year: 'Mon', value: randomNum(100, 300)},
+    {year: 'Tue', value: randomNum(100, 300)},
+    {year: 'Wed', value: randomNum(100, 300)},
+    {year: 'Thu', value: randomNum(100, 300)},
+    {year: 'Fri', value: randomNum(100, 300)},
+    {year: 'Sat', value: randomNum(100, 300)},
+    {year: 'Sun', value: randomNum(100, 300)},
   ];
   const chart = new Chart({
     container: elementId,
@@ -128,38 +131,47 @@ const cardChartFun = () => {
 
   chart.area().position('year*value').shape('smooth');  //曲线背景 shape('smooth')
   chart.line().position('year*value').shape('smooth'); //曲线路径 shape('smooth')
-  chart.theme({ "styleSheet": { "brandColor": "#9DF5CA", "paletteQualitative10": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"], "paletteQualitative20": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"] } });
+  chart.theme({
+    "styleSheet": {
+      "brandColor": "#9DF5CA",
+      "paletteQualitative10": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"],
+      "paletteQualitative20": ["#9DF5CA", "#61DDAA", "#42C090", "#19A576", "#008A5D", "#006F45", "#00562F", "#003E19", "#002800"]
+    }
+  });
   chart.render();
 }
 
 export default {
   name: 'Cards',
   setup() {
-    onMounted(function (){
+    onMounted(function () {
       cardChartFun();
     })
-    return {
-    }
+    return {}
   }
 }
 </script>
 
 <style lang="less" scoped>
-.padding-tb-5{
+.padding-tb-5 {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.card-box{
+
+.card-box {
   border-radius: 4px;
 }
-.card-cont{
-  .num{
+
+.card-cont {
+  .num {
     font-size: 30px;
   }
-  .card-data{
+
+  .card-data {
     height: 35px;
   }
-  .card-footer{
+
+  .card-footer {
     display: flex;
     justify-content: space-between;
   }

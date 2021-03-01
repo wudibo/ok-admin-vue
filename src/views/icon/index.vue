@@ -6,16 +6,18 @@
       </div>
       <a-button-group>
         <a-button
-          size="large"
-          @click="isLineIcon = true"
-          :type="isLineIcon ? 'primary' : ''"
-          >线性图标({{ iconArr.line.length }})</a-button
+            size="large"
+            @click="isLineIcon = true"
+            :type="isLineIcon ? 'primary' : ''"
+        >线性图标({{ iconArr.line.length }})
+        </a-button
         >
         <a-button
-          size="large"
-          @click="isLineIcon = false"
-          :type="isLineIcon ? '' : 'primary'"
-          >面性图标({{ iconArr.fill.length }})</a-button
+            size="large"
+            @click="isLineIcon = false"
+            :type="isLineIcon ? '' : 'primary'"
+        >面性图标({{ iconArr.fill.length }})
+        </a-button
         >
       </a-button-group>
     </div>
@@ -24,21 +26,21 @@
   <div class="padding-lr-sm">
     <a-row :gutter="{ xs: 8, sm: 16, md: 24, lg: 24 }">
       <a-col
-        v-for="item in iconArr[isLineIcon ? 'line' : 'fill']"
-        class="padding-tb-xs"
-        :key="item.icon_id"
-        :xs="12"
-        :sm="12"
-        :md="6"
-        :lg="3"
+          v-for="item in iconArr[isLineIcon ? 'line' : 'fill']"
+          class="padding-tb-xs"
+          :key="item.icon_id"
+          :xs="12"
+          :sm="12"
+          :md="6"
+          :lg="3"
       >
         <div
-          @click="handleCopy(item)"
-          class="font-cont padding-top-sm padding-bottom-5"
+            @click="handleCopy(item)"
+            class="font-cont padding-top-sm padding-bottom-5"
         >
           <ok-icon
-            class="icon"
-            :type="iconfont.css_prefix_text + item.font_class"
+              class="icon"
+              :type="iconfont.css_prefix_text + item.font_class"
           ></ok-icon>
           <div class="font-name ellip2">
             {{ iconfont.css_prefix_text + item.font_class }}
@@ -50,12 +52,11 @@
 </template>
 
 <script lang='ts'>
-import { onMounted, getCurrentInstance, ref, reactive,  } from "vue";
-import { message } from "ant-design-vue";
+import {onMounted, getCurrentInstance, ref, reactive,} from "vue";
+import {message} from "ant-design-vue";
 import copy from "copy-to-clipboard";
-//watchEffect
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const iconfont = require("@/assets/font/iconfont.json");
+import iconfont from '@/assets/font/iconfont.json';
+
 export default {
   setup() {
     const isLineIcon = ref(true);
@@ -72,17 +73,17 @@ export default {
     });
 
     onMounted(() => {
-      
+
     });
 
     const methods = {
       handleCopy(item: any) {
         const ok_icon = `<ok-icon type="${
-          iconfont.css_prefix_text + item.font_class
+            iconfont.css_prefix_text + item.font_class
         }"></ok-icon>`;
         copy(ok_icon)
-          ? message.success("已复制：" + ok_icon)
-          : message.error("复制失败");
+            ? message.success("已复制：" + ok_icon)
+            : message.error("复制失败");
       },
     };
 
@@ -106,10 +107,12 @@ export default {
   font-size: 36px;
   background: white;
   border-radius: 4px;
+
   &:hover {
     background: @main-color;
     color: white;
     .boxShadow(4, @main-color, @main-color);
+
     .icon {
       transform: scale(1.5);
     }

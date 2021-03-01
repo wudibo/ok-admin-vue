@@ -28,7 +28,7 @@ export default {
 <style lang="less" scoped>
 .link-cont {
   text-align: center;
-  color: #1890ff;
+  color: @main-color;
   cursor: pointer;
   border: 1px solid transparent;
   transition: all .2s;

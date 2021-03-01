@@ -16,12 +16,12 @@
 </template>
 
 <script lang='ts'>
-import {ref, provide, nextTick,getCurrentInstance} from 'vue'
+import {ref, provide, nextTick, getCurrentInstance} from 'vue'
 import {mapGetters, mapMutations} from "vuex";
 import Navbar from './components/Navbar/index.vue';
 import Sidebar from './components/Sidebar/index.vue';
 import TagsView from './components/TagsView/index.vue';
-import {isPCFun} from '@/utils/index.ts';
+import {isPCFun} from '@/utils/index';
 
 const ispc = isPCFun();
 export default {

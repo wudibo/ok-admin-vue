@@ -1,22 +1,14 @@
-import { createStore } from 'vuex'
-
-const modulesFiles = require.context('./modules', true, /\.ts$/)
-
-const modules = modulesFiles.keys().reduce((modules: any, modulePath) => {
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1');
-  const value = modulesFiles(modulePath);
-  modules[moduleName] = value.default;
-  return modules;
-}, {})
+import {createStore} from 'vuex'
+import admin from "./modules/admin";
 
 export default createStore({
-  modules,
-  /*state: {
+  modules: {
+    'admin': admin
+  },
+  state: {
   },
   mutations: {
   },
   actions: {
-  },
-  modules: {
-  }*/
+  }
 })
