@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "ok-admin-vue",
   "version": "0.1.0",
   "scripts": {
     "start": "node start.js",
