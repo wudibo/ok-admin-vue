@@ -1,26 +1,70 @@
-# Vue 3 + Typescript + Vite
+<p align="center">
+    <img src="https://images.gitee.com/uploads/images/2020/0105/013757_3dfb160a_1152471.png"/>
+    <p align="center">
+        一个很赞的，扁平化风格的，响应式布局的通用后台模版解决方案，旨为后端程序员减压！
+    </p>
+    <p align="center">
+        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.0-brightgreen">
+        <img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-brightgreen">
+        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-%3E%3D2.0.0_rc.1-brightgreen">
+        <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
+    </p>
+    <p align="center">
+        <img src="https://img.shields.io/badge/axios-%3E%3D0.21.0-brightgreen">
+        <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.4-brightgreen">
+        <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
+    </p>
+</p>
+<h3 align="center">
+    :apple: :lemon: :tangerine: :pear: :banana: :pineapple: :cherries: 
+    :cake: :grapes: :watermelon: :strawberry: :corn: :peach: :melon: :chestnut: 
+</h3>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+### Project setup
+```
+yarn install
+```
 
-## Recommended IDE Setup
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+### Compiles and minifies for production
+```
+yarn build
+```
 
-### If Using `<script setup>`
+### Run your unit tests
+```
+yarn test:unit
+```
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+### Lints and fixes files
+```
+yarn lint
+```
 
-## Type Support For `.vue` Imports in TS
+### QQ群交流
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+964222534
 
-### If Using Volar
+### 环境依赖
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+| 依赖包 | 版本 |
+|----------|----------|
+| vue | 3.0.4 |
+| vuex | 4.0.0-rc.1 |
+| vue-router | 4.0.1 |
+| axios | 0.21.0 |
+| ant-design-vue | ^2.0.1 |
+| less | ^2.7.0 |
+| less-loader | ^6.2.0 |
 
-### If Using Vetur
+### 开发环境
 
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette 5. Search and run "Select TypeScript version" -> "Use workspace version"
+| 依赖包 | 版本 |
+|----------|----------|
+| vite | ^2.0.1 |
+| npm | 6.9.0 |
+| yarn | 1.22.4 |
