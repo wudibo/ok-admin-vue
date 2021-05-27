@@ -54,7 +54,7 @@ const http = {
   _requestHandler(method: AxiosRequestConfig['method'] = 'get', url = '', data?: Data, config?: Data) {
     data = data || {};
     config = config || {};
-    if (isData.indexOf(method) >= 0) {
+    if (isData.includes(method)) {
       config.data = data;
     } else {
       config.params = data;
