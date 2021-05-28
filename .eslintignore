@@ -1,6 +1,0 @@
-build/*.js
-src/store/modules/admin.ts
-src/assets
-public
-dist
-tests
