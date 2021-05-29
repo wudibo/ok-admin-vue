@@ -10,7 +10,7 @@
     "@mdi/font": "5.9.55",
     "roboto-fontface": "*",
     "vue": "^3.0.5",
-    "vuetify": "^3.0.0-alpha.0"
+    "vuetify": "^3.0.0-alpha.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.2",

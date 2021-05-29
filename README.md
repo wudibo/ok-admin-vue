@@ -6,7 +6,7 @@
     <p align="center">
         <img src="https://img.shields.io/badge/vue-%3E%3D3.0.0-brightgreen">
         <img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-brightgreen">
-        <img src="https://img.shields.io/badge/Ant%20Design%20Vue-%3E%3D2.0.0_rc.1-brightgreen">
+        <img src="https://img.shields.io/badge/Vuetify-%3E%3D3.0.0_alpha.5-brightgreen">
         <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
     <p align="center">
@@ -57,9 +57,9 @@ yarn lint
 | vuex | 4.0.0-rc.1 |
 | vue-router | 4.0.1 |
 | axios | 0.21.0 |
-| ant-design-vue | ^2.0.1 |
-| less | ^2.7.0 |
-| less-loader | ^6.2.0 |
+| vuetify | ^3.0.0-alpha.0 |
+| sass | ^1.32.0 |
+| sass-loader | ^10.0.0 |
 
 ### 开发环境
 
