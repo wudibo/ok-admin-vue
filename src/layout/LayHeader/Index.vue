@@ -8,12 +8,16 @@
       <n-switch v-model:value="layConfig.sidebarInverted"/>
       inverted
     </div>
+    <div class="padding-xs">
+      <button @click="handleRequest">点击请求</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent, inject} from 'vue'
 import {NSwitch} from 'naive-ui'
+import http from "../../utils/http";
 
 export default defineComponent({
   name: "LayHeader",
@@ -23,17 +27,23 @@ export default defineComponent({
   setup(props, superContext) {
     const layConfig: any = inject('layConfig');
     return {
-      layConfig
+      layConfig,
+      handleRequest: () => {
+        http.get('/user/person').then(res => {
+          console.log(res)
+        })
+      }
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-.lay-header{
+.lay-header {
   display: flex;
 }
-.padding-xs{
+
+.padding-xs {
   padding: 0 10px;
 }
 </style>
