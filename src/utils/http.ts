@@ -1,4 +1,5 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+
 interface Data {
   [key: string]: unknown;
 }
@@ -45,11 +46,12 @@ axios.interceptors.response.use(function (response: AxiosResponse) {
   });
 });
 
-const isData = ['POST', 'PUT', 'PATCH'];
+const isData: Array<AxiosRequestConfig['method']> = ['POST', 'PUT', 'PATCH'];
 const http = {
-  _requestHandler(method: AxiosRequestConfig['method'] = 'get', url = '', data?: Data, config?: Data) {
+  _requestHandler(method: AxiosRequestConfig['method'] = 'GET', url = '', data?: Data, config?: Data) {
     data = data || {};
     config = config || {};
+    method = method.toLocaleUpperCase() as AxiosRequestConfig['method']
     if (isData.includes(method)) {
       config.data = data;
     } else {
@@ -62,19 +64,19 @@ const http = {
     });
   },
   get(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('get', url, data, config);
+    return http._requestHandler('GET', url, data, config);
   },
   post(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('post', url, data, config);
+    return http._requestHandler('POST', url, data, config);
   },
   delete(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('delete', url, data, config);
+    return http._requestHandler('DELETE', url, data, config);
   },
   put(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('put', url, data, config);
+    return http._requestHandler('PUT', url, data, config);
   },
   patch(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('patch', url, data, config);
+    return http._requestHandler('PATCH', url, data, config);
   },
   request: axios.request
 }
