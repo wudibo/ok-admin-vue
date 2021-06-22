@@ -7,6 +7,7 @@ import path from 'path';
 // const dotenv = require("dotenv")
 export default defineConfig({
   plugins: [vue()],
+  base: "ok-admin-vue",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

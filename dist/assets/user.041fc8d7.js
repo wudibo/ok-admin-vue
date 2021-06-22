@@ -1,0 +1,1 @@
+import{d as a,m as s,c as e,a as o,H as d,F as r,p as t,e as f,o as l}from"./vendor.051c47cf.js";t("data-v-0d10ff14");const u={class:"foo"};f();var v=a({expose:[],setup(a){const t=s("user"),f=s("bar");return(a,s)=>(l(),e(r,null,[o("div",u,d(t.value),1),o("div",null,d(f.value),1)],64))}});v.__scopeId="data-v-0d10ff14";export default v;

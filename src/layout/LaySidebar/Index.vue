@@ -17,7 +17,10 @@
           :collapsed-width="64"
           :collapsed-icon-size="22"
           @update:value="handleUpdateValue"
+          @update:expanded-keys="menuKeys = $event"
           v-model="menuKey"
+          :default-value="menuKey"
+          :expanded-keys="menuKeys"
           :options="menuOptions"
       />
     </div>
@@ -25,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import {useRouter} from 'vue-router'
-import {inject, defineComponent} from 'vue'
+import {useRouter, useRoute} from 'vue-router'
+import {inject, ref, defineComponent} from 'vue'
 import menuOptions from "./menuOptions";
 import {NLayoutSider, NImage, NMenu, NSpace, NSwitch} from 'naive-ui'
 
@@ -40,11 +43,14 @@ export default defineComponent({
     NSwitch
   },
   setup(props, superContext) {
-    const router = useRouter();
-    const menuKey = '/home';
-    const layConfig: any = inject('layConfig');
+    const router = useRouter(),
+        route = useRoute(),
+        menuKey = ref(route.fullPath),
+        menuKeys = ref(['dance-dance-dance', 'food']),
+        layConfig: any = inject('layConfig');
     return {
       layConfig,
+      menuKeys,
       menuKey,
       menuOptions,
       getSrc: (path: string) => {
@@ -81,6 +87,7 @@ export default defineComponent({
     box-sizing: border-box;
     border-bottom: solid 1px rgb(239, 239, 245);
     transition: .25s border-bottom-color;
+
     &-inverted {
       border-color: #000000;
     }

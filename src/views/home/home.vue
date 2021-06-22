@@ -33,5 +33,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+.flex {
+  display: flex;
+  font-size: 24px;
+}
 </style>
