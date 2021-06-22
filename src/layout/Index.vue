@@ -4,7 +4,7 @@
     <!--  侧边栏   -->
     <lay-sidebar></lay-sidebar>
 
-    <n-layout position="relative" style="height: 100%;">
+    <n-layout style="height: 100%;">
       <!--  头部   -->
       <n-layout-header position="absolute"
                        style="height: 64px; padding: 24px;"

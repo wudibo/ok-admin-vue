@@ -8,6 +8,9 @@
       bordered
   >
     <div class="lay-sidebar">
+      <div class="head" :class="{'head-inverted': layConfig.sidebarInverted}">
+        <img class="img" alt="logo" src="/src/assets/head.png"/>
+      </div>
       <n-menu
           :inverted="layConfig.sidebarInverted"
           :indent="22"
@@ -25,12 +28,13 @@
 import {useRouter} from 'vue-router'
 import {inject, defineComponent} from 'vue'
 import menuOptions from "./menuOptions";
-import {NLayoutSider, NMenu, NSpace, NSwitch} from 'naive-ui'
+import {NLayoutSider, NImage, NMenu, NSpace, NSwitch} from 'naive-ui'
 
 export default defineComponent({
   name: "LaySidebar",
   components: {
     NLayoutSider,
+    NImage,
     NMenu,
     NSpace,
     NSwitch
@@ -43,7 +47,13 @@ export default defineComponent({
       layConfig,
       menuKey,
       menuOptions,
-      handleUpdateValue: (route: string) => {
+      getSrc: (path: string) => {
+        const patha = "../../assets/head.png"
+        const modules = import.meta.globEager("../../assets/head.png");
+        console.log(modules[patha].default);
+        return modules[patha].default;
+      },
+      handleUpdateValue: (route: any) => {
         router.push(route);
       }
     }
@@ -58,6 +68,26 @@ export default defineComponent({
       left: 0;
       right: 0;
       border-radius: 0
+    }
+  }
+
+  .head {
+    overflow: hidden;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: solid 1px rgb(239, 239, 245);
+    transition: .25s border-bottom-color;
+    &-inverted {
+      border-color: #000000;
+    }
+
+    .img {
+      width: 90%;
+      object-fit: scale-down;
     }
   }
 }
