@@ -100,6 +100,7 @@ export default defineComponent({
   align-items: center;
   .re-icon {
     cursor: pointer;
+    color: #333333;
     transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
       color: #36ad6a;
