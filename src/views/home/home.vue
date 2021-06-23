@@ -18,6 +18,7 @@ export default defineComponent({
     NButton
   },
   setup(props, superContext) {
+    console.log(import.meta.env)
     const obj = reactive({
       current: 1
     })
