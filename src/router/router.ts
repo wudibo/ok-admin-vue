@@ -1,6 +1,7 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
-import Layout from '@/layout/Index.vue';
+import Layout from '@/layout/index.vue';
 import {Component} from "@vue/runtime-core";
+
 
 export const asyncRoutes: Array<RouteRecordRaw> = [
   {
