@@ -9,28 +9,32 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive} from 'vue';
-import {NButton, NH2} from "naive-ui";
+import { defineComponent, reactive, onMounted } from "vue";
+import { NButton, NH2 } from "naive-ui";
 
 export default defineComponent({
+  name: "Home",
   components: {
     NH2,
     NButton
   },
   setup(props, superContext) {
-    console.log(import.meta.env)
+    console.log(import.meta.env);
     const obj = reactive({
       current: 1
-    })
+    });
     const testFun = () => {
-      obj.current = Math.random() * 1000
-    }
+      obj.current = Math.random() * 1000;
+    };
+    onMounted(() => {
+      console.log("asdf");
+    });
     return {
       obj,
       testFun
-    }
+    };
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>

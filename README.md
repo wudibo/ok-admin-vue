@@ -21,50 +21,55 @@
 </h3>
 
 ### Project setup
+
 ```
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
 
 ### Run your unit tests
+
 ```
 yarn test:unit
 ```
 
 ### Lints and fixes files
+
 ```
 yarn lint
 ```
 
-### QQ群交流
+### QQ 群交流
 
 964222534
 
 ### 环境依赖
 
-| 依赖包 | 版本 |
-|----------|----------|
-| vue | 3.0.4 |
-| vuex | 4.0.0-rc.1 |
-| vue-router | 4.0.1 |
-| axios | 0.21.0 |
-| Naive UI | ^2.13.0 |
-| sass | ^1.32.0 |
+| 依赖包      | 版本    |
+| ----------- | ------- |
+| vue         | ^3.0.5  |
+| vuex        | ^4.0.2  |
+| vue-router  | ^4.0.9  |
+| axios       | ^0.21.1 |
+| naive-ui    | ^2.13.0 |
+| sass        | ^1.32.0 |
 | sass-loader | ^10.0.0 |
 
 ### 开发环境
 
-| 依赖包 | 版本 |
-|----------|----------|
-| vite | ^2.0.1 |
-| npm | 6.9.0 |
-| yarn | 1.22.4 |
+| 依赖包 | 版本   |
+| ------ | ------ |
+| vite   | ^2.3.7 |
+| npm    | 6.9.0  |
+| yarn   | 1.22.4 |

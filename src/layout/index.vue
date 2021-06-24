@@ -15,26 +15,35 @@
       </n-layout-header>
 
       <!-- tab栏 -->
-      <n-layout-content position="absolute" style="height: 48px; top: 64px;left: 0;right:0">
+      <n-layout-content
+        position="absolute"
+        style="height: 48px; top: 64px; left: 0; right: 0"
+      >
         <lay-tab></lay-tab>
       </n-layout-content>
 
       <!--   主内容区   -->
       <n-layout-content
         position="absolute"
-        style="top: 64px; bottom: 0"
+        style="top: 112px; bottom: 0"
         :native-scrollbar="false"
-        content-style="padding: 24px;"
       >
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <transform v-if="layConfig.refresh">
+            <keep-alive>
+              <component :is="Component" v-if="$route.meta.keepAlive" />
+            </keep-alive>
+            <component :is="Component" v-if="!$route.meta.keepAlive" />
+          </transform>
+        </router-view>
       </n-layout-content>
     </n-layout>
   </n-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive } from 'vue'
-import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui'
+import { defineComponent, provide, reactive, ref } from "vue";
+import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from "naive-ui";
 import LayHeader from "./LayHeader/index.vue";
 import LaySidebar from "./LaySidebar/index.vue";
 import LayTab from "./LayTab/index.vue";
@@ -53,9 +62,13 @@ export default defineComponent({
   setup(props, superContext) {
     const layConfig = reactive({
       sidebarInverted: false,
-      collapsed: false
+      collapsed: false,
+      refresh: true
     });
     provide("layConfig", layConfig);
+    return {
+      layConfig
+    };
   }
 });
 </script>

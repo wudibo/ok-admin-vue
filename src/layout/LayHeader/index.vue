@@ -12,7 +12,7 @@
           inverted
         </div>
         <div class="header-refresh">
-          <n-icon class="re-icon" size="20">
+          <n-icon @click="handleRefresh" class="re-icon" size="20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -40,6 +40,7 @@
 </template>
 
 <script lang="ts">
+import type { Ref } from "vue";
 import { defineComponent, inject } from "vue";
 import {
   NSwitch,
@@ -50,6 +51,7 @@ import {
   NIcon
 } from "naive-ui";
 import http from "../../utils/http";
+import { throttle } from "../../utils/tools";
 
 export default defineComponent({
   name: "LayHeader",
@@ -65,6 +67,12 @@ export default defineComponent({
     const layConfig: any = inject("layConfig");
     return {
       layConfig,
+      handleRefresh: throttle(() => {
+        layConfig.refresh = false;
+        setTimeout(() => {
+          layConfig.refresh = true;
+        });
+      }),
       handleRequest: () => {
         http.get("/user/person").then((res) => {
           console.log(res);
@@ -100,7 +108,6 @@ export default defineComponent({
   align-items: center;
   .re-icon {
     cursor: pointer;
-    color: #333333;
     transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
       color: #36ad6a;
