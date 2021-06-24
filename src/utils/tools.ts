@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * 防抖函数
  */
@@ -9,8 +10,8 @@ export const debounce = function (callback: Function, wait = 300) {
     //重新设置新的延时器
     timer = setTimeout(
       function (args: any) {
-        callback.apply(this as any, args);
-      }.bind(this as any, arguments),
+        callback.apply(this, args);
+      }.bind(this, arguments),
       wait
     );
   };
@@ -25,7 +26,7 @@ export const throttle = function (callback: Function, wait = 300) {
   return function () {
     let nowTime = Date.now();
     if (lastTime < 1 || nowTime - lastTime >= wait) {
-      callback.apply(this as any, arguments);
+      callback.apply(this, arguments);
       lastTime = nowTime;
     }
   };
