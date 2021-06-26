@@ -94,7 +94,7 @@ export default defineComponent({
   }
   .tag-close {
     font-size: 14px;
-    padding: 8px;
+    padding: 5px;
     padding-right: 0;
     z-index: 5;
     &:hover {

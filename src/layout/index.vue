@@ -29,7 +29,7 @@
         :native-scrollbar="false"
       >
         <router-view v-slot="{ Component }">
-          <transform v-if="layConfig.refresh">
+          <transform v-if="!layConfig.refresh">
             <keep-alive>
               <component :is="Component" v-if="$route.meta.keepAlive" />
             </keep-alive>
@@ -63,7 +63,7 @@ export default defineComponent({
     const layConfig = reactive({
       sidebarInverted: true,
       collapsed: false,
-      refresh: true
+      refresh: false
     });
     provide("layConfig", layConfig);
     return {

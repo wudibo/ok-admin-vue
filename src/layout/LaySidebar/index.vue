@@ -16,12 +16,12 @@
         :indent="22"
         :collapsed-width="64"
         :collapsed-icon-size="22"
-        @update:value="handleUpdateValue"
-        @update:expanded-keys="menuKeys = $event"
-        v-model="menuKey"
-        :default-value="menuKey"
-        :expanded-keys="menuKeys"
         :options="menuOptions"
+        :key="menuConfig.menuKey"
+        :default-value="menuConfig.menuKey"
+        :expanded-keys="menuConfig.menuKeys"
+        @update:value="handleUpdateValue"
+        @update:expanded-keys="menuConfig.menuKeys = $event"
       />
     </div>
   </n-layout-sider>
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { useRouter, useRoute } from "vue-router";
-import { inject, ref, defineComponent } from "vue";
+import { inject, reactive, watchEffect, defineComponent } from "vue";
 import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from "naive-ui";
 import { useMenu } from "./menuOptions";
 
@@ -46,13 +46,22 @@ export default defineComponent({
     const menuOptions = useMenu();
     const router = useRouter(),
       route = useRoute(),
-      menuKey = ref(route.fullPath),
-      menuKeys = ref(["dance-dance-dance", "food"]),
+      menuConfig = reactive({
+        menuKey: "",
+        menuKeys: [""]
+      }),
       layConfig: any = inject("layConfig");
+
+    watchEffect(() => {
+      menuConfig.menuKey = route.fullPath;
+      menuConfig.menuKeys = route.matched.map((item) => {
+        return item.path;
+      });
+    });
+
     return {
+      menuConfig,
       layConfig,
-      menuKeys,
-      menuKey,
       menuOptions,
       getSrc: (path: string) => {
         const patha = "../../assets/head.png";

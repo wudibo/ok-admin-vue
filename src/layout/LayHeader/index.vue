@@ -67,9 +67,9 @@ export default defineComponent({
     return {
       layConfig,
       handleRefresh: throttle(() => {
-        layConfig.refresh = false;
+        layConfig.refresh = true;
         setTimeout(() => {
-          layConfig.refresh = true;
+          layConfig.refresh = false;
         });
       })
     };
