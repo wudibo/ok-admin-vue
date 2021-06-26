@@ -72,6 +72,22 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: "高级表单"
         }
+      },
+      {
+        path: "step-form",
+        name: "step-form",
+        component: () => import("@/views/form/advanced-form.vue"),
+        meta: {
+          title: "分步表单"
+        }
+      },
+      {
+        path: "detail",
+        name: "detail",
+        component: () => import("@/views/form/advanced-form.vue"),
+        meta: {
+          title: "表单详情"
+        }
       }
     ]
   }

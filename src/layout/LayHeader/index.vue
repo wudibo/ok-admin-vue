@@ -1,16 +1,22 @@
 <template>
   <div class="lay-header">
-    <n-grid x-gap="12" :cols="2">
+    <n-grid x-gap="24" :cols="2">
       <!-- left -->
-      <n-gi class="header-padding-xs header-left">
-        <div class="header-padding-xs">
-          <n-switch v-model:value="layConfig.collapsed" />
-          collapsed
-        </div>
-        <div class="header-padding-xs">
+      <n-gi class="header-left">
+        <n-icon style="cursor: pointer" size="20">
+          <menu-fold-outlined
+            v-show="!layConfig.collapsed"
+            @click="layConfig.collapsed = true"
+          />
+          <menu-unfold-outlined
+            v-show="layConfig.collapsed"
+            @click="layConfig.collapsed = false"
+          />
+        </n-icon>
+        <!-- <div>
           <n-switch v-model:value="layConfig.sidebarInverted" />
           inverted
-        </div>
+        </div> -->
         <div class="header-refresh">
           <n-icon @click="handleRefresh" class="re-icon" size="20">
             <svg
@@ -32,7 +38,7 @@
         </n-breadcrumb>
       </n-gi>
       <!-- right -->
-      <n-gi class="header-padding-xs header-right">
+      <n-gi class="header-right">
         <div class="green">2</div>
       </n-gi>
     </n-grid>
@@ -40,6 +46,8 @@
 </template>
 
 <script lang="ts">
+import MenuFoldOutlined from "../antd-icon/MenuFoldOutlined";
+import MenuUnfoldOutlined from "../antd-icon/MenuUnfoldOutlined";
 import http from "../../utils/http";
 import { throttle } from "../../utils/tools";
 import type { Ref } from "vue";
@@ -60,7 +68,9 @@ export default defineComponent({
     NGrid,
     NSwitch,
     NBreadcrumb,
-    NBreadcrumbItem
+    NBreadcrumbItem,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined
   },
   setup(props, superContext) {
     const layConfig: any = inject("layConfig");
@@ -84,15 +94,14 @@ export default defineComponent({
   align-items: center;
 }
 
-.header-padding-xs {
-  padding: 0 10px;
-}
 .header-left {
   display: flex;
+  padding: 0 20px;
   align-items: center;
 }
 .header-right {
   display: flex;
+  padding: 0 20px;
   align-items: center;
   justify-content: flex-end;
 }
