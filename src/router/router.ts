@@ -17,14 +17,20 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           keepAlive: true,
           affix: true //在tags是否一直悬挂不被关闭
         }
-      },
+      }
+    ]
+  },
+
+  {
+    path: "/user",
+    component: Layout as unknown as Component,
+    children: [
       {
-        path: "user",
+        path: "",
         name: "user",
         component: () => import("@/views/user/user.vue"),
         meta: {
-          title: "个人中心",
-          affix: true //在tags是否一直悬挂不被关闭
+          title: "个人中心"
         }
       }
     ]

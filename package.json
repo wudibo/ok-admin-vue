@@ -4,14 +4,15 @@
   "scripts": {
     "dev": "vite",
     "dev-staging": "vite --mode staging",
-    "build": "vue-tsc --noEmit && vite build --base=ok-admin-vue",
+    "build": "vue-tsc --noEmit && vite build",
+    "build-admin": "vue-tsc --noEmit && vite build --base=ok-admin-vue",
     "build-staging": "vue-tsc --noEmit && vite build --mode staging",
     "serve": "vite preview"
   },
   "dependencies": {
     "@vicons/ionicons5": "^0.10.0",
     "axios": "^0.21.1",
-    "naive-ui": "^2.13.0",
+    "naive-ui": "^2.14.0",
     "vfonts": "^0.1.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.9",

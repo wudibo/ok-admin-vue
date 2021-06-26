@@ -19,7 +19,7 @@
         position="absolute"
         style="height: 48px; top: 64px; left: 0; right: 0"
       >
-        <lay-tab></lay-tab>
+        <lay-tag></lay-tag>
       </n-layout-content>
 
       <!--   主内容区   -->
@@ -46,12 +46,12 @@ import { defineComponent, provide, reactive, ref } from "vue";
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from "naive-ui";
 import LayHeader from "./LayHeader/index.vue";
 import LaySidebar from "./LaySidebar/index.vue";
-import LayTab from "./LayTab/index.vue";
+import LayTag from "./LayTag/index.vue";
 
 export default defineComponent({
   name: "Layout",
   components: {
-    LayTab,
+    LayTag,
     LaySidebar,
     LayHeader,
     NLayout,

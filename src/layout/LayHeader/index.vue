@@ -40,6 +40,8 @@
 </template>
 
 <script lang="ts">
+import http from "../../utils/http";
+import { throttle } from "../../utils/tools";
 import type { Ref } from "vue";
 import { defineComponent, inject } from "vue";
 import {
@@ -50,9 +52,6 @@ import {
   NBreadcrumbItem,
   NIcon
 } from "naive-ui";
-import http from "../../utils/http";
-import { throttle } from "../../utils/tools";
-
 export default defineComponent({
   name: "LayHeader",
   components: {
@@ -72,12 +71,7 @@ export default defineComponent({
         setTimeout(() => {
           layConfig.refresh = true;
         });
-      }),
-      handleRequest: () => {
-        http.get("/user/person").then((res) => {
-          console.log(res);
-        });
-      }
+      })
     };
   }
 });
