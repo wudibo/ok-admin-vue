@@ -1,70 +1,153 @@
-import {BookOutline as BookIcon, PersonOutline as PersonIcon, WineOutline as WineIcon} from "@vicons/ionicons5";
-import {Component} from "@vue/runtime-core";
-import {h} from "vue";
-import {NIcon} from "naive-ui";
+import { Component, h } from "vue";
+import { RouteRecordRaw } from "vue-router";
+import { NIcon, MenuOption, MenuGroupOption } from "naive-ui";
+import { asyncRoutes } from "../../router/router";
 
+/**存储菜单 */
+let menusOption: Array<MenuOption | MenuGroupOption> = [];
+
+/** 图标*/
 function renderIcon(icon: Component) {
-  return () => h(NIcon, null, {default: () => h(icon)})
+  return () => h(NIcon, null, { default: () => h(icon) });
 }
 
-export default [
-  {
-    label: 'home',
-    key: '/home',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: 'user',
-    key: '/user',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-    icon: renderIcon(BookIcon),
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-            icon: renderIcon(PersonIcon)
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-            icon: renderIcon(PersonIcon)
-          }
-        ]
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-        icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky'
-          }
-        ]
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich'
-          }
-        ]
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes'
-      }
-    ]
+/**路由路径处理 */
+function handlePath(superPath: string, rePath: string): string {
+  if (/^\//.test(rePath)) {
+    // 如果rePath第一个字符是/的时候
+    return rePath;
+  } else if (/\/$/.test(superPath)) {
+    // 如果superPath最后一个字符是/的时候
+    return superPath + rePath;
+  } else {
+    return rePath ? superPath + "/" + rePath : superPath;
   }
-]
+}
+
+/**递归处理菜单 */
+function handleMenu(
+  rrr: RouteRecordRaw,
+  menu: MenuOption,
+  fullPath: string
+): MenuOption | MenuGroupOption {
+  // 如果菜单色设置了隐藏那么不处理
+  if (rrr.meta && rrr.meta.hidden) return menu;
+
+  const newPath = handlePath(fullPath, rrr.path);
+  const label = rrr.meta ? (rrr.meta.title as string) : (rrr.name as string);
+  menu = {
+    label: label,
+    key: newPath
+  };
+
+  if (rrr.meta && rrr.meta.icon) {
+    menu.icon = renderIcon(rrr.meta.icon as Component);
+  }
+
+  if (rrr.children && rrr.children.length) {
+    menu.children = [] as Array<MenuGroupOption>;
+    rrr.children.forEach((item) => {
+      if (!item.meta?.hidden) {
+        menu.children?.push(handleMenu(item, {} as MenuOption, newPath));
+      }
+    });
+  }
+  return menu;
+}
+
+export const useMenu = function () {
+  /**layouts初始化 (查找所有根路由的组件都是Layout)*/
+  const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
+    if (item.component && item.component.name === "Layout") {
+      lays.push(item);
+    }
+    return lays;
+  }, [] as Array<RouteRecordRaw>);
+
+  menusOption = layouts.reduce((menus, item) => {
+    if (item.children && item.children.length === 1) {
+      menus.push(handleMenu(item.children[0], {} as MenuOption, item.path));
+    } else {
+      menus.push(handleMenu(item, {} as MenuOption, item.path));
+    }
+    return menus;
+  }, [] as Array<MenuOption | MenuGroupOption>);
+
+  return menusOption;
+  return [
+    {
+      label: "home",
+      key: "/home"
+      // icon: renderIcon(StarRound)
+    },
+    {
+      label: "user",
+      key: "/user"
+      // icon: renderIcon(StarRound)
+    },
+    {
+      label: "表单",
+      key: "form",
+      // icon: renderIcon(StarRound),
+      children: [
+        {
+          label: "基础表单",
+          key: "/form/basic-form"
+        },
+        {
+          label: "高级表单",
+          key: "/form/advanced-form"
+        }
+      ]
+    },
+    {
+      label: "舞，舞，舞",
+      key: "dance-dance-dance",
+      // icon: renderIcon(StarRound),
+      children: [
+        {
+          type: "group",
+          label: "人物",
+          key: "people",
+          children: [
+            {
+              label: "叙事者",
+              key: "narrator"
+              // icon: renderIcon(StarRound)
+            },
+            {
+              label: "羊男",
+              key: "sheep-man"
+              // icon: renderIcon(StarRound)
+            }
+          ]
+        },
+        {
+          label: "饮品",
+          key: "beverage",
+          // icon: renderIcon(StarRound),
+          children: [
+            {
+              label: "威士忌",
+              key: "whisky"
+            }
+          ]
+        },
+        {
+          label: "食物",
+          key: "food",
+          children: [
+            {
+              label: "三明治",
+              key: "sandwich"
+            }
+          ]
+        },
+        {
+          label: "过去增多，未来减少",
+          key: "the-past-increases-the-future-recedes"
+        }
+      ]
+    }
+  ];
+};

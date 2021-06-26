@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <n-h2>平山道</n-h2>
+    <n-h2>ok-admin-vue</n-h2>
     <div v-for="item in 5" :key="item" class="flex">
       <n-button size="small" type="success" @click="testFun">城府路</n-button>
       {{ obj.current }}

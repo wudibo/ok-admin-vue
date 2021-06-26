@@ -59,10 +59,12 @@ export default defineComponent({
 
       /**关闭tag */
       handleTagClose(index: number) {
-        if (index === 0) {
-          router.replace(tags[index + 1].fullPath);
-        } else {
-          router.replace(tags[index - 1].fullPath);
+        if (tags[index].fullPath === route.fullPath) {
+          if (index === 0) {
+            router.replace(tags[index + 1].fullPath);
+          } else {
+            router.replace(tags[index - 1].fullPath);
+          }
         }
         tags.splice(index, 1);
       },

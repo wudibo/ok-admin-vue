@@ -61,7 +61,7 @@ export default defineComponent({
   },
   setup(props, superContext) {
     const layConfig = reactive({
-      sidebarInverted: false,
+      sidebarInverted: true,
       collapsed: false,
       refresh: true
     });
