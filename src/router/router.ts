@@ -3,7 +3,7 @@ import Layout from "@/layout/index.vue";
 import { Component } from "vue";
 import { NewspaperOutline } from "@vicons/ionicons5";
 import { StarBorderRound } from "../icon/material-icon";
-
+import multiMenu from "./multiMenu";
 export type IMeta = {
   title?: string;
   icon?: Component;
@@ -90,7 +90,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         }
       }
     ]
-  }
+  },
+  multiMenu
 ];
 
 const router = createRouter({

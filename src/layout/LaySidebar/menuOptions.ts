@@ -2,6 +2,7 @@ import { Component, h } from "vue";
 import { RouteRecordRaw } from "vue-router";
 import { NIcon, MenuOption, MenuGroupOption } from "naive-ui";
 import { asyncRoutes } from "../../router/router";
+import IFrameView from "@/layout/IFrameView.vue";
 
 /**存储菜单 */
 let menusOption: Array<MenuOption | MenuGroupOption> = [];
@@ -74,80 +75,58 @@ export const useMenu = function () {
   }, [] as Array<MenuOption | MenuGroupOption>);
 
   return menusOption;
-  return [
-    {
-      label: "home",
-      key: "/home"
-      // icon: renderIcon(StarRound)
-    },
-    {
-      label: "user",
-      key: "/user"
-      // icon: renderIcon(StarRound)
-    },
-    {
-      label: "表单",
-      key: "form",
-      // icon: renderIcon(StarRound),
-      children: [
-        {
-          label: "基础表单",
-          key: "/form/basic-form"
-        },
-        {
-          label: "高级表单",
-          key: "/form/advanced-form"
-        }
-      ]
-    },
-    {
-      label: "舞，舞，舞",
-      key: "dance-dance-dance",
-      // icon: renderIcon(StarRound),
-      children: [
-        {
-          type: "group",
-          label: "人物",
-          key: "people",
-          children: [
-            {
-              label: "叙事者",
-              key: "narrator"
-              // icon: renderIcon(StarRound)
-            },
-            {
-              label: "羊男",
-              key: "sheep-man"
-              // icon: renderIcon(StarRound)
-            }
-          ]
-        },
-        {
-          label: "饮品",
-          key: "beverage",
-          // icon: renderIcon(StarRound),
-          children: [
-            {
-              label: "威士忌",
-              key: "whisky"
-            }
-          ]
-        },
-        {
-          label: "食物",
-          key: "food",
-          children: [
-            {
-              label: "三明治",
-              key: "sandwich"
-            }
-          ]
-        },
-        {
-          label: "过去增多，未来减少",
-          key: "the-past-increases-the-future-recedes"
-        }
-      ]
-    }
-  ];
+
+  /** 
+   * return [
+      {
+        label: "舞，舞，舞",
+        key: "dance-dance-dance",
+        icon: renderIcon(StarRound),
+        children: [
+          {
+            type: "group",
+            label: "人物",
+            key: "people",
+            children: [
+              {
+                label: "叙事者",
+                key: "narrator"
+                icon: renderIcon(StarRound)
+              },
+              {
+                label: "羊男",
+                key: "sheep-man"
+                icon: renderIcon(StarRound)
+              }
+            ]
+          },
+          {
+            label: "饮品",
+            key: "beverage",
+            icon: renderIcon(StarRound),
+            children: [
+              {
+                label: "威士忌",
+                key: "whisky"
+              }
+            ]
+          },
+          {
+            label: "食物",
+            key: "food",
+            children: [
+              {
+                label: "三明治",
+                key: "sandwich"
+              }
+            ]
+          },
+          {
+            label: "过去增多，未来减少",
+            key: "the-past-increases-the-future-recedes"
+          }
+        ]
+      }
+    ];
+  */
 };
