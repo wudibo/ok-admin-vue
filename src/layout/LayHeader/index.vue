@@ -37,8 +37,8 @@
 </template>
 
 <script lang="ts">
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@/icon/antd-icon";
-import { RefreshFilled } from "@/icon/material-icon";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "../../icon/antd-icon";
+import { RefreshFilled } from "../../icon/material-icon";
 import { throttle } from "../../utils/tools";
 import LaySetting from "@/layout/LaySetting/index.vue";
 import { defineComponent, inject } from "vue";
