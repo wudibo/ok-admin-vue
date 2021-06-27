@@ -46,7 +46,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       }
     ]
   },
-
   {
     path: "/form",
     component: Layout as unknown as Component,
