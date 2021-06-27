@@ -7,7 +7,7 @@
       <!--  头部   -->
       <n-layout-header
         position="absolute"
-        style="height: 64px"
+        style="height: 64px; overflow: hidden"
         :native-scrollbar="false"
         :inverted="layConfig.headerInverted"
         bordered
@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive, ref } from "vue";
+import { defineComponent, provide, reactive } from "vue";
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from "naive-ui";
 import LayHeader from "./LayHeader/index.vue";
 import LaySidebar from "./LaySidebar/index.vue";

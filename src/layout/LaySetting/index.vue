@@ -90,7 +90,6 @@ export default defineComponent({
   },
   setup() {
     const layConfig: any = inject("layConfig");
-    console.log({ ...layConfig });
     return {
       navThemeDark,
       navThemeLight,

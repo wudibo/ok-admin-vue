@@ -19,16 +19,12 @@ export default defineComponent({
     NButton
   },
   setup(props, superContext) {
-    console.log(import.meta.env);
     const obj = reactive({
       current: 1
     });
     const testFun = () => {
       obj.current = Math.random() * 1000;
     };
-    onMounted(() => {
-      console.log("asdf");
-    });
     return {
       obj,
       testFun

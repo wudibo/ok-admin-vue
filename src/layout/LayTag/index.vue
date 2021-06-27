@@ -1,57 +1,95 @@
 <template>
-  <div class="lay-tag">
-    <!-- <div class="tag-item">
-      <n-button @click="handleTagOpen('/home')" :bordered="false">
-        <span>首页</span>
-        <n-icon @click.stop="handleTagClose" class="tag-close">
-          <close-sharp></close-sharp>
-        </n-icon>
-      </n-button>
-    </div> -->
-
-    <div v-for="(item, index) in tags" :key="item.fullPath" class="tag-item">
-      <n-button
-        class="tag-btn"
-        @click="handleTagOpen(item.fullPath)"
-        :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
-        :bordered="false"
+  <n-scrollbar
+    ref="scrollbar"
+    :vertical-rail-style="{ bottom: 0 }"
+    :scrollable="true"
+    :x-scrollable="true"
+  >
+    <div class="lay-tag" ref="layTag"><div
+        v-for="(item, index) in tags"
+        class="tag-item"
+        :key="item.fullPath"
+        :class="item.fullPath === $route.fullPath ? 'tag-active' : ''"
       >
-        <span>{{ item.meta.title }}</span>
-        <n-icon
-          v-if="!isAffix(item)"
-          @click.stop="handleTagClose(index)"
-          class="tag-close"
-        >
-          <close-sharp></close-sharp>
-        </n-icon>
-      </n-button>
+        <div class="tag-cont">
+          <n-button
+            class="tag-btn"
+            @click="handleTagOpen(item.fullPath)"
+            :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
+            :bordered="false"
+          >
+            <span>{{ item.meta.title }}</span>
+            <n-icon
+              v-if="!isAffix(item)"
+              @click.stop="handleTagClose(index)"
+              class="tag-close"
+            >
+              <close-sharp></close-sharp>
+            </n-icon>
+          </n-button>
+        </div>
+      </div>
+
+      <!-- <div v-for="item in 40" :key="item" class="tag-item">
+        <div class="tag-cont">
+          <n-button @click="handleTagOpen('/home')" :bordered="false">
+            <span>首页</span>
+            <n-icon @click.stop="handleTagClose" class="tag-close">
+              <close-sharp></close-sharp>
+            </n-icon>
+          </n-button>
+        </div>
+      </div> -->
     </div>
-  </div>
+  </n-scrollbar>
 </template>
 <script lang="ts">
 import type { RouteLocationRaw } from "vue-router";
-import { Tag, tagsEffect } from "./index";
-import { defineComponent, reactive } from "vue";
+import { Tag, tagsEffect, tagsScroll } from "./index";
+import {
+  defineComponent,
+  watchEffect,
+  ref,
+  reactive,
+  onMounted,
+  nextTick
+} from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { NButton } from "naive-ui";
+import { NButton, NScrollbar } from "naive-ui";
 import { CloseSharp } from "@vicons/ionicons5";
 export default defineComponent({
   name: "LayTag",
   inheritAttrs: false,
   components: {
     NButton,
+    NScrollbar,
     CloseSharp
   },
   setup() {
     const router = useRouter();
     const route = useRoute();
     const tags: Array<Tag> = reactive([]);
+    const scrollbar = ref() as any;
+    const layTag = ref() as any;
 
     /**tags处理 */
     tagsEffect(tags, route, router);
 
+    onMounted(() => {
+      const containerRef = scrollbar.value.containerRef;
+      watchEffect(() => {
+        tags.length;
+        route.fullPath;
+        nextTick(() => {
+          tagsScroll(containerRef, layTag.value);
+        });
+      });
+    });
+
     return {
       tags,
+      layTag,
+      scrollbar,
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {
         router.push(fullPath);
@@ -77,18 +115,27 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+$background: #f5f7f9;
+.lay-tag-box {
+  height: calc(100% + 17px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: $background;
+}
 .lay-tag {
-  height: 100%; /*48px*/
+  height: 48px;
   padding: 0 10px;
   align-items: center;
   display: flex;
   box-sizing: border-box;
-  background-color: #f5f7f9;
+  background-color: $background;
 }
 .tag-item {
-  margin: 0 5px;
   font-size: 14px;
-  background-color: #fff;
+  padding: 0 5px;
+  .tag-cont {
+    background: #ffffff;
+  }
   .tag-btn {
     position: relative;
   }
