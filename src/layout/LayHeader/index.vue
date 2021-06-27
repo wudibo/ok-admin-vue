@@ -30,7 +30,7 @@
       </n-gi>
       <!-- right -->
       <n-gi class="header-right">
-        <div class="green">2</div>
+        <lay-setting></lay-setting>
       </n-gi>
     </n-grid>
   </div>
@@ -40,6 +40,7 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@/icon/antd-icon";
 import { RefreshFilled } from "@/icon/material-icon";
 import { throttle } from "../../utils/tools";
+import LaySetting from "@/layout/LaySetting/index.vue";
 import { defineComponent, inject } from "vue";
 import {
   NSwitch,
@@ -58,6 +59,7 @@ export default defineComponent({
     NSwitch,
     NBreadcrumb,
     NBreadcrumbItem,
+    LaySetting,
     RefreshFilled,
     MenuFoldOutlined,
     MenuUnfoldOutlined
@@ -70,7 +72,7 @@ export default defineComponent({
         layConfig.refresh = true;
         setTimeout(() => {
           layConfig.refresh = false;
-        });
+        }, 10);
       })
     };
   }
@@ -101,7 +103,7 @@ export default defineComponent({
   align-items: center;
   .re-icon {
     cursor: pointer;
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
     &:hover {
       color: #36ad6a;
     }

@@ -9,6 +9,7 @@
         position="absolute"
         style="height: 64px"
         :native-scrollbar="false"
+        :inverted="layConfig.headerInverted"
         bordered
       >
         <lay-header></lay-header>
@@ -62,6 +63,7 @@ export default defineComponent({
   setup(props, superContext) {
     const layConfig = reactive({
       sidebarInverted: true,
+      headerInverted: false,
       collapsed: false,
       refresh: false
     });
