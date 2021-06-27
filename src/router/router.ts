@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Layout from "@/layout/index.vue";
 import { Component } from "vue";
 import { NewspaperOutline } from "@vicons/ionicons5";
-import StarBorderRound from "../layout/material-icon/StarBorderRound";
+import { StarBorderRound } from "@/icon/material-icon";
 
 export type IMeta = {
   title?: string;

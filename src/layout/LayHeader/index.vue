@@ -37,8 +37,8 @@
 </template>
 
 <script lang="ts">
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "../antd-icon";
-import { RefreshFilled } from "../material-icon";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@/icon/antd-icon";
+import { RefreshFilled } from "@/icon/material-icon";
 import { throttle } from "../../utils/tools";
 import { defineComponent, inject } from "vue";
 import {
@@ -56,9 +56,9 @@ export default defineComponent({
     NIcon,
     NGrid,
     NSwitch,
-    RefreshFilled,
     NBreadcrumb,
     NBreadcrumbItem,
+    RefreshFilled,
     MenuFoldOutlined,
     MenuUnfoldOutlined
   },
