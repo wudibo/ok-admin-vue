@@ -4,9 +4,9 @@
         一个很赞的，扁平化风格的，响应式布局的通用后台模版解决方案，旨为后端程序员减压！
     </p>
     <p align="center">
-        <img src="https://img.shields.io/badge/vue-%3E%3D3.0.0-brightgreen">
-        <img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-brightgreen">
-        <img src="https://img.shields.io/badge/Naive UI-%3E%3D2.13.0-brightgreen">
+        <img src="https://img.shields.io/badge/vue-%3E%3D3.1.0-brightgreen">
+        <img src="https://img.shields.io/badge/vite-%3E%3D2.3.0-brightgreen">
+        <img src="https://img.shields.io/badge/Naive UI-%3E%3D2.14.0-brightgreen">
         <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
     <p align="center">
@@ -58,11 +58,11 @@ yarn lint
 
 | 依赖包      | 版本    |
 | ----------- | ------- |
-| vue         | ^3.0.5  |
+| vue         | ^3.1.0  |
 | vuex        | ^4.0.2  |
 | vue-router  | ^4.0.9  |
 | axios       | ^0.21.1 |
-| naive-ui    | ^2.13.0 |
+| naive-ui    | ^2.14.0 |
 | sass        | ^1.32.0 |
 | sass-loader | ^10.0.0 |
 
