@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Layout from "@/layout/index.vue";
 import { Component } from "vue";
-import { NewspaperOutline } from "@vicons/ionicons5";
+import { NewspaperOutline, WarningOutline } from "@vicons/ionicons5";
 import { StarBorderRound } from "../icon/material-icon";
 import multiMenu from "./multiMenu";
 export type IMeta = {
@@ -48,6 +48,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: "/form",
+    name: "form",
     component: Layout as unknown as Component,
     redirect: "/form/basic-form",
     meta: {
@@ -90,6 +91,43 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       }
     ]
   },
+  {
+    path: "/exception",
+    name: "exception",
+    component: Layout as unknown as Component,
+    redirect: "/exception/404",
+    meta: {
+      title: "异常页",
+      icon: WarningOutline
+    },
+    children: [
+      {
+        path: "403",
+        name: "403",
+        component: () => import("@/views/exception/403.vue"),
+        meta: {
+          title: "403"
+        }
+      },
+      {
+        path: "404",
+        name: "404",
+        component: () => import("@/views/exception/404.vue"),
+        meta: {
+          title: "404"
+        }
+      },
+      {
+        path: "500",
+        name: "500",
+        component: () => import("@/views/exception/500.vue"),
+        meta: {
+          title: "500"
+        }
+      }
+    ]
+  },
+
   multiMenu
 ];
 

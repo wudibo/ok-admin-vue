@@ -66,9 +66,14 @@ export const useMenu = function () {
   }, [] as Array<RouteRecordRaw>);
 
   menusOption = layouts.reduce((menus, item) => {
+    // 如果菜单色设置了隐藏那么不处理
+    if (item.meta && item.meta.hidden) return menus;
+
     if (item.children && item.children.length === 1) {
+      // 处理一个子元素
       menus.push(handleMenu(item.children[0], {} as MenuOption, item.path));
-    } else {
+    } else if (item.children && item.children.length > 1) {
+      // 处理多个子元素
       menus.push(handleMenu(item, {} as MenuOption, item.path));
     }
     return menus;
