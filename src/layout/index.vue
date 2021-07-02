@@ -26,18 +26,19 @@
       <!--   主内容区   -->
       <n-layout-content
         position="absolute"
-        class="lay-content"
-        style="top: 112px; bottom: 0"
+        style="top: 112px; bottom: 0; background: #f0f2f5"
         :native-scrollbar="false"
       >
-        <router-view v-slot="{ Component }">
-          <transform v-if="!layConfig.refresh">
-            <keep-alive>
-              <component :is="Component" v-if="$route.meta.keepAlive" />
-            </keep-alive>
-            <component :is="Component" v-if="!$route.meta.keepAlive" />
-          </transform>
-        </router-view>
+        <div class="lay-content">
+          <router-view v-slot="{ Component }">
+            <transform v-if="!layConfig.refresh">
+              <keep-alive>
+                <component :is="Component" v-if="$route.meta.keepAlive" />
+              </keep-alive>
+              <component :is="Component" v-if="!$route.meta.keepAlive" />
+            </transform>
+          </router-view>
+        </div>
       </n-layout-content>
     </n-layout>
   </n-layout>
@@ -79,7 +80,6 @@ export default defineComponent({
 <style lang="scss">
 @import './styles/layout.scss';
 .lay-content {
-  background: #f0f2f5;
   padding: 12px 24px;
 }
 </style>

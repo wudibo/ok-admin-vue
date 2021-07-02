@@ -3,15 +3,15 @@ const state: any = {
 };
 
 const getters = {
-  tagsGetter(state: any, getters: any, rootState: any) {
+  tagsGetter: (state: any, getters: any, rootState: any) => {
     return state.tags;
-  }
+  },
 };
 
 const mutations = {
   SET_TAGS: (state: any, key: any) => {
     state.tags = key;
-  }
+  },
 };
 
 const actions = {};
