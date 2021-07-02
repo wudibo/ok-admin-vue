@@ -18,7 +18,7 @@
           inverted
         </div> -->
         <div class="header-refresh">
-          <n-icon @click="handleRefresh" class="re-icon" size="20">
+          <n-icon @click="handleRefresh" class="re-icon" size="18">
             <refresh-filled />
           </n-icon>
         </div>
@@ -80,6 +80,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
 .lay-header {
   height: 100%;
   display: flex;
@@ -88,25 +89,28 @@ export default defineComponent({
 
 .header-left {
   display: flex;
-  padding: 0 20px;
+  padding: 0 24px;
   align-items: center;
 }
 .header-right {
   display: flex;
-  padding: 0 20px;
+  padding: 0 24px;
   align-items: center;
   justify-content: flex-end;
 }
 .header-refresh {
-  padding: 0 10px;
+  padding: 0 12px;
   display: inline-flex;
   align-items: center;
   .re-icon {
     cursor: pointer;
     /* transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
     &:hover {
-      color: #36ad6a;
+      color: $primary;
     }
   }
+}
+.header-hover:hover{
+  color: $primary;
 }
 </style>

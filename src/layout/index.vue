@@ -26,6 +26,7 @@
       <!--   主内容区   -->
       <n-layout-content
         position="absolute"
+        class="lay-content"
         style="top: 112px; bottom: 0"
         :native-scrollbar="false"
       >
@@ -76,8 +77,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.flex {
-  display: flex;
-  font-size: 24px;
+.lay-content{
+  background: #f0f2f5;
+  padding: 12px 24px;
 }
 </style>

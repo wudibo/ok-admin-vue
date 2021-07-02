@@ -5,7 +5,8 @@
     :scrollable="true"
     :x-scrollable="true"
   >
-    <div class="lay-tag" ref="layTag"><div
+    <div class="lay-tag" ref="layTag">
+      <div
         v-for="(item, index) in tags"
         class="tag-item"
         :key="item.fullPath"
@@ -44,26 +45,27 @@
   </n-scrollbar>
 </template>
 <script lang="ts">
-import type { RouteLocationRaw } from "vue-router";
-import { Tag, tagsEffect, tagsScroll } from "./index";
+import type { RouteLocationRaw } from 'vue-router';
+import { Tag, tagsEffect, tagsScroll } from './index';
 import {
   defineComponent,
   watchEffect,
   ref,
   reactive,
   onMounted,
-  nextTick
-} from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { NButton, NScrollbar } from "naive-ui";
-import { CloseSharp } from "@vicons/ionicons5";
+  nextTick,
+} from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { NButton, NScrollbar } from 'naive-ui';
+import { CloseSharp } from '@vicons/ionicons5';
+
 export default defineComponent({
-  name: "LayTag",
+  name: 'LayTag',
   inheritAttrs: false,
   components: {
     NButton,
     NScrollbar,
-    CloseSharp
+    CloseSharp,
   },
   setup() {
     const router = useRouter();
@@ -109,41 +111,56 @@ export default defineComponent({
 
       isAffix(tag: Tag) {
         return tag.meta && tag.meta.affix;
-      }
+      },
     };
-  }
+  },
 });
 </script>
 <style lang="scss" scoped>
-$background: #f5f7f9;
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+$background: #ffffff;
 .lay-tag-box {
   height: calc(100% + 17px);
   overflow-x: auto;
   overflow-y: hidden;
   background-color: $background;
 }
+
 .lay-tag {
   height: 48px;
   padding: 0 10px;
   align-items: center;
   display: flex;
   box-sizing: border-box;
+  border-bottom: 1px solid #f5f7f9;
   background-color: $background;
 }
+
 .tag-item {
   font-size: 14px;
   padding: 0 5px;
+
   .tag-cont {
     background: #ffffff;
   }
+
   .tag-btn {
+    border: 1px solid #e5e5e5;
     position: relative;
+    box-sizing: border-box;
+    @include percolate(border-color + ', ' + color);
+    &:hover {
+      border-color: $primary;
+    }
   }
+
   .tag-close {
     font-size: 14px;
     padding: 5px;
     padding-right: 0;
     z-index: 5;
+
     &:hover {
       opacity: 0.5;
     }
