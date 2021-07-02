@@ -44,14 +44,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive } from "vue";
-import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from "naive-ui";
-import LayHeader from "./LayHeader/index.vue";
-import LaySidebar from "./LaySidebar/index.vue";
-import LayTag from "./LayTag/index.vue";
+import { defineComponent, provide, reactive } from 'vue';
+import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui';
+import LayHeader from './LayHeader/index.vue';
+import LaySidebar from './LaySidebar/index.vue';
+import LayTag from './LayTag/index.vue';
 
 export default defineComponent({
-  name: "Layout",
+  name: 'Layout',
   components: {
     LayTag,
     LaySidebar,
@@ -59,25 +59,26 @@ export default defineComponent({
     NLayout,
     NLayoutHeader,
     NLayoutContent,
-    NLayoutSider
+    NLayoutSider,
   },
   setup(props, superContext) {
     const layConfig = reactive({
       sidebarInverted: true,
       headerInverted: false,
       collapsed: false,
-      refresh: false
+      refresh: false,
     });
-    provide("layConfig", layConfig);
+    provide('layConfig', layConfig);
     return {
-      layConfig
+      layConfig,
     };
-  }
+  },
 });
 </script>
 
-<style lang="scss" scoped>
-.lay-content{
+<style lang="scss">
+@import './styles/layout.scss';
+.lay-content {
   background: #f0f2f5;
   padding: 12px 24px;
 }

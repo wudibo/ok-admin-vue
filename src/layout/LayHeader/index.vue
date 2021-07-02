@@ -2,9 +2,9 @@
   <div class="lay-header">
     <n-grid x-gap="2" cols="2">
       <!-- left -->
-      <n-gi>
+      <n-gi class="xs-hidden">
         <div class="header-left">
-          <n-icon style="cursor: pointer" size="20">
+          <n-icon class="lay-hover" size="20">
             <menu-fold-outlined
               v-show="!layConfig.collapsed"
               @click="layConfig.collapsed = true"
@@ -15,21 +15,33 @@
             />
           </n-icon>
           <div class="header-refresh">
-            <n-icon @click="handleRefresh" class="re-icon" size="20">
+            <n-icon @click="handleRefresh" class="lay-hover" size="20">
               <refresh-filled />
             </n-icon>
           </div>
           <n-breadcrumb>
-            <n-breadcrumb-item>首页</n-breadcrumb-item>
-            <n-breadcrumb-item>Dashboard</n-breadcrumb-item>
-            <n-breadcrumb-item>主控台</n-breadcrumb-item>
+            <n-breadcrumb-item v-for="item in matcheds" :key="item">{{
+              item
+            }}</n-breadcrumb-item>
           </n-breadcrumb>
         </div>
       </n-gi>
 
-      <!-- right suffix-->
+      <!-- right -->
       <n-gi suffix>
         <div class="header-right">
+          <div class="flex-center padding-right-10">
+            <n-dropdown
+              trigger="hover"
+              placement="bottom-center"
+              @select="handleSelect"
+              :options="optionsISO"
+            >
+              <n-icon class="lay-hover" size="20">
+                <planet-outline />
+              </n-icon>
+            </n-dropdown>
+          </div>
           <lay-setting></lay-setting>
         </div>
       </n-gi>
@@ -38,21 +50,23 @@
 </template>
 
 <script lang="ts">
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "../../icon/antd-icon";
-import { RefreshFilled } from "../../icon/material-icon";
-import { throttle } from "../../utils/tools";
-import LaySetting from "@/layout/LaySetting/index.vue";
-import { defineComponent, inject } from "vue";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
+import { RefreshFilled } from '../../icon/material-icon';
+import { throttle } from '../../utils/tools';
+import LaySetting from '@/layout/LaySetting/index.vue';
+import { PlanetOutline } from '@vicons/ionicons5';
+import { defineComponent, h, inject, ref, watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
 import {
   NSwitch,
   NGrid,
   NGi,
   NBreadcrumb,
   NBreadcrumbItem,
-  NIcon
-} from "naive-ui";
+  NIcon,
+} from 'naive-ui';
 export default defineComponent({
-  name: "LayHeader",
+  name: 'LayHeader',
   components: {
     NGi,
     NIcon,
@@ -62,30 +76,68 @@ export default defineComponent({
     NBreadcrumbItem,
     LaySetting,
     RefreshFilled,
+    PlanetOutline,
     MenuFoldOutlined,
-    MenuUnfoldOutlined
+    MenuUnfoldOutlined,
   },
   setup(props, superContext) {
-    const layConfig: any = inject("layConfig");
+    const layConfig: any = inject('layConfig'),
+      route = useRoute();
+    let matcheds = ref([] as Array<string>);
+
+    watchEffect(() => {
+      // 面包屑
+      matcheds.value = [];
+      const matched = route.matched;
+      for (let i = 0; i < matched.length; i++) {
+        matcheds.value.push(matched[i].meta.title as string);
+      }
+    });
+
     return {
+      matcheds,
       layConfig,
+      optionsISO: [
+        {
+          label: '简体中文',
+          key: 'zh',
+        },
+        {
+          label: 'English',
+          key: 'en',
+        },
+      ],
+      handleSelect: (val: any) => {
+        console.log(val);
+      },
       handleRefresh: throttle(() => {
         layConfig.refresh = true;
         setTimeout(() => {
           layConfig.refresh = false;
         }, 10);
-      })
+      }),
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/variables";
+@import '../styles/variables';
+.padding-right-10 {
+  padding-right: 10px;
+}
+.padding-left-10 {
+  padding-left: 10px;
+}
 .lay-header {
   height: 100%;
   display: flex;
   align-items: center;
+}
+.flex-center{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-left {
@@ -103,15 +155,8 @@ export default defineComponent({
   padding: 0 12px;
   display: inline-flex;
   align-items: center;
-  .re-icon {
-    cursor: pointer;
-    /* transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
-    &:hover {
-      color: $primary;
-    }
-  }
 }
-.header-hover:hover{
+.header-hover:hover {
   color: $primary;
 }
 </style>

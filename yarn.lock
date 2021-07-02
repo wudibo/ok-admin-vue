@@ -678,10 +678,10 @@ minimist@^1.2.0, minimist@^1.2.5:
   dependencies:
     minimist "^1.2.5"
 
-naive-ui@^2.14.0:
-  version "2.14.0"
-  resolved "https://registry.npmjs.org/naive-ui/-/naive-ui-2.14.0.tgz#59daa990d718ea589f4f590f4cef2d2a50b50ba6"
-  integrity sha512-SNo+bUNg2c3zLYBllp5wF8cmOrme4IYYVo0tkdbng5BKgUWAqArbg2l72e1HjLwTnTnv1STNSJRmtxgvdwD4GQ==
+naive-ui@^2.15.1:
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.15.1.tgz#1bf5cb40325f47d9055dba2cf3526586625bf332"
+  integrity sha512-UgUw9CvA5HYnMjwEoyycZind7lRlPFSuOPennCxXwejGppip4WAtQYiY72SLK8Ui8O2xJy4lZRtbD7sEo0YKFg==
   dependencies:
     "@css-render/plugin-bem" "^0.15.4"
     "@css-render/vue3-ssr" "^0.15.4"

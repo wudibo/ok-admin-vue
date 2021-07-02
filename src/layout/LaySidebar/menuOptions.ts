@@ -1,8 +1,7 @@
-import { Component, h } from "vue";
-import { RouteRecordRaw } from "vue-router";
-import { NIcon, MenuOption, MenuGroupOption } from "naive-ui";
-import { asyncRoutes } from "../../router/router";
-import IFrameView from "@/layout/IFrameView.vue";
+import { Component, h } from 'vue';
+import { RouteRecordRaw } from 'vue-router';
+import { NIcon, MenuOption, MenuGroupOption } from 'naive-ui';
+import { asyncRoutes } from '../../router/router';
 
 /**存储菜单 */
 let menusOption: Array<MenuOption | MenuGroupOption> = [];
@@ -21,7 +20,7 @@ function handlePath(superPath: string, rePath: string): string {
     // 如果superPath最后一个字符是/的时候
     return superPath + rePath;
   } else {
-    return rePath ? superPath + "/" + rePath : superPath;
+    return rePath ? superPath + '/' + rePath : superPath;
   }
 }
 
@@ -38,7 +37,7 @@ function handleMenu(
   const label = rrr.meta ? (rrr.meta.title as string) : (rrr.name as string);
   menu = {
     label: label,
-    key: newPath
+    key: newPath,
   };
 
   if (rrr.meta && rrr.meta.icon) {
@@ -59,7 +58,7 @@ function handleMenu(
 export const useMenu = function () {
   /**layouts初始化 (查找所有根路由的组件都是Layout)*/
   const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
-    if (item.component && item.component.name === "Layout") {
+    if (item.component && item.component.name === 'Layout') {
       lays.push(item);
     }
     return lays;

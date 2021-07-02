@@ -150,6 +150,9 @@ $background: #ffffff;
     position: relative;
     box-sizing: border-box;
     @include percolate(border-color + ', ' + color);
+    &.n-button--primary-type{
+      border-color: $primary;
+    }
     &:hover {
       border-color: $primary;
     }

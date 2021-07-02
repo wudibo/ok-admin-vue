@@ -1,5 +1,5 @@
 <template>
-  <n-icon class="setting-btn pointer" @click="show = true" size="20">
+  <n-icon class="setting-btn lay-hover" @click="show = true" size="16">
     <ellipsis-vertical />
   </n-icon>
   <n-drawer v-model:show="show" :width="300">
@@ -77,33 +77,36 @@
 </template>
 
 <script lang="ts">
-import { EllipsisVertical, Ellipse } from "@vicons/ionicons5";
-import { defineComponent, inject, ref } from "vue";
-import navThemeDark from "./svg/nav-theme-dark.svg";
-import navThemeLight from "./svg/nav-theme-light.svg";
-import headerThemeDark from "./svg/header-theme-dark.svg";
+import { EllipsisVertical, Ellipse } from '@vicons/ionicons5';
+import { defineComponent, inject, ref } from 'vue';
+import navThemeDark from './svg/nav-theme-dark.svg';
+import navThemeLight from './svg/nav-theme-light.svg';
+import headerThemeDark from './svg/header-theme-dark.svg';
 export default defineComponent({
-  name: "LaySetting",
+  name: 'LaySetting',
   components: {
     Ellipse,
-    EllipsisVertical
+    EllipsisVertical,
   },
   setup() {
-    const layConfig: any = inject("layConfig");
+    const layConfig: any = inject('layConfig');
     return {
       navThemeDark,
       navThemeLight,
       headerThemeDark,
       layConfig,
-      show: ref(false)
+      show: ref(false),
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss">
 .pointer {
   cursor: pointer;
+}
+.setting-btn {
+  padding: 5px;
 }
 .thenme-box {
   padding-bottom: 10px;

@@ -1,0 +1,14 @@
+@import './variables.scss';
+.pointer {
+  cursor: pointer;
+}
+.lay-hover:hover {
+  color: $primary;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .xs-hidden {
+    display: none;
+  }
+}
