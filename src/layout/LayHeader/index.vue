@@ -1,36 +1,37 @@
 <template>
   <div class="lay-header">
-    <n-grid x-gap="24" :cols="2">
+    <n-grid x-gap="2" cols="2">
       <!-- left -->
-      <n-gi class="header-left">
-        <n-icon style="cursor: pointer" size="20">
-          <menu-fold-outlined
-            v-show="!layConfig.collapsed"
-            @click="layConfig.collapsed = true"
-          />
-          <menu-unfold-outlined
-            v-show="layConfig.collapsed"
-            @click="layConfig.collapsed = false"
-          />
-        </n-icon>
-        <!-- <div>
-          <n-switch v-model:value="layConfig.sidebarInverted" />
-          inverted
-        </div> -->
-        <div class="header-refresh">
-          <n-icon @click="handleRefresh" class="re-icon" size="18">
-            <refresh-filled />
+      <n-gi>
+        <div class="header-left">
+          <n-icon style="cursor: pointer" size="20">
+            <menu-fold-outlined
+              v-show="!layConfig.collapsed"
+              @click="layConfig.collapsed = true"
+            />
+            <menu-unfold-outlined
+              v-show="layConfig.collapsed"
+              @click="layConfig.collapsed = false"
+            />
           </n-icon>
+          <div class="header-refresh">
+            <n-icon @click="handleRefresh" class="re-icon" size="20">
+              <refresh-filled />
+            </n-icon>
+          </div>
+          <n-breadcrumb>
+            <n-breadcrumb-item>首页</n-breadcrumb-item>
+            <n-breadcrumb-item>Dashboard</n-breadcrumb-item>
+            <n-breadcrumb-item>主控台</n-breadcrumb-item>
+          </n-breadcrumb>
         </div>
-        <n-breadcrumb>
-          <n-breadcrumb-item>首页</n-breadcrumb-item>
-          <n-breadcrumb-item>Dashboard</n-breadcrumb-item>
-          <n-breadcrumb-item>主控台</n-breadcrumb-item>
-        </n-breadcrumb>
       </n-gi>
-      <!-- right -->
-      <n-gi class="header-right">
-        <lay-setting></lay-setting>
+
+      <!-- right suffix-->
+      <n-gi suffix>
+        <div class="header-right">
+          <lay-setting></lay-setting>
+        </div>
       </n-gi>
     </n-grid>
   </div>
