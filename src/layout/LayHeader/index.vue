@@ -33,7 +33,6 @@
           <div class="flex-center padding-right-10">
             <n-dropdown
               trigger="hover"
-              placement="bottom-center"
               @select="handleSelect"
               :options="optionsISO"
             >
