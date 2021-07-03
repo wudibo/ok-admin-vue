@@ -30,17 +30,6 @@
           </n-button>
         </div>
       </div>
-
-      <!-- <div v-for="item in 40" :key="item" class="tag-item">
-        <div class="tag-cont">
-          <n-button @click="handleTagOpen('/home')" :bordered="false">
-            <span>首页</span>
-            <n-icon @click.stop="handleTagClose" class="tag-close">
-              <close-sharp></close-sharp>
-            </n-icon>
-          </n-button>
-        </div>
-      </div> -->
     </div>
   </n-scrollbar>
 </template>
@@ -55,14 +44,15 @@ import {
   onMounted,
   nextTick,
 } from 'vue';
+import { NButton, NScrollbar, NIcon } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
-import { NButton, NScrollbar } from 'naive-ui';
 import { CloseSharp } from '@vicons/ionicons5';
 
 export default defineComponent({
   name: 'LayTag',
   inheritAttrs: false,
   components: {
+    NIcon,
     NButton,
     NScrollbar,
     CloseSharp,
@@ -150,7 +140,7 @@ $background: #ffffff;
     position: relative;
     box-sizing: border-box;
     @include percolate(border-color + ', ' + color);
-    &.n-button--primary-type{
+    &.n-button--primary-type {
       border-color: $primary;
     }
     &:hover {

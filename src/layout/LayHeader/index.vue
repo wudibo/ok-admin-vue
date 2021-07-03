@@ -58,22 +58,22 @@ import { PlanetOutline } from '@vicons/ionicons5';
 import { defineComponent, h, inject, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import {
-  NSwitch,
-  NGrid,
   NGi,
+  NGrid,
   NBreadcrumb,
   NBreadcrumbItem,
   NIcon,
+  NDropdown,
 } from 'naive-ui';
 export default defineComponent({
   name: 'LayHeader',
   components: {
     NGi,
-    NIcon,
     NGrid,
-    NSwitch,
+    NIcon,
     NBreadcrumb,
     NBreadcrumbItem,
+    NDropdown,
     LaySetting,
     RefreshFilled,
     PlanetOutline,

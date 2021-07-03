@@ -82,11 +82,18 @@ import { defineComponent, inject, ref } from 'vue';
 import navThemeDark from './svg/nav-theme-dark.svg';
 import navThemeLight from './svg/nav-theme-light.svg';
 import headerThemeDark from './svg/header-theme-dark.svg';
+import { NDrawer, NDrawerContent, NIcon, NGrid, NGi, NDivider } from 'naive-ui';
 export default defineComponent({
   name: 'LaySetting',
   components: {
+    NGi,
+    NGrid,
+    NDivider,
     Ellipse,
     EllipsisVertical,
+    NIcon,
+    NDrawer,
+    NDrawerContent,
   },
   setup() {
     const layConfig: any = inject('layConfig');

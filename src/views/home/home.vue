@@ -12,13 +12,12 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex';
-import { NButton, NH2 } from 'naive-ui';
+import { NH2 } from 'naive-ui';
 
 export default defineComponent({
   name: 'Home',
   components: {
-    NH2,
-    NButton,
+    NH2
   },
   setup(props, superContext) {
     const store = useStore();
