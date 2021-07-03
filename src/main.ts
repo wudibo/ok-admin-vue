@@ -9,5 +9,4 @@ const app = createApp(App);
 app.use(naiveui);
 app.use(store);
 app.use(router);
-// app.use(NaiveUi);
 app.mount('#app');
