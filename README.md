@@ -6,13 +6,12 @@
     <p align="center">
         <img src="https://img.shields.io/badge/vue-%3E%3D3.1.0-brightgreen">
         <img src="https://img.shields.io/badge/vite-%3E%3D2.3.0-brightgreen">
-        <img src="https://img.shields.io/badge/Naive UI-%3E%3D2.14.0-brightgreen">
-        <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
+        <img src="https://img.shields.io/badge/NaiveUI-%3E%3D2.15.0-brightgreen">
     </p>
     <p align="center">
         <img src="https://img.shields.io/badge/axios-%3E%3D0.21.0-brightgreen">
-        <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.4-brightgreen">
-        <img src="https://img.shields.io/badge/node-%3E%3Dv12.13.1-brightgreen">
+        <img src="https://img.shields.io/badge/vue--i18n->=9.1.6-brightgreen">
+        <img src="https://img.shields.io/badge/LICENSE-MIT-yellowgreen">
     </p>
 </p>
 <h3 align="center">
