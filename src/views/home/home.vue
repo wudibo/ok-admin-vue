@@ -15,7 +15,7 @@ import { useStore } from 'vuex';
 import { NH2 } from 'naive-ui';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'home',
   components: {
     NH2
   },

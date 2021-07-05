@@ -30,13 +30,15 @@
         :native-scrollbar="false"
       >
         <div class="lay-content">
-          <router-view v-slot="{ Component }">
-            <transform v-if="!layConfig.refresh">
+          <router-view v-slot="{ Component, route }">
+            <transition appear :name="route.meta.transition || 'fade-transform'" mode="out-in">
               <keep-alive>
-                <component :is="Component" v-if="$route.meta.keepAlive" />
+                <component
+                  :is="Component"
+                  :key="route.meta.keepAlive ? route.path : undefined"
+                />
               </keep-alive>
-              <component :is="Component" v-if="!$route.meta.keepAlive" />
-            </transform>
+            </transition>
           </router-view>
         </div>
       </n-layout-content>
@@ -45,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive } from 'vue';
+import { defineComponent, provide, reactive, ref } from 'vue';
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui';
 import LayHeader from './LayHeader/index.vue';
 import LaySidebar from './LaySidebar/index.vue';
@@ -60,20 +62,22 @@ export default defineComponent({
     NLayout,
     NLayoutHeader,
     NLayoutContent,
-    NLayoutSider,
-  },
+    NLayoutSider
+  }, //
   setup(props, superContext) {
+    const routerShow = ref(false);
     const layConfig = reactive({
       sidebarInverted: true,
       headerInverted: false,
       collapsed: false,
-      refresh: false,
+      refresh: false
     });
     provide('layConfig', layConfig);
     return {
-      layConfig,
+      routerShow,
+      layConfig
     };
-  },
+  }
 });
 </script>
 

@@ -36,7 +36,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     component: Layout as unknown as Component,
     children: [
       {
-        path: "",
+        path: "index",
         name: "user",
         component: () => import("@/views/user/user.vue"),
         meta: {

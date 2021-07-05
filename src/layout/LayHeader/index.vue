@@ -133,7 +133,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
 }
-.flex-center{
+.flex-center {
   display: inline-flex;
   align-items: center;
   justify-content: center;

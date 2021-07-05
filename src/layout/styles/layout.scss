@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './transition.scss';
 .pointer {
   cursor: pointer;
 }
@@ -12,3 +13,6 @@
     display: none;
   }
 }
+
+
+

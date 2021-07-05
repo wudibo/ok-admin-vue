@@ -56,6 +56,7 @@ function handleMenu(
 }
 
 export const useMenu = function () {
+  
   /**layouts初始化 (查找所有根路由的组件都是Layout)*/
   const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
     if (item.component && item.component.name === 'Layout') {
