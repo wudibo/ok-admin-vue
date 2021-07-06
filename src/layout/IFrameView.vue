@@ -3,21 +3,19 @@
     <iframe :src="src" class="iframe-view" frameborder="0"></iframe>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
-export default defineComponent({
-  name: "IFrameView",
-  props: {
-    src: {
-      type: String,
-      default: "https://gitee.com/zhizous"
-    }
+<script setup lang="ts">
+import { defineProps } from 'vue';
+defineProps({
+  src: {
+    type: String,
+    default: 'https://gitee.com/zhizous'
   }
 });
 </script>
 <style lang="scss">
 .iframe,
 .iframe-view {
+  padding: 0;
   position: absolute;
   top: 0;
   left: 0;
