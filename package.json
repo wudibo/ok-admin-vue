@@ -13,6 +13,7 @@
     "@vicons/ionicons5": "^0.10.0",
     "axios": "^0.21.1",
     "naive-ui": "^2.15.1",
+    "rollup-plugin-dynamic-import-variables": "^1.1.0",
     "vfonts": "^0.1.0",
     "vue": "^3.1.2",
     "vue-i18n": "^9.1.6",
