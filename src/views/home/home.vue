@@ -12,17 +12,18 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex';
-import { NH2 } from 'naive-ui';
+import { NH2, NH3 } from 'naive-ui';
 
 export default defineComponent({
   name: 'home',
   components: {
-    NH2
+    NH2,
+    NH3
   },
   setup(props, superContext) {
     const store = useStore();
     const obj = reactive({
-      current: 1,
+      current: 1
     });
     const testFun = () => {
       store.commit('SET_CURRENT', Math.random() * 100);
@@ -31,9 +32,9 @@ export default defineComponent({
     return {
       store,
       obj,
-      testFun,
+      testFun
     };
-  },
+  }
 });
 </script>
 

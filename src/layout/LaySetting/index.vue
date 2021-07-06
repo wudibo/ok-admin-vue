@@ -77,6 +77,7 @@
 </template>
 
 <script lang="ts">
+import { useStore } from 'vuex';
 import { EllipsisVertical, Ellipse } from '@vicons/ionicons5';
 import { defineComponent, inject, ref } from 'vue';
 import navThemeDark from './svg/nav-theme-dark.svg';
@@ -93,18 +94,19 @@ export default defineComponent({
     EllipsisVertical,
     NIcon,
     NDrawer,
-    NDrawerContent,
+    NDrawerContent
   },
   setup() {
-    const layConfig: any = inject('layConfig');
+    const store = useStore();
+    const layConfig = store.getters['admin/layConfigGetter'];
     return {
       navThemeDark,
       navThemeLight,
       headerThemeDark,
       layConfig,
-      show: ref(false),
+      show: ref(false)
     };
-  },
+  }
 });
 </script>
 

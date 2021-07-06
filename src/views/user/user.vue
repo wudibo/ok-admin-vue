@@ -1,24 +1,46 @@
 <template>
   <div class="foo">{{ foo }}</div>
   <div>{{ bar }}</div>
-  <div @click="headerKeep">切换</div>
+  <n-button @click="headerKeep">切换</n-button>
+  <div class="padding">
+    <n-button @click="headerVuex"
+      >测试{{ store.state.admin.layConfig }}</n-button
+    >
+  </div>
 </template>
 <script lang="ts">
 import { ref, defineComponent } from 'vue';
+import { useStore } from 'vuex';
 export default defineComponent({
   name: 'user',
   setup() {
     const foo = ref('user');
     const bar = ref('bar');
+    const store = useStore();
     const headerKeep = () => {
       foo.value = 'dsafasd' + Math.random() * 100;
     };
     return {
       foo,
       bar,
-      headerKeep
+      headerKeep,
+      store,
+      headerVuex: () => {
+        const conf = store.getters['admin/layConfigGetter'];
+        store.commit('admin/SET_LAYCONFIG', {
+          key: 'collapsed',
+          value: !conf.collapsed
+        });
+
+        /* const conf = store.getters['admin/configGetter'];
+        console.log({ ...conf }); */
+      }
     };
   }
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.padding {
+  padding: 20px 0;
+}
+</style>

@@ -56,13 +56,14 @@ import LaySetting from '@/layout/LaySetting/index.vue';
 import { PlanetOutline } from '@vicons/ionicons5';
 import { defineComponent, h, inject, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 import {
   NGi,
   NGrid,
   NBreadcrumb,
   NBreadcrumbItem,
   NIcon,
-  NDropdown,
+  NDropdown
 } from 'naive-ui';
 export default defineComponent({
   name: 'LayHeader',
@@ -77,12 +78,13 @@ export default defineComponent({
     RefreshFilled,
     PlanetOutline,
     MenuFoldOutlined,
-    MenuUnfoldOutlined,
+    MenuUnfoldOutlined
   },
   setup(props, superContext) {
-    const layConfig: any = inject('layConfig'),
+    const store = useStore(),
       route = useRoute();
     let matcheds = ref([] as Array<string>);
+    const layConfig: any = store.getters['admin/layConfigGetter'];
 
     watchEffect(() => {
       // 面包屑
@@ -99,12 +101,12 @@ export default defineComponent({
       optionsISO: [
         {
           label: '简体中文',
-          key: 'zh',
+          key: 'zh'
         },
         {
           label: 'English',
-          key: 'en',
-        },
+          key: 'en'
+        }
       ],
       handleSelect: (val: any) => {
         console.log(val);
@@ -114,9 +116,9 @@ export default defineComponent({
         setTimeout(() => {
           layConfig.refresh = false;
         }, 10);
-      }),
+      })
     };
-  },
+  }
 });
 </script>
 

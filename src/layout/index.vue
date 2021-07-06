@@ -15,7 +15,7 @@
         <lay-header></lay-header>
       </n-layout-header>
 
-      <!-- tab栏 -->
+      <!-- tag栏 -->
       <n-layout-content
         position="absolute"
         style="height: 48px; top: 64px; left: 0; right: 0"
@@ -36,6 +36,7 @@
 </template>
 
 <script lang="ts">
+import { useStore } from 'vuex';
 import { defineComponent, provide, reactive, ref } from 'vue';
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui';
 import LayHeader from './LayHeader/index.vue';
@@ -54,16 +55,12 @@ export default defineComponent({
     NLayoutHeader,
     NLayoutContent,
     NLayoutSider
-  }, //
+  },
   setup(props, superContext) {
+    const store = useStore();
     const routerShow = ref(false);
-    const layConfig = reactive({
-      sidebarInverted: true,
-      headerInverted: false,
-      collapsed: false,
-      refresh: false
-    });
-    provide('layConfig', layConfig);
+    const layConfig = store.getters['admin/layConfigGetter'];
+
     return {
       routerShow,
       layConfig

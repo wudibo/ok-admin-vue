@@ -28,13 +28,14 @@
 </template>
 
 <script lang="ts">
-import { useRouter, useRoute } from "vue-router";
-import { inject, reactive, watchEffect, defineComponent } from "vue";
-import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from "naive-ui";
-import { useMenu } from "./menuOptions";
+import { useStore } from 'vuex';
+import { useRouter, useRoute } from 'vue-router';
+import { inject, reactive, watchEffect, defineComponent } from 'vue';
+import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from 'naive-ui';
+import { useMenu } from './menuOptions';
 
 export default defineComponent({
-  name: "LaySidebar",
+  name: 'LaySidebar',
   components: {
     NLayoutSider,
     NImage,
@@ -43,14 +44,16 @@ export default defineComponent({
     NSwitch
   },
   setup(props, superContext) {
-    const menuOptions = useMenu();
-    const router = useRouter(),
-      route = useRoute(),
-      menuConfig = reactive({
-        menuKey: "",
-        menuKeys: [""]
-      }),
-      layConfig: any = inject("layConfig");
+    const menuOptions = useMenu(),
+      store = useStore(),
+      router = useRouter(),
+      route = useRoute();
+
+    const layConfig = store.getters['admin/layConfigGetter'];
+    const menuConfig = reactive({
+      menuKey: '',
+      menuKeys: ['']
+    });
 
     watchEffect(() => {
       menuConfig.menuKey = route.fullPath;
@@ -64,8 +67,8 @@ export default defineComponent({
       layConfig,
       menuOptions,
       getSrc: (path: string) => {
-        const patha = "../../assets/head.png";
-        const modules = import.meta.globEager("../../assets/head.png");
+        const patha = '../../assets/head.png';
+        const modules = import.meta.globEager('../../assets/head.png');
         console.log(modules[patha].default);
         return modules[patha].default;
       },

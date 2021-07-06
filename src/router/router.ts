@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import { componentParcel } from '../layout/mixins';
+import componentParcel from '../layout/componentParcel';
 import Layout from '@/layout/index.vue';
 import { Component } from 'vue';
 import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';
@@ -44,6 +44,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         component: () => componentParcel('@/views/control/control.vue'),
         meta: {
           title: '控制台',
+          title_en: 'Control',
           keepAlive: true,
           icon: StarBorderRound
         }
