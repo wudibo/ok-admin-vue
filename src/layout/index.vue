@@ -29,18 +29,7 @@
         style="top: 112px; bottom: 0; background: #f0f2f5"
         :native-scrollbar="false"
       >
-        <div class="lay-content">
-          <router-view v-slot="{ Component, route }">
-            <transition appear :name="route.meta.transition || 'fade-transform'" mode="out-in">
-              <keep-alive>
-                <component
-                  :is="Component"
-                  :key="route.meta.keepAlive ? route.path : undefined"
-                />
-              </keep-alive>
-            </transition>
-          </router-view>
-        </div>
+        <lay-main></lay-main>
       </n-layout-content>
     </n-layout>
   </n-layout>
@@ -52,10 +41,12 @@ import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui';
 import LayHeader from './LayHeader/index.vue';
 import LaySidebar from './LaySidebar/index.vue';
 import LayTag from './LayTag/index.vue';
+import LayMain from './LayMain/index.vue';
 
 export default defineComponent({
   name: 'Layout',
   components: {
+    LayMain,
     LayTag,
     LaySidebar,
     LayHeader,
@@ -83,7 +74,4 @@ export default defineComponent({
 
 <style lang="scss">
 @import './styles/layout.scss';
-.lay-content {
-  padding: 12px 24px;
-}
 </style>

@@ -1,9 +1,11 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Layout from "@/layout/index.vue";
-import { Component } from "vue";
-import { NewspaperOutline, WarningOutline } from "@vicons/ionicons5";
-import { StarBorderRound } from "../icon/material-icon";
-import multiMenu from "./multiMenu";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { componentParcel } from '../layout/mixins';
+import Layout from '@/layout/index.vue';
+import { Component } from 'vue';
+import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';
+import { StarBorderRound } from '../icon/material-icon';
+import multiMenu from './multiMenu';
+
 export type IMeta = {
   title?: string;
   icon?: Component;
@@ -11,18 +13,19 @@ export type IMeta = {
   affix?: boolean;
   hidden?: boolean;
 };
+
 export const asyncRoutes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: '/',
     component: Layout as unknown as Component,
-    redirect: "/home",
+    redirect: '/home',
     children: [
       {
-        path: "/home",
-        name: "home",
-        component: () => import("@/views/home/home.vue"),
+        path: '/home',
+        name: 'home',
+        component: () => componentParcel('@/views/home/home.vue'), // () => import('@/views/home/home.vue'),
         meta: {
-          title: "首页",
+          title: '首页',
           keepAlive: true,
           icon: StarBorderRound,
           affix: true //在tags是否一直悬挂不被关闭
@@ -32,97 +35,113 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   },
 
   {
-    path: "/user",
+    path: '/control',
     component: Layout as unknown as Component,
     children: [
       {
-        path: "index",
-        name: "user",
-        component: () => import("@/views/user/user.vue"),
+        path: '',
+        name: 'control',
+        component: () => componentParcel('@/views/control/control.vue'),
         meta: {
-          title: "个人中心",
+          title: '控制台',
+          keepAlive: true,
           icon: StarBorderRound
         }
       }
     ]
   },
   {
-    path: "/form",
-    name: "form",
+    path: '/user',
     component: Layout as unknown as Component,
-    redirect: "/form/basic-form",
+    children: [
+      {
+        path: '',
+        name: 'user',
+        component: () => componentParcel('@/views/user/user.vue'),
+        meta: {
+          title: '个人中心',
+          icon: StarBorderRound
+        }
+      }
+    ]
+  },
+  {
+    path: '/form',
+    name: 'form',
+    component: Layout as unknown as Component,
+    redirect: '/form/basic-form',
     meta: {
-      title: "表单",
+      title: '表单',
       icon: NewspaperOutline
     },
     children: [
       {
-        path: "basic-form",
-        name: "basic-form",
-        component: () => import("@/views/form/basic-form.vue"),
+        path: 'basic-form',
+        name: 'basic-form',
+        component: () => componentParcel('@/views/form/basic-form.vue'),
         meta: {
-          title: "基础表单",
+          title: '基础表单',
           icon: StarBorderRound
         }
       },
       {
-        path: "advanced-form",
-        name: "advanced-form",
-        component: () => import("@/views/form/advanced-form.vue"),
+        path: 'advanced-form',
+        name: 'advanced-form',
+        component: () => componentParcel('@/views/form/advanced-form.vue'),
         meta: {
-          title: "高级表单"
+          title: '高级表单'
         }
       },
       {
-        path: "step-form",
-        name: "step-form",
-        component: () => import("@/views/form/advanced-form.vue"),
+        path: 'step-form',
+        name: 'step-form',
+        component: () => componentParcel('@/views/form/advanced-form.vue'),
         meta: {
-          title: "分步表单"
+          title: '分步表单'
         }
       },
       {
-        path: "detail",
-        name: "detail",
-        component: () => import("@/views/form/advanced-form.vue"),
+        path: 'detail',
+        name: 'detail',
+        component: () => componentParcel('@/views/form/advanced-form.vue'),
         meta: {
-          title: "表单详情"
+          title: '表单详情'
         }
       }
     ]
   },
   {
-    path: "/exception",
-    name: "exception",
+    path: '/exception',
+    name: 'exception',
     component: Layout as unknown as Component,
-    redirect: "/exception/404",
+    redirect: '/exception/404',
     meta: {
-      title: "异常页",
+      title: '异常页',
       icon: WarningOutline
     },
     children: [
       {
-        path: "403",
-        name: "403",
-        component: () => import("@/views/exception/403.vue"),
+        path: '403',
+        name: '403',
+        component: () => componentParcel('@/views/exception/403.vue'),
         meta: {
-          title: "403"
+          title: '403'
         }
       },
       {
-        path: "404",
-        name: "404",
-        component: () => import("@/views/exception/404.vue"),
+        path: '404',
+        name: '404',
+        component: () => componentParcel('@/views/exception/404.vue'),
         meta: {
-          title: "404"
+          title: '404'
         }
       },
       {
-        path: "500",
-        name: "500",
-        component: () => import("@/views/exception/500.vue"),
+        path: '500',
+        name: '500',
+        component: () => componentParcel('@/views/exception/500.vue'),
         meta: {
-          title: "500"
+          title: '500'
         }
       }
     ]
