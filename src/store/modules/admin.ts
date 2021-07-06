@@ -12,7 +12,7 @@ const mutations = {
   SET_LAYTAGS: (state: any, key: any) => {
     state.layTags = key;
   },
-  SET_LAYCONFIG: function <T>(state: any, config: { key: string; value: any }) {
+  SET_LAYCONFIG: function <T>(state: any, config: { key: string; value: T }) {
     state.layConfig[config.key] = config.value;
   },
   SET_LAYCONFIGS: (state: any, config: any) => {
