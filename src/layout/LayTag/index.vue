@@ -1,50 +1,64 @@
 <template>
-  <n-scrollbar
-    ref="scrollbar"
-    :vertical-rail-style="{ bottom: 0 }"
-    :scrollable="true"
-    :x-scrollable="true"
-  >
-    <div class="lay-tag" ref="layTag">
-      <div
-        v-for="(item, index) in tags"
-        class="tag-item"
-        :key="item.fullPath"
-        :class="item.fullPath === $route.fullPath ? 'tag-active' : ''"
-      >
-        <div class="tag-cont">
-          <n-button
-            class="tag-btn"
-            @click="handleTagOpen(item.fullPath)"
-            :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
-            :bordered="false"
-          >
-            <span>{{ item.meta.title }}</span>
-            <n-icon
-              v-if="!isAffix(item)"
-              @click.stop="handleTagClose(index)"
-              class="tag-close"
+  <div class="lay-tag-box">
+    <n-scrollbar
+      style="flex: 1"
+      ref="scrollbar"
+      :vertical-rail-style="{ bottom: 0 }"
+      :scrollable="true"
+      :x-scrollable="true"
+    >
+      <div class="lay-tag" ref="layTag">
+        <div
+          v-for="(item, index) in tags"
+          class="tag-item"
+          :key="item.fullPath"
+          :class="item.fullPath === $route.fullPath ? 'tag-active' : ''"
+        >
+          <div class="tag-cont">
+            <n-button
+              class="tag-btn"
+              @click="handleTagOpen(item.fullPath)"
+              :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
+              :bordered="false"
             >
-              <close-sharp></close-sharp>
-            </n-icon>
-          </n-button>
+              <span>{{ item.meta.title }}</span>
+              <n-icon
+                v-if="!isAffix(item)"
+                @click.stop="handleTagClose(index)"
+                class="tag-close"
+              >
+                <close-sharp></close-sharp>
+              </n-icon>
+            </n-button>
+          </div>
         </div>
       </div>
+    </n-scrollbar>
+    <div class="lay-tag-menu">
+      <n-dropdown trigger="hover" placement="bottom-end" @select="handleSelect" :options="menuOptions">
+        <n-button style="width: 36px; height: 34px">
+          <n-icon :size="18">
+            <chevron-down-outline />
+          </n-icon>
+        </n-button>
+      </n-dropdown>
     </div>
-  </n-scrollbar>
+  </div>
 </template>
 <script lang="ts">
-import type { RouteLocationRaw } from 'vue-router';
-import { Tag, tagsEffect, tagsScroll } from './index';
 import {
   defineComponent,
   watchEffect,
   ref,
   reactive,
   onMounted,
-  nextTick,
+  nextTick
 } from 'vue';
-import { NButton, NScrollbar, NIcon } from 'naive-ui';
+import type { RouteLocationRaw } from 'vue-router';
+import { ChevronDownOutline } from '@vicons/ionicons5';
+import { Tag, tagsEffect, tagsScroll } from './index';
+import { menuOptions } from './tagmenu';
+import { NButton, NScrollbar, NIcon, NDropdown } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
 import { CloseSharp } from '@vicons/ionicons5';
 
@@ -55,7 +69,9 @@ export default defineComponent({
     NIcon,
     NButton,
     NScrollbar,
-    CloseSharp,
+    NDropdown,
+    ChevronDownOutline,
+    CloseSharp
   },
   setup() {
     const router = useRouter();
@@ -64,8 +80,10 @@ export default defineComponent({
     const scrollbar = ref() as any;
     const layTag = ref() as any;
 
-    /**tags处理 */
+    /**tags监听处理 */
     tagsEffect(tags, route, router);
+    console.log(menuOptions);
+    
 
     onMounted(() => {
       const containerRef = scrollbar.value.containerRef;
@@ -82,6 +100,12 @@ export default defineComponent({
       tags,
       layTag,
       scrollbar,
+      menuOptions,
+
+      /** 菜单选择 */
+      handleSelect() {
+        
+      },
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {
         router.push(fullPath);
@@ -101,30 +125,40 @@ export default defineComponent({
 
       isAffix(tag: Tag) {
         return tag.meta && tag.meta.affix;
-      },
+      }
     };
-  },
+  }
 });
 </script>
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
 @import '../styles/mixins.scss';
+@import '../styles/variables.scss';
 $background: #ffffff;
+$tag-height: 48px;
 .lay-tag-box {
-  height: calc(100% + 17px);
-  overflow-x: auto;
-  overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  height: $tag-height;
   background-color: $background;
+  box-sizing: border-box;
+  position: relative;
+}
+.lay-tag-menu {
+  width: 64px;
+  height: $tag-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  // border-left: 1px solid rgba(226, 226, 226, 0.27);
 }
 
 .lay-tag {
-  height: 48px;
   padding: 0 10px;
-  align-items: center;
   display: flex;
+  align-items: center;
   box-sizing: border-box;
-  border-bottom: 1px solid #f5f7f9;
-  background-color: $background;
+  height: $tag-height;
 }
 
 .tag-item {
@@ -159,7 +193,7 @@ $background: #ffffff;
     }
   }
 
-  ::v-deep .n-button--default-type {
+  ::v-deep() .n-button--default-type {
     .tag-close {
       color: #000000;
     }

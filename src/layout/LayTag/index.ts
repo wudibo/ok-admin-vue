@@ -3,9 +3,9 @@ import type {
   RouteMeta,
   RouteRecordRaw,
   RouteLocationNormalizedLoaded
-} from "vue-router";
-import { watch } from "vue";
-import { asyncRoutes } from "../../router/router";
+} from 'vue-router';
+import { watch} from 'vue';
+import { asyncRoutes } from '../../router/router';
 
 export type Tag = {
   fullPath: string;
@@ -21,7 +21,7 @@ const handlePath = function (superPath: string, rePath: string): string {
     // 如果superPath最后一个字符是/的时候
     return superPath + rePath;
   } else {
-    return rePath ? superPath + "/" + rePath : superPath;
+    return rePath ? superPath + '/' + rePath : superPath;
   }
 };
 
@@ -33,7 +33,7 @@ export const tagsEffect = function (
 ): void {
   /**layouts初始化 (查找所有根路由的组件都是Layout)*/
   const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
-    if (item.component && item.component.name === "Layout") {
+    if (item.component && item.component.name === 'Layout') {
       lays.push(item);
     }
     return lays;
@@ -80,7 +80,7 @@ export const tagsScroll = function (
   superBox: HTMLDivElement,
   tagConent: HTMLDivElement
 ) {
-  const layActive = tagConent.querySelector(".tag-active") as HTMLDivElement; // 当前选中的tag
+  const layActive = tagConent.querySelector('.tag-active') as HTMLDivElement; // 当前选中的tag
   const superWidth = superBox.offsetWidth, // 可视宽度
     tagWidth = tagConent.offsetWidth, // 内容的总宽度
     layActiveWidth = layActive.offsetWidth; // 当前选中的元素的宽度
