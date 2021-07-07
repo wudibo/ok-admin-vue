@@ -1,1 +1,0 @@
-import{j as a,t as s,x as o,o as e,c as t,A as d,z as l}from"./vendor.9aedf061.js";var r={setup:()=>({hello:a("hello world")})};const c=l();s("data-v-448a2723");const n={class:"box"};o();const v=c(((a,s,o,l,r,c)=>(e(),t("div",n,d(l.hello),1))));r.render=v,r.__scopeId="data-v-448a2723";export default r;

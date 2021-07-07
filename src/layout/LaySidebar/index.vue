@@ -82,8 +82,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .lay-sidebar {
-  ::v-deep {
-    .n-menu .n-menu-item::before {
+  ::v-deep(.n-menu) {
+    .n-menu-item::before {
       left: 0;
       right: 0;
       border-radius: 0;

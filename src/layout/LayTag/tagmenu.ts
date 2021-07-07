@@ -1,3 +1,4 @@
+import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
 import { h, Component } from 'vue';
 import { NIcon } from 'naive-ui';
 import {
@@ -7,6 +8,7 @@ import {
   CloseCircleSharp,
   ArrowDownCircleOutline
 } from '@vicons/ionicons5';
+import { Tag } from './index';
 const menuIcon = (icon: Component) =>
   h(NIcon, null, {
     default: () => h(icon)
@@ -39,3 +41,74 @@ export const menuOptions = [
     icon: () => menuIcon(ArrowDownCircleOutline)
   }
 ];
+
+/**关闭菜单的事件 */
+export const closeMenu = function (
+  key: string,
+  tags: Array<Tag>,
+  route: RouteLocationNormalizedLoaded,
+  router: Router
+) {
+  const thatIndex = tags.findIndex((tag) => tag.fullPath === route.fullPath);
+  switch (key) {
+    case 'closeLeft':
+      let tempIndexL = 0;
+      while (tags[tempIndexL].fullPath !== route.fullPath) {
+        if (
+          tags[tempIndexL].fullPath !== route.fullPath &&
+          !tags[tempIndexL].meta.affix
+        ) {
+          tags.splice(tempIndexL, 1);
+        } else {
+          tempIndexL++;
+        }
+      }
+      break;
+    case 'closeRight':
+      let tempIndexR = thatIndex + 1;
+      while (
+        tempIndexR < tags.length &&
+        tags[tempIndexR].fullPath !== route.fullPath
+      ) {
+        if (
+          tags[tempIndexR].fullPath !== route.fullPath &&
+          !tags[tempIndexR].meta.affix
+        ) {
+          tags.splice(tempIndexR, 1);
+        } else {
+          tempIndexR++;
+        }
+      }
+      break;
+    case 'closeOther':
+      for (let i = 0; i < tags.length; i++) {
+        if (tags[i].fullPath !== route.fullPath && !tags[i].meta.affix) {
+          tags.splice(i, 1);
+          i--;
+        }
+      }
+      break;
+    case 'closeAll':
+      for (let i = 0; i < tags.length; i++) {
+        if (!tags[i].meta.affix) {
+          tags.splice(i, 1);
+          i--;
+        }
+      }
+      // 如果当前未选中tag则选中tags最后一个
+      if (!tags.find((tag) => tag.fullPath === route.fullPath)) {
+        router.replace(tags[tags.length - 1].fullPath);
+      }
+      break;
+    case 'closeThis':
+      if (!tags[thatIndex].meta.affix) {
+        if (thatIndex === 0) {
+          router.replace(tags[thatIndex + 1].fullPath);
+        } else {
+          router.replace(tags[thatIndex - 1].fullPath);
+        }
+        tags.splice(thatIndex, 1);
+      }
+      break;
+  }
+};

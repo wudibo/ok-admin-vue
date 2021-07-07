@@ -35,7 +35,12 @@
       </div>
     </n-scrollbar>
     <div class="lay-tag-menu">
-      <n-dropdown trigger="hover" placement="bottom-end" @select="handleSelect" :options="menuOptions">
+      <n-dropdown
+        trigger="hover"
+        placement="bottom-end"
+        @select="handleMenuSelect"
+        :options="menuOptions"
+      >
         <n-button style="width: 36px; height: 34px">
           <n-icon :size="18">
             <chevron-down-outline />
@@ -57,7 +62,7 @@ import {
 import type { RouteLocationRaw } from 'vue-router';
 import { ChevronDownOutline } from '@vicons/ionicons5';
 import { Tag, tagsEffect, tagsScroll } from './index';
-import { menuOptions } from './tagmenu';
+import { menuOptions, closeMenu } from './tagmenu';
 import { NButton, NScrollbar, NIcon, NDropdown } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
 import { CloseSharp } from '@vicons/ionicons5';
@@ -74,17 +79,17 @@ export default defineComponent({
     CloseSharp
   },
   setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const tags: Array<Tag> = reactive([]);
+    const router = useRouter(),
+      route = useRoute();
+
+    let tags: Array<Tag> = reactive([]);
     const scrollbar = ref() as any;
     const layTag = ref() as any;
 
     /**tags监听处理 */
     tagsEffect(tags, route, router);
-    console.log(menuOptions);
-    
 
+    /**mounted生命周期 */
     onMounted(() => {
       const containerRef = scrollbar.value.containerRef;
       watchEffect(() => {
@@ -96,33 +101,34 @@ export default defineComponent({
       });
     });
 
+    /**关闭当前tag */
+    const closeThatTag = function (index: number) {
+      if (tags[index].fullPath === route.fullPath) {
+        if (index === 0) {
+          router.replace(tags[index + 1].fullPath);
+        } else {
+          router.replace(tags[index - 1].fullPath);
+        }
+      }
+      tags.splice(index, 1);
+    };
+
     return {
       tags,
       layTag,
       scrollbar,
       menuOptions,
 
-      /** 菜单选择 */
-      handleSelect() {
-        
+      /** 菜单选择事件 */
+      handleMenuSelect(key: string) {
+        closeMenu(key, tags, route, router, closeThatTag);
       },
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {
         router.push(fullPath);
       },
-
-      /**关闭tag */
-      handleTagClose(index: number) {
-        if (tags[index].fullPath === route.fullPath) {
-          if (index === 0) {
-            router.replace(tags[index + 1].fullPath);
-          } else {
-            router.replace(tags[index - 1].fullPath);
-          }
-        }
-        tags.splice(index, 1);
-      },
-
+      /**关闭当前tag */
+      handleTagClose: closeThatTag,
       isAffix(tag: Tag) {
         return tag.meta && tag.meta.affix;
       }
@@ -193,7 +199,7 @@ $tag-height: 48px;
     }
   }
 
-  ::v-deep() .n-button--default-type {
+  ::v-deep(.n-button--default-type) {
     .tag-close {
       color: #000000;
     }
