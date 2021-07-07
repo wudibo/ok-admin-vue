@@ -101,18 +101,6 @@ export default defineComponent({
       });
     });
 
-    /**关闭当前tag */
-    const closeThatTag = function (index: number) {
-      if (tags[index].fullPath === route.fullPath) {
-        if (index === 0) {
-          router.replace(tags[index + 1].fullPath);
-        } else {
-          router.replace(tags[index - 1].fullPath);
-        }
-      }
-      tags.splice(index, 1);
-    };
-
     return {
       tags,
       layTag,
@@ -121,14 +109,23 @@ export default defineComponent({
 
       /** 菜单选择事件 */
       handleMenuSelect(key: string) {
-        closeMenu(key, tags, route, router, closeThatTag);
+        closeMenu(key, tags, route, router);
       },
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {
         router.push(fullPath);
       },
       /**关闭当前tag */
-      handleTagClose: closeThatTag,
+      handleTagClose(index: number) {
+        if (tags[index].fullPath === route.fullPath) {
+          if (index === 0) {
+            router.replace(tags[index + 1].fullPath);
+          } else {
+            router.replace(tags[index - 1].fullPath);
+          }
+        }
+        tags.splice(index, 1);
+      },
       isAffix(tag: Tag) {
         return tag.meta && tag.meta.affix;
       }
