@@ -152,12 +152,12 @@ export default defineComponent({
 
 .header-left {
   display: flex;
-  padding: 0 24px;
+  padding: 0 18px;
   align-items: center;
 }
 .header-right {
   display: flex;
-  padding: 0 24px;
+  padding:0 18px;
   align-items: center;
   justify-content: flex-end;
 }

@@ -147,7 +147,7 @@ $tag-height: 48px;
   position: relative;
 }
 .lay-tag-menu {
-  width: 64px;
+  padding: 0 12px;
   height: $tag-height;
   display: flex;
   align-items: center;
