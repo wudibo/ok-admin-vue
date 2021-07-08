@@ -1,8 +1,11 @@
 <template>
   <n-drawer
+    class="lay-drawer-slider"
     v-if="mobileOptions.isMobile"
     v-model:show="mobileOptions.showMobileSlidebar"
-    :style="{ backgroundColor: layConfig.sidebarInverted ? '#001428' : 'red' }"
+    :style="{
+      backgroundColor: layConfig.sidebarInverted ? '#001428' : ''
+    }"
     :native-scrollbar="false"
     :width="sliderWidth"
     :placement="'left'"
@@ -50,4 +53,10 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss">
+.lay-drawer-slider {
+  .n-scrollbar > .n-scrollbar-container > .n-scrollbar-content {
+    height: 100%;
+  }
+}
+</style>

@@ -1,12 +1,18 @@
 <template>
   <lay-drawer
     v-model:show="active"
-    :style="{ backgroundColor: layConfig.sidebarInverted ? '#001428' : 'red' }"
+    :style="{
+      backgroundColor: layConfig.sidebarInverted ? '#001428' : ''
+    }"
     :native-scrollbar="false"
     :width="sliderWidth"
     :placement="'left'"
   >
     <n-layout-sider
+      :style="{
+        minHeight: '100%',
+        boxShadow: '2px 0 6px var(--border-color)'
+      }"
       :width="sliderWidth"
       :native-scrollbar="false"
       collapse-mode="width"
