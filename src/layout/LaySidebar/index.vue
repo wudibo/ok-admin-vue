@@ -1,6 +1,5 @@
 <template>
   <lay-drawer
-    ref="layDrawer"
     v-model:show="active"
     :style="{ backgroundColor: layConfig.sidebarInverted ? '#001428' : 'red' }"
     :native-scrollbar="false"

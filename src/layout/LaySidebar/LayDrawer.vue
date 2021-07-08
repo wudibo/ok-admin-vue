@@ -45,13 +45,7 @@ export default defineComponent({
 
     return {
       layConfig,
-      mobileOptions,
-      showDrawer(){
-        active.value = true;
-      },
-      hideDrawer(){
-        active.value = false;
-      }
+      mobileOptions
     };
   }
 });
