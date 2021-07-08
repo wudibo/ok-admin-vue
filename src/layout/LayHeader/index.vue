@@ -4,7 +4,7 @@
       <!-- left -->
       <n-gi>
         <div class="header-left">
-          <n-icon class="lay-hover" size="20">
+          <n-icon class="lay-hover" title="菜单切换" size="20">
             <menu-fold-outlined
               v-show="!layConfig.collapsed"
               @click="hanldeMenu"
@@ -15,7 +15,12 @@
             />
           </n-icon>
           <div class="header-refresh">
-            <n-icon @click="handleRefresh" class="lay-hover" size="20">
+            <n-icon
+              @click="handleRefresh"
+              title="刷新"
+              class="lay-hover"
+              size="20"
+            >
               <refresh-filled />
             </n-icon>
           </div>
@@ -31,16 +36,24 @@
       <!-- right -->
       <n-gi suffix>
         <div class="header-right">
-          <div class="flex-center padding-right-10">
+          <div class="flex-center padding-lr-10">
+            <n-icon title="锁屏" class="lay-hover" size="20">
+              <lock-closed-outline />
+            </n-icon>
+          </div>
+          <div class="flex-center padding-lr-10">
             <n-dropdown
               trigger="hover"
               @select="handleSelect"
               :options="optionsISO"
             >
-              <n-icon class="lay-hover" size="20">
-                <planet-outline />
+              <n-icon title="语言" class="lay-hover" size="20">
+                <globe-outline />
               </n-icon>
             </n-dropdown>
+          </div>
+          <div class="flex-center padding-lr-10">
+            <full-screen />
           </div>
           <lay-setting></lay-setting>
         </div>
@@ -50,14 +63,16 @@
 </template>
 
 <script lang="ts">
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
-import { RefreshFilled } from '../../icon/material-icon';
-import { throttle } from '../utils/index';
-import LaySetting from '@/layout/LaySetting/index.vue';
-import { PlanetOutline } from '@vicons/ionicons5';
 import { defineComponent, inject, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
+import { GlobeOutline, LockClosedOutline } from '@vicons/ionicons5';
+import { RefreshFilled } from '../../icon/material-icon';
+import { throttle } from '../utils/index';
+import LaySetting from '@/layout/LaySetting/index.vue';
+import FullScreen from './FullScreen.vue';
+
 import {
   NGi,
   NGrid,
@@ -75,9 +90,11 @@ export default defineComponent({
     NBreadcrumb,
     NBreadcrumbItem,
     NDropdown,
+    FullScreen,
     LaySetting,
     RefreshFilled,
-    PlanetOutline,
+    GlobeOutline,
+    LockClosedOutline,
     MenuFoldOutlined,
     MenuUnfoldOutlined
   },
@@ -136,6 +153,10 @@ export default defineComponent({
 .padding-right-10 {
   padding-right: 10px;
 }
+.padding-lr-10 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 .padding-left-10 {
   padding-left: 10px;
 }
@@ -157,7 +178,7 @@ export default defineComponent({
 }
 .header-right {
   display: flex;
-  padding:0 18px;
+  padding: 0 18px;
   align-items: center;
   justify-content: flex-end;
 }

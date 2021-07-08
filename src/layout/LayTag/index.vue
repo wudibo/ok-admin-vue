@@ -41,7 +41,7 @@
         @select="handleMenuSelect"
         :options="menuOptions"
       >
-        <n-button style="width: 36px; height: 34px">
+        <n-button style="width: 32px; height: 32px">
           <n-icon :size="18">
             <chevron-down-outline />
           </n-icon>
@@ -62,7 +62,7 @@ import {
 import type { RouteLocationRaw } from 'vue-router';
 import { ChevronDownOutline } from '@vicons/ionicons5';
 import { Tag, tagsEffect, tagsScroll } from './index';
-import { menuOptions, closeMenu } from './tagmenu';
+import { menuOptions, closeMenu } from './tagMenu';
 import { NButton, NScrollbar, NIcon, NDropdown } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
 import { CloseSharp } from '@vicons/ionicons5';
