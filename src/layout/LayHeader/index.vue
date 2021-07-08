@@ -2,12 +2,12 @@
   <div class="lay-header">
     <n-grid x-gap="2" cols="2">
       <!-- left -->
-      <n-gi class="xs-hidden">
+      <n-gi>
         <div class="header-left">
           <n-icon class="lay-hover" size="20">
             <menu-fold-outlined
               v-show="!layConfig.collapsed"
-              @click="layConfig.collapsed = true"
+              @click="hanldeMenu"
             />
             <menu-unfold-outlined
               v-show="layConfig.collapsed"
@@ -19,7 +19,8 @@
               <refresh-filled />
             </n-icon>
           </div>
-          <n-breadcrumb>
+          <!-- 面包屑 -->
+          <n-breadcrumb class="xs-hidden">
             <n-breadcrumb-item v-for="item in matcheds" :key="item">{{
               item
             }}</n-breadcrumb-item>
@@ -51,10 +52,10 @@
 <script lang="ts">
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
 import { RefreshFilled } from '../../icon/material-icon';
-import { throttle } from '../../utils/tools';
+import { throttle } from '../utils/index';
 import LaySetting from '@/layout/LaySetting/index.vue';
 import { PlanetOutline } from '@vicons/ionicons5';
-import { defineComponent, h, inject, ref, watchEffect } from 'vue';
+import { defineComponent, inject, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import {
@@ -84,6 +85,7 @@ export default defineComponent({
     const store = useStore(),
       route = useRoute();
     let matcheds = ref([] as Array<string>);
+    const mobileOptions = inject('mobileOptions') as any;
     const layConfig: any = store.getters['admin/layConfigGetter'];
 
     watchEffect(() => {
@@ -116,7 +118,14 @@ export default defineComponent({
         setTimeout(() => {
           layConfig.refresh = false;
         }, 10);
-      })
+      }),
+      hanldeMenu() {
+        if (mobileOptions.isMobile) {
+          mobileOptions.showMobileSlidebar = true;
+        } else {
+          layConfig.collapsed = true;
+        }
+      }
     };
   }
 });

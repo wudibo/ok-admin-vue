@@ -60,6 +60,11 @@ export default defineComponent({
     const store = useStore();
     const routerShow = ref(false);
     const layConfig = store.getters['admin/layConfigGetter'];
+    const mobileOptions = reactive({
+      isMobile: false, // 是否处于移动端
+      showMobileSlidebar: false // 显示和隐藏移动端的Slidebar
+    });
+    provide('mobileOptions', mobileOptions);
 
     return {
       routerShow,

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import componentParcel from '../layout/componentParcel';
+import componentParcel from '../layout/utils/componentParcel';
 import Layout from '@/layout/index.vue';
 import { Component } from 'vue';
 import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';

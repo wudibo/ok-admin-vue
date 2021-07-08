@@ -1,42 +1,57 @@
 <template>
-  <n-layout-sider
+  <lay-drawer
+    ref="layDrawer"
+    v-model:show="active"
+    :style="{ backgroundColor: layConfig.sidebarInverted ? '#001428' : 'red' }"
     :native-scrollbar="false"
-    collapse-mode="width"
-    :collapsed="layConfig.collapsed"
-    :inverted="layConfig.sidebarInverted"
-    :collapsed-width="64"
-    bordered
+    :width="sliderWidth"
+    :placement="'left'"
   >
-    <div class="lay-sidebar">
-      <div class="head" :class="{ 'head-inverted': layConfig.sidebarInverted }">
-        <img class="img" alt="logo" src="/src/assets/head.png" />
+    <n-layout-sider
+      :width="sliderWidth"
+      :native-scrollbar="false"
+      collapse-mode="width"
+      :collapsed="layConfig.collapsed"
+      :inverted="layConfig.sidebarInverted"
+      :collapsed-width="64"
+      bordered
+    >
+      <div class="lay-sidebar">
+        <div
+          class="head"
+          :class="{ 'head-inverted': layConfig.sidebarInverted }"
+        >
+          <img class="img" alt="logo" src="/src/assets/head.png" />
+        </div>
+        <n-menu
+          :inverted="layConfig.sidebarInverted"
+          :indent="22"
+          :collapsed-width="64"
+          :collapsed-icon-size="22"
+          :options="menuOptions"
+          :key="menuConfig.menuKey"
+          :default-value="menuConfig.menuKey"
+          :expanded-keys="menuConfig.menuKeys"
+          @update:value="handleUpdateValue"
+          @update:expanded-keys="menuConfig.menuKeys = $event"
+        />
       </div>
-      <n-menu
-        :inverted="layConfig.sidebarInverted"
-        :indent="22"
-        :collapsed-width="64"
-        :collapsed-icon-size="22"
-        :options="menuOptions"
-        :key="menuConfig.menuKey"
-        :default-value="menuConfig.menuKey"
-        :expanded-keys="menuConfig.menuKeys"
-        @update:value="handleUpdateValue"
-        @update:expanded-keys="menuConfig.menuKeys = $event"
-      />
-    </div>
-  </n-layout-sider>
+    </n-layout-sider>
+  </lay-drawer>
 </template>
 
 <script lang="ts">
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
-import { inject, reactive, watchEffect, defineComponent } from 'vue';
+import { ref, reactive, watchEffect, defineComponent, inject } from 'vue';
+import LayDrawer from './LayDrawer.vue';
 import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from 'naive-ui';
 import { useMenu } from './menuOptions';
 
 export default defineComponent({
   name: 'LaySidebar',
   components: {
+    LayDrawer,
     NLayoutSider,
     NImage,
     NMenu,
@@ -48,8 +63,9 @@ export default defineComponent({
       store = useStore(),
       router = useRouter(),
       route = useRoute();
-
+    const mobileOptions = inject('mobileOptions') as any;
     const layConfig = store.getters['admin/layConfigGetter'];
+    const active = ref(true);
     const menuConfig = reactive({
       menuKey: '',
       menuKeys: ['']
@@ -66,6 +82,9 @@ export default defineComponent({
       menuConfig,
       layConfig,
       menuOptions,
+      active,
+      sliderWidth: 256,
+
       getSrc: (path: string) => {
         const patha = '../../assets/head.png';
         const modules = import.meta.globEager('../../assets/head.png');
@@ -73,6 +92,7 @@ export default defineComponent({
         return modules[patha].default;
       },
       handleUpdateValue: (route: any) => {
+        mobileOptions.showMobileSlidebar = false;
         router.push(route);
       }
     };

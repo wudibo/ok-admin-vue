@@ -31,3 +31,10 @@ export const throttle = function (callback: Function, wait = 300) {
     }
   };
 };
+
+export const globalWitchEffect = function (callback: Function) {
+  callback(window.innerWidth);
+  window.onresize = debounce((e: any) => {
+    callback(e.target.innerWidth);
+  });
+};
