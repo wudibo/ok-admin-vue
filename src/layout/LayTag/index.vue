@@ -87,7 +87,7 @@ export default defineComponent({
     const layTag = ref() as any;
 
     /**tags监听处理 */
-    tagsEffect(tags, route, router);
+    tagsEffect(tags, route);
 
     /**mounted生命周期 */
     onMounted(() => {

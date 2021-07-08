@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { NH2, NH3 } from 'naive-ui';
 
@@ -35,6 +35,7 @@ export default defineComponent({
       testFun
     };
   }
+ 
 });
 </script>
 

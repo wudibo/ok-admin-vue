@@ -28,8 +28,7 @@ const handlePath = function (superPath: string, rePath: string): string {
 /**tags监听*/
 export const tagsEffect = function (
   tags: Array<Tag>,
-  route: RouteLocationNormalizedLoaded,
-  router: Router
+  route: RouteLocationNormalizedLoaded
 ): void {
   /**layouts初始化 (查找所有根路由的组件都是Layout)*/
   const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
