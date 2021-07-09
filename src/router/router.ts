@@ -23,7 +23,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/home',
         name: 'home',
-        component: () => componentParcel('@/views/home/home.vue'), // () => import('@/views/home/home.vue'),
+        component: componentParcel(() => import('@/views/home/home.vue')), // () => import('@/views/home/home.vue'),
         meta: {
           title: '首页',
           keepAlive: true,
@@ -40,8 +40,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        name: 'control',
-        component: () => componentParcel('@/views/control/control.vue'),
+        // name: 'control',
+        component: componentParcel(() => import('@/views/control/control.vue')),
         meta: {
           title: '控制台',
           title_en: 'Control',
@@ -58,7 +58,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'user',
-        component: () => componentParcel('@/views/user/user.vue'),
+        component: componentParcel(() => import('@/views/user/user.vue')),
         meta: {
           title: '个人中心',
           icon: StarBorderRound
@@ -79,7 +79,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'basic-form',
         name: 'basic-form',
-        component: () => componentParcel('@/views/form/basic-form.vue'),
+        component: componentParcel(() => import('@/views/form/basic-form.vue')),
         meta: {
           title: '基础表单',
           icon: StarBorderRound
@@ -88,7 +88,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'advanced-form',
         name: 'advanced-form',
-        component: () => componentParcel('@/views/form/advanced-form.vue'),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '高级表单'
         }
@@ -96,7 +96,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'step-form',
         name: 'step-form',
-        component: () => componentParcel('@/views/form/advanced-form.vue'),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '分步表单'
         }
@@ -104,7 +104,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'detail',
         name: 'detail',
-        component: () => componentParcel('@/views/form/advanced-form.vue'),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '表单详情'
         }
@@ -124,7 +124,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '403',
         name: '403',
-        component: () => componentParcel('@/views/exception/403.vue'),
+        component: componentParcel(() => import('@/views/exception/403.vue')),
         meta: {
           title: '403'
         }
@@ -132,7 +132,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '404',
         name: '404',
-        component: () => componentParcel('@/views/exception/404.vue'),
+        component: componentParcel(() => import('@/views/exception/404.vue')),
         meta: {
           title: '404'
         }
@@ -140,14 +140,13 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '500',
         name: '500',
-        component: () => componentParcel('@/views/exception/500.vue'),
+        component: componentParcel(() => import('@/views/exception/500.vue')),
         meta: {
           title: '500'
         }
       }
     ]
   },
-
   multiMenu
 ];
 

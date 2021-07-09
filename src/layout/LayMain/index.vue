@@ -1,35 +1,41 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <div class="lay-main" v-show="route.meta.keepAlive">
+    <div class="lay-main">
       <transition
         appear
         :name="route.meta.transition || 'fade-transform'"
         mode="out-in"
       >
-        <keep-alive>
-          <component
-            v-if="route.meta.keepAlive"
-            :key="route.meta.keepAlive ? route.path : ''"
-            :is="Component"
-          />
+        <keep-alive v-if="keepAlives" :include="keepAlives">
+          <component :key="route.fullPath" :is="Component" />
         </keep-alive>
-      </transition>
-    </div>
-    <div class="lay-main" v-show="!route.meta.keepAlive">
-      <transition
-        appear
-        :name="route.meta.transition || 'fade-transform'"
-        mode="out-in"
-      >
-        <component v-if="!route.meta.keepAlive" :is="Component" />
+        <component v-else :is="Component" :key="route.fullPath" />
       </transition>
     </div>
   </router-view>
 </template>
 <script lang="ts">
-export default {
-  name: 'layMain'
-};
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import { defineComponent, watchEffect, computed } from 'vue';
+
+export default defineComponent({
+  name: 'layMain',
+  setup() {
+    const route = useRoute();
+    const store = useStore();
+    const keepAlives = store.getters['admin/keepAlivesGetter'];
+    watchEffect(() => {
+      if (route.meta && route.meta.keepAlive) {
+        store.commit(
+          'admin/ADD_KEEPALIVES',
+          route.matched[route.matched.length - 1].components.default.name
+        );
+      }
+    });
+    return { keepAlives };
+  }
+});
 </script>
 <style lang="scss" scoped>
 .lay-main {

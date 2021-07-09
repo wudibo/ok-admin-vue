@@ -65,6 +65,7 @@ import { Tag, tagsEffect, tagsScroll } from './index';
 import { menuOptions, closeMenu } from './tagMenu';
 import { NButton, NScrollbar, NIcon, NDropdown } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 import { CloseSharp } from '@vicons/ionicons5';
 
 export default defineComponent({
@@ -80,7 +81,8 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter(),
-      route = useRoute();
+      route = useRoute(),
+      store = useStore();
 
     let tags: Array<Tag> = reactive([]);
     const scrollbar = ref() as any;
@@ -109,7 +111,8 @@ export default defineComponent({
 
       /** 菜单选择事件 */
       handleMenuSelect(key: string) {
-        closeMenu(key, tags, route, router);
+        closeMenu(key, tags);
+        // closeMenu(key, tags, route, router, store);
       },
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {

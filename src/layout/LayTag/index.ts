@@ -1,11 +1,6 @@
-import type {
-  Router,
-  RouteMeta,
-  RouteRecordRaw,
-  RouteLocationNormalizedLoaded
-} from 'vue-router';
-import { watch} from 'vue';
-import { asyncRoutes } from '../../router/router';
+import type { RouteMeta, RouteLocationNormalizedLoaded } from 'vue-router';
+import { watch } from 'vue';
+import router, { asyncRoutes } from '../../router/router';
 
 export type Tag = {
   fullPath: string;
@@ -27,29 +22,24 @@ const handlePath = function (superPath: string, rePath: string): string {
 
 /**tags监听*/
 export const tagsEffect = function (
-  tags: Array<Tag>,
-  route: RouteLocationNormalizedLoaded
+  tags: Array<Tag>
 ): void {
-  /**layouts初始化 (查找所有根路由的组件都是Layout)*/
-  const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
+  /**tags初始化 处理affix悬挂 */
+  asyncRoutes.forEach((item) => {
+    /**(查找所有根路由的组件都是Layout)*/
     if (item.component && item.component.name === 'Layout') {
-      lays.push(item);
-    }
-    return lays;
-  }, [] as Array<RouteRecordRaw>);
-
-  /**tags初始化 处理affix悬挂 不处理多级路由*/
-  layouts.forEach((item) => {
-    if (item.children && item.children.length) {
-      item.children.forEach((citem) => {
-        if (citem.meta && citem.meta.affix) {
-          const fullPath = handlePath(item.path, citem.path);
-          tags.push({
-            fullPath,
-            meta: citem.meta
-          });
-        }
-      });
+      /**处理affix悬挂 不处理多级路由*/
+      if (item.children && item.children.length) {
+        item.children.forEach((citem) => {
+          if (citem.meta && citem.meta.affix) {
+            const fullPath = handlePath(item.path, citem.path);
+            tags.push({
+              fullPath,
+              meta: citem.meta
+            });
+          }
+        });
+      }
     }
   });
 
@@ -80,6 +70,8 @@ export const tagsScroll = function (
   tagConent: HTMLDivElement
 ) {
   const layActive = tagConent.querySelector('.tag-active') as HTMLDivElement; // 当前选中的tag
+  if (!layActive) return;
+
   const superWidth = superBox.offsetWidth, // 可视宽度
     tagWidth = tagConent.offsetWidth, // 内容的总宽度
     layActiveWidth = layActive.offsetWidth; // 当前选中的元素的宽度

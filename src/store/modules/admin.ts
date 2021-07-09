@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 const state: any = {
-  layTags: [],
+  keepAlives: [], //缓存的路由名字
+  layTags: [], // tags
   layConfig: {
     sidebarInverted: true, // 侧边栏是否暗色主题
     headerInverted: false, // 顶部栏是否暗色主题
@@ -17,12 +18,26 @@ const mutations = {
   },
   SET_LAYCONFIGS: (state: any, config: any) => {
     state.layConfig = config;
+  },
+  ADD_KEEPALIVES: (state: any, routeName: string) => {
+    if (state.keepAlives.indexOf(routeName) < 0) {
+      state.keepAlives.push(routeName);
+    }
+  },
+  DEL_KEEPALIVES: (state: any, routeName: string) => {
+    const indexKeepAlives = state.keepAlives.indexOf(routeName);
+    if (indexKeepAlives >= 0) {
+      state.keepAlives.splice(indexKeepAlives, 1);
+    }
   }
 };
 
 const actions = {};
 
 const getters = {
+  keepAlivesGetter: (state: any, getters: any, rootState: any) => {
+    return state.keepAlives;
+  },
   layTagsGetter: (state: any, getters: any, rootState: any) => {
     return state.layTags;
   },
