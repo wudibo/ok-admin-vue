@@ -1,8 +1,7 @@
 <template>
-  <n-layout style="height: 100vh; top: 0; bottom: 0" has-sider>
+  <n-layout class="layout-container" has-sider>
     <!--  侧边栏   -->
     <lay-sidebar></lay-sidebar>
-
     <n-layout style="height: 100%">
       <!--  头部   -->
       <n-layout-header
