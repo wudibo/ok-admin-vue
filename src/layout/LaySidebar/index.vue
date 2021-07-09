@@ -93,7 +93,6 @@ export default defineComponent({
       getSrc: (path: string) => {
         const patha = '../../assets/head.png';
         const modules = import.meta.globEager('../../assets/head.png');
-        console.log(modules[patha].default);
         return modules[patha].default;
       },
       handleUpdateValue: (route: any) => {

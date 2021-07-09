@@ -51,22 +51,21 @@
   </div>
 </template>
 <script lang="ts">
+import { ChevronDownOutline, CloseSharp } from '@vicons/ionicons5';
+import { NButton, NDropdown, NIcon, NScrollbar } from 'naive-ui';
 import {
   defineComponent,
-  watchEffect,
-  ref,
-  reactive,
+  nextTick,
   onMounted,
-  nextTick
+  reactive,
+  ref,
+  watchEffect
 } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
-import { ChevronDownOutline } from '@vicons/ionicons5';
-import { Tag, tagsEffect, tagsScroll } from './index';
-import { menuOptions, closeMenu } from './tagMenu';
-import { NButton, NScrollbar, NIcon, NDropdown } from 'naive-ui';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { CloseSharp } from '@vicons/ionicons5';
+import { Tag, tagsEffect, tagsScroll } from './index';
+import { closeMenu, menuOptions } from './tagMenu';
 
 export default defineComponent({
   name: 'LayTag',
@@ -112,7 +111,6 @@ export default defineComponent({
       /** 菜单选择事件 */
       handleMenuSelect(key: string) {
         closeMenu(key, tags);
-        // closeMenu(key, tags, route, router, store);
       },
       /**打开tag路由 */
       handleTagOpen(fullPath: RouteLocationRaw) {
@@ -122,12 +120,13 @@ export default defineComponent({
       handleTagClose(index: number) {
         if (tags[index].fullPath === route.fullPath) {
           if (index === 0) {
-            router.replace(tags[index + 1].fullPath);
+            router.push(tags[index + 1].fullPath);
           } else {
-            router.replace(tags[index - 1].fullPath);
+            router.push(tags[index - 1].fullPath);
           }
         }
-        tags.splice(index, 1);
+        const [temp] = tags.splice(index, 1);
+        store.commit('admin/DEL_KEEPALIVES', temp.name);
       },
       isAffix(tag: Tag) {
         return tag.meta && tag.meta.affix;

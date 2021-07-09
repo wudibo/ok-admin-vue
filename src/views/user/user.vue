@@ -31,9 +31,6 @@ export default defineComponent({
           key: 'collapsed',
           value: !conf.collapsed
         });
-
-        /* const conf = store.getters['admin/configGetter'];
-        console.log({ ...conf }); */
       }
     };
   }

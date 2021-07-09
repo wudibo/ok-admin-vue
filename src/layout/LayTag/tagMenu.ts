@@ -46,12 +46,10 @@ export const menuOptions = [
   }
 ];
 
-/**关闭菜单的事件 */
+/**关闭tag菜单的事件 */
 export const closeMenu = function(key: string, tags: Array<Tag>) {
   const route = router.currentRoute.value;
   const thatIndex = tags.findIndex((tag) => tag.fullPath === route.fullPath);
-  const keepAlives = store.getters['admin/keepAlivesGetter'];
-  console.log(...tags);
 
   switch (key) {
     case 'closeLeft':
@@ -61,7 +59,8 @@ export const closeMenu = function(key: string, tags: Array<Tag>) {
           tags[tempIndexL].fullPath !== route.fullPath &&
           !tags[tempIndexL].meta.affix
         ) {
-          tags.splice(tempIndexL, 1);
+          const [temp] = tags.splice(tempIndexL, 1);
+          store.commit('admin/DEL_KEEPALIVES', temp.name);
         } else {
           tempIndexL++;
         }
@@ -77,9 +76,8 @@ export const closeMenu = function(key: string, tags: Array<Tag>) {
           tags[tempIndexR].fullPath !== route.fullPath &&
           !tags[tempIndexR].meta.affix
         ) {
-          tags.splice(tempIndexR, 1);
-
-          // handleDelKeepAlives()
+          const [temp] = tags.splice(tempIndexR, 1);
+          store.commit('admin/DEL_KEEPALIVES', temp.name);
         } else {
           tempIndexR++;
         }
@@ -88,7 +86,8 @@ export const closeMenu = function(key: string, tags: Array<Tag>) {
     case 'closeOther':
       for (let i = 0; i < tags.length; i++) {
         if (tags[i].fullPath !== route.fullPath && !tags[i].meta.affix) {
-          tags.splice(i, 1);
+          const [temp] = tags.splice(i, 1);
+          store.commit('admin/DEL_KEEPALIVES', temp.name);
           i--;
         }
       }
@@ -96,33 +95,26 @@ export const closeMenu = function(key: string, tags: Array<Tag>) {
     case 'closeAll':
       for (let i = 0; i < tags.length; i++) {
         if (!tags[i].meta.affix) {
-          tags.splice(i, 1);
+          const [temp] = tags.splice(i, 1);
+          store.commit('admin/DEL_KEEPALIVES', temp.name);
           i--;
         }
       }
       // 如果当前未选中tag则选中tags最后一个
       if (!tags.find((tag) => tag.fullPath === route.fullPath)) {
-        router.replace(tags[tags.length - 1].fullPath);
+        router.push(tags[tags.length - 1].fullPath);
       }
       break;
     case 'closeThis':
       if (!tags[thatIndex].meta.affix) {
         if (thatIndex === 0) {
-          router.replace(tags[thatIndex + 1].fullPath);
+          router.push(tags[thatIndex + 1].fullPath);
         } else {
-          router.replace(tags[thatIndex - 1].fullPath);
+          router.push(tags[thatIndex - 1].fullPath);
         }
-        tags.splice(thatIndex, 1);
+        const [temp] = tags.splice(thatIndex, 1);
+        store.commit('admin/DEL_KEEPALIVES', temp.name);
       }
       break;
   }
 };
-
-/**删除Keep缓存的处理 */
-function handleDelKeepAlives(name: Array<string> | string): void {
-  if (typeof name === 'number') {
-    console.log(name);
-  } else if (name) {
-    console.log(name);
-  }
-}

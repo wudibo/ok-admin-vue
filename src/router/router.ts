@@ -40,11 +40,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        // name: 'control',
+        name: 'control',
         component: componentParcel(() => import('@/views/control/control.vue')),
         meta: {
           title: '控制台',
-          title_en: 'Control',
           keepAlive: true,
           icon: StarBorderRound
         }
@@ -61,6 +60,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         component: componentParcel(() => import('@/views/user/user.vue')),
         meta: {
           title: '个人中心',
+          keepAlive: true,
           icon: StarBorderRound
         }
       }
@@ -88,7 +88,9 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'advanced-form',
         name: 'advanced-form',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: componentParcel(
+          () => import('@/views/form/advanced-form.vue')
+        ),
         meta: {
           title: '高级表单'
         }
@@ -96,7 +98,9 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'step-form',
         name: 'step-form',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: componentParcel(
+          () => import('@/views/form/advanced-form.vue')
+        ),
         meta: {
           title: '分步表单'
         }
@@ -104,7 +108,9 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'detail',
         name: 'detail',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: componentParcel(
+          () => import('@/views/form/advanced-form.vue')
+        ),
         meta: {
           title: '表单详情'
         }

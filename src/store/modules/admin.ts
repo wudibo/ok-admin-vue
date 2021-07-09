@@ -1,4 +1,3 @@
-import { reactive } from 'vue';
 const state: any = {
   keepAlives: [], //缓存的路由名字
   layTags: [], // tags

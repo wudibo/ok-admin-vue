@@ -17,7 +17,7 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
-import { defineComponent, watchEffect, computed } from 'vue';
+import { defineComponent, watch } from 'vue';
 
 export default defineComponent({
   name: 'layMain',
@@ -25,14 +25,20 @@ export default defineComponent({
     const route = useRoute();
     const store = useStore();
     const keepAlives = store.getters['admin/keepAlivesGetter'];
-    watchEffect(() => {
-      if (route.meta && route.meta.keepAlive) {
-        store.commit(
-          'admin/ADD_KEEPALIVES',
-          route.matched[route.matched.length - 1].components.default.name
-        );
+    watch(
+      route,
+      () => {
+        if (route.meta && route.meta.keepAlive) {
+          store.commit(
+            'admin/ADD_KEEPALIVES',
+            route.matched[route.matched.length - 1].components.default.name
+          );
+        }
+      },
+      {
+        immediate: true
       }
-    });
+    );
     return { keepAlives };
   }
 });
