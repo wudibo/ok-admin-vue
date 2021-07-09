@@ -2,8 +2,8 @@ import type { Store } from 'vuex';
 import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
 import { h, Component } from 'vue';
 import { NIcon } from 'naive-ui';
-import store from '@/store/store';
-import router from '@/router/router';
+import store from '../../store/store';
+import router from '../../router/router';
 
 import {
   ArrowBackOutline,
@@ -13,7 +13,6 @@ import {
   ArrowDownCircleOutline
 } from '@vicons/ionicons5';
 import { Tag } from './index';
-
 
 const menuIcon = (icon: Component) =>
   h(NIcon, null, {
@@ -49,10 +48,7 @@ export const menuOptions = [
 ];
 
 /**关闭菜单的事件 */
-export const closeMenu = function (
-  key: string,
-  tags: Array<Tag>
-) {
+export const closeMenu = function (key: string, tags: Array<Tag>) {
   const route = router.currentRoute.value;
   const thatIndex = tags.findIndex((tag) => tag.fullPath === route.fullPath);
   const keepAlives = store.getters['admin/keepAlivesGetter'];
@@ -115,6 +111,6 @@ export const closeMenu = function (
         }
         tags.splice(thatIndex, 1);
       }
-      break; 
+      break;
   }
 };

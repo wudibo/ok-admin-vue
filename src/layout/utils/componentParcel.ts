@@ -9,7 +9,9 @@ export default function (component: any) {
   return () => {
     return new Promise((res) => {
       component().then((commp: any) => {
-        const name = commp.default.name + '_' + Date.now();
+        console.log({ ...commp.default });
+
+        const name = commp.default.name + '&' + commp.default.__scopeId;
         const tempcomm = defineComponent({
           name,
           render: function () {

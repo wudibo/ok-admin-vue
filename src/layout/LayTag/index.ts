@@ -21,9 +21,9 @@ const handlePath = function (superPath: string, rePath: string): string {
 };
 
 /**tags监听*/
-export const tagsEffect = function (
-  tags: Array<Tag>
-): void {
+export const tagsEffect = function (tags: Array<Tag>): void {
+  const route = router.currentRoute;
+
   /**tags初始化 处理affix悬挂 */
   asyncRoutes.forEach((item) => {
     /**(查找所有根路由的组件都是Layout)*/
@@ -51,8 +51,8 @@ export const tagsEffect = function (
       if (!isTag) {
         // tag 不存在时
         tags.push({
-          fullPath: route.fullPath,
-          meta: route.meta
+          fullPath: to.fullPath,
+          meta: to.meta
         });
       } else {
         // tag 已存在时
