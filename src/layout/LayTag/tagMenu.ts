@@ -1,5 +1,3 @@
-import type { Store } from 'vuex';
-import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
 import { h, Component } from 'vue';
 import { NIcon } from 'naive-ui';
 import store from '../../store/store';
@@ -18,6 +16,7 @@ const menuIcon = (icon: Component) =>
   h(NIcon, null, {
     default: () => h(icon)
   });
+
 /**tag菜单 */
 export const menuOptions = [
   {
@@ -48,10 +47,12 @@ export const menuOptions = [
 ];
 
 /**关闭菜单的事件 */
-export const closeMenu = function (key: string, tags: Array<Tag>) {
+export const closeMenu = function(key: string, tags: Array<Tag>) {
   const route = router.currentRoute.value;
   const thatIndex = tags.findIndex((tag) => tag.fullPath === route.fullPath);
   const keepAlives = store.getters['admin/keepAlivesGetter'];
+  console.log(...tags);
+
   switch (key) {
     case 'closeLeft':
       let tempIndexL = 0;
@@ -77,6 +78,8 @@ export const closeMenu = function (key: string, tags: Array<Tag>) {
           !tags[tempIndexR].meta.affix
         ) {
           tags.splice(tempIndexR, 1);
+
+          // handleDelKeepAlives()
         } else {
           tempIndexR++;
         }
@@ -114,3 +117,12 @@ export const closeMenu = function (key: string, tags: Array<Tag>) {
       break;
   }
 };
+
+/**删除Keep缓存的处理 */
+function handleDelKeepAlives(name: Array<string> | string): void {
+  if (typeof name === 'number') {
+    console.log(name);
+  } else if (name) {
+    console.log(name);
+  }
+}

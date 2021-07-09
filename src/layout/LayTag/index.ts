@@ -1,14 +1,15 @@
-import type { RouteMeta, RouteLocationNormalizedLoaded } from 'vue-router';
+import { RouteMeta, RouteRecordNormalized } from 'vue-router';
 import { watch } from 'vue';
 import router, { asyncRoutes } from '../../router/router';
 
 export type Tag = {
+  name?: string;
   fullPath: string;
   meta: RouteMeta;
 };
 
 /**路由路径处理 */
-const handlePath = function (superPath: string, rePath: string): string {
+const handlePath = function(superPath: string, rePath: string): string {
   if (/^\//.test(rePath)) {
     // 如果rePath第一个字符是/的时候
     return rePath;
@@ -20,27 +21,32 @@ const handlePath = function (superPath: string, rePath: string): string {
   }
 };
 
+/**处理悬挂的初始判断 */
+function componentBool(routeComponent: any): boolean {
+  /**(查找所有根路由的组件都是Layout)*/
+  if (routeComponent.component && routeComponent.component.name === 'Layout') {
+    /**处理affix悬挂 不处理多级路由*/
+    return routeComponent.children && routeComponent.children.length;
+  }
+  return false;
+}
 /**tags监听*/
-export const tagsEffect = function (tags: Array<Tag>): void {
+export const tagsEffect = function(tags: Array<Tag>): void {
   const route = router.currentRoute;
 
   /**tags初始化 处理affix悬挂 */
-  asyncRoutes.forEach((item) => {
-    /**(查找所有根路由的组件都是Layout)*/
-    if (item.component && item.component.name === 'Layout') {
-      /**处理affix悬挂 不处理多级路由*/
-      if (item.children && item.children.length) {
-        item.children.forEach((citem) => {
-          if (citem.meta && citem.meta.affix) {
-            const fullPath = handlePath(item.path, citem.path);
-            tags.push({
-              fullPath,
-              meta: citem.meta
-            });
-          }
-        });
-      }
-    }
+  asyncRoutes.forEach((item, index) => {
+    componentBool(item) &&
+      item.children?.forEach((citem: any) => {
+        if (citem.meta && citem.meta.affix) {
+          const fullPath = handlePath(item.path, citem.path);
+          tags.push({
+            fullPath,
+            name: citem.component().name, // 内部处理了解构
+            meta: citem.meta
+          });
+        }
+      });
   });
 
   /**监听路由变化 */
@@ -48,9 +54,12 @@ export const tagsEffect = function (tags: Array<Tag>): void {
     route,
     (to) => {
       const isTag = tags.some((tag) => tag.fullPath === to.fullPath);
-      if (!isTag) {
+      const matched = to.matched;
+      if (!isTag && matched.length) {
+        const commp = matched[matched.length - 1].components.default;
         // tag 不存在时
         tags.push({
+          name: commp.name,
           fullPath: to.fullPath,
           meta: to.meta
         });
@@ -65,7 +74,7 @@ export const tagsEffect = function (tags: Array<Tag>): void {
 };
 
 /**tags水平滚动条动态处理*/
-export const tagsScroll = function (
+export const tagsScroll = function(
   superBox: HTMLDivElement,
   tagConent: HTMLDivElement
 ) {
