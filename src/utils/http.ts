@@ -1,4 +1,3 @@
-// @ts-ignore
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 interface Data {
