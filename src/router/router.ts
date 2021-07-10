@@ -5,6 +5,7 @@ import { Component } from 'vue';
 import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';
 import { StarBorderRound } from '../icon/material-icon';
 import multiMenu from './multiMenu';
+import routerGuard from './routerGuard';
 
 export type IMeta = {
   title?: string;
@@ -60,7 +61,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         component: componentParcel(() => import('@/views/user/user.vue')),
         meta: {
           title: '个人中心',
-          keepAlive: true,
           icon: StarBorderRound
         }
       }
@@ -156,9 +156,25 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   multiMenu
 ];
 
+const constantRouter: Array<RouteRecordRaw> = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/login.vue'),
+    meta: {
+      title: '登录'
+    }
+  }
+];
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: asyncRoutes
+  routes: constantRouter.concat(asyncRoutes),
+  strict: true,
+  scrollBehavior: () => ({ left: 0, top: 0 })
 });
+
+// 路由守卫
+routerGuard(router);
 
 export default router;
