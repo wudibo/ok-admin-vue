@@ -36,7 +36,6 @@
 
 <script lang="ts">
 import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
 import { defineComponent, provide, reactive, ref } from 'vue';
 import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider } from 'naive-ui';
 import LayHeader from './LayHeader/index.vue';
@@ -65,7 +64,7 @@ export default defineComponent({
       showMobileSlidebar: false // 显示和隐藏移动端的Slidebar
     });
     provide('mobileOptions', mobileOptions);
-    
+
     return {
       routerShow,
       layConfig
