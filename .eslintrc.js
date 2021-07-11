@@ -1,3 +1,4 @@
+// https://blog.csdn.net/weixin_43977053/article/details/107631681
 module.exports = {
   root: true,
   env: {
@@ -23,7 +24,9 @@ module.exports = {
   ],
   rules: {
     'vue/no-unused-components': 'off',
-    'vue/no-unused-vars': 'on',
+    'vue/no-unused-vars': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }], // 禁用 console
+    '@typescript-eslint/no-console': ['error', { allow: ['warn', 'error'] }], // 禁用 console
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

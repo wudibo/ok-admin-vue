@@ -22,6 +22,8 @@
       const headerKeep = () => {
         foo.value = 'dsafasd' + Math.random() * 100;
       };
+      console.log(foo);
+
       return {
         foo,
         bar,
