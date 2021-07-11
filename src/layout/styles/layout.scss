@@ -1,13 +1,16 @@
 @import './variables.scss';
 @import './transition.scss';
-.layout-container{
+
+.layout-container {
   height: 100vh;
   top: 0;
   bottom: 0;
 }
+
 .pointer {
   cursor: pointer;
 }
+
 .lay-hover:hover {
   color: $primary;
   cursor: pointer;
@@ -18,6 +21,3 @@
     display: none;
   }
 }
-
-
-
