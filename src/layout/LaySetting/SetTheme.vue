@@ -3,7 +3,11 @@
     <n-divider>系统主题</n-divider>
     <n-grid gap="2" :cols="8">
       <n-gi v-for="(item, index) in store.state.theme.appThemeList" :key="index">
-        <div @click="handleTheme(item)" class="item" :style="{ backgroundColor: item }">
+        <div
+          @click="handleTheme(item)"
+          class="item"
+          :style="{ backgroundColor: item.primaryColor }"
+        >
           <n-icon v-show="item === store.state.theme.appTheme">
             <CheckmarkSharp />
           </n-icon>

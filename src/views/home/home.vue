@@ -3,45 +3,44 @@
     <n-h2>ok-admin-vue</n-h2>
     <n-h3>store.current: {{ store.state.current }}</n-h3>
     <div v-for="item in 5" :key="item" class="flex">
-      <n-button size="small" type="success" @click="testFun">城府路</n-button>
+      <n-button size="small" type="primary" @click="testFun">城府路</n-button>
       {{ obj.current }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue';
-import { useStore } from 'vuex';
-import { NH2, NH3 } from 'naive-ui';
+  import { defineComponent, onMounted, reactive } from 'vue';
+  import { useStore } from 'vuex';
+  import { NH2, NH3 } from 'naive-ui';
 
-export default defineComponent({
-  name: 'home',
-  components: {
-    NH2,
-    NH3
-  },
-  setup(props, superContext) {
-    const store = useStore();
-    const obj = reactive({
-      current: 1
-    });
-    const testFun = () => {
-      store.commit('SET_CURRENT', Math.random() * 100);
-      obj.current = Math.random() * 1000;
-    };
-    return {
-      store,
-      obj,
-      testFun
-    };
-  }
- 
-});
+  export default defineComponent({
+    name: 'home',
+    components: {
+      NH2,
+      NH3
+    },
+    setup(props, superContext) {
+      const store = useStore();
+      const obj = reactive({
+        current: 1
+      });
+      const testFun = () => {
+        store.commit('SET_CURRENT', Math.random() * 100);
+        obj.current = Math.random() * 1000;
+      };
+      return {
+        store,
+        obj,
+        testFun
+      };
+    }
+  });
 </script>
 
 <style lang="scss" scoped>
-.flex {
-  display: flex;
-  font-size: 24px;
-}
+  .flex {
+    display: flex;
+    font-size: 24px;
+  }
 </style>

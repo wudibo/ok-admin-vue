@@ -5,6 +5,9 @@
   <div class="padding">
     <n-button @click="headerVuex">测试{{ store.state.admin.layConfig }}</n-button>
   </div>
+  <div style="width: 350px">
+    <n-input />
+  </div>
 </template>
 <script lang="ts">
   import { ref, defineComponent } from 'vue';
@@ -12,9 +15,9 @@
   export default defineComponent({
     name: 'user',
     setup() {
-      const hello = ref(5)
+      const hello = ref(5);
       const foo = ref('user');
-      const bar = ref('bar')
+      const bar = ref('bar');
       const store = useStore();
       const headerKeep = () => {
         foo.value = 'dsafasd' + Math.random() * 100;

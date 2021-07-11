@@ -5,30 +5,20 @@
       <n-gi>
         <div class="header-left">
           <n-icon class="lay-hover" title="菜单切换" size="20">
-            <menu-fold-outlined
-              v-show="!layConfig.collapsed"
-              @click="hanldeMenu"
-            />
+            <menu-fold-outlined v-show="!layConfig.collapsed" @click="hanldeMenu" />
             <menu-unfold-outlined
               v-show="layConfig.collapsed"
               @click="layConfig.collapsed = false"
             />
           </n-icon>
           <div class="header-refresh">
-            <n-icon
-              @click="handleRefresh"
-              title="刷新"
-              class="lay-hover"
-              size="20"
-            >
+            <n-icon @click="handleRefresh" title="刷新" class="lay-hover" size="20">
               <refresh-filled />
             </n-icon>
           </div>
           <!-- 面包屑 -->
           <n-breadcrumb class="xs-hidden">
-            <n-breadcrumb-item v-for="item in matcheds" :key="item">{{
-              item
-            }}</n-breadcrumb-item>
+            <n-breadcrumb-item v-for="item in matcheds" :key="item">{{ item }}</n-breadcrumb-item>
           </n-breadcrumb>
         </div>
       </n-gi>
@@ -42,11 +32,7 @@
             </n-icon>
           </div>
           <div class="flex-center padding-lr-10">
-            <n-dropdown
-              trigger="hover"
-              @select="handleSelect"
-              :options="optionsISO"
-            >
+            <n-dropdown trigger="hover" @select="handleSelect" :options="optionsISO">
               <n-icon title="语言" class="lay-hover" size="20">
                 <globe-outline />
               </n-icon>
@@ -63,131 +49,120 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
-import { GlobeOutline, LockClosedOutline } from '@vicons/ionicons5';
-import { RefreshFilled } from '../../icon/material-icon';
-import { throttle } from '../utils/index';
-import LaySetting from '@/layout/LaySetting/index.vue';
-import FullScreen from './FullScreen.vue';
+  import { defineComponent, inject, ref, watchEffect } from 'vue';
+  import { useRoute } from 'vue-router';
+  import { useStore } from 'vuex';
+  import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
+  import { GlobeOutline, LockClosedOutline } from '@vicons/ionicons5';
+  import { RefreshFilled } from '../../icon/material-icon';
+  import { throttle } from '../utils/index';
+  import LaySetting from '@/layout/LaySetting/index.vue';
+  import FullScreen from './FullScreen.vue';
 
-import {
-  NGi,
-  NGrid,
-  NBreadcrumb,
-  NBreadcrumbItem,
-  NIcon,
-  NDropdown
-} from 'naive-ui';
-export default defineComponent({
-  name: 'LayHeader',
-  components: {
-    NGi,
-    NGrid,
-    NIcon,
-    NBreadcrumb,
-    NBreadcrumbItem,
-    NDropdown,
-    FullScreen,
-    LaySetting,
-    RefreshFilled,
-    GlobeOutline,
-    LockClosedOutline,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined
-  },
-  setup(props, superContext) {
-    const store = useStore(),
-      route = useRoute();
-    let matcheds = ref([] as Array<string>);
-    const mobileOptions = inject('mobileOptions') as any;
-    const layConfig: any = store.getters['admin/layConfigGetter'];
+  import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown } from 'naive-ui';
+  export default defineComponent({
+    name: 'LayHeader',
+    components: {
+      NGi,
+      NGrid,
+      NIcon,
+      NBreadcrumb,
+      NBreadcrumbItem,
+      NDropdown,
+      FullScreen,
+      LaySetting,
+      RefreshFilled,
+      GlobeOutline,
+      LockClosedOutline,
+      MenuFoldOutlined,
+      MenuUnfoldOutlined
+    },
+    setup(props, superContext) {
+      const store = useStore(),
+        route = useRoute();
+      let matcheds = ref([] as Array<string>);
+      const mobileOptions = inject('mobileOptions') as any;
+      const layConfig: any = store.getters['admin/layConfigGetter'];
 
-    watchEffect(() => {
-      // 面包屑
-      matcheds.value = [];
-      const matched = route.matched;
-      for (let i = 0; i < matched.length; i++) {
-        matcheds.value.push(matched[i].meta.title as string);
-      }
-    });
+      watchEffect(() => {
+        // 面包屑
+        matcheds.value = [];
+        const matched = route.matched;
+        for (let i = 0; i < matched.length; i++) {
+          matcheds.value.push(matched[i].meta.title as string);
+        }
+      });
 
-    return {
-      matcheds,
-      layConfig,
-      optionsISO: [
-        {
-          label: '简体中文',
-          key: 'zh'
+      return {
+        matcheds,
+        layConfig,
+        optionsISO: [
+          {
+            label: '简体中文',
+            key: 'zh'
+          },
+          {
+            label: 'English',
+            key: 'en'
+          }
+        ],
+        handleSelect: (val: any) => {
+          console.log(val);
         },
-        {
-          label: 'English',
-          key: 'en'
+        handleRefresh: throttle(() => {
+          layConfig.refresh = true;
+          setTimeout(() => {
+            layConfig.refresh = false;
+          }, 10);
+        }),
+        hanldeMenu() {
+          if (mobileOptions.isMobile) {
+            mobileOptions.showMobileSlidebar = true;
+          } else {
+            layConfig.collapsed = true;
+          }
         }
-      ],
-      handleSelect: (val: any) => {
-        console.log(val);
-      },
-      handleRefresh: throttle(() => {
-        layConfig.refresh = true;
-        setTimeout(() => {
-          layConfig.refresh = false;
-        }, 10);
-      }),
-      hanldeMenu() {
-        if (mobileOptions.isMobile) {
-          mobileOptions.showMobileSlidebar = true;
-        } else {
-          layConfig.collapsed = true;
-        }
-      }
-    };
-  }
-});
+      };
+    }
+  });
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables';
-.padding-right-10 {
-  padding-right: 10px;
-}
-.padding-lr-10 {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-.padding-left-10 {
-  padding-left: 10px;
-}
-.lay-header {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-.flex-center {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+  .padding-right-10 {
+    padding-right: 10px;
+  }
+  .padding-lr-10 {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .padding-left-10 {
+    padding-left: 10px;
+  }
+  .lay-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .flex-center {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.header-left {
-  display: flex;
-  padding: 0 18px;
-  align-items: center;
-}
-.header-right {
-  display: flex;
-  padding: 0 18px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.header-refresh {
-  padding: 0 12px;
-  display: inline-flex;
-  align-items: center;
-}
-.header-hover:hover {
-  color: $primary;
-}
+  .header-left {
+    display: flex;
+    padding: 0 18px;
+    align-items: center;
+  }
+  .header-right {
+    display: flex;
+    padding: 0 18px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .header-refresh {
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+  }
 </style>

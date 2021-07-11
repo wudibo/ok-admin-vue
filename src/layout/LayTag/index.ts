@@ -9,7 +9,7 @@ export type Tag = {
 };
 
 /**路由路径处理 */
-const handlePath = function(superPath: string, rePath: string): string {
+const handlePath = function (superPath: string, rePath: string): string {
   if (/^\//.test(rePath)) {
     // 如果rePath第一个字符是/的时候
     return rePath;
@@ -31,7 +31,7 @@ function componentBool(routeComponent: any): boolean {
   return false;
 }
 /**tags监听*/
-export const tagsEffect = function(tags: Array<Tag>): void {
+export const tagsEffect = function (tags: Array<Tag>): void {
   const route = router.currentRoute;
 
   /**tags初始化 处理affix悬挂 */
@@ -40,9 +40,11 @@ export const tagsEffect = function(tags: Array<Tag>): void {
       item.children?.forEach((citem: any) => {
         if (citem.meta && citem.meta.affix) {
           const fullPath = handlePath(item.path, citem.path);
+          const itemCommp = typeof citem.component === 'function' ? citem.component() : citem;
+
           tags.push({
             fullPath,
-            name: citem.component().name, // 内部处理了解构
+            name: itemCommp.name, // 内部处理了解构
             meta: citem.meta
           });
         }
@@ -74,10 +76,7 @@ export const tagsEffect = function(tags: Array<Tag>): void {
 };
 
 /**tags水平滚动条动态处理*/
-export const tagsScroll = function(
-  superBox: HTMLDivElement,
-  tagConent: HTMLDivElement
-) {
+export const tagsScroll = function (superBox: HTMLDivElement, tagConent: HTMLDivElement) {
   const layActive = tagConent.querySelector('.tag-active') as HTMLDivElement; // 当前选中的tag
   if (!layActive) return;
 

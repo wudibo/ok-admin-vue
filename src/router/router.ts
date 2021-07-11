@@ -24,7 +24,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/home',
         name: 'home',
-        component: componentParcel(() => import('@/views/home/home.vue')), // () => import('@/views/home/home.vue'),
+        component: import('@/views/home/home.vue'), //componentParcel(() => import('@/views/home/home.vue')),
         meta: {
           title: '首页',
           keepAlive: true,
@@ -88,9 +88,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'advanced-form',
         name: 'advanced-form',
-        component: componentParcel(
-          () => import('@/views/form/advanced-form.vue')
-        ),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '高级表单'
         }
@@ -98,9 +96,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'step-form',
         name: 'step-form',
-        component: componentParcel(
-          () => import('@/views/form/advanced-form.vue')
-        ),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '分步表单'
         }
@@ -108,9 +104,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'detail',
         name: 'detail',
-        component: componentParcel(
-          () => import('@/views/form/advanced-form.vue')
-        ),
+        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '表单详情'
         }
