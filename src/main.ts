@@ -16,4 +16,4 @@ app.use(store);
 // 挂载路由
 app.use(router);
 
-app.mount('#app');
+app.mount('#app')
