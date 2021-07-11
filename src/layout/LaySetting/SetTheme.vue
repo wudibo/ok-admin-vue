@@ -2,7 +2,7 @@
   <div>
     <n-divider>系统主题</n-divider>
     <n-grid gap="2" :cols="8">
-      <n-gi v-for="(item, index) in store.state.theme.appThemeList" :key="index">
+      <n-gi v-for="item in store.state.theme.appThemeList" :key="item.primaryColor">
         <div
           @click="handleTheme(item)"
           class="item"
