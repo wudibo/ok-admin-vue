@@ -1,9 +1,13 @@
 {
   "name": "ok-admin-vue",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": {
+    "name": "ok-admin",
+    "email": "super-wudibo@foxmail.com",
+    "url": "http://wudibo.gitee.io/ok-admin-vue"
+  },
   "scripts": {
     "dev": "vite",
-    "preview": "vite preview",
     "dev-staging": "vite --mode staging",
     "build": "vue-tsc --noEmit && vite build",
     "build-admin": "vue-tsc --noEmit && vite build --base=ok-admin-vue",
@@ -28,7 +32,14 @@
     "sass-loader": "^12.1.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.1",
-    "vue-tsc": "^0.0.26"
+    "vue-tsc": "^0.0.26",
+    "eslint": "^7.30.0",
+    "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
+    "vue-eslint-parser": "^7.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.13.0"
   },
   "keywords": [
     "vue",
