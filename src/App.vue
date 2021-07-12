@@ -5,15 +5,15 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, reactive } from 'vue';
+  import { computed } from 'vue';
   import { useStore } from 'vuex';
   import { darkTheme, NConfigProvider } from 'naive-ui';
+  
   const name = 'App';
   const store = useStore();
-  const appTheme = computed(() => store.getters['theme/appThemeGetter']);
-  const themeOverrides = reactive({
-    common: appTheme
-  });
+  const themeOverrides = computed(() => ({common: store.getters['theme/appThemeGetter']}))
+  
+  
 </script>
 
 <style lang="scss"></style>

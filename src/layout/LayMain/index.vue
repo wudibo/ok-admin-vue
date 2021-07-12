@@ -3,7 +3,7 @@
     <div class="lay-main">
       <transition
         appear
-        :name="route.meta.transition || 'fade-transform'"
+        :name="route.meta.transition || 'fade'"
         mode="out-in"
       >
         <keep-alive v-if="keepAlives" :include="keepAlives">

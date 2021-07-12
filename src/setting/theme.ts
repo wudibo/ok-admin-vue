@@ -13,7 +13,8 @@ const layuiColor = {
 const antdColor = {
   primaryColor: '#1890ff',
   primaryColorHover: '#40a9ff',
-  primaryColorPressed: '#096dd9'
+  primaryColorPressed: '#096dd9',
+  primaryColorDins: '' // 底色
 };
 const dustRedColor = {
   primaryColor: '#f5222d',
@@ -30,7 +31,7 @@ const sunsetOrangeColor = {
   primaryColorHover: '#ffa940',
   primaryColorPressed: '#d46b08'
 };
-const galendulaGoldColor = {
+const calendulaGoldColor = {
   primaryColor: '#faad14',
   primaryColorHover: '#ffc53d',
   primaryColorPressed: '#d48806'
@@ -123,7 +124,7 @@ export const appThemeList = {
   dustRedColor,
   volcanoColor,
   sunsetOrangeColor,
-  galendulaGoldColor,
+  calendulaGoldColor,
   sunriseColor,
   limeColor,
   polarGreenColor,
