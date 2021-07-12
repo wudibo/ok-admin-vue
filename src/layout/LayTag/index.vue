@@ -12,14 +12,13 @@
           v-for="(item, index) in tags"
           class="tag-item"
           :key="item.fullPath"
-          :class="item.fullPath === $route.fullPath ? 'tag-active' : ''"
+          :class="item.fullPath === $route.fullPath ? 'tag-active' : 'default'"
         >
           <div class="tag-cont">
             <n-button
               class="tag-btn"
               @click="handleTagOpen(item.fullPath)"
               :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
-              :bordered="false"
             >
               <span>{{ item.meta.title }}</span>
               <n-icon v-if="!isAffix(item)" @click.stop="handleTagClose(index)" class="tag-close">
@@ -164,16 +163,9 @@
     }
 
     .tag-btn {
-      border: var(--border);
       position: relative;
       box-sizing: border-box;
-      @include percolate(border-color + ', ' + color);
-      &.n-button--primary-type {
-        border-color: var(--ripple-color);
-      }
-      &:hover {
-        border: var(--border-hover);
-      }
+      // @include percolate(border-color + ', ' + color);
     }
 
     .tag-close {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <n-divider>系统主题</n-divider>
-    <n-grid gap="2" :cols="8">
+    <n-grid :x-gap="4" :y-gap="4" :cols="8">
       <n-gi v-for="item in store.state.theme.appThemeList" :key="item.primaryColor">
         <div
           @click="handleTheme(item)"
@@ -49,7 +49,6 @@
     height: 20px;
     cursor: pointer;
     border-radius: 2px;
-    margin: 0 5px 5px 0;
     text-align: center;
     color: #ffffff;
   }
