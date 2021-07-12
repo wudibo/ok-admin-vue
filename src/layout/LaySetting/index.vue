@@ -1,6 +1,6 @@
 <template>
-  <n-icon class="setting-btn lay-hover" @click="show = true" size="16">
-    <ellipsis-vertical />
+  <n-icon class="setting-btn lay-hover" @click="show = true" size="20">
+    <settings-outline />
   </n-icon>
   <n-drawer v-model:show="show" :width="300">
     <n-drawer-content title="项目配置">
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-  import { EllipsisVertical } from '@vicons/ionicons5';
+  import { SettingsOutline } from '@vicons/ionicons5';
   import { defineComponent, ref } from 'vue';
   import { NDrawer, NDrawerContent } from 'naive-ui';
   import SetNavigation from './SetNavigation.vue';
@@ -23,7 +23,7 @@
       NDrawerContent,
       SetTheme,
       SetNavigation,
-      EllipsisVertical
+      SettingsOutline
     },
     setup() {
       return {

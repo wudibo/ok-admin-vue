@@ -41,7 +41,9 @@
           <div class="flex-center padding-lr-10">
             <full-screen />
           </div>
-          <lay-setting></lay-setting>
+          <div class="flex-center padding-left-10">
+            <lay-setting></lay-setting>
+          </div>
         </div>
       </n-gi>
     </n-grid>
@@ -128,16 +130,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .padding-right-10 {
-    padding-right: 10px;
-  }
-  .padding-lr-10 {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-  .padding-left-10 {
-    padding-left: 10px;
-  }
   .lay-header {
     height: 100%;
     display: flex;

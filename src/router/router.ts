@@ -24,7 +24,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/home',
         name: 'home',
-        component: import('@/views/home/home.vue'), //componentParcel(() => import('@/views/home/home.vue')),
+        component: componentParcel(() => import('@/views/home/home.vue')),
         meta: {
           title: '首页',
           keepAlive: true,

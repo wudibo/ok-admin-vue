@@ -1,6 +1,15 @@
 @import './variables.scss';
 @import './transition.scss';
-
+.padding-right-10 {
+  padding-right: 10px;
+}
+.padding-left-10 {
+  padding-left: 10px;
+}
+.padding-lr-10 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 .layout-container {
   height: 100vh;
   top: 0;
