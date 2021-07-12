@@ -10,7 +10,7 @@
     "dev": "vite",
     "dev-staging": "vite --mode staging",
     "build": "vue-tsc --noEmit && vite build",
-    "build-admin": "vue-tsc --noEmit && vite build --base=ok-admin-vue",
+    "build-admin": "vue-tsc --noEmit && vite build --mode ok-admin-vue",
     "build-staging": "vue-tsc --noEmit && vite build --mode staging",
     "serve": "vite preview"
   },
