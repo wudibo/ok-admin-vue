@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="padding-bottom-10">
     <n-divider>导航栏风格</n-divider>
     <!-- 左边栏主题 -->
     <n-grid class="sidebar-thenme" x-gap="12" :cols="3">

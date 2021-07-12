@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="padding-bottom-10">
     <n-divider>系统主题</n-divider>
     <n-grid :x-gap="4" :y-gap="4" :cols="8">
       <n-gi v-for="item in store.state.theme.appThemeList" :key="item.primaryColor">
