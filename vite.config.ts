@@ -9,15 +9,17 @@ import path from 'path';
 // Dotenv 是一个零依赖的模块，它能将环境变量中的变量从 .env 文件加载到 process.env 中
 // const dotenv = require("dotenv")
 
-export default ({ command, mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
-  const env: any = loadEnv(mode, root);
+  const env = loadEnv(mode, root);
+  console.log('env: ', env);
+  console.log('mode: ', mode);
 
-  return defineConfig({
+  return {
     plugins: [vue()],
-    base: env['VITE_PUBLIC_PATH'],
+    base: env['VITE_PUBLIC_PATH'] || '/',
     build: {
-      outDir: env['VITE_OUT_DIR']
+      outDir: env['VITE_OUT_DIR'] || 'dist'
     },
     resolve: {
       alias: {
@@ -29,5 +31,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: 3000,
       host: '0.0.0.0'
     }
-  });
-};
+  };
+});
