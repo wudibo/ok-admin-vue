@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import { NButton, NIcon, NForm, NInput, NImage } from 'naive-ui';
+import { NButton, NIcon, NForm, NInput } from 'naive-ui';
 
 // 这里添加经常使用的全局NaiveUI组件
 export default {
@@ -8,6 +8,5 @@ export default {
     _app.component('NIcon', NIcon);
     _app.component('NForm', NForm);
     _app.component('NInput', NInput);
-    _app.component('NImage', NImage);
   }
 };

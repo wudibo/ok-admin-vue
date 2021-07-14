@@ -15,6 +15,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@antv/g2": "^4.1.20",
     "@vicons/ionicons5": "^0.10.0",
     "axios": "^0.21.1",
     "naive-ui": "^2.15.4",

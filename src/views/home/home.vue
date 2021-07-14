@@ -1,46 +1,64 @@
 <template>
-  <div class="app-container home">
-    <n-h2>ok-admin-vue</n-h2>
-    <n-h3>store.current: {{ store.state.current }}</n-h3>
-    <div v-for="item in 85" :key="item" class="flex">
-      <n-button size="small" type="primary" @click="testFun">城府路</n-button>
-      {{ obj.current }}
+  <div class="app-container">
+    <cards class="padding-tb-12" />
+    <card-link class="padding-tb-12"></card-link>
+    <visits class="padding-tb-12"></visits>
+    <div class="padding-tb-12">
+      <div class="padding-tb-12 test">成功</div>
+      <!--      <hello-test>按钮</hello-test>-->
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, reactive } from 'vue';
-  import { useStore } from 'vuex';
-  import { NH2, NH3 } from 'naive-ui';
+  import { onMounted, ref, reactive, SetupContext, getCurrentInstance } from 'vue';
+  import http from '@/utils/http.ts';
+  import Cards from '@/views/home/components/Cards.vue';
+  import CardLink from "@/views/home/components/CardLink.vue";
+  import Visits from "@/views/home/components/Visits.vue";
 
-  export default defineComponent({
-    name: 'home',
-    components: {
-      NH2,
-      NH3
-    },
-    setup(props, superContext) {
-      const store = useStore();
-      const obj = reactive({
-        current: 1
+  interface Data {
+    [key: string]: unknown;
+  }
+
+  export default {
+    components: { Cards, CardLink, Visits }, // , CardLink, Visits
+    setup(props: Data, context: SetupContext) {
+      const { proxy } = getCurrentInstance() as any,
+        readersNumber = ref(0),
+        book = reactive({
+          title: 'Vue 3 Guide',
+          food: 'bar'
+        });
+      onMounted(() => {
+        const url = 'http://rap2api.taobao.org/app/mock/233041/user/list';
+        http.get(url, {
+          page: 1,
+          limit: 7
+        }).then((res: any) => {
+          console.log(res);
+        });
       });
-      const testFun = () => {
-        store.commit('SET_CURRENT', Math.random() * 100);
-        obj.current = Math.random() * 1000;
-      };
+
       return {
-        store,
-        obj,
-        testFun
+        readersNumber,
+        book
       };
     }
-  });
+  };
 </script>
 
 <style lang="scss" scoped>
-  .flex {
-    display: flex;
-    font-size: 24px;
+  .page {
+    padding: 10px 20px;
+  }
+
+  .bg-white {
+    background: white;
+  }
+
+  .padding-tb-12 {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 </style>

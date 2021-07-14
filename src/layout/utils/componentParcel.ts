@@ -1,5 +1,5 @@
-import { defineComponent } from 'vue';
-import { createBlock, createVNode } from 'vue';
+import { createBlock, createVNode, defineComponent, watchEffect, ref } from 'vue';
+import store from '@/store/store.ts';
 
 /**
  * 1.处理transition过渡组件无法嵌套多层元素的问题
@@ -10,11 +10,29 @@ export default function (component: any) {
   return () => {
     return new Promise((res) => {
       component().then((comm: any) => {
-        const name = comm.default.name + '$' + comm.default.__hmrId;
+        const name = (comm.default.name || 'okAdminMain') + '$' + comm.default.__hmrId;
         const tempComm = defineComponent({
           name,
+          setup() {
+            const appTheme = store.getters['theme/appThemeGetter'];
+            return {
+              appTheme
+            };
+          },
           render: function () {
-            return createBlock('div', { class: 'ok-admin-main' }, [createVNode(comm.default)]);
+            const appTheme = this.appTheme;
+            return createBlock(
+              'div',
+              {
+                class: 'ok-admin-main',
+                style: {
+                  '--primaryColor': appTheme.primaryColor,
+                  '--primaryColorHover': appTheme.primaryColorHover,
+                  '--primaryColorPressed': appTheme.primaryColorPressed
+                }
+              },
+              [createVNode(comm.default)]
+            );
           }
         });
         res(tempComm);
