@@ -44,7 +44,7 @@
     transition: all 0.2s;
     border-radius: 4px;
     padding: 16px;
-    color: var(--primary-color-hover);
+    color: var(--primary-color);
     &:hover {
       border-color: var(--primary-color-hover);
       transition: all 0.25s;
