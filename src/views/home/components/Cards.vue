@@ -1,5 +1,5 @@
 <template>
-  <n-grid x-gap="12" cols="4 s:1 m:2" responsive="screen">
+  <n-grid x-gap="12" cols="4 xs:1 s:1 m:2" responsive="screen">
     <n-gi class="padding-tb-5">
       <n-card title="访问量" size="small" class="card-box" :bordered="false">
         <template #header-extra>
@@ -9,7 +9,7 @@
           <div class="num">25,848</div>
 
           <div class="card-data">
-            <n-progress :color="['var(--color-target)']" :percentage="30" />
+            <n-progress :color="['var(--primary-color)']" :percentage="30" />
           </div>
 
           <n-divider style="margin: 12px 0" />

@@ -1,3 +1,9 @@
+/*
+ * 其他两种颜色
+ * primaryColorFocus; 默认和primaryColorHover一样
+ * primaryColorDisabled; 默认和primaryColor一样
+ * */
+
 const defaultColor = {
   primaryColor: '#18A058',
   primaryColorHover: '#36AD6A',

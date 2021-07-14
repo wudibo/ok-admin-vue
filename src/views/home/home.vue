@@ -1,11 +1,13 @@
 <template>
   <div class="app-container">
-    <cards class="padding-tb-12" />
-    <card-link class="padding-tb-12"></card-link>
-    <visits class="padding-tb-12"></visits>
-    <div class="padding-tb-12">
-      <div class="padding-tb-12 test">成功</div>
-      <!--      <hello-test>按钮</hello-test>-->
+    <div class="padding-tb-span">
+      <cards />
+    </div>
+    <div class="padding-tb-span">
+      <card-link></card-link>
+    </div>
+    <div class="padding-tb-span">
+      <visits></visits>
     </div>
   </div>
 </template>
@@ -14,8 +16,8 @@
   import { onMounted, ref, reactive, SetupContext, getCurrentInstance } from 'vue';
   import http from '@/utils/http.ts';
   import Cards from '@/views/home/components/Cards.vue';
-  import CardLink from "@/views/home/components/CardLink.vue";
-  import Visits from "@/views/home/components/Visits.vue";
+  import CardLink from '@/views/home/components/CardLink.vue';
+  import Visits from '@/views/home/components/Visits.vue';
 
   interface Data {
     [key: string]: unknown;
@@ -32,12 +34,14 @@
         });
       onMounted(() => {
         const url = 'http://rap2api.taobao.org/app/mock/233041/user/list';
-        http.get(url, {
-          page: 1,
-          limit: 7
-        }).then((res: any) => {
-          console.log(res);
-        });
+        http
+          .get(url, {
+            page: 1,
+            limit: 7
+          })
+          .then((res: any) => {
+            console.log(res);
+          });
       });
 
       return {
@@ -57,8 +61,8 @@
     background: white;
   }
 
-  .padding-tb-12 {
-    padding-top: 12px;
-    padding-bottom: 12px;
+  .padding-tb-span {
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 </style>
