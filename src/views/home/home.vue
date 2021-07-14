@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <div class="app-container home">
     <n-h2>ok-admin-vue</n-h2>
     <n-h3>store.current: {{ store.state.current }}</n-h3>
-    <div v-for="item in 5" :key="item" class="flex">
+    <div v-for="item in 85" :key="item" class="flex">
       <n-button size="small" type="primary" @click="testFun">城府路</n-button>
       {{ obj.current }}
     </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, reactive } from 'vue';
+  import { defineComponent, reactive } from 'vue';
   import { useStore } from 'vuex';
   import { NH2, NH3 } from 'naive-ui';
 

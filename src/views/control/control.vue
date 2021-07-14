@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-container">
     <div class="box">{{ hello }} - {{ foo }}</div>
     <n-button @click="headerKeep">foo</n-button>
     <n-button type="" @click="headerKeep">foo</n-button>

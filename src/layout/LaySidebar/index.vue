@@ -29,10 +29,10 @@
           <img class="img" alt="logo" src="/src/assets/head.png" />
         </div>
         <n-menu
-          :inverted="layConfig.sidebarInverted"
           :indent="22"
           :collapsed-width="64"
           :collapsed-icon-size="22"
+          :inverted="layConfig.sidebarInverted"
           :options="menuOptions"
           :key="menuConfig.menuKey"
           :default-value="menuConfig.menuKey"

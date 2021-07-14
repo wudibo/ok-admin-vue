@@ -1,5 +1,5 @@
 <template>
-  <div>basic-form</div>
+  <div class="app-container">basic-form</div>
 </template>
 
 <script lang="ts">

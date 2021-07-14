@@ -1,5 +1,5 @@
 <template>
-  <div>advanced-form</div>
+  <div class="app-container">advanced-form</div>
 </template>
 
 <script lang="ts">

@@ -1,12 +1,14 @@
 import { createStore } from 'vuex';
-import admin from './modules/admin';
-import theme from './modules/theme';
+
+/**引入当前modules件中的所有的ts文件 */
+const files = import.meta.globEager('./modules/*.ts');
+const modules: any = {};
+for (const key in files) {
+  modules[key.replace(/(\.\/modules\/|\.ts)/g, '')] = files[key].default;
+}
 
 export default createStore({
-  modules: {
-    admin: admin,
-    theme: theme
-  },
+  modules,
   state: {
     current: 5
   },
