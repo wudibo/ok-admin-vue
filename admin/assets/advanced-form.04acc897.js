@@ -1,0 +1,1 @@
+import{d as a,o as r,a as e}from"./vendor.0e7ba291.js";var n=a({name:"advanced-form"});const o={class:"app-container"};n.render=function(a,n,d,s,t,c){return r(),e("div",o,"advanced-form")};export default n;
