@@ -55,6 +55,7 @@ export const tagsEffect = function (tags: Array<Tag>): void {
   watch(
     route,
     (to) => {
+      if (to.meta && to.meta.tagHidden) return;
       const isTag = tags.some((tag) => tag.fullPath === to.fullPath);
       const matched = to.matched;
       if (!isTag && matched.length) {

@@ -51,8 +51,8 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject, ref, watchEffect } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { defineComponent, inject, ref, watchEffect, getCurrentInstance } from 'vue';
+  import { useRouter, useRoute } from 'vue-router';
   import { useStore } from 'vuex';
   import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
   import { GlobeOutline, LockClosedOutline } from '@vicons/ionicons5';
@@ -81,10 +81,12 @@
     },
     setup(props, superContext) {
       const store = useStore(),
+        router = useRouter(),
         route = useRoute();
       let matcheds = ref([] as Array<string>);
       const mobileOptions = inject('mobileOptions') as any;
       const layConfig: any = store.getters['admin/layConfigGetter'];
+      const keepAlives: Array<string> = store.getters['admin/keepAlivesGetter'];
 
       watchEffect(() => {
         // 面包屑
@@ -111,11 +113,15 @@
         handleSelect: (val: any) => {
           console.log(val);
         },
+        // 刷新页面
         handleRefresh: throttle(() => {
-          layConfig.refresh = true;
-          setTimeout(() => {
-            layConfig.refresh = false;
-          }, 10);
+          const commName: string = (route.matched[route.matched.length - 1] as any).components
+            .default.name;
+          store.commit('admin/DEL_KEEPALIVES', commName);
+          console.log(route.fullPath);
+
+          router.replace('/redirect-' + route.fullPath);
+          // router.replace(route.fullPath);
         }),
         hanldeMenu() {
           if (mobileOptions.isMobile) {

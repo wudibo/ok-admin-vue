@@ -1,16 +1,16 @@
-import { unref, defineComponent } from 'vue';
+import { ref, defineComponent } from 'vue';
 import { NIcon } from 'naive-ui';
 import { ExpandOutline, ContractOutline } from '@vicons/ionicons5';
 export default defineComponent({
     name: 'FullScreen',
     components: { NIcon, ExpandOutline, ContractOutline },
     setup() {
-        let isFullScreen = unref(false);
+        let isFullScreen = ref(false);
 
         const handleScreen = () => {
             let el: any = '';
             let objFullScreen: any = '';
-            if (!isFullScreen) {
+            if (!isFullScreen.value) {
                 el = document.documentElement;
                 objFullScreen =
                     el.requestFullScreen ||
@@ -26,14 +26,14 @@ export default defineComponent({
                     el.exitFullScreen;
             }
             if (objFullScreen) {
-                isFullScreen = !isFullScreen;
+                isFullScreen.value = !isFullScreen.value;
                 objFullScreen.call(el);
             }
         };
         return () => (
             <n-icon class="lay-hover" onClick={handleScreen} size="20">
-                <contract-outline v-show={isFullScreen} />
-                <expand-outline v-show={!isFullScreen} />
+                <contract-outline v-show={isFullScreen.value} />
+                <expand-outline v-show={!isFullScreen.value} />
             </n-icon>
         )
     }

@@ -19,20 +19,22 @@
       const route = useRoute();
       const store = useStore();
       const keepAlives = store.getters['admin/keepAlivesGetter'];
-      watch(
-        route,
-        () => {
-          if (route.meta && route.meta.keepAlive) {
-            store.commit(
-              'admin/ADD_KEEPALIVES',
-              route.matched[route.matched.length - 1].components.default.name
-            );
+      /* 
+        watch(
+          route,
+          () => {
+            if (route.meta && route.meta.keepAlive) {
+              store.commit(
+                'admin/ADD_KEEPALIVES',
+                route.matched[route.matched.length - 1].components.default.name
+              );
+            }
+          },
+          {
+            immediate: true
           }
-        },
-        {
-          immediate: true
-        }
-      );
+        );
+      */
       return { keepAlives };
     }
   });

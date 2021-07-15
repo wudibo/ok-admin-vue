@@ -1,4 +1,4 @@
-import { Component } from 'vue';
+import { Component, defineComponent, onMounted, nextTick } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import componentParcel from '@/layout/utils/componentParcel.ts';
 import Layout from '@/layout/index.vue';
@@ -9,9 +9,10 @@ import routerGuard from './routerGuard.ts';
 
 export type IMeta = {
   title?: string; // 页面标题
+  tagHidden?: boolean; // 是否需要显示在tab上
   keepAlive?: boolean; // 是否缓存页面
-  icon?: Component;   // 菜单图标
-  affix?: boolean;  // 在tags是否一直悬挂不被关闭
+  icon?: Component; // 菜单图标
+  affix?: boolean; // 在tags是否一直悬挂不被关闭
   hidden?: boolean; // 是否不显示在菜单栏上
 };
 
@@ -26,7 +27,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'home',
         component: componentParcel(() => import('@/views/home/home.vue')),
         meta: {
-          title: '首页',  // 页面标题
+          title: '首页', // 页面标题
           keepAlive: true, // 是否缓存页面
           icon: StarBorderRound, // 图标
           affix: true //在tags是否一直悬挂不被关闭
@@ -166,7 +167,40 @@ const constantRouter: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: constantRouter.concat(asyncRoutes),
+  routes: constantRouter.concat(asyncRoutes).concat([
+    {
+      path: '',
+      name: 'redirect',
+      component: Layout as unknown as Component,
+      meta: {
+        tagHidden: true,
+        hidden: false,
+        title: '跳转页',
+        icon: WarningOutline
+      },
+      children: [
+        {
+          path: '/redirect-:afterUser(.*)', // 以/redirect-开头的路由
+          name: 'redirect',
+          component: () =>
+            defineComponent({
+              name: 'redirect',
+              setup() {
+                const { fullPath } = router.currentRoute.value;
+                onMounted(() => {
+                  nextTick(() => {
+                    console.log(fullPath.slice(10));
+                    router.replace({
+                      path: '/home'
+                    });
+                  });
+                });
+              }
+            })
+        }
+      ]
+    }
+  ]),
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 })
 });
