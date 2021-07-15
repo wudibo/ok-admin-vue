@@ -3,7 +3,11 @@
  * primaryColorFocus; 默认和primaryColorHover一样
  * primaryColorDisabled; 默认和primaryColor一样
  * */
-
+export interface ThemeType {
+  primaryColor: string;
+  primaryColorHover: string;
+  primaryColorPressed: string;
+}
 const defaultColor = {
   primaryColor: '#18A058',
   primaryColorHover: '#36AD6A',
