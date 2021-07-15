@@ -112,11 +112,11 @@ export default defineComponent({
         console.log(val);
       },
       // 刷新页面
-      handleRefresh: throttle(() => {
+      handleRefresh() {
         const componentInstances = (route.matched[route.matched.length - 1] as any).instances
           .default;
         componentInstances.handleReload();
-      }),
+      },
       hanldeMenu() {
         if (mobileOptions.isMobile) {
           mobileOptions.showMobileSlidebar = true;

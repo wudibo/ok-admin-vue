@@ -19,15 +19,17 @@ export default function (component: any) {
           setup() {
             const isReload = ref(false);
             const loadingBar = useLoadingBar();
+            let timeOut: any = null;
             const handleReload = () => {
               isReload.value = true;
               loadingBar?.start();
-              setTimeout(() => {
+              timeOut && clearTimeout(timeOut);
+              timeOut = setTimeout(() => {
                 nextTick(() => {
                   isReload.value = false;
                   loadingBar?.finish();
                 });
-              }, 50);
+              }, 260);
             };
             return {
               isReload,
@@ -36,8 +38,8 @@ export default function (component: any) {
           },
           render: function () {
             if (this.isReload) {
-              return h('div');
-              // return h(routerReload);
+              // return h('div');
+              return h(routerReload);
             } else {
               return h('div', { class: 'ok-admin-main' }, [createVNode(comm.default)]);
             }
