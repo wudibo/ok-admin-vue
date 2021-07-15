@@ -27,9 +27,9 @@ function handlePath(superPath: string, rePath: string): string {
 /**递归处理菜单 */
 function handleMenu(
   rrr: RouteRecordRaw,
-  menu: MenuOption,
-  fullPath: string
-): MenuOption | MenuGroupOption {
+  fullPath: string,
+  menu?: MenuOption
+): MenuOption | MenuGroupOption | undefined {
   // 如果菜单色设置了隐藏那么不处理
   if (rrr.meta && rrr.meta.hidden) return menu;
 
@@ -37,7 +37,7 @@ function handleMenu(
   const label = rrr.meta ? (rrr.meta.title as string) : (rrr.name as string);
   menu = {
     label: label,
-    key: newPath,
+    key: newPath
   };
 
   if (rrr.meta && rrr.meta.icon) {
@@ -48,15 +48,17 @@ function handleMenu(
     menu.children = [] as Array<MenuGroupOption>;
     rrr.children.forEach((item) => {
       if (!item.meta?.hidden) {
-        menu.children?.push(handleMenu(item, {} as MenuOption, newPath));
+        const menuTemp = handleMenu(item, newPath);
+        menuTemp && menu?.children?.push(menuTemp);
       }
     });
+    // 当最后的children的长度为0的时候返回undefined
+    if(menu.children.length === 0) return undefined
   }
   return menu;
 }
 
 export const useMenu = function () {
-  
   /**layouts初始化 (查找所有根路由的组件都是Layout)*/
   const layouts: Array<RouteRecordRaw> = asyncRoutes.reduce((lays, item) => {
     if (item.component && item.component.name === 'Layout') {
@@ -64,21 +66,23 @@ export const useMenu = function () {
     }
     return lays;
   }, [] as Array<RouteRecordRaw>);
-
+  
   menusOption = layouts.reduce((menus, item) => {
-    // 如果菜单色设置了隐藏那么不处理
+    // 如果菜单设置了隐藏那么不处理
     if (item.meta && item.meta.hidden) return menus;
 
     if (item.children && item.children.length === 1) {
-      // 处理一个子元素
-      menus.push(handleMenu(item.children[0], {} as MenuOption, item.path));
+      // 处理只有一个子元素
+      const menu = handleMenu(item.children[0],item.path)
+      menu && menus.push(menu);
     } else if (item.children && item.children.length > 1) {
       // 处理多个子元素
-      menus.push(handleMenu(item, {} as MenuOption, item.path));
+      const menu = handleMenu(item, item.path)
+      menu && menus.push(menu);
     }
     return menus;
   }, [] as Array<MenuOption | MenuGroupOption>);
-
+  
   return menusOption;
 
   /** 

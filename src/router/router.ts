@@ -1,18 +1,18 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import componentParcel from '../layout/utils/componentParcel';
-import Layout from '@/layout/index.vue';
 import { Component } from 'vue';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import componentParcel from '@/layout/utils/componentParcel.ts';
+import Layout from '@/layout/index.vue';
 import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';
-import { StarBorderRound } from '../icon/material-icon';
-import multiMenu from './multiMenu';
-import routerGuard from './routerGuard';
+import { StarBorderRound } from '@/icon/material-icon/index.ts';
+import multiMenu from './multiMenu.ts';
+import routerGuard from './routerGuard.ts';
 
 export type IMeta = {
-  title?: string;
-  icon?: Component;
-  keepAlive?: boolean;
-  affix?: boolean;
-  hidden?: boolean;
+  title?: string; // 页面标题
+  keepAlive?: boolean; // 是否缓存页面
+  icon?: Component;   // 菜单图标
+  affix?: boolean;  // 在tags是否一直悬挂不被关闭
+  hidden?: boolean; // 是否不显示在菜单栏上
 };
 
 export const asyncRoutes: Array<RouteRecordRaw> = [
@@ -26,9 +26,9 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'home',
         component: componentParcel(() => import('@/views/home/home.vue')),
         meta: {
-          title: '首页',
-          keepAlive: true,
-          icon: StarBorderRound,
+          title: '首页',  // 页面标题
+          keepAlive: true, // 是否缓存页面
+          icon: StarBorderRound, // 图标
           affix: true //在tags是否一直悬挂不被关闭
         }
       }
@@ -90,7 +90,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'advanced-form',
         component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
-          title: '高级表单'
+          title: '高级表单',
+          icon: StarBorderRound
         }
       },
       {
@@ -98,7 +99,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'step-form',
         component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
-          title: '分步表单'
+          title: '分步表单',
+          icon: StarBorderRound
         }
       },
       {
@@ -106,7 +108,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'detail',
         component: componentParcel(() => import('@/views/form/advanced-form.vue')),
         meta: {
-          title: '表单详情'
+          title: '表单详情',
+          icon: StarBorderRound
         }
       }
     ]

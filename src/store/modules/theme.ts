@@ -1,4 +1,4 @@
-import theme from '../../setting/theme';
+import theme from '@/setting/theme.ts';
 
 const state: any = {
   appTheme: theme.appTheme,

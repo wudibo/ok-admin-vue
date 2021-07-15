@@ -8,7 +8,7 @@
         <div class="text">主题色</div>
       </div>
     </n-gi>
-    <n-gi v-for="(item, key) in appThemeList" :key="key">
+    <n-gi v-for="item in appThemeList" :key="item.primaryColor">
       <div class="bg-white link-cont" :style="{ color: item.primaryColor }">
         <n-icon size="24">
           <logo-octocat />
