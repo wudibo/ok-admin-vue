@@ -1,6 +1,7 @@
 import type { UserConfig, ConfigEnv } from 'vite';
 import { loadEnv, defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 
 // https://cn.vitejs.dev/config/#build-assetsdir
@@ -16,7 +17,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   console.log('mode: ', mode);
 
   return {
-    plugins: [vue()],
+    plugins: [vue(), vueJsx()],
     base: env['VITE_PUBLIC_PATH'] || '/',
     build: {
       outDir: env['VITE_OUT_DIR'] || 'dist'

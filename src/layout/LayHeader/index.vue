@@ -59,7 +59,7 @@
   import { RefreshFilled } from '../../icon/material-icon';
   import { throttle } from '../utils/index';
   import LaySetting from '@/layout/LaySetting/index.vue';
-  import FullScreen from './FullScreen.vue';
+  import FullScreen from './FullScreen.tsx';
 
   import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown } from 'naive-ui';
   export default defineComponent({
