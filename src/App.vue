@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CSSProperties, Ref } from 'vue';
+import type { CSSProperties } from 'vue';
 import { computed, watch, ref, nextTick, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
@@ -19,17 +19,18 @@ const name = 'App';
 const store = useStore();
 const route = useRoute();
 const loadingBar: any = ref(null);
-const appTheme = computed(() => store.getters['theme/appThemeGetter']);
-
 const themeOverrides = ref({
-  common: appTheme
+  common: computed(() => store.getters['theme/appThemeGetter'])
 });
 
-const styles = ref({
-  '--primary-color': appTheme.value.primaryColor,
-  '--primary-color-hover': appTheme.value.primaryColorHover,
-  '--primary-color-pressed': appTheme.value.primaryColorPressed
-}) as Ref<CSSProperties>;
+const styles = computed(() => {
+  const appTheme = store.getters['theme/appThemeGetter'];
+  return {
+    '--primary-color': appTheme.primaryColor,
+    '--primary-color-hover': appTheme.primaryColorHover,
+    '--primary-color-pressed': appTheme.primaryColorPressed
+  };
+}) as CSSProperties;
 
 onMounted(() => {
   watch(route, (to) => {
