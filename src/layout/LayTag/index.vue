@@ -33,7 +33,7 @@
       <n-dropdown
         trigger="hover"
         placement="bottom-end"
-        @select="handleMenuSelect"
+        :onSelect="handleMenuSelect"
         :options="menuOptions"
       >
         <n-button style="width: 32px; height: 32px">
