@@ -15,6 +15,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   console.log('env: ', env);
   console.log('mode: ', mode);
+  console.log('command: ', command);
 
   return {
     plugins: [vue(), vueJsx()],
