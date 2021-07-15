@@ -1,11 +1,11 @@
-import { Component, defineComponent, onMounted, nextTick } from 'vue';
+import { Component } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import componentParcel from '@/layout/utils/componentParcel.ts';
 import Layout from '@/layout/index.vue';
 import { NewspaperOutline, WarningOutline } from '@vicons/ionicons5';
 import { StarBorderRound } from '@/icon/material-icon/index.ts';
-import multiMenu from './multiMenu.ts';
-import routerGuard from './routerGuard.ts';
+import routerComponent from './utils/routerComponent.ts';
+import multiMenu from './utils/multiMenu.ts';
+import routerGuard from './utils/routerGuard.ts';
 
 export type IMeta = {
   title?: string; // 页面标题
@@ -25,7 +25,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/home',
         name: 'home',
-        component: componentParcel(() => import('@/views/home/home.vue')),
+        component: routerComponent(() => import('@/views/home/home.vue')),
         meta: {
           title: '首页', // 页面标题
           keepAlive: true, // 是否缓存页面
@@ -43,7 +43,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'control',
-        component: componentParcel(() => import('@/views/control/control.vue')),
+        component: routerComponent(() => import('@/views/control/control.vue')),
         meta: {
           title: '控制台',
           keepAlive: true,
@@ -59,7 +59,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'user',
-        component: componentParcel(() => import('@/views/user/user.vue')),
+        component: routerComponent(() => import('@/views/user/user.vue')),
         meta: {
           title: '个人中心',
           icon: StarBorderRound
@@ -80,7 +80,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'basic-form',
         name: 'basic-form',
-        component: componentParcel(() => import('@/views/form/basic-form.vue')),
+        component: routerComponent(() => import('@/views/form/basic-form.vue')),
         meta: {
           title: '基础表单',
           icon: StarBorderRound
@@ -89,7 +89,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'advanced-form',
         name: 'advanced-form',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: routerComponent(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '高级表单',
           icon: StarBorderRound
@@ -98,7 +98,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'step-form',
         name: 'step-form',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: routerComponent(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '分步表单',
           icon: StarBorderRound
@@ -107,7 +107,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: 'detail',
         name: 'detail',
-        component: componentParcel(() => import('@/views/form/advanced-form.vue')),
+        component: routerComponent(() => import('@/views/form/advanced-form.vue')),
         meta: {
           title: '表单详情',
           icon: StarBorderRound
@@ -128,7 +128,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '403',
         name: '403',
-        component: componentParcel(() => import('@/views/exception/403.vue')),
+        component: routerComponent(() => import('@/views/exception/403.vue')),
         meta: {
           title: '403'
         }
@@ -136,7 +136,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '404',
         name: '404',
-        component: componentParcel(() => import('@/views/exception/404.vue')),
+        component: routerComponent(() => import('@/views/exception/404.vue')),
         meta: {
           title: '404'
         }
@@ -144,7 +144,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '500',
         name: '500',
-        component: componentParcel(() => import('@/views/exception/500.vue')),
+        component: routerComponent(() => import('@/views/exception/500.vue')),
         meta: {
           title: '500'
         }
@@ -167,40 +167,7 @@ const constantRouter: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: constantRouter.concat(asyncRoutes).concat([
-    {
-      path: '',
-      name: 'redirect',
-      component: Layout as unknown as Component,
-      meta: {
-        tagHidden: true,
-        hidden: false,
-        title: '跳转页',
-        icon: WarningOutline
-      },
-      children: [
-        {
-          path: '/redirect-:afterUser(.*)', // 以/redirect-开头的路由
-          name: 'redirect',
-          component: () =>
-            defineComponent({
-              name: 'redirect',
-              setup() {
-                const { fullPath } = router.currentRoute.value;
-                onMounted(() => {
-                  nextTick(() => {
-                    console.log(fullPath.slice(10));
-                    router.replace({
-                      path: '/home'
-                    });
-                  });
-                });
-              }
-            })
-        }
-      ]
-    }
-  ]),
+  routes: constantRouter.concat(asyncRoutes),
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 })
 });

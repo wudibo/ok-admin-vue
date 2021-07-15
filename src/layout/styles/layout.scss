@@ -1,24 +1,30 @@
-@import './variables.scss';
 @import './transition.scss';
-.padding-10{
+
+.padding-10 {
   padding: 10px;
 }
+
 .padding-left-10 {
   padding-left: 10px;
 }
+
 .padding-right-10 {
   padding-right: 10px;
 }
+
 .padding-top-10 {
   padding-top: 10px;
 }
+
 .padding-bottom-10 {
   padding-bottom: 10px;
 }
+
 .padding-lr-10 {
   padding-right: 10px;
   padding-left: 10px;
 }
+
 .padding-tb-10 {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -35,7 +41,7 @@
 }
 
 .lay-hover:hover {
-  color: $primary;
+  color: var(--primary-color);
   cursor: pointer;
 }
 
