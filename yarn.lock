@@ -2941,10 +2941,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-naive-ui@^2.15.4:
-  version "2.15.4"
-  resolved "https://registry.npmjs.org/naive-ui/-/naive-ui-2.15.4.tgz#56c53b03e277ac9e55396bfb85dc2b49293ca6c3"
-  integrity sha512-YcGT3bJA4HHYunw01ksKoiHJcCR4/aEHv155BT1JoN+wctVgoAkYBJtbldQbPvjKWuRJYbKPwXEI45XD/WZjqQ==
+naive-ui@^2.15.5:
+  version "2.15.5"
+  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.15.5.tgz#50ffc1834fd64765621a31f0b09e64d72770cd6c"
+  integrity sha512-ncNlvaVFaqdZrVFe8IAxqyFpP32k+l8bGfxW4PKCDP1huWG1AgXI2EKfO18Tu7Er6A/ENi68CStYA3ZnxEWFpw==
   dependencies:
     "@css-render/plugin-bem" "^0.15.4"
     "@css-render/vue3-ssr" "^0.15.4"
@@ -2958,7 +2958,7 @@ naive-ui@^2.15.4:
     lodash "^4.17.21"
     lodash-es "^4.17.21"
     seemly "^0.3.1"
-    treemate "^0.2.11"
+    treemate "^0.2.12"
     vdirs "^0.1.4"
     vfonts "^0.1.0"
     vooks "^0.2.6"
@@ -3927,10 +3927,10 @@ token-stream@1.0.0:
   resolved "https://registry.yarnpkg.com/token-stream/-/token-stream-1.0.0.tgz#cc200eab2613f4166d27ff9afc7ca56d49df6eb4"
   integrity sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=
 
-treemate@^0.2.11:
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/treemate/-/treemate-0.2.11.tgz#cffa37051e613beaa82fd3fce56300e8e4d8328f"
-  integrity sha512-3/wjLLBbLYKZUI311pERMnM/yLHCInD3lfETWTeoHDNwnZI2ApVqgVCJnjEWC10Ugd02ASKlBHJeKSDUmLYWng==
+treemate@^0.2.12:
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/treemate/-/treemate-0.2.12.tgz#eed8ce0cd5a03f11c090c43d08f548694eead4b5"
+  integrity sha512-li5ZxaT7BtBIEnT7eUO3mk4BdefANPUKjCGnTciFp5e5UDy3+07HLvWelKxuIz1jCz+6r5IPoP8P/5+8Xz9Z7w==
 
 trim-newlines@^2.0.0:
   version "2.0.0"
