@@ -79,9 +79,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { useStore } from 'vuex';
-  import navThemeDark from './svg/nav-theme-dark.svg';
-  import navThemeLight from './svg/nav-theme-light.svg';
-  import headerThemeDark from './svg/header-theme-dark.svg';
+  import navThemeDark from '../svg/nav-theme-dark.svg';
+  import navThemeLight from '../svg/nav-theme-light.svg';
+  import headerThemeDark from '../svg/header-theme-dark.svg';
   import { EllipsisVertical, Ellipse } from '@vicons/ionicons5';
   import { NTooltip, NDrawer, NDrawerContent, NGrid, NGi, NIcon, NDivider } from 'naive-ui';
   export default defineComponent({
