@@ -12,8 +12,8 @@
             />
           </n-icon>
           <div class="header-refresh">
-            <n-icon @click="handleRefresh" title="刷新" class="lay-hover" size="20">
-              <refresh-filled />
+            <n-icon @click="handleRefresh" title="刷新" class="lay-hover" size="18">
+              <reload-outline />
             </n-icon>
           </div>
           <!-- 面包屑 -->
@@ -28,12 +28,12 @@
         <div class="header-right">
           <div class="flex-center padding-lr-10">
             <n-icon title="锁屏" class="lay-hover" size="20">
-              <lock-closed-outline />
+              <lock-closed />
             </n-icon>
           </div>
           <div class="flex-center padding-lr-10">
             <n-dropdown trigger="hover" @select="handleSelect" :options="optionsISO">
-              <n-icon title="语言" class="lay-hover" size="20">
+              <n-icon title="语言" class="lay-hover" size="18">
                 <globe-outline />
               </n-icon>
             </n-dropdown>
@@ -54,10 +54,9 @@
 import { defineComponent, inject, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
+import { LockClosed } from '../../icon/material-icon';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '../../icon/antd-icon';
-import { GlobeOutline, LockClosedOutline } from '@vicons/ionicons5';
-import { RefreshFilled } from '../../icon/material-icon';
-import { throttle } from '../utils/index';
+import { GlobeOutline, ReloadOutline } from '@vicons/ionicons5';
 import LaySetting from '@/layout/LaySetting/index.vue';
 import FullScreen from './FullScreen.tsx';
 
@@ -73,9 +72,9 @@ export default defineComponent({
     NDropdown,
     FullScreen,
     LaySetting,
-    RefreshFilled,
     GlobeOutline,
-    LockClosedOutline,
+    ReloadOutline,
+    LockClosed,
     MenuFoldOutlined,
     MenuUnfoldOutlined
   },
@@ -153,7 +152,8 @@ export default defineComponent({
   justify-content: flex-end;
 }
 .header-refresh {
-  padding: 0 12px;
+  padding-left: 24px;
+  padding-right: 12px;
   display: inline-flex;
   align-items: center;
 }

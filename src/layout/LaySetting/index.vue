@@ -1,8 +1,8 @@
 <template>
-  <n-icon class="setting-btn lay-hover" @click="show = true" size="20">
+  <n-icon class="setting-btn lay-hover" @click="show = true" size="18">
     <settings-outline />
   </n-icon>
-  <n-drawer v-model:show="show" :width="256">
+  <n-drawer v-model:show="show">
     <n-drawer-content
       :body-style="{ overflow: 'hidden' }"
       :body-content-style="{ padding: 0 }"

@@ -31,7 +31,7 @@ export default defineComponent({
             }
         };
         return () => (
-            <n-icon class="lay-hover" onClick={handleScreen} size="20">
+            <n-icon class="lay-hover" onClick={handleScreen} size="18">
                 <contract-outline v-show={isFullScreen.value} />
                 <expand-outline v-show={!isFullScreen.value} />
             </n-icon>
