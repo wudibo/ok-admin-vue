@@ -18,38 +18,38 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useStore } from 'vuex';
-  import { NDivider, NGrid, NGi, NIcon } from 'naive-ui';
-  import { CheckmarkSharp } from '@vicons/ionicons5';
-  export default defineComponent({
-    name: 'SetTheme',
-    components: {
-      NGrid,
-      NGi,
-      NIcon,
-      NDivider,
-      CheckmarkSharp
-    },
-    setup() {
-      const store = useStore();
-      return {
-        store,
-        handleTheme(themeColor: string) {
-          store.commit('theme/SET_APPTHEME', themeColor);
-        }
-      };
-    }
-  });
+import { defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { NDivider, NGrid, NGi, NIcon } from 'naive-ui';
+import { CheckmarkSharp } from '@vicons/ionicons5';
+export default defineComponent({
+  name: 'SetTheme',
+  components: {
+    NGrid,
+    NGi,
+    NIcon,
+    NDivider,
+    CheckmarkSharp
+  },
+  setup() {
+    const store = useStore();
+    return {
+      store,
+      handleTheme(themeColor: string) {
+        store.commit('theme/SET_APPTHEME', themeColor);
+      }
+    };
+  }
+});
 </script>
 
 <style lang="scss" scoped>
-  .item {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 2px;
-    text-align: center;
-    color: #ffffff;
-  }
+.item {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  color: #ffffff;
+}
 </style>
