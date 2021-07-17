@@ -5,20 +5,10 @@
       <n-gi>
         <div class="header-left">
           <!-- 菜单切换 -->
-          <n-tooltip placement="bottom" trigger="hover">
-            <template #trigger>
-              <button-menu />
-            </template>
-            <span>菜单切换</span>
-          </n-tooltip>
+          <button-menu />
 
           <!-- 刷新页面 -->
-          <n-tooltip placement="bottom" trigger="hover">
-            <template #trigger>
-              <button-refresh />
-            </template>
-            <span>刷新页面</span>
-          </n-tooltip>
+          <button-refresh />
 
           <!-- 面包屑 -->
           <n-breadcrumb class="xs-hidden">
@@ -31,16 +21,11 @@
       <n-gi suffix>
         <div class="header-right">
           <!-- 锁屏 -->
-          <n-tooltip placement="bottom" trigger="hover">
-            <template #trigger>
-              <div class="flex-center btn-content lay-hover">
-                <n-icon class="lay-hover" size="20">
-                  <lock-closed />
-                </n-icon>
-              </div>
-            </template>
-            <span>锁屏</span>
-          </n-tooltip>
+          <div class="flex-center btn-content lay-hover">
+            <n-icon class="lay-hover" size="20">
+              <lock-closed />
+            </n-icon>
+          </div>
 
           <!-- 语言切换 -->
           <n-dropdown trigger="hover" @select="handleSelect" :options="optionsISO">
@@ -52,25 +37,15 @@
           </n-dropdown>
 
           <!-- 全屏按钮 -->
-          <n-tooltip placement="bottom" trigger="hover">
-            <template #trigger>
-              <button-full-screen size="18" />
-            </template>
-            <span>全屏切换</span>
-          </n-tooltip>
+          <button-full-screen size="18" />
 
           <!-- 设置 -->
-          <n-tooltip placement="bottom-start" trigger="hover">
-            <template #trigger>
-              <div @click="setShow = true" class="flex-center btn-content lay-hover">
-                <n-icon class="setting-btn lay-hover" size="18">
-                  <settings-outline />
-                </n-icon>
-                <lay-setting v-model:show="setShow"></lay-setting>
-              </div>
-            </template>
-            <span>系统设置</span>
-          </n-tooltip>
+          <div @click="setShow = true" class="flex-center btn-content lay-hover">
+            <n-icon class="setting-btn lay-hover" size="18">
+              <settings-outline />
+            </n-icon>
+            <lay-setting v-model:show="setShow"></lay-setting>
+          </div>
         </div>
       </n-gi>
     </n-grid>
@@ -82,7 +57,7 @@ import { useRoute } from 'vue-router';
 import { defineComponent, ref, watchEffect } from 'vue';
 import { LockClosed } from '@/icon/material-icon/index.ts';
 import { GlobeOutline, SettingsOutline } from '@vicons/ionicons5';
-import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown, NTooltip } from 'naive-ui';
+import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown } from 'naive-ui';
 import { ButtonFullScreen, ButtonMenu, ButtonRefresh } from './components/index.ts';
 import LaySetting from '@/layout/LaySetting/index.vue';
 
@@ -95,7 +70,6 @@ export default defineComponent({
     NBreadcrumb,
     NBreadcrumbItem,
     NDropdown,
-    NTooltip,
     LaySetting,
     GlobeOutline,
     SettingsOutline,
