@@ -100,7 +100,10 @@ import { onMounted } from 'vue';
 import { NDivider, NTag, NProgress } from 'naive-ui';
 import { CaretDown, CaretUp } from '@vicons/ionicons5';
 import { Chart } from '@antv/g2';
-
+const randomNum = (min = 200, max = 2000): number => {
+  const num = Math.random() * (max - min) + min;
+  return parseInt(num + '');
+};
 const clearElement = (elementId: string) => {
   const element = document.getElementById(elementId);
   if (element !== null) {
@@ -111,13 +114,13 @@ const cardChartFun = () => {
   const elementId = 'cardChart';
   clearElement(elementId);
   const data = [
-    { year: 'Mon', value: 232 },
-    { year: 'Tue', value: 221 },
-    { year: 'Wed', value: 309 },
-    { year: 'Thu', value: 174 },
-    { year: 'Fri', value: 270 },
-    { year: 'Sat', value: 260 },
-    { year: 'Sun', value: 319 }
+    { year: 'Mon', value: randomNum() },
+    { year: 'Tue', value: randomNum() },
+    { year: 'Wed', value: randomNum() },
+    { year: 'Thu', value: randomNum() },
+    { year: 'Fri', value: randomNum() },
+    { year: 'Sat', value: randomNum() },
+    { year: 'Sun', value: randomNum() }
   ];
   const chart = new Chart({
     container: elementId,
