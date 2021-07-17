@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '@/layout/index.vue';
 import {
   SpeedometerOutline,
+  TimerOutline,
   HomeOutline,
   CloudyOutline,
   CloudyNightOutline,
@@ -16,17 +17,19 @@ import routerComponent from './utils/routerComponent.ts';
 import routerReload from './utils/routerReload.vue';
 import routerGuard from './utils/routerGuard.ts';
 
-// 是否是白天
-const isDayTime = new Date().getHours() < 18;
-
+// meta菜单设置的选项说明
 export type IMeta = {
   title?: string; // 页面标题
   tagHidden?: boolean; // 是否需要显示在tab上
   keepAlive?: boolean; // 是否缓存页面
+  hidden?: boolean; // 是否不显示在左侧菜单栏上
   icon?: Component; // 菜单图标
-  affix?: boolean; // 在tags是否一直悬挂不被关闭
-  hidden?: boolean; // 是否不显示在菜单栏上
+  affix?: boolean; // 初始在tags是否一直悬挂不被关闭
+  href?: string; // 跳转到外部链接的地址(设置了此项点击将会跳转到其他网站)
 };
+
+// 是否是白天
+const isDayTime = new Date().getHours() < 18;
 
 export const asyncRoutes: Array<RouteRecordRaw> = [
   {
@@ -40,7 +43,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     redirect: '/dashboard/control',
     meta: {
       title: 'Dashboard', // 页面标题
-      icon: SpeedometerOutline // 图标
+      icon: TimerOutline // 图标
     },
     children: [
       {
