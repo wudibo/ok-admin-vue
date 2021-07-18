@@ -11,7 +11,7 @@
           <button-refresh />
 
           <!-- 面包屑 -->
-          <n-breadcrumb sm-hidden>
+          <n-breadcrumb sm-hidden xs-hidden>
             <n-breadcrumb-item v-for="item in matcheds" :key="item">{{ item }}</n-breadcrumb-item>
           </n-breadcrumb>
         </div>

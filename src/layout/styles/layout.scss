@@ -142,13 +142,13 @@
   ≥1200px     xl
   ≥1400px     xxl
  ==================== */
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
   .xs-hidden,
   [xs-hidden] {
     display: none !important;
   }
 }
-@media (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 768px) {
   .sm-hidden,
   [sm-hidden] {
     display: none !important;
