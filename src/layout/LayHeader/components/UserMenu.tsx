@@ -46,7 +46,7 @@ export default defineComponent({
       <NDropdown trigger="hover" onSelect={this.handleSelect} options={this.userMenus}>
         <div class="flex-center btn-content lay-hover">
           <NAvatar circle size="small" src={avatar}></NAvatar>
-          <div class="padding-left-10">智走</div>
+          <div class="padding-left-10">Admin</div>
         </div>
       </NDropdown>
     );
