@@ -75,12 +75,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .xs-hidden {
-    display: none;
-  }
-}
-
 /* ==================
       line边线
  ==================== */
@@ -135,4 +129,28 @@
 
 .lay-hairline--surround:after {
   border-width: 1px;
+}
+
+/* ==================
+      媒体查询
+  https://v5.bootcss.com/docs/layout/grid/
+  屏幕小于    前缀
+  <576px	    xs
+  ≥576px      sm
+  ≥768px      md
+  ≥992px      lg
+  ≥1200px     xl
+  ≥1400px     xxl
+ ==================== */
+@media (max-width: 576px) {
+  .xs-hidden,
+  [xs-hidden] {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .sm-hidden,
+  [sm-hidden] {
+    display: none !important;
+  }
 }
