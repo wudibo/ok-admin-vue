@@ -1,3 +1,7 @@
+<!-- 
+  * @describe: 主内容区组件
+-->
+
 <template>
   <router-view v-slot="{ Component, route }">
     <transition appear :name="route.meta.transition || 'fade'" mode="out-in">
