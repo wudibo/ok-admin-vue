@@ -7,6 +7,9 @@
       <n-button @click="toggleTagShow">测试{{ store.state.admin.layConfig }}</n-button>
     </div>
     <div style="width: 350px">
+      <router-link to="/asdfsa" custom>
+        <div>阿斯顿发简历卡萨丁了</div>
+      </router-link>
       文本颜色：
       <n-input v-model:value="color" />背景颜色：
       <n-input v-model:value="bgColor" />

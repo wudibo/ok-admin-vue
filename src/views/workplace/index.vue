@@ -7,7 +7,7 @@
           <n-avatar :src="avatar" circle :size="64"></n-avatar>
         </div>
         <div class="work-help">
-          <p class="work-help-title">{{regardsStr}}</p>
+          <p class="work-help-title">{{ regardsStr }}</p>
           <p class="work-help-dist">今日有小雨</p>
         </div>
       </div>
@@ -27,15 +27,12 @@
       </div>
     </div>
   </div>
-  <div class="app-container">
-    
-  </div>
+  <div class="app-container"></div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import { NAvatar } from 'naive-ui';
 import avatar from '@/assets/avatar.png';
-import {regards} from '@/utils/dynamic.ts';
+import { regards } from '@/utils/dynamic.ts';
 const regardsStr = regards('Admin');
 
 </script>
@@ -68,14 +65,14 @@ const regardsStr = regards('Admin');
       color: #999999;
     }
   }
-  &-extra{
+  &-extra {
     font-size: 16px;
     color: #808695;
     display: flex;
-    &-pronum{
+    &-pronum {
       padding: 0 16px;
     }
-    &-count{
+    &-count {
       text-align: right;
       color: #333;
       font-size: 20px;
