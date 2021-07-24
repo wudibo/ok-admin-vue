@@ -12,7 +12,7 @@
       :style="{
         zIndex: 999,
         minHeight: '100%',
-        boxShadow: '2px 0 6px var(--border-color)'
+        boxShadow: '0 0 8px var(--border-color)'
       }"
       :width="sliderWidth"
       :native-scrollbar="false"

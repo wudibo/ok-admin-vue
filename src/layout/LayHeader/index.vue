@@ -1,5 +1,5 @@
 <template>
-  <div class="lay-header">
+  <div class="lay-header lay-select-none">
     <n-grid x-gap="2" cols="2">
       <!-- left -->
       <n-gi>
