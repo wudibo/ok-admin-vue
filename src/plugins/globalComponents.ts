@@ -1,11 +1,11 @@
 /**
- * 全局组件
+ * 注册全局组件
  * 组件设置了name则使用name作为组件名，否则以文件名作为组件名
  */
 
 import { App } from 'vue';
-const tsxComp = import.meta.globEager('./global/**/*.tsx'); // 获取当前目录包括子集目录所有的tsx文件
-const vueComp = import.meta.globEager('./global/**/*.vue'); // 获取当前目录包括子集目录所有的vue文件
+const tsxComp = import.meta.globEager('../components/global/**/*.tsx'); // 获取当前目录包括子级目录所有的tsx文件
+const vueComp = import.meta.globEager('../components/global/**/*.vue'); // 获取当前目录包括子级目录所有的vue文件
 
 export default {
   install: function (_app: App) {

@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router/router';
 import store from './store/store';
 import NaiveUi from './naiveui/index';
-import globalComponents from './components/global.ts';
+import globalComponents from './plugins/globalComponents.ts';
 
 import './assets/css/app.scss';
 
