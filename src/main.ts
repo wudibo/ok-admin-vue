@@ -14,10 +14,11 @@ app.use(NaiveUi);
 // 注册全局自定义组件
 app.use(globalComponents);
 
-// 挂载vuex状态管理
+// 注册vuex状态管理
 app.use(store);
 
-// 挂载路由
+// 注册路由
 app.use(router);
 
+// 挂载
 app.mount('#app');
