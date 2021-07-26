@@ -26,7 +26,7 @@ export default defineComponent({
 
     return {
       keepAlives, reload, handleReload() {
-        const a = keepAlives[0]
+        const a = keepAlives[1]
         store.commit('admin/DEL_KEEPALIVES', a);
         reload.value = false;
         setTimeout(() => {
