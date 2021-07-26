@@ -3,9 +3,8 @@
  */
 
 import { defineComponent } from 'vue';
-import { useStore } from 'vuex';
 import { ReloadOutline } from '@vicons/ionicons5';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'ButtonMenu',
@@ -16,16 +15,12 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const store = useStore();
-    const router = useRouter();
     const route = useRoute();
     let componentInstances: any = ''; // 当前路由页面组件实例
-    router.afterEach((to) => {
-      componentInstances = (to.matched[to.matched.length - 1] as any).instances.default;
-    });
+
     function handleRefresh() {
       componentInstances =
-        componentInstances || (route.matched[route.matched.length - 1] as any).instances.default;
+        (route.matched[route.matched.length - 1] as any).instances.default || componentInstances;
       componentInstances.handleReload();
     }
     return () => (
