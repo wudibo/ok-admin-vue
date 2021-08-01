@@ -86,7 +86,6 @@ export default defineComponent({
     const layTag = ref() as any;
 
     const isDarkTheme = computed(() => store.getters['theme/isDarkThemeGetter']);
-    console.log(isDarkTheme);
 
     /**tags监听处理 */
     tagsEffect(tags);

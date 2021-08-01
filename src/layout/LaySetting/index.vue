@@ -18,13 +18,10 @@
 </template>
 
 <script lang="ts">
-import { SettingsOutline } from '@vicons/ionicons5';
 import { defineComponent } from 'vue';
 import { NDrawer, NDrawerContent, NScrollbar } from 'naive-ui';
-import SetNavigation from './components/SetNavigation.vue';
-import SetTheme from './components/SetTheme.vue';
-import SetOther from './components/SetOther.vue';
-import SetDark from './components/SetDark.vue';
+import { SetDark, SetTheme, SetNavigation, SetOther } from './components/index.ts';
+
 export default defineComponent({
   name: 'LaySetting',
   props: {
@@ -37,11 +34,10 @@ export default defineComponent({
     NDrawer,
     NDrawerContent,
     NScrollbar,
+    SetDark,
     SetTheme,
     SetOther,
-    SetDark,
-    SetNavigation,
-    SettingsOutline
+    SetNavigation
   }
 });
 </script>
