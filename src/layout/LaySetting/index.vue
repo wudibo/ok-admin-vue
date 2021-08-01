@@ -7,6 +7,7 @@
     >
       <n-scrollbar class="set-scrollbar" :scrollable="true">
         <div class="setting-box">
+          <set-dark />
           <set-theme />
           <set-navigation />
           <set-other />
@@ -23,6 +24,7 @@ import { NDrawer, NDrawerContent, NScrollbar } from 'naive-ui';
 import SetNavigation from './components/SetNavigation.vue';
 import SetTheme from './components/SetTheme.vue';
 import SetOther from './components/SetOther.vue';
+import SetDark from './components/SetDark.vue';
 export default defineComponent({
   name: 'LaySetting',
   props: {
@@ -37,6 +39,7 @@ export default defineComponent({
     NScrollbar,
     SetTheme,
     SetOther,
+    SetDark,
     SetNavigation,
     SettingsOutline
   }
