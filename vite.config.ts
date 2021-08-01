@@ -32,6 +32,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     }
 
     // 全局css变量，混入
+
     /* css: {
       preprocessorOptions: {
         scss: {
