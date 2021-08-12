@@ -34,6 +34,14 @@ export default {
       },
       children: [
         {
+          path: 'ok-admin-vue',
+          name: 'ok-admin-vue',
+          component: componentLinkView('http://www.zhizous.cn/'),
+          meta: {
+            title: 'ok-admin-vue'
+          }
+        },
+        {
           path: 'vue3',
           name: 'vue3',
           component: componentLinkView('https://v3.cn.vuejs.org/'),
