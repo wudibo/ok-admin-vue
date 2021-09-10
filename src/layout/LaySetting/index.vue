@@ -18,32 +18,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { NDrawer, NDrawerContent, NScrollbar } from 'naive-ui';
-import { SetDark, SetTheme, SetNavigation, SetOther } from './components/index.ts';
+  import { defineComponent } from 'vue'
+  import { NDrawer, NDrawerContent, NScrollbar } from 'naive-ui'
+  import { SetDark, SetTheme, SetNavigation, SetOther } from './components/index.ts'
 
-export default defineComponent({
-  name: 'LaySetting',
-  props: {
-    size: {
-      type: [Number, String],
-      default: 18
+  export default defineComponent({
+    name: 'LaySetting',
+    props: {
+      size: {
+        type: [Number, String],
+        default: 18
+      }
+    },
+    components: {
+      NDrawer,
+      NDrawerContent,
+      NScrollbar,
+      SetDark,
+      SetTheme,
+      SetOther,
+      SetNavigation
     }
-  },
-  components: {
-    NDrawer,
-    NDrawerContent,
-    NScrollbar,
-    SetDark,
-    SetTheme,
-    SetOther,
-    SetNavigation
-  }
-});
+  })
 </script>
 
 <style lang="scss" scoped>
-.setting-box {
-  padding: 16px 24px;
-}
+  .setting-box {
+    padding: 16px 24px;
+  }
 </style>

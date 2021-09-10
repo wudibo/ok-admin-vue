@@ -1,4 +1,5 @@
 // https://blog.csdn.net/weixin_43977053/article/details/107631681
+// https://blog.csdn.net/xjlinme/article/details/80003597
 module.exports = {
   root: true,
   env: {
@@ -20,9 +21,12 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:recommended'
+    'plugin:recommended',
+    'prettier'
   ],
+  plugins: ['prettier'],
   rules: {
+    'prettier/prettier': 'warn',
     'vue/no-unused-components': 'off',
     'vue/no-unused-vars': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }], // 禁用 console
@@ -62,4 +66,4 @@ module.exports = {
     'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': 'off'
   }
-};
+}

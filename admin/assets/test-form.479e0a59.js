@@ -1,1 +1,0 @@
-import{d as a,r as e,e as n,o as s,f as r,h as t,Y as u}from"./vendor.2fa4a07a.js";var l=a({name:"test-form",setup:()=>({value:e("")})});const o=t("div",{class:"app-container"},"advanced-form",-1);l.render=function(a,e,l,v,d,f){const p=n("n-input");return s(),r(u,null,[o,t(p,{value:a.value,"onUpdate:value":e[1]||(e[1]=e=>a.value=e)},null,8,["value"])],64)};export default l;

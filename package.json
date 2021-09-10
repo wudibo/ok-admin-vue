@@ -12,7 +12,8 @@
     "build-admin": "vue-tsc --noEmit && vite build --mode ok-admin-vue",
     "dev-staging": "vite --mode staging",
     "build-staging": "vue-tsc --noEmit && vite build --mode staging",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier": "npx prettier --check ."
   },
   "dependencies": {
     "@antv/g2": "^4.1.25",

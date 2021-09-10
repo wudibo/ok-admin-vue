@@ -6,7 +6,7 @@ module.exports = {
   useTabs: false, // 不使用缩进符，而使用空格
   singleQuote: true, // 单引号
   trailingComma: 'none', // 行尾逗号,默认none,可选 none|es5|all
-  semi: true, // 末尾是否自动加上分号
+  semi: false, // 末尾是否自动加上分号
   arrowParens: 'always', // 箭头函数参数括号 默认avoid 可选 avoid| always
   vueIndentScriptAndStyle: true,
   quoteProps: 'as-needed', // 对象的 key 仅在必要时用引号
@@ -18,4 +18,4 @@ module.exports = {
   proseWrap: 'never',
   htmlWhitespaceSensitivity: 'strict',
   endOfLine: 'lf' // 换行格式 1.CRLF-回车符+换行符（\r\n） 2.LF仅\n换行（） 3.auto 维持现有的行尾
-};
+}
