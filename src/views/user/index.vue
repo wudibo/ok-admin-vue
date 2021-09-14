@@ -27,6 +27,7 @@
   const bar = ref('bar')
   const adminStore = useAdminStore()
   const headerKeep = () => {
+    console.log(1111)
     foo.value = 'dsafasd' + Math.random() * 100
   }
   const layConfig = adminStore.layConfigGetter
