@@ -76,14 +76,15 @@ export const tagsEffect = function (tags: Array<Tag>): void {
   )
 }
 
-/**tags水平滚动条动态处理*/
+/** @description tags水平滚动条动态处理 */
 export const tagsScroll = function (superBox: HTMLDivElement, tagConent: HTMLDivElement) {
+
   const layActive = tagConent.querySelector('.tag-active') as HTMLDivElement // 当前选中的tag
   if (!layActive) return
 
   const superWidth = superBox.offsetWidth, // 可视宽度
-    tagWidth = tagConent.offsetWidth, // 内容的总宽度
     layActiveWidth = layActive.offsetWidth // 当前选中的元素的宽度
+  // tagWidth = tagConent.offsetWidth // 内容的总宽度
 
   const diffValue = superBox.scrollLeft - layActive.offsetLeft // 滚动条和当前元素位置的差值
   const showDistance = superWidth - layActiveWidth // 当前元素位置可现实的位置
@@ -100,17 +101,4 @@ export const tagsScroll = function (superBox: HTMLDivElement, tagConent: HTMLDiv
     // 元素在右边不可见的情况
     superBox.scrollLeft = layActive.offsetLeft
   }
-
-  /* const superWidth = superBox.offsetWidth, // 可视宽度
-    scrollLeft = superBox.scrollLeft, // 滚动条的位置
-    tagWidth = tagConent.offsetWidth, // 内容总宽
-    layActive = tagConent.querySelector(".tag-active") as HTMLDivElement;
-  const layActiveWidth = layActive.offsetWidth, // 当前选中的元素的宽度
-    layActiveLeft = layActive.offsetLeft; // 当前选中元素离左边的宽度
-    
-  console.log("layActiveLeft:" + layActiveLeft);
-  console.log("tagWidth:" + tagWidth);
-  console.log("superWidth:" + superWidth);
-  console.log("scrollLeft:" + scrollLeft);
-  console.log([superBox]); */
 }

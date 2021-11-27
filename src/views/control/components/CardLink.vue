@@ -1,5 +1,5 @@
 <template>
-  <n-grid x-gap="12" y-gap="12" cols="8 xs:2 s:4 m:4" responsive="screen">
+  <n-grid x-gap="12" y-gap="12" cols="l:8 xs:2 s:4 m:4" responsive="screen">
     <n-gi>
       <n-card :bordered="false" :content-style="{ padding: 0 }">
         <div class="link-cont">

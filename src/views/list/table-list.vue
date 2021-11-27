@@ -25,6 +25,7 @@
 </template>
 <script setup lang="ts">
 import { ref, h, onMounted, reactive } from 'vue'
+import type { DataTableProps } from 'naive-ui/lib/data-table'
 import { NDataTable, NTag, NForm, NFormItem, NInput, NAvatar } from 'naive-ui'
 
 const formRef: any = ref(null);
@@ -54,7 +55,7 @@ onMounted(() => {
   pagination.itemCount = 100;
 })
 
-const columns = [
+const columns: DataTableProps['columns'] = [
   { key: 'id', title: 'id', align: 'center' },
   { key: 'name', title: '姓名', align: 'center' },
   {

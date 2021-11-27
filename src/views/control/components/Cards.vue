@@ -1,5 +1,5 @@
 <template>
-  <n-grid x-gap="12" cols="4 xs:1 s:2 m:2" responsive="screen">
+  <n-grid x-gap="12" cols="l:4 xs:1 s:2 m:2" responsive="screen">
     <n-gi class="padding-tb-5">
       <n-card title="销售额" size="small" class="card-box" :bordered="false">
         <template #header-extra>

@@ -1,6 +1,6 @@
 <template>
   <div class="lay-tag-box">
-    <n-scrollbar
+    <NScrollbar
       style="flex: 1"
       ref="scrollbar"
       :vertical-rail-style="{ bottom: 0 }"
@@ -36,7 +36,7 @@
           </div>
         </div>
       </mouse-menu>
-    </n-scrollbar>
+    </NScrollbar>
     <div class="lay-tag-menu">
       <n-dropdown
         trigger="hover"
@@ -61,7 +61,7 @@
   import { useRoute, useRouter } from 'vue-router'
   import useThemeStore from '@/store/themeStore.ts'
   import useAdminStore from '@/store/adminStore.ts'
-  import { Tag, tagsEffect, tagsScroll } from './utils/index'
+  import { Tag, tagsEffect, tagsScroll } from './utils'
   import { closeMenu, menuOptions } from './utils/tagMenu'
   import MouseMenu from './components/MouseMenu.vue'
 
@@ -84,7 +84,7 @@
         themeStore = useThemeStore()
 
       let tags: Array<Tag> = reactive([])
-      const scrollbar = ref() as any
+      const scrollbar = ref(null) as any
       const layTag = ref() as any
 
       const isDarkTheme = computed(() => themeStore.isDarkThemeGetter)
@@ -94,11 +94,12 @@
 
       /**mounted生命周期 */
       onMounted(() => {
-        const containerRef = scrollbar.value.containerRef
+        const containerRef = scrollbar.value.scrollbarInstRef.containerRef
         watchEffect(() => {
           tags.length
           route.fullPath
           nextTick(() => {
+            // console.log(containerRef)
             tagsScroll(containerRef, layTag.value)
           })
         })
