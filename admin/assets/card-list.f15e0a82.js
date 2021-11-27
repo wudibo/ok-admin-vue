@@ -1,0 +1,1 @@
+import{_ as a}from"./index.32ad4a39.js";import{a as o,r as s,o as t,V as r,Z as _}from"./vendor.b4cb7e3a.js";const c={class:"box"},n=o({setup(d){const e=s("hello world");return(l,p)=>(t(),r("div",c,_(e.value),1))}});var v=a(n,[["__scopeId","data-v-d0819464"]]);export{v as default};
