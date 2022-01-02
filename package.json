@@ -7,7 +7,9 @@
     "url": "http://wudibo.gitee.io/ok-admin-vue"
   },
   "scripts": {
-    "dev": "vue-tsc --noEmit && vite",
+    "dev": "vite",
+    "lintz": "src/**/*.{ts,vue,tsx}",
+    "dev-noEmit": "vue-tsc --noEmit && vite",
     "build": "vue-tsc --noEmit && vite build",
     "build-admin": "vue-tsc --noEmit && vite build --mode ok-admin-vue",
     "dev-staging": "vite --mode staging",

@@ -1,5 +1,10 @@
 // https://blog.csdn.net/weixin_43977053/article/details/107631681
 // https://blog.csdn.net/xjlinme/article/details/80003597
+/**
+ * 配置说明链接
+ * https://eslint.vuejs.org/rules/
+ * https://stackoverflow.com/questions/68776902/should-i-use-pluginvue-essential-and-pluginvue-vue3-recommended-when-linti/687769478
+ */
 module.exports = {
   root: true,
   env: {
@@ -17,7 +22,10 @@ module.exports = {
     }
   },
   extends: [
-    'plugin:vue/vue3-recommended',
+    'plugin:vue/vue3-essential', // vue3核心的eslint规则
+
+    'eslint:recommended', // eslint建议的规则
+    'plugin:vue/vue3-recommended', // 强制执行主观社区默认值的规则，以确保一致性。
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',

@@ -8,7 +8,7 @@ import { NIcon, MenuOption, MenuGroupOption } from 'naive-ui'
 import { asyncRoutes } from '../../router/router'
 import { isURL } from '../utils/index.ts'
 
-// 如果是网址那么返回地址，否则返回空字符串
+/** @description 如果是网址那么返回地址，否则返回空字符串 */
 function getURL(meta: any): string {
   if (!meta || !meta.href) return ''
   if (isURL(meta.href)) {
@@ -18,15 +18,15 @@ function getURL(meta: any): string {
   }
 }
 
-// 存储菜单
+/** @description 存储菜单 */
 let menusOption: Array<MenuOption | MenuGroupOption> = []
 
-// 图标
+/** @description 图标 */
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 
-//路由路径处理
+/** @description 路由路径处理 */
 function handlePath(superPath: string, rePath: string): string {
   if (/^\//.test(rePath)) {
     // 如果rePath第一个字符是/的时候
@@ -39,9 +39,7 @@ function handlePath(superPath: string, rePath: string): string {
   }
 }
 
-/* 核心代码
- * 递归处理菜单
- **/
+/** @description 核心代码递 归处理菜单 */
 function handleMenu(
   rrr: RouteRecordRaw,
   fullPath: string,

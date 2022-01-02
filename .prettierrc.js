@@ -11,7 +11,7 @@ module.exports = {
   vueIndentScriptAndStyle: true,
   quoteProps: 'as-needed', // 对象的 key 仅在必要时用引号
   bracketSpacing: true, // 大括号内的首尾需要空格
-  jsxBracketSameLine: false,
+  jsxBracketSameLine: false, // 多行jsx中的>放置在最后一行的结尾，而不是另起一行
   jsxSingleQuote: false, // jsx 不使用单引号，而使用双引号
   insertPragma: false,
   requirePragma: false,
