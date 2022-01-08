@@ -11,12 +11,12 @@ import {
   WarningOutline,
   ListCircleOutline
 } from '@vicons/ionicons5'
-import multiMenu from './modules/multiMenu.ts' // 多级菜单
+import multiMenu from './modules/multiMenu' // 多级菜单
 
-import routerComponent from './utils/routerComponent.ts'
+import routerComponent from './utils/routerComponent'
 import routerReload from './utils/routerReload.vue'
-import routerGuard from './utils/routerGuard.ts'
-import routerFormat from './utils/routerFormat.ts'
+import routerGuard from './utils/routerGuard'
+import routerFormat from './utils/routerFormat'
 
 // meta菜单设置的选项说明
 export type IMeta = {
@@ -239,7 +239,7 @@ const constantRouters: Array<RouteRecordRaw> = [
 ]
 
 // 重新组装layout路由
-const layoutRouters: RouteRecordRaw = routerFormat(asyncRoutes)
+const layoutRouters: Array<RouteRecordRaw> = routerFormat(asyncRoutes)
 
 const router = createRouter({
   history: createWebHashHistory(),

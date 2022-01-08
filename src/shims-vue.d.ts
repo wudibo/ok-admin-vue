@@ -8,4 +8,4 @@ declare module '*.tsx' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-declare module '@/*.ts'
+declare module '*.ts'

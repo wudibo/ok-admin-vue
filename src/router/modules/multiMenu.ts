@@ -1,13 +1,13 @@
 import { TrailSignOutline } from '@vicons/ionicons5'
 import Layout from '@/layout/index.vue'
 import IFrameView from '@/layout/IFrameView.vue'
-import { RouterView } from 'vue-router'
+import { RouterView, RouteRecordRaw } from 'vue-router'
 import { Component, createBlock, createVNode } from 'vue'
 import { reloadComponent } from '../utils/routerComponent.ts'
-
 const componentLinkView = (src: string) => {
   return reloadComponent(createVNode(IFrameView, { src }))
 }
+
 export default {
   path: '/multi',
   component: Layout as unknown as Component,
@@ -167,4 +167,4 @@ export default {
       ]
     }
   ]
-}
+} as RouteRecordRaw

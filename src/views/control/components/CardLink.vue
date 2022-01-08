@@ -27,7 +27,7 @@
 import { LogoOctocat } from '@vicons/ionicons5'
 import { appThemeList } from '@/setting/theme.ts'
 /** @description 切换主题色 */
-const onSwitchTheme = function (item) {
+const onSwitchTheme = function (item: any) {
   console.log(item);
 }
 </script>
