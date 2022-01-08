@@ -1,1 +1,0 @@
-import{_ as e}from"./index.32ad4a39.js";import{a as o,o as a,V as n}from"./vendor.b4cb7e3a.js";const s=o({nmae:"403"}),t={class:"app-container"};function r(c,p,_,d,i,f){return a(),n("div",t,"403")}var u=e(s,[["render",r]]);export{u as default};

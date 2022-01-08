@@ -1,0 +1,1 @@
+import{_ as e}from"./index.9a3f1d57.js";import{a as o,o as a,V as s}from"./vendor.b4cb7e3a.js";const r=o({name:"basic-form"}),n={class:"app-container"};function c(t,i,p,f,m,_){return a(),s("div",n,"basic-form")}var l=e(r,[["render",c]]);export{l as default};
