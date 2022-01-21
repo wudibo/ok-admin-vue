@@ -22,11 +22,11 @@
     "@vicons/ionicons5": "^0.11.0",
     "ag-grid-community": "^26.2.1",
     "ag-grid-vue3": "^26.2.0",
-    "axios": "^0.24.0",
+    "axios": "^0.25.0",
     "naive-ui": "^2.24.1",
     "pinia": "^2.0.9",
     "vfonts": "^0.1.0",
-    "vue": "^3.2.23",
+    "vue": "^3.2.28",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12"

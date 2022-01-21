@@ -19,9 +19,9 @@
     { headerName: 'Price', field: 'price', sortable: true, filter: true }
   ])
   const rowData = ref([
-    { field: 'make', make: 'Toyota', model: 'Celica', price: 35000, sortable: true },
-    { field: 'model', make: 'Ford', model: 'Mondeo', price: 32000, sortable: true },
-    { field: 'price', make: 'Porsche', model: 'Boxter', price: 72000, sortable: true }
+    { make: 'Toyota', field: 'make', model: 'Celica', price: 35000, sortable: true },
+    { make: 'Ford', field: 'model', model: 'Mondeo', price: 32000, sortable: true },
+    { make: 'Porsche', field: 'price', model: 'Boxter', price: 72000, sortable: true }
   ])
   const hello = ref('hello world')
 </script>
