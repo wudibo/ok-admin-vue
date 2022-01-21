@@ -23,13 +23,13 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-essential', // vue3核心的eslint规则
-
     'eslint:recommended', // eslint建议的规则
     'plugin:vue/vue3-recommended', // 强制执行主观社区默认值的规则，以确保一致性。
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    //'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:recommended',
+    //'plugin:recommended',
+    '@vue/prettier',
     'prettier'
   ],
   plugins: ['prettier'],
@@ -37,8 +37,9 @@ module.exports = {
     'prettier/prettier': 'warn',
     'vue/no-unused-components': 'off',
     'vue/no-unused-vars': 'off',
-    'no-console': ['error', { allow: ['warn', 'error'] }], // 禁用 console
-    '@typescript-eslint/no-console': ['error', { allow: ['warn', 'error'] }], // 禁用 console
+    'vue/one-component-per-file': 'off', // 关闭文件有多个组件的警告
+    'no-console': ['off', { allow: ['warn', 'error'] }], // 关闭 console的提示
+    '@typescript-eslint/no-console': ['off', { allow: ['warn', 'error'] }], // 关闭 console的提示
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -49,20 +50,13 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // 未使用的变量值不做提示
     '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
+      'off',
+      { argsIgnorePattern: '^h$', varsIgnorePattern: '^h$' }
     ],
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
-    ],
+    // 未使用的变量值不做提示
+    'no-unused-vars': ['off', { argsIgnorePattern: '^h$', varsIgnorePattern: '^h$' }],
     'space-before-function-paren': 'off',
     quotes: ['error', 'single'],
     'comma-dangle': ['error', 'never'],

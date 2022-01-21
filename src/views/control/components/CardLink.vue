@@ -24,36 +24,38 @@
 </template>
 
 <script setup lang="ts">
-import { LogoOctocat } from '@vicons/ionicons5'
-import { appThemeList } from '@/setting/theme.ts'
-/** @description 切换主题色 */
-const onSwitchTheme = function (item: any) {
-  console.log(item);
-}
+  import { LogoOctocat } from '@vicons/ionicons5'
+  import useThemeStore from '@/store/themeStore.ts'
+  import { appThemeList } from '@/setting/theme.ts'
+  const themeStore = useThemeStore()
+  /** @description 切换主题色 */
+  const onSwitchTheme = function (item: any) {
+    themeStore.SET_APPTHEME(item)
+  }
 </script>
 
 <style lang="scss" scoped>
-@mixin boxShadow($radius: 0, $bg: white, $shadow-color: rgba(0, 0, 0, 0.2)) {
-  background-color: $bg;
-  border-radius: $radius + 0px;
-  box-shadow: 0 1px 6px $shadow-color;
-}
-.text {
-  text-transform: uppercase;
-  padding-top: 5px;
-}
-.link-cont {
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.2s;
-  border-radius: 4px;
-  padding: 16px;
-  color: var(--primary-color);
-  &:hover {
-    border-color: var(--primary-color-hover);
-    transition: all 0.25s;
-    box-shadow: 0 1px 6px var(--primary-color-hover);
+  @mixin boxShadow($radius: 0, $bg: white, $shadow-color: rgba(0, 0, 0, 0.2)) {
+    background-color: $bg;
+    border-radius: $radius + 0px;
+    box-shadow: 0 1px 6px $shadow-color;
   }
-}
+  .text {
+    text-transform: uppercase;
+    padding-top: 5px;
+  }
+  .link-cont {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    border-radius: 4px;
+    padding: 16px;
+    color: var(--primary-color);
+    &:hover {
+      border-color: var(--primary-color-hover);
+      transition: all 0.25s;
+      box-shadow: 0 1px 6px var(--primary-color-hover);
+    }
+  }
 </style>

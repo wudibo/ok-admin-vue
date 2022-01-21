@@ -15,7 +15,7 @@ export default defineComponent({
   },
   components: { NIcon, ExpandOutline, ContractOutline },
   setup(props) {
-    let isFullScreen = ref(false)
+    const isFullScreen = ref(false)
 
     const handleScreen = () => {
       let el: any = ''
