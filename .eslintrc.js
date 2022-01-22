@@ -26,9 +26,7 @@ module.exports = {
     'eslint:recommended', // eslint建议的规则
     'plugin:vue/vue3-recommended', // 强制执行主观社区默认值的规则，以确保一致性。
     'plugin:@typescript-eslint/recommended',
-    //'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    //'plugin:recommended',
     '@vue/prettier',
     'prettier'
   ],

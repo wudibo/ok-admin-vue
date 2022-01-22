@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="app-container">
-      <NButton @click="btnClick" type="primary">点击：{{ userStore.testValue }}</NButton>
+      <n-button type="primary" @click="btnClick">点击：{{ userStore.testValue }}</n-button>
     </div>
   </n-card>
 </template>

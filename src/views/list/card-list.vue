@@ -2,11 +2,11 @@
   <div class="box"> {{ hello }} </div>
   <div class="box-table">
     <AgGridVue
-      style="height: 350px; width: 602px"
-      rowSelection="multiple"
       class="ag-theme-alpine"
-      :columnDefs="columnDefs"
-      :rowData="rowData"
+      style="height: 350px; width: 602px"
+      row-selection="multiple"
+      :column-defs="columnDefs"
+      :row-data="rowData"
     ></AgGridVue>
   </div>
 </template>

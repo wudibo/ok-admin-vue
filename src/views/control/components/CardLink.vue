@@ -12,7 +12,7 @@
     </n-gi>
     <n-gi v-for="item in appThemeList" :key="item.primaryColor">
       <n-card :bordered="false" :content-style="{ padding: 0 }">
-        <div class="link-cont" @click="onSwitchTheme(item)" :style="{ color: item.primaryColor }">
+        <div class="link-cont" :style="{ color: item.primaryColor }" @click="onSwitchTheme(item)">
           <n-icon size="24">
             <logo-octocat />
           </n-icon>

@@ -31,7 +31,7 @@
           <button-full-screen xs-hidden size="18" />
 
           <!-- 语言切换 -->
-          <n-dropdown trigger="hover" @select="handleSelect" :options="optionsISO">
+          <n-dropdown trigger="hover" :options="optionsISO" @select="handleSelect">
             <div title="语言切换" xs-hidden class="flex-center btn-content lay-hover">
               <n-icon class="lay-hover" size="18">
                 <globe-outline />
@@ -43,7 +43,7 @@
           <user-menu />
 
           <!-- 系统设置 -->
-          <div @click="setShow = true" title="系统设置" class="flex-center btn-content lay-hover">
+          <div title="系统设置" class="flex-center btn-content lay-hover" @click="setShow = true">
             <n-icon class="setting-btn lay-hover" size="18">
               <settings-outline />
             </n-icon>
@@ -90,7 +90,7 @@
       const hoverColor = computed(() => {
         return themeStore.isDarkThemeGetter ? '#101014' : '#f8f8f9'
       })
-      let matcheds = ref([] as Array<string>)
+      const matcheds = ref([] as Array<string>)
 
       watchEffect(() => {
         // 面包屑

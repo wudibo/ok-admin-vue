@@ -78,7 +78,6 @@ export const tagsEffect = function (tags: Array<Tag>): void {
 
 /** @description tags水平滚动条动态处理 */
 export const tagsScroll = function (superBox: HTMLDivElement, tagConent: HTMLDivElement) {
-
   const layActive = tagConent.querySelector('.tag-active') as HTMLDivElement // 当前选中的tag
   if (!layActive) return
 

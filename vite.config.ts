@@ -12,30 +12,27 @@ import path from 'path'
 // Dotenv 是一个零依赖的模块，它能将环境变量中的变量从 .env 文件加载到 process.env 中
 // const dotenv = require("dotenv")
 
-
 function pathResolve(dir: string) {
-  return path.resolve(process.cwd(), '.', dir);
+  return path.resolve(process.cwd(), '.', dir)
 }
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
 
   return {
-    plugins: [vue(), vitePluginEslint({
-      cache: false // 禁用eslint缓存
-    }), vueJsx(), visualizer()],
+    plugins: [
+      vue(),
+      vitePluginEslint({
+        cache: false // 禁用eslint缓存
+      }),
+      vueJsx(),
+      visualizer()
+    ],
     base: env['VITE_PUBLIC_PATH'] || '/',
     resolve: {
-
-      alias: [
-        {
-          find: '@',
-          replacement: pathResolve('src') + '/',
-        }
-        // {
-        //   comps: path.resolve(__dirname, 'src/components')
-        // }
-      ]
+      alias: {
+        '@': path.resolve(__dirname, 'src')
+      }
     },
     server: {
       port: 3000,
