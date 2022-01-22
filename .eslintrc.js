@@ -35,9 +35,12 @@ module.exports = {
     'prettier/prettier': 'warn',
     'vue/no-unused-components': 'off',
     'vue/no-unused-vars': 'off',
-    'vue/one-component-per-file': 'off', // 关闭文件有多个组件的警告
-    'no-console': ['off', { allow: ['warn', 'error'] }], // 关闭 console的提示
-    '@typescript-eslint/no-console': ['off', { allow: ['warn', 'error'] }], // 关闭 console的提示
+    // 关闭文件有多个组件的警告
+    'vue/one-component-per-file': 'off',
+    // 关闭 console的提示
+    'no-console': ['off', { allow: ['warn', 'error'] }],
+    // 关闭 console的提示
+    '@typescript-eslint/no-console': ['off', { allow: ['warn', 'error'] }],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
