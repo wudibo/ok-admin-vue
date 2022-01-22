@@ -23,10 +23,11 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-essential', // vue3核心的eslint规则
-    'eslint:recommended', // eslint建议的规则
-    'plugin:vue/vue3-recommended', // 强制执行主观社区默认值的规则，以确保一致性。
+    'plugin:vue/vue3-recommended', // vue3推荐的强制执行主观社区默认值的规则，以确保一致性。
+    'plugin:vue/vue3-strongly-recommended', //  vue3推荐的依赖规则提高可读性
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'eslint:recommended', // eslint建议的规则
     '@vue/prettier',
     'prettier'
   ],
