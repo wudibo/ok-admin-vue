@@ -18,6 +18,8 @@
   import Visits from '@/views/control/components/Visits.vue'
 
   onMounted(() => {
+    let timer: NodeJS.Timeout
+    console.log(timer)
     const url = 'http://rap2api.taobao.org/app/mock/233041/user/list'
     http
       .get(url, {

@@ -12,6 +12,10 @@ module.exports = {
     node: true,
     es6: true
   },
+  // 针对@typescript-eslint/parser版本4+及其以上找不到NodeJS问题处理
+  globals: {
+    NodeJS: true
+  },
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',

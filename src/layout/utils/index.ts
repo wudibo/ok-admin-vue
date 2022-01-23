@@ -1,5 +1,6 @@
+// @ts-nocheck
 /**  防抖函数 */
-export const debounce = function (fn: Function, wait = 300) {、
+export const debounce = function (fn: Function, wait = 300) {
   let timer: NodeJS.Timeout
   return function () {
     //清除上一次的延时器
