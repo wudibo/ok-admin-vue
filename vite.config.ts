@@ -31,7 +31,14 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       vueJsx(),
       visualizer(),
-      viteCompression()
+      viteCompression({
+        /** @name 文件超过4kb则进行压缩 */
+        threshold: 4096,
+        /** @name 压缩算法:'gzip','brotliCompress' ,'deflate','deflateRaw' */
+        algorithm: 'gzip',
+        /** @name 压缩文件后缀名 */
+        ext: 'gzip'
+      })
     ],
     base: env['VITE_PUBLIC_PATH'] || '/',
     resolve: {
