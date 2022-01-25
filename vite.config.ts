@@ -1,10 +1,14 @@
 import type { UserConfig, ConfigEnv } from 'vite'
 import { loadEnv, defineConfig } from 'vite'
+import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+/** eslint效验插件 https://eslint.vuejs.org/rules/ */
 import vitePluginEslint from 'vite-plugin-eslint'
+/** 打包分析插件： https://www.npmjs.com/package/rollup-plugin-visualizer */
 import { visualizer } from 'rollup-plugin-visualizer'
-import path from 'path'
+/** 打包生成gzip： https://www.npmjs.com/package/vite-plugin-compression */
+import viteCompression from 'vite-plugin-compression'
 
 // https://cn.vitejs.dev/config/#build-assetsdir
 // https://vitejs.dev/config/
@@ -26,7 +30,8 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         cache: false // 禁用eslint缓存
       }),
       vueJsx(),
-      visualizer()
+      visualizer(),
+      viteCompression()
     ],
     base: env['VITE_PUBLIC_PATH'] || '/',
     resolve: {
