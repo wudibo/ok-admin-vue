@@ -9,6 +9,8 @@ import vitePluginEslint from 'vite-plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 /** 打包生成gzip： https://www.npmjs.com/package/vite-plugin-compression */
 import viteCompression from 'vite-plugin-compression'
+/** 将外部导入转换为全局变量,打包把模块排除 */
+// import externalGlobals from 'rollup-plugin-external-globals'
 
 // https://cn.vitejs.dev/config/#build-assetsdir
 // https://vitejs.dev/config/
@@ -52,9 +54,21 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     },
     build: {
       outDir: env['VITE_OUT_DIR'] || 'dist'
+      // 将外部导入转换为全局变量,打包把模块排除
+      // rollupOptions: {
+      //   external: ['vue', 'pinia', 'vue-router', 'axios'],
+      //   plugins: [
+      //     externalGlobals({
+      //       vue: 'Vue',
+      //       pinia: 'Pinia',,
+      //       'vue-router': 'VueRouter',
+      //       axios: 'axios'
+      //     })
+      //   ]
+      // }
     }
-    // 全局css变量，混入
 
+    // 全局scss变量，混入
     /* css: {
       preprocessorOptions: {
         scss: {

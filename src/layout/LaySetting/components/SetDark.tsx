@@ -22,7 +22,9 @@ export default defineComponent({
     return (
       <div class="set-dark">
         <NSwitch
-          class="set-dark-switch"
+          railStyle={() => {
+            return { background: '#101014' }
+          }}
           value={this.isDarkTheme}
           onUpdate:value={this.handleDarkTheme}
           v-slots={{
