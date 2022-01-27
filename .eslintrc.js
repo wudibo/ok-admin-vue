@@ -16,7 +16,8 @@ module.exports = {
     // 针对@typescript-eslint/parser版本4+及其以上找不到NodeJS问题处理
     NodeJS: true,
     // vue3使用setup时自动引入的编译宏
-    defineProps: 'readonly'
+    defineProps: 'readonly',
+    defineEmits: 'readonly'
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
