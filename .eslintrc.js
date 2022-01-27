@@ -12,9 +12,11 @@ module.exports = {
     node: true,
     es6: true
   },
-  // 针对@typescript-eslint/parser版本4+及其以上找不到NodeJS问题处理
   globals: {
-    NodeJS: true
+    // 针对@typescript-eslint/parser版本4+及其以上找不到NodeJS问题处理
+    NodeJS: true,
+    // vue3使用setup时自动引入的编译宏
+    defineProps: 'readonly'
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -34,6 +36,7 @@ module.exports = {
     'eslint:recommended', // eslint建议的规则
     '@vue/prettier',
     'prettier'
+    // '@vue/prettier/@typescript-eslint'
   ],
   plugins: ['prettier'],
   rules: {
