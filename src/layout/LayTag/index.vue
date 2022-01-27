@@ -130,7 +130,7 @@
             }
           }
           const [temp] = tags.splice(index, 1)
-          adminStore.DEL_KEEPALIVES(temp.name || '')
+          adminStore.DEL_KEEPALIVES(temp.name)
         },
         isAffix(tag: Tag) {
           return tag.meta && tag.meta.affix

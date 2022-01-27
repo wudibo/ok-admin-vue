@@ -3,7 +3,7 @@ import { watch } from 'vue'
 import router, { asyncRoutes } from '@/router/router'
 
 export type Tag = {
-  name?: string
+  name: string
   fullPath: string
   meta: RouteMeta
 }
@@ -62,7 +62,7 @@ export const tagsEffect = function (tags: Array<Tag>): void {
         const commp = matched[matched.length - 1].components.default
         // tag 不存在时
         tags.push({
-          name: commp.name,
+          name: commp.name || '',
           fullPath: to.fullPath,
           meta: to.meta
         })
