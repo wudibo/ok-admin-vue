@@ -1,0 +1,1 @@
+import{_ as e}from"./index.13aca5e8.js";import{a as o,o as a,V as n}from"./vendor.3e5191bd.js";const s=o({nmae:"404"}),t={class:"app-container"};function r(c,p,_,d,i,f){return a(),n("div",t,"404")}var u=e(s,[["render",r]]);export{u as default};
