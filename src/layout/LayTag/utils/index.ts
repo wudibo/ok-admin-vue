@@ -1,6 +1,6 @@
 import { RouteMeta } from 'vue-router'
 import { watch } from 'vue'
-import router, { asyncRoutes } from '@/router/router.ts'
+import router, { asyncRoutes } from '@/router/router'
 
 export type Tag = {
   name?: string

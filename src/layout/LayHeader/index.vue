@@ -57,12 +57,12 @@
 
 <script lang="ts">
   import { useRoute } from 'vue-router'
-  import useThemeStore from '@/store/themeStore.ts'
   import { defineComponent, computed, ref, watchEffect } from 'vue'
-  import { LockClosed } from '@/icon/material-icon/index.ts'
   import { GlobeOutline, SettingsOutline } from '@vicons/ionicons5'
   import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown } from 'naive-ui'
-  import { ButtonFullScreen, ButtonMenu, ButtonRefresh, UserMenu } from './components/index.ts'
+  import useThemeStore from '@/store/themeStore'
+  import { LockClosed } from '@/icon/material-icon/index'
+  import { ButtonFullScreen, ButtonMenu, ButtonRefresh, UserMenu } from './components/index'
   import LaySetting from '@/layout/LaySetting/index.vue'
 
   export default defineComponent({

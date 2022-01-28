@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent, ref } from 'vue'
-import useThemeStore from '@/store/themeStore.ts'
+import useThemeStore from '@/store/themeStore'
 import { NSwitch, NIcon } from 'naive-ui'
 import { Sunny, Moon } from '@vicons/ionicons5'
 

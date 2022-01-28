@@ -1,7 +1,7 @@
 import { h, Component } from 'vue'
 import { NIcon } from 'naive-ui'
-import useAdminStore from '@/store/adminStore.ts'
-import router from '@/router/router.ts'
+import useAdminStore from '@/store/adminStore'
+import router from '@/router/router'
 
 import {
   ArrowBackOutline,

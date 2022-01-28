@@ -59,8 +59,8 @@
   import { NButton, NDropdown, NIcon, NScrollbar } from 'naive-ui'
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, watchEffect } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
-  import useThemeStore from '@/store/themeStore.ts'
-  import useAdminStore from '@/store/adminStore.ts'
+  import useThemeStore from '@/store/themeStore'
+  import useAdminStore from '@/store/adminStore'
   import { Tag, tagsEffect, tagsScroll } from './utils'
   import { closeMenu, menuOptions } from './utils/tagMenu'
   import MouseMenu from './components/MouseMenu.vue'
@@ -130,7 +130,7 @@
             }
           }
           const [temp] = tags.splice(index, 1)
-          adminStore.DEL_KEEPALIVES(temp.name)
+          adminStore.DEL_KEEPALIVES(temp.name || '')
         },
         isAffix(tag: Tag) {
           return tag.meta && tag.meta.affix

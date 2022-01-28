@@ -44,13 +44,13 @@
 </template>
 
 <script lang="ts">
-  import useThemeStore from '@/store/themeStore.ts'
-  import useAdminStore from '@/store/adminStore.ts'
+  import useThemeStore from '@/store/themeStore'
+  import useAdminStore from '@/store/adminStore'
   import { useRouter, useRoute } from 'vue-router'
   import { ref, reactive, computed, watchEffect, defineComponent, inject } from 'vue'
   import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from 'naive-ui'
   import { useMenu } from './menuOptions'
-  import { isURL } from '../utils/index.ts'
+  import { isURL } from '../utils/index'
   import LayDrawer from './LayDrawer.vue'
 
   export default defineComponent({

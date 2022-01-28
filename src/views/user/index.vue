@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
   import { ref } from 'vue'
-  import useAdminStore from '@/store/adminStore.ts'
+  import useAdminStore from '@/store/adminStore'
 
   const hello = ref(5)
 

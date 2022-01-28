@@ -36,8 +36,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { NAvatar } from 'naive-ui'
-  import useUserStore from '@/store/userStore.ts'
-  import { regards } from '@/utils/dynamic.ts'
+  import useUserStore from '@/store/userStore'
+  import { regards } from '@/utils/dynamic'
 
   const userStore = useUserStore()
   const { userInfo } = userStore
@@ -46,7 +46,7 @@
   })
 
   const btnClick = () => {
-    userStore.SET_USERNAME(parseInt(Math.random() * 100 + ''))
+    userStore.SET_USERNAME(parseInt(Math.random() * 100 + '').toString())
   }
 </script>
 <style lang="scss" scoped>

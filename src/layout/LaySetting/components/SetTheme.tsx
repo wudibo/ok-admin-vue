@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent } from 'vue'
-import useThemeStore from '@/store/themeStore.ts'
+import useThemeStore from '@/store/themeStore'
 import { NDivider, NGrid, NGi, NIcon } from 'naive-ui'
 import { CheckmarkSharp } from '@vicons/ionicons5'
 export default defineComponent({
@@ -17,12 +17,11 @@ export default defineComponent({
   render: function () {
     const appTheme = this.themeStore.appTheme
     const appThemeList = this.themeStore.appThemeList
-
     return (
       <div class="set-theme padding-bottom-10">
         <NDivider>系统主题</NDivider>
         <NGrid x-gap={4} y-gap={4} cols={8}>
-          {Object.keys(appThemeList).map((key: any) => {
+          {Object.keys(appThemeList).map((key) => {
             return (
               <NGi key={key}>
                 <div

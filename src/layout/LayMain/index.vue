@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import useAdminStore from '@/store/adminStore.ts'
+  import useAdminStore from '@/store/adminStore'
   export default defineComponent({
     name: 'LayMain',
     setup() {
