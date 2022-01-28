@@ -15,7 +15,7 @@
     "dev-staging": "vite --mode staging",
     "build-staging": "vue-tsc --noEmit && vite build --mode staging",
     "serve": "vite preview",
-    "prettier": "npx prettier --check ."
+    "prettier:fix": "prettier --config .prettierrc.js --write ./src/**/*.{vue,ts,tsx,js,jsx,json}"
   },
   "dependencies": {
     "@antv/g2": "^4.1.41",
