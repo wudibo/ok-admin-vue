@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue'
   export default defineComponent({
-    name: 'test-form',
+    name: 'TestForm',
     setup() {
       const value = ref('')
       return {

@@ -7,7 +7,7 @@ type TypeConfig = {
 
 export default defineStore('adminStore', {
   state: () => ({
-    keepAlives: [] as Array<String>, //缓存的路由名字
+    keepAlives: [] as Array<string>, //缓存的路由名字
     layTags: [], // tags
     layConfig: {
       sidebarInverted: true, // 侧边栏是否暗色主题

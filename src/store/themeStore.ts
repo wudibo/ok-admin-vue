@@ -1,4 +1,4 @@
-import theme from '@/setting/theme.ts'
+import theme, { ThemeType } from '@/setting/theme'
 import { defineStore } from 'pinia'
 export default defineStore('themeStore', {
   state: () => ({
@@ -7,7 +7,7 @@ export default defineStore('themeStore', {
     appThemeList: theme.appThemeList // 主题色列表
   }),
   actions: {
-    SET_APPTHEME(theme: string) {
+    SET_APPTHEME(theme: ThemeType) {
       this.appTheme = theme
     },
     SET_ISDARKTHEME(isDarkTheme: boolean) {
@@ -18,10 +18,10 @@ export default defineStore('themeStore', {
     isDarkThemeGetter: (state) => {
       return state.isDarkTheme
     },
-    appThemeGetter: (state) => {
-      return state.appTheme
+    appThemeGetter(): ThemeType {
+      return this.appTheme
     },
-    appThemeListGetter(): Array<string> {
+    appThemeListGetter(): typeof theme.appThemeList {
       return this.appThemeList
     }
   }
