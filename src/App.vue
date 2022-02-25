@@ -22,7 +22,7 @@
       const isDarkTheme = computed(() => store.isDarkThemeGetter)
 
       /**设置主题 */
-      const body = document.getElementsByTagName<'body'>('body')[0]
+      const body = document.body
       watchEffect(() => {
         const theme = store.appThemeGetter
         themeOverrides.value = {

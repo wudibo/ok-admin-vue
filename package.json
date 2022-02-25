@@ -1,6 +1,6 @@
 {
   "name": "ok-admin-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "ok-admin",
     "email": "super-wudibo@foxmail.com",
@@ -15,7 +15,7 @@
     "dev-staging": "vite --mode staging",
     "build-staging": "vue-tsc --noEmit && vite build --mode staging",
     "serve": "vite preview",
-    "prettier:fix": "prettier --config .prettierrc.js --write ./src/**/*.{vue,ts,tsx,js,jsx,json}"
+    "prettier:fix": "prettier --config .prettierrc.js --write ./src/**/*.{vue,ts,tsx,js,jsx}"
   },
   "dependencies": {
     "@antv/g2": "^4.1.41",
@@ -41,23 +41,24 @@
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.18",
     "autoprefixer": "^10.4.0",
-    "babel-jest": "^27.4.5",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.20.0",
-    "jest": "^27.4.5",
     "postcss": "^8.3.10",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "rollup-plugin-visualizer": "^5.5.2",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "typescript": "~4.3.5",
     "vite": "^2.6.14",
+    "jest": "^27.4.5",
+    "babel-jest": "^27.4.5",
+    "@types/jest": "^27.4.0",
+    "vue-jest": "^3.0.7",
     "vite-plugin-compression": "^0.4.0",
     "vite-plugin-eslint": "^1.3.0",
     "vue-eslint-parser": "^7.10.0",
-    "vue-jest": "^3.0.7",
     "vue-tsc": "^0.30.6"
   },
   "keywords": [

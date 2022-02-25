@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
+import { IStore } from './index.d'
 export default defineStore('userStore', {
-  state: () => ({
+  state: (): IStore => ({
     testValue: 1,
     userInfo: {
       userName: 'admin',
