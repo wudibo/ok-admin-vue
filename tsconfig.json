@@ -2,22 +2,43 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "types": ["vite/client", "node", "@types/jest"],
+    "types": [
+      "vite/client",
+      "node",
+      "@types/jest"
+    ],
     "jsx": "preserve",
     "sourceMap": true,
     // 忽略所有的声明文件（ *.d.ts）的类型检查。
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["esnext", "dom", "DOM.Iterable", "ScriptHost"]
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "esnext",
+      "dom",
+      "DOM.Iterable",
+      "ScriptHost"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
