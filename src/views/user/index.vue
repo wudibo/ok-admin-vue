@@ -18,9 +18,7 @@
 </template>
 <script setup lang="ts">
   import { ref } from 'vue'
-  import useAdminStore from '@/store/adminStore'
-
-  const hello = ref(5)
+  import useAdminStore from '@/stores/adminStore'
 
   const foo = ref('user')
   const bar = ref('bar')
@@ -33,13 +31,7 @@
   const toggleTagShow = () => {
     layConfig['tagShow'] = !layConfig['tagShow']
   }
-  const headerVuex = () => {
-    const conf = adminStore.layConfigGetter
-    adminStore.SET_LAYCONFIG({
-      key: 'collapsed',
-      value: !conf.collapsed
-    })
-  }
+
   const color = ref('#ffffff')
   const bgColor = ref('red')
 </script>

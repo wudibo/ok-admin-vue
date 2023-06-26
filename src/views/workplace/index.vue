@@ -1,3 +1,20 @@
+<script setup lang="ts">
+  import { computed } from 'vue'
+  import { NAvatar } from 'naive-ui'
+  import useUserStore from '@/stores/userStore'
+  import { regards } from '@/utils/dynamic'
+
+  const userStore = useUserStore()
+  const { userInfo } = userStore
+  const regardsStr = computed(() => {
+    return regards(userStore.userInfo.userName)
+  })
+
+  const btnClick = () => {
+    userStore.SET_USERNAME(parseInt(Math.random() * 100 + '').toString())
+  }
+</script>
+
 <template>
   <n-card :bordered="false" :content-style="{ padding: 0 }">
     <div class="work">
@@ -33,22 +50,7 @@
     </div>
   </n-card>
 </template>
-<script setup lang="ts">
-  import { computed } from 'vue'
-  import { NAvatar } from 'naive-ui'
-  import useUserStore from '@/store/userStore'
-  import { regards } from '@/utils/dynamic'
 
-  const userStore = useUserStore()
-  const { userInfo } = userStore
-  const regardsStr = computed(() => {
-    return regards(userStore.userInfo.userName)
-  })
-
-  const btnClick = () => {
-    userStore.SET_USERNAME(parseInt(Math.random() * 100 + '').toString())
-  }
-</script>
 <style lang="scss" scoped>
   .work {
     color: #333333;

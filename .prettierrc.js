@@ -1,3 +1,4 @@
+
 // https://prettier.io/docs/en/options.html#prose-wrap
 // https://prettier.io/docs/en/options.html
 module.exports = {

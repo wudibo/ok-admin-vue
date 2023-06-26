@@ -3,12 +3,13 @@
  */
 
 import '../index.scss'
+import type { Component } from 'vue'
 import { useRouter } from 'vue-router'
-import useThemeStore from '@/store/themeStore'
-import useUserStore from '@/store/userStore'
-import { defineComponent, Component, h, computed } from 'vue'
+import { defineComponent, h, computed } from 'vue'
 import { NAvatar, NDropdown, NIcon } from 'naive-ui'
 import { PersonOutline, Power } from '@vicons/ionicons5'
+import useThemeStore from '@/stores/themeStore'
+import useUserStore from '@/stores/userStore'
 
 const icon = (icon: Component) => () =>
   h(NIcon, null, {

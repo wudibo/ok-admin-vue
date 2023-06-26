@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
   import { LogoOctocat } from '@vicons/ionicons5'
-  import useThemeStore from '@/store/themeStore'
+  import useThemeStore from '@/stores/themeStore'
   import { appThemeList } from '@/setting/theme'
   const themeStore = useThemeStore()
   /** @description 切换主题色 */

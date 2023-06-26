@@ -1,18 +1,19 @@
+import './assets/css/main.scss'
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import router from './router/router'
+import router from './router/index'
 import NaiveUi from './naiveui/index'
-import globalComponents from './plugins/globalComponents'
-
-import './assets/css/app.scss'
+// import globalComponents from './plugins/globalComponents'
 
 const app = createApp(App)
+
 // 注册全局NaiveUI组件
 app.use(NaiveUi)
 
 // 注册全局自定义组件
-app.use(globalComponents)
+// app.use(globalComponents)
 
 // 注册pinia状态管理
 const pinia = createPinia()

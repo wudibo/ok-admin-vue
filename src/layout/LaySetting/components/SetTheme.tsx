@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent } from 'vue'
-import useThemeStore from '@/store/themeStore'
+import useThemeStore from '@/stores/themeStore'
 import { NDivider, NGrid, NGi, NIcon } from 'naive-ui'
 import { CheckmarkSharp } from '@vicons/ionicons5'
 export default defineComponent({

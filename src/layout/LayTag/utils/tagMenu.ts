@@ -1,7 +1,10 @@
-import { h, Component } from 'vue'
+import type { Component } from 'vue'
+import type { Tag } from './index'
+
+import { h } from 'vue'
 import { NIcon } from 'naive-ui'
-import useAdminStore from '@/store/adminStore'
-import router from '@/router/router'
+import useAdminStore from '@/stores/adminStore'
+import router from '@/router/index'
 
 import {
   ArrowBackOutline,
@@ -10,7 +13,6 @@ import {
   CloseCircleSharp,
   ArrowDownCircleOutline
 } from '@vicons/ionicons5'
-import { Tag } from './index'
 
 const menuIcon = (icon: Component) =>
   h(NIcon, null, {

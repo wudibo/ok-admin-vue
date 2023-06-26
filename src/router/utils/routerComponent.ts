@@ -1,6 +1,6 @@
 import { h, ref, createVNode, defineComponent, nextTick } from 'vue'
 import { useLoadingBar } from 'naive-ui'
-import routerReload from './routerReload.vue'
+import routerReload from './RouterReload.vue'
 
 /**
  * 功能如下

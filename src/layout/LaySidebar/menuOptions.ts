@@ -2,10 +2,12 @@
  * 功能：处理路由菜单
  */
 
-import { Component, h } from 'vue'
-import { RouteRecordRaw } from 'vue-router'
-import { NIcon, MenuOption, MenuGroupOption } from 'naive-ui'
-import { asyncRoutes } from '@/router/router'
+import type { Component } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
+import type { MenuOption, MenuGroupOption } from 'naive-ui'
+import { NIcon } from 'naive-ui'
+import { h } from 'vue'
+import { asyncRoutes } from '@/router/index'
 import { isURL } from '../utils/index'
 
 /** @description 如果是网址那么返回地址，否则返回空字符串 */

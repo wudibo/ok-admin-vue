@@ -1,67 +1,13 @@
-<template>
-  <div class="lay-tag-box">
-    <NScrollbar
-      ref="scrollbar"
-      style="flex: 1"
-      :vertical-rail-style="{ bottom: 0 }"
-      :scrollable="true"
-      :x-scrollable="true"
-    >
-      <mouse-menu :handle-menu-select="handleMenuSelect">
-        <div ref="layTag" class="lay-tag">
-          <div
-            v-for="(item, index) in tags"
-            :key="item.fullPath"
-            class="tag-item"
-            :class="item.fullPath === $route.fullPath ? 'tag-active' : 'default'"
-          >
-            <div class="tag-cont">
-              <n-button
-                class="tag-btn"
-                :style="isDarkTheme ? { color: '#fff' } : {}"
-                :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
-                @click="handleTagOpen(item.fullPath)"
-              >
-                <span>{{ item.meta.title }}</span>
-                <n-icon
-                  v-if="!isAffix(item)"
-                  :class="isDarkTheme ? '' : 'tag-close-hover'"
-                  class="tag-close"
-                  @click.stop="handleTagClose(index)"
-                >
-                  <close-sharp></close-sharp>
-                </n-icon>
-              </n-button>
-            </div>
-          </div>
-        </div>
-      </mouse-menu>
-    </NScrollbar>
-    <div class="lay-tag-menu">
-      <n-dropdown
-        trigger="hover"
-        placement="bottom-end"
-        :on-select="handleMenuSelect"
-        :options="menuOptions"
-      >
-        <n-button style="width: 32px; height: 32px">
-          <n-icon :size="18">
-            <chevron-down-outline />
-          </n-icon>
-        </n-button>
-      </n-dropdown>
-    </div>
-  </div>
-</template>
 <script lang="ts">
   import type { RouteLocationRaw } from 'vue-router'
+  import type { Tag } from './utils'
   import { ChevronDownOutline, CloseSharp } from '@vicons/ionicons5'
   import { NButton, NDropdown, NIcon, NScrollbar } from 'naive-ui'
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, watchEffect } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
-  import useThemeStore from '@/store/themeStore'
-  import useAdminStore from '@/store/adminStore'
-  import { Tag, tagsEffect, tagsScroll } from './utils'
+  import useThemeStore from '@/stores/themeStore'
+  import useAdminStore from '@/stores/adminStore'
+  import { tagsEffect, tagsScroll } from './utils'
   import { closeMenu, menuOptions } from './utils/tagMenu'
   import MouseMenu from './components/MouseMenu.vue'
 
@@ -139,6 +85,61 @@
     }
   })
 </script>
+<template>
+  <div class="lay-tag-box">
+    <NScrollbar
+      ref="scrollbar"
+      style="flex: 1"
+      :vertical-rail-style="{ bottom: 0 }"
+      :scrollable="true"
+      :x-scrollable="true"
+    >
+      <mouse-menu :handle-menu-select="handleMenuSelect">
+        <div ref="layTag" class="lay-tag">
+          <div
+            v-for="(item, index) in tags"
+            :key="item.fullPath"
+            class="tag-item"
+            :class="item.fullPath === $route.fullPath ? 'tag-active' : 'default'"
+          >
+            <div class="tag-cont">
+              <n-button
+                class="tag-btn"
+                :style="isDarkTheme ? { color: '#fff' } : {}"
+                :type="item.fullPath === $route.fullPath ? 'primary' : 'default'"
+                @click="handleTagOpen(item.fullPath)"
+              >
+                <span>{{ item.meta.title }}</span>
+                <n-icon
+                  v-if="!isAffix(item)"
+                  :class="isDarkTheme ? '' : 'tag-close-hover'"
+                  class="tag-close"
+                  @click.stop="handleTagClose(index)"
+                >
+                  <close-sharp></close-sharp>
+                </n-icon>
+              </n-button>
+            </div>
+          </div>
+        </div>
+      </mouse-menu>
+    </NScrollbar>
+    <div class="lay-tag-menu">
+      <n-dropdown
+        trigger="hover"
+        placement="bottom-end"
+        :on-select="handleMenuSelect"
+        :options="menuOptions"
+      >
+        <n-button class="lay-tag-menu-btn">
+          <n-icon :size="18">
+            <chevron-down-outline />
+          </n-icon>
+        </n-button>
+      </n-dropdown>
+    </div>
+  </div>
+</template>
 <style lang="scss" scoped>
   @import '../styles/mixins.scss';
   $tag-height: 48px;
@@ -157,6 +158,12 @@
     justify-content: center;
     box-sizing: border-box;
     // border-left: 1px solid rgba(226, 226, 226, 0.27);
+  }
+  .lay-tag-menu-btn {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding: 0;
   }
 
   .lay-tag {

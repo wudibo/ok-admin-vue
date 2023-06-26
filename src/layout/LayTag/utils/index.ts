@@ -1,6 +1,6 @@
-import { RouteMeta } from 'vue-router'
+import type { RouteMeta } from 'vue-router'
 import { watch } from 'vue'
-import router, { asyncRoutes } from '@/router/router'
+import router, { asyncRoutes } from '@/router/index'
 
 export type Tag = {
   name: string
@@ -57,7 +57,7 @@ export const tagsEffect = function (tags: Array<Tag>): void {
     (to) => {
       if (to.meta && to.meta.tagHidden) return
       const isTag = tags.some((tag) => tag.fullPath === to.fullPath)
-      const matched = to.matched
+      const matched: any = to.matched
       if (!isTag && matched.length) {
         const commp = matched[matched.length - 1].components.default
         // tag 不存在时

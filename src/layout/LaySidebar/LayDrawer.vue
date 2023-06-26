@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, inject } from 'vue'
-  import useAdminStore from '@/store/adminStore'
+  import useAdminStore from '@/stores/adminStore'
   import { NDrawer } from 'naive-ui'
   import { globalWitchEffect } from '../utils/index'
   export default defineComponent({

@@ -8,6 +8,7 @@
 .idea
 
 
+# local env files
 node_modules
 dist
 /public
@@ -16,3 +17,4 @@ dist
 .local
 /bin
 Dockerfile
+/start/**

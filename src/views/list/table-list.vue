@@ -104,7 +104,7 @@
     {
       id: 1,
       name: 'John Brown',
-      avatar: 'https://portrait.gitee.com/uploads/avatars/user/442/1326874_zhizous_1615019143.png',
+      avatar: 'https://foruda.gitee.com/avatar/1669426812317011153/1326874_zhizous_1669426812.png',
       age: 32,
       address: 'New York No. 1 Lake Park',
       tags: ['nice', 'developer']
@@ -112,7 +112,7 @@
     {
       id: 2,
       name: '尤雨溪',
-      avatar: 'https://portrait.gitee.com/uploads/avatars/user/442/1326874_zhizous_1615019143.png',
+      avatar: 'https://foruda.gitee.com/avatar/1669426812317011153/1326874_zhizous_1669426812.png',
       age: 30,
       address: 'New York No. 1 Lake Park',
       tags: ['nice', 'developer']

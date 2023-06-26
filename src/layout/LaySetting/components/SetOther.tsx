@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent } from 'vue'
-import useAdminStore from '@/store/adminStore'
+import useAdminStore from '@/stores/adminStore'
 import { NDivider, NSwitch } from 'naive-ui'
 export default defineComponent({
   name: 'SetOther',
