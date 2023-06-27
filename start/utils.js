@@ -2,7 +2,7 @@
  * @Description: 工具库
  */
 const path = require('path')
-const fs = require('fs');
+const fs = require('fs')
 const { parse } = require('envfile')
 
 /**
@@ -18,9 +18,9 @@ function getPathEnvs() {
     fs.readdir(directory, function (err, files) {
       if (err) {
         resolve(envs)
-        return;
+        return
       }
-      files.forEach(fileName => {
+      files.forEach((fileName) => {
         // 如果fileName是以.env.开头的字符串
         if (`${fileName}`.indexOf(firstName) === 0) {
           envs.push({
@@ -41,26 +41,25 @@ function getPathEnvs() {
 /** 获取所有配置的脚本 */
 async function getEnvShell() {
   /** 类型检查命令 */
-  const type_check = 'vue-tsc --noEmit -p tsconfig.vitest.json --composite false'
+  const type_check = `vue-tsc --noEmit -p tsconfig.vitest.json --composite false`
   const envs = await getPathEnvs()
   const shellSet = {
     commands: {
-      debug: { },
-      build: { }
+      debug: {},
+      build: {}
     },
     environment: []
   }
-  envs.forEach((item => {
-    const parsedFile = parse(fs.readFileSync(item.path, 'utf-8'));
+  envs.forEach((item) => {
+    const parsedFile = parse(fs.readFileSync(item.path, 'utf-8'))
     shellSet.environment.push({
-        name: parsedFile.VITE_APP_ENVNAME,
-        value: item.mode
+      name: parsedFile.VITE_APP_ENVNAME,
+      value: item.mode
     })
     shellSet.commands.debug[item.mode] = `vite --mode ${item.mode}`
     shellSet.commands.build[item.mode] = `${type_check} && vite build --mode ${item.mode}`
-  }))
-
-  return shellSet;
+  })
+  return shellSet
 }
 
 module.exports = {

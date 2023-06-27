@@ -1,8 +1,9 @@
 /*
  * @Description: 该文件用于调试运行和打包的脚本
  */
-const { getEnvShell } = require('./utils')
-const shell = require('shelljs')
+
+const { spawn } = require('cross-spawn')
+const { getEnvShell } = require('./utils.js')
 const inquirer = require('inquirer')
 
 /** 打包之后预览命令 */
@@ -37,8 +38,14 @@ async function checkList() {
   return commands[prompt.mode][prompt.environment]
 }
 
-/** 运行脚本 */
+/** 运行脚本: https://www.npmjs.com/package/cross-spawn */
 checkList().then((command) => {
-  console.log('command: ', command)
-  shell.exec(command)
+  const commands = command.split('&&').map((item) => item.trim())
+  const children = commands.map((item) => item.split(' '))
+  // 这里运行的pnpm是根据你的项目安装使用的包管理工具来决定的
+  children.forEach((child) => {
+    spawn.sync('pnpm', child, {
+      stdio: 'inherit'
+    })
+  })
 })
