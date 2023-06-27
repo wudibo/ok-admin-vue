@@ -1,8 +1,10 @@
+import type { Component } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
 import { TrailSignOutline } from '@vicons/ionicons5'
 import Layout from '@/layout/index.vue'
 import IFrameView from '@/layout/IFrameView.vue'
-import { RouterView, RouteRecordRaw } from 'vue-router'
-import { Component, createBlock, createVNode } from 'vue'
+import { RouterView } from 'vue-router'
+import { createBlock, createVNode } from 'vue'
 import { reloadComponent } from '../utils/routerComponent'
 const componentLinkView = (src: string) => {
   return reloadComponent(createVNode(IFrameView, { src }))

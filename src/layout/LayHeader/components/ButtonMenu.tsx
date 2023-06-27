@@ -3,7 +3,7 @@
  */
 
 import { inject, defineComponent } from 'vue'
-import useAdminStore from '@/store/adminStore'
+import useAdminStore from '@/stores/adminStore'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@/icon/antd-icon/index'
 
 export default defineComponent({
@@ -19,7 +19,7 @@ export default defineComponent({
     const mobileOptions = inject('mobileOptions') as any
     const layConfig: any = adminStore.layConfigGetter
 
-    function hanldeMenu() {
+    function handlerMenu() {
       if (mobileOptions.isMobile) {
         mobileOptions.showMobileSlidebar = true
       } else {
@@ -27,7 +27,7 @@ export default defineComponent({
       }
     }
     return () => (
-      <div title="菜单切换" onClick={hanldeMenu} class="flex-center btn-content lay-hover">
+      <div title="菜单切换" onClick={handlerMenu} class="flex-center btn-content lay-hover">
         <n-icon size={props.size}>
           <MenuUnfoldOutlined v-show={layConfig.collapsed} />
           <MenuFoldOutlined v-show={!layConfig.collapsed} />

@@ -1,8 +1,4 @@
-<template>
-  <div class="iframe">
-    <iframe :src="src" class="iframe-view" frameborder="0"></iframe>
-  </div>
-</template>
+
 <script setup lang="ts">
   defineProps({
     src: {
@@ -11,6 +7,12 @@
     }
   })
 </script>
+
+<template>
+  <div class="iframe">
+    <iframe :src="src" class="iframe-view" frameborder="0"></iframe>
+  </div>
+</template>
 <style lang="scss">
   .iframe,
   .iframe-view {

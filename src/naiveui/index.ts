@@ -1,4 +1,9 @@
-import { App } from 'vue'
+/*
+ * @Author: jianglong
+ * @LastEditors: jianglong
+ */
+
+import type { App } from 'vue'
 import { NButton, NIcon, NForm, NInput, NCard, NGridItem, NGrid, NGi } from 'naive-ui'
 
 // 这里添加经常使用的全局NaiveUI组件

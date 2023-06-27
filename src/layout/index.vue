@@ -44,11 +44,11 @@
 </template>
 
 <script lang="ts">
-  import useThemeStore from '@/store/themeStore'
-  import useAdminStore from '@/store/adminStore'
+  import useThemeStore from '@/stores/themeStore'
+  import useAdminStore from '@/stores/adminStore'
   import { useRoute } from 'vue-router'
   import { defineComponent, provide, reactive, computed, ref, nextTick, watch } from 'vue'
-  import { NLayout, NLayoutHeader, NLayoutContent, NLayoutSider, useLoadingBar } from 'naive-ui'
+  import { NLayout, NLayoutHeader, NLayoutContent, useLoadingBar } from 'naive-ui'
   import LayHeader from './LayHeader/index.vue'
   import LaySidebar from './LaySidebar/index.vue'
   import LayTag from './LayTag/index.vue'
@@ -64,7 +64,6 @@
       NLayout,
       NLayoutHeader,
       NLayoutContent,
-      NLayoutSider
     },
     setup(props, superContext) {
       const themeStore = useThemeStore()

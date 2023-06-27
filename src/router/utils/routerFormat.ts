@@ -1,7 +1,7 @@
 /**
  * dist 将多级路由分成二级路由
  */
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 function handlePath(superPath: string, rePath: string): string {
   if (/^\//.test(rePath)) {
     // 如果rePath第一个字符是/的时候

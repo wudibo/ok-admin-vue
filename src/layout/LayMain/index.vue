@@ -4,7 +4,7 @@
 
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition appear :name="route.meta.transition || 'fade'" mode="out-in">
+    <transition appear :name="`${route.meta.transition || 'fade'}`" mode="out-in">
       <keep-alive v-if="keepAlives" :include="keepAlives">
         <component :is="Component" :key="route.fullPath" />
       </keep-alive>
@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import useAdminStore from '@/store/adminStore'
+  import useAdminStore from '@/stores/adminStore'
   export default defineComponent({
     name: 'LayMain',
     setup() {

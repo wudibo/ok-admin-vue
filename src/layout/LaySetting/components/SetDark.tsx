@@ -1,13 +1,13 @@
 import './style.scss'
 import { defineComponent, ref } from 'vue'
-import useThemeStore from '@/store/themeStore'
+import { useThemeStore, useAdminStore } from '@/stores/index'
 import { NSwitch, NIcon } from 'naive-ui'
 import { Sunny, Moon } from '@vicons/ionicons5'
-
 export default defineComponent({
   name: 'SetDark',
   setup() {
     const themeStore = useThemeStore()
+    const adminStore = useAdminStore()
     const isDarkTheme = ref(themeStore.isDarkThemeGetter)
 
     return {
@@ -15,6 +15,10 @@ export default defineComponent({
       handleDarkTheme(val: boolean) {
         isDarkTheme.value = val
         themeStore.SET_ISDARKTHEME(val)
+        adminStore.SET_LAYCONFIG({
+          key: 'sidebarInverted',
+          value: false
+        })
       }
     }
   },

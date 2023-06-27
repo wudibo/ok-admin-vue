@@ -4,5 +4,6 @@
 
 **/*.svg
 **/*.sh
+**/*.json
 
 /public/*

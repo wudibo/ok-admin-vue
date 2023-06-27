@@ -3,7 +3,7 @@
  */
 
 import type { Router } from 'vue-router'
-import useAdminStore from '@/store/adminStore'
+import useAdminStore from '@/stores/adminStore'
 
 // 添加keepAlive缓存
 function addKeepAlive(route: any) {

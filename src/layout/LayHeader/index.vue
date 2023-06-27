@@ -60,7 +60,7 @@
   import { defineComponent, computed, ref, watchEffect } from 'vue'
   import { GlobeOutline, SettingsOutline } from '@vicons/ionicons5'
   import { NGi, NGrid, NBreadcrumb, NBreadcrumbItem, NIcon, NDropdown } from 'naive-ui'
-  import useThemeStore from '@/store/themeStore'
+  import useThemeStore from '@/stores/themeStore'
   import { LockClosed } from '@/icon/material-icon/index'
   import { ButtonFullScreen, ButtonMenu, ButtonRefresh, UserMenu } from './components/index'
   import LaySetting from '@/layout/LaySetting/index.vue'

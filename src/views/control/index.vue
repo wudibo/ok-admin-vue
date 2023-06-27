@@ -1,15 +1,3 @@
-<template>
-  <div class="app-container">
-    <cards />
-    <div class="padding-tb-span">
-      <card-link></card-link>
-    </div>
-    <div class="padding-tb-span">
-      <visits></visits>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import http from '@/utils/http'
@@ -29,6 +17,18 @@
       })
   })
 </script>
+
+<template>
+  <div class="app-container">
+    <cards />
+    <div class="padding-tb-span">
+      <card-link></card-link>
+    </div>
+    <div class="padding-tb-span">
+      <visits></visits>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .page {

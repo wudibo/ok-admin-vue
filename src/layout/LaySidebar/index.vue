@@ -44,8 +44,8 @@
 </template>
 
 <script lang="ts">
-  import useThemeStore from '@/store/themeStore'
-  import useAdminStore from '@/store/adminStore'
+  import useThemeStore from '@/stores/themeStore'
+  import useAdminStore from '@/stores/adminStore'
   import { useRouter, useRoute } from 'vue-router'
   import { ref, reactive, computed, watchEffect, defineComponent, inject } from 'vue'
   import { NLayoutSider, NImage, NMenu, NSpace, NSwitch } from 'naive-ui'
@@ -100,7 +100,7 @@
 
         getSrc: (path: string) => {
           const patha = '../../assets/head.png'
-          const modules = import.meta.globEager('../../assets/head.png')
+          const modules: any = import.meta.globEager('../../assets/head.png')
           return modules[patha].default
         },
         handleUpdateValue: (route: any) => {

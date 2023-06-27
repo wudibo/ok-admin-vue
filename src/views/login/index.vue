@@ -46,7 +46,7 @@
       })
       return {
         formData,
-        logo: import('@/assets/logo.png'),
+        logo: import('@/assets/logo.svg'),
         handleSubmit() {
           router.replace('/dashboard/control')
         },
