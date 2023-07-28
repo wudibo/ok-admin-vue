@@ -89,7 +89,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'basic-form',
         component: routerComponent(() => import('@/views/form/basic-form.vue')),
         meta: {
-          title: '基础表单'
+          title: '基础表单',
+          keepAlive: true // 是否缓存页面
         }
       },
       {
@@ -97,7 +98,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'advanced-form',
         component: routerComponent(() => import('@/views/form/advanced-form.vue')),
         meta: {
-          title: '高级表单'
+          title: '高级表单',
+          keepAlive: true // 是否缓存页面
         }
       },
       {
