@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -61,6 +61,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.14
     version: registry.npmmirror.com/autoprefixer@10.4.14(postcss@8.4.23)
+  chalk:
+    specifier: ^4.1.0
+    version: registry.npmmirror.com/chalk@4.1.2
   cross-spawn:
     specifier: ^7.0.3
     version: registry.npmmirror.com/cross-spawn@7.0.3

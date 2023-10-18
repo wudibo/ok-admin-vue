@@ -94,6 +94,15 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: 'rn-tool',
+        name: 'rn-tool',
+        component: routerComponent(() => import('@/views/form/rn-tool/index.vue')),
+        meta: {
+          title: 'rn-tool',
+          keepAlive: true // 是否缓存页面
+        }
+      },
+      {
         path: 'advanced-form',
         name: 'advanced-form',
         component: routerComponent(() => import('@/views/form/advanced-form.vue')),

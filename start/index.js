@@ -3,6 +3,7 @@
  */
 
 const { spawn } = require('cross-spawn')
+const chalk = require('chalk')
 const { getEnvShell } = require('./utils.js')
 const inquirer = require('inquirer')
 
@@ -43,6 +44,7 @@ checkList().then((command) => {
   const commands = command.split('&&').map((item) => item.trim())
   const children = commands.map((item) => item.split(' '))
   // 这里运行的pnpm是根据你的项目安装使用的包管理工具来决定的
+  console.log('执行的脚本: ', chalk.green(command));
   children.forEach((child) => {
     spawn.sync('pnpm', child, {
       stdio: 'inherit'
