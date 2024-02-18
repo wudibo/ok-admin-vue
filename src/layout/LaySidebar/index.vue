@@ -97,12 +97,6 @@
         menuOptions,
         active,
         sliderWidth: 240,
-
-        getSrc: (path: string) => {
-          const patha = '../../assets/head.png'
-          const modules: any = import.meta.globEager('../../assets/head.png')
-          return modules[patha].default
-        },
         handleUpdateValue: (route: any) => {
           mobileOptions.showMobileSlidebar = false
           if (isURL(route)) {

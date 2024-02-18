@@ -89,17 +89,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'basic-form',
         component: routerComponent(() => import('@/views/form/basic-form.vue')),
         meta: {
-          title: '基础表单',
-          keepAlive: true // 是否缓存页面
-        }
-      },
-      {
-        path: 'rn-tool',
-        name: 'rn-tool',
-        component: routerComponent(() => import('@/views/form/rn-tool/index.vue')),
-        meta: {
-          title: 'rn-tool',
-          keepAlive: true // 是否缓存页面
+          title: '基础表单'
         }
       },
       {
@@ -107,8 +97,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         name: 'advanced-form',
         component: routerComponent(() => import('@/views/form/advanced-form.vue')),
         meta: {
-          title: '高级表单',
-          keepAlive: true // 是否缓存页面
+          title: '高级表单'
         }
       },
       {

@@ -49,29 +49,19 @@
       autoFit: true,
       height: 260
     })
-    chart.data(data)
-    chart.scale('value', {
-      nice: true
-    })
-    chart.axis('type', {
-      tickLine: null
-    })
 
-    chart.tooltip({
-      showMarkers: false
+    chart.options({
+      type: 'interval',
+      data: data,
+      encode: {
+        x: 'type',
+        y: 'value'
+      },
+      axis: {
+        y: { title: false },
+        x: { title: false }
+      }
     })
-    chart.interaction('element-active')
-    chart.coordinate({})
-    chart.legend(false)
-    chart
-      .interval()
-      .style('', () => {
-        return {
-          fill: 'l(270) 0:#1596EC 0.5:#3DB3F7 1:#69CDFF'
-        }
-      })
-      .position('type*value')
-
     chart.render()
   }
 
@@ -79,11 +69,11 @@
   const pieChartFun = (elementId: string) => {
     clearElement(elementId)
     const data = [
-      { item: '事例一', count: 40, percent: 0.4 },
-      { item: '事例二', count: 21, percent: 0.21 },
-      { item: '事例三', count: 17, percent: 0.17 },
-      { item: '事例四', count: 13, percent: 0.13 },
-      { item: '事例五', count: 9, percent: 0.09 }
+      { genre: '事例一', sold: randomNum() },
+      { genre: '事例二', sold: randomNum() },
+      { genre: '事例三', sold: randomNum() },
+      { genre: '事例四', sold: randomNum() },
+      { genre: '事例五', sold: randomNum() }
     ]
 
     const chart = new Chart({
@@ -92,37 +82,14 @@
       height: 260
     })
 
-    chart.coordinate('theta', {
-      radius: 0.75
-    })
-
-    chart.data(data)
-
-    chart.scale('percent', {
-      formatter: (val) => {
-        val = val * 100 + '%'
-        return val
-      }
-    })
-
-    chart.tooltip({
-      showTitle: false,
-      showMarkers: false
-    })
-
+    chart.coordinate({ type: 'theta' })
     chart
       .interval()
-      .position('percent')
-      .color('item')
-      .label('percent', {
-        content: (data) => {
-          return `${data.item}: ${data.percent * 100}%`
-        }
-      })
-      .adjust('stack')
-
-    chart.interaction('element-active')
-
+      .data(data)
+      .transform({ type: 'stackY' })
+      .encode('color', 'genre')
+      .encode('y', 'sold')
+      .animate('enter', { type: 'waveIn', duration: 500 })
     chart.render()
   }
 

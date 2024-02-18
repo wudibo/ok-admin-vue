@@ -41,6 +41,4 @@
   </NConfigProvider>
 </template>
 
-<style lang="scss">
-  @import './assets/css/main.scss';
-</style>
+<style lang="scss"></style>

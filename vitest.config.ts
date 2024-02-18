@@ -1,18 +1,15 @@
 import { fileURLToPath } from 'node:url'
-import { mergeConfig } from 'vite'
-import { configDefaults, defineConfig } from 'vitest/config'
+import { mergeConfig, defineConfig, configDefaults } from 'vitest/config'
 import viteConfig from './vite.config'
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const viteConf: any = viteConfig
 export default mergeConfig(
-  viteConfig,
+  viteConf,
   defineConfig({
     test: {
       environment: 'jsdom',
       exclude: [...configDefaults.exclude, 'e2e/*'],
-      root: fileURLToPath(new URL('./', import.meta.url)),
-      transformMode: {
-        web: [/\.[jt]sx$/],
-      },
+      root: fileURLToPath(new URL('./', import.meta.url))
     }
   })
 )
