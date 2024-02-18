@@ -88,21 +88,24 @@ export const useMenu = function () {
     return lays
   }, [] as Array<RouteRecordRaw>)
 
-  menusOption = layouts.reduce((menus, item) => {
-    // 如果菜单设置了隐藏那么不处理
-    if (item.meta && item.meta.hidden) return menus
+  menusOption = layouts.reduce(
+    (menus, item) => {
+      // 如果菜单设置了隐藏那么不处理
+      if (item.meta && item.meta.hidden) return menus
 
-    if (item.children && item.children.length === 1) {
-      // 处理只有一个子元素
-      const menu = handleMenu(item.children[0], item.path)
-      menu && menus.push(menu)
-    } else if (item.children && item.children.length > 1) {
-      // 处理多个子元素
-      const menu = handleMenu(item, item.path)
-      menu && menus.push(menu)
-    }
-    return menus
-  }, [] as Array<MenuOption | MenuGroupOption>)
+      if (item.children && item.children.length === 1) {
+        // 处理只有一个子元素
+        const menu = handleMenu(item.children[0], item.path)
+        menu && menus.push(menu)
+      } else if (item.children && item.children.length > 1) {
+        // 处理多个子元素
+        const menu = handleMenu(item, item.path)
+        menu && menus.push(menu)
+      }
+      return menus
+    },
+    [] as Array<MenuOption | MenuGroupOption>
+  )
 
   return menusOption
 }
