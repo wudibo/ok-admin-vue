@@ -63,7 +63,7 @@
       LayHeader,
       NLayout,
       NLayoutHeader,
-      NLayoutContent,
+      NLayoutContent
     },
     setup(props, superContext) {
       const themeStore = useThemeStore()
