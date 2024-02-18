@@ -40,7 +40,7 @@ export default defineConfig((conf: ConfigEnv) => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve('./src')
+        '@': path.resolve('/src')
       }
     },
     /** 打包配置 */

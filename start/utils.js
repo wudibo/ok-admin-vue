@@ -1,9 +1,13 @@
 /*
  * @Description: 工具库
  */
-const path = require('path')
-const fs = require('fs')
-const { parse } = require('envfile')
+// const path = require('path')
+// const fs = require('fs');
+// const { parse } = require('./envfile')
+
+import path from 'path'
+import fs from 'fs'
+import { parse } from './envfile.js'
 
 /**
  * @Description 获取根目录下所有的.env.*文件
@@ -39,9 +43,9 @@ function getPathEnvs() {
 }
 
 /** 获取所有配置的脚本 */
-async function getEnvShell() {
+export async function getEnvShell() {
   /** 类型检查命令 */
-  const type_check = `vue-tsc --noEmit -p tsconfig.vitest.json --composite false`
+  const type_check = 'vue-tsc --build --force'
   const envs = await getPathEnvs()
   const shellSet = {
     commands: {
@@ -55,13 +59,14 @@ async function getEnvShell() {
     shellSet.environment.push({
       name: parsedFile.VITE_APP_ENVNAME,
       value: item.mode
-    })
+    }) // "build-only {@}" --
     shellSet.commands.debug[item.mode] = `vite --mode ${item.mode}`
     shellSet.commands.build[item.mode] = `${type_check} && vite build --mode ${item.mode}`
   })
+
   return shellSet
 }
 
-module.exports = {
-  getEnvShell
-}
+// module.exports = {
+//   getEnvShell
+// }

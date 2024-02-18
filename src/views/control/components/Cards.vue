@@ -114,37 +114,44 @@
     const elementId = 'cardChart'
     clearElement(elementId)
     const data = [
-      { year: 'Mon', value: randomNum() },
-      { year: 'Tue', value: randomNum() },
-      { year: 'Wed', value: randomNum() },
-      { year: 'Thu', value: randomNum() },
-      { year: 'Fri', value: randomNum() },
-      { year: 'Sat', value: randomNum() },
-      { year: 'Sun', value: randomNum() }
+      { date: 'Mon', value: randomNum(50, 300) },
+      { date: 'Tue', value: randomNum(800, 1200) },
+      { date: 'Wed', value: randomNum(500, 900) },
+      { date: 'Thu', value: randomNum(800, 1200) },
+      { date: 'Fri', value: randomNum(500, 800) },
+      { date: 'Sat', value: randomNum(100, 300) },
+      { date: 'Sun', value: randomNum(300, 600) }
     ]
     const chart = new Chart({
       container: elementId,
       autoFit: true,
-      height: 35
+      height: 35,
+      margin: 0,
+      padding: 0
     })
     chart.data(data)
-    chart.scale({
-      value: {
-        min: 100,
-        nice: true
+    chart.line().encode('x', 'date').encode('y', 'value').encode('shape', 'smooth')
+    chart.area().encode('x', 'date').encode('y', 'value').encode('shape', 'smooth')
+    chart.axis({
+      title: false,
+      label: false,
+      x: {
+        title: false,
+        tickLine: false,
+        label: false,
+        tickCount: 0
       },
-      year: {
-        range: [0, 1]
+      y: {
+        title: false,
+        tickLine: false,
+        tickCount: 0
       }
     })
-    chart.tooltip({
+    chart.interaction('tooltip', {
       showCrosshairs: true,
       shared: true
     })
-    chart.axis(false)
 
-    chart.area().position('year*value').shape('smooth') //曲线背景 shape('smooth')
-    chart.line().position('year*value').shape('smooth') //曲线路径 shape('smooth')
     chart.theme({
       styleSheet: {
         brandColor: '#9DF5CA',

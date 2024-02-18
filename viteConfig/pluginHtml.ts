@@ -25,8 +25,8 @@ export default function pluginHtml(conf: ConfigEnv, env: Data) {
         /** 打包需要注入的script cdn */
         injectScript: isBuild
           ? `
-              <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.4.0/axios.js"></script>
-              <script src="https://gw.alipayobjects.com/os/lib/antv/g2/4.2.10/dist/g2.min.js"></script>
+              <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.6.7/axios.min.js"></script>
+              <script src="https://gw.alipayobjects.com/os/lib/antv/g2/5.1.14/dist/g2.min.js"></script>
             `
           : ''
       }
