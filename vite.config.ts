@@ -1,2 +1,2 @@
-import defineConfig from './viteConfig/index'
-export default defineConfig
+// export default require('./viteConfig/index').default
+export { default } from './viteConfig/index'
