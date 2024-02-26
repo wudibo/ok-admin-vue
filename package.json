@@ -21,7 +21,7 @@
     "naive-ui": "^2.37.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.19",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.7.2",

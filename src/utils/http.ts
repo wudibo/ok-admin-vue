@@ -75,7 +75,7 @@ const requestData: Array<AxiosRequestConfig['method']> = ['POST', 'PUT', 'PATCH'
 
 /** @description http请求对象 */
 const http = {
-  _requestHandler(
+  _requestHandler<T>(
     method: AxiosRequestConfig['method'] = 'GET',
     url = '',
     data?: Data,
@@ -89,26 +89,26 @@ const http = {
     } else {
       config.params = data
     }
-    return axios.request({
+    return axios.request<T>({
       ...config,
       method: method,
       url
     })
   },
-  get(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('GET', url, data, config)
+  get<T>(url = '', data?: Data, config?: Data) {
+    return http._requestHandler<T>('GET', url, data, config)
   },
-  post(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('POST', url, data, config)
+  post<T>(url = '', data?: Data, config?: Data) {
+    return http._requestHandler<T>('POST', url, data, config)
   },
-  delete(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('DELETE', url, data, config)
+  delete<T>(url = '', data?: Data, config?: Data) {
+    return http._requestHandler<T>('DELETE', url, data, config)
   },
-  put(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('PUT', url, data, config)
+  put<T>(url = '', data?: Data, config?: Data) {
+    return http._requestHandler<T>('PUT', url, data, config)
   },
-  patch(url = '', data?: Data, config?: Data) {
-    return http._requestHandler('PATCH', url, data, config)
+  patch<T>(url = '', data?: Data, config?: Data) {
+    return http._requestHandler<T>('PATCH', url, data, config)
   },
   request: axios.request
 }
