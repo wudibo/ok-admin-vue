@@ -51,7 +51,7 @@ export default defineConfig((conf: ConfigEnv) => {
       rollupOptions: RollupOptions
     },
     server: {
-      port: 3000,
+      port: parseInt(env['VITE_PORT']) ?? 3000,
       host: '0.0.0.0'
     },
     // 全局scss变量，混入
