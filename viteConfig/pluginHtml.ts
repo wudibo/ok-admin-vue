@@ -23,10 +23,10 @@ export default function pluginHtml(conf: ConfigEnv, env: Data) {
       data: {
         ...env,
         /** 打包需要注入的script cdn */
-        injectScript: isBuild
+        injectScript: isBuild||true
           ? `
-              <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.6.7/axios.min.js"></script>
-              <script src="https://gw.alipayobjects.com/os/lib/antv/g2/5.1.14/dist/g2.min.js"></script>
+              <script src="https://unpkg.com/axios@1.7.7/dist/axios.min.js"></script>
+              <script src="https://unpkg.com/@antv/g2/dist/g2.min.js"></script>
             `
           : ''
       }
